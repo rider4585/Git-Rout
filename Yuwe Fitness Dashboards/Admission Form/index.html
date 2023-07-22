@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Admission Form</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../media/css/admission_form.css">
+
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="form-container">
+            <div class="form-row first-row">
+                <div class="form-group col-md-3 logo-div">
+                    <img src="../media/img/yuwe-fitness-light.png" class="yuwe-fitness-logo" alt="yuwe fitness logo">
+                </div>
+                <div class="form-group col-md-6 admission-form-heading">
+                    <h1 class="text-center mb-6 admission-form">Admission Form</h1>
+                </div>
+                <div class="form-group col-md-3 logo-div">
+                    <img src="../media/img/yuwe-lifestyle-logo.png" class="yuwe-fitness-logo" alt="yuwe fitness logo">
+                </div>
+            </div>
+            <hr>
+
+            <!-- // -->
+            <div class="section-one">
+
+                <div class="form-group col-md-12 form-row">
+                    <label for="inputFullName">Full Name</label>
+                    <input type="text" class="form-control" id="inputFullName" placeholder="Enter full name" required />
+                </div>
+
+                <div class="form-group col-md-12 form-row">
+                    <label for="inputEmail">Email</label>
+                    <input type="email" class="form-control" id="inputEmail" placeholder="Enter email" required />
+                </div>
+                <div class="form-group col-md-12 form-row">
+                    <label for="inputMobile">Mobile No.</label>
+                    <input type="tel" class="form-control" id="inputMobile" placeholder="Enter mobile number"
+                        required />
+                </div>
+                <div class="form-group col-md-12 form-row">
+                    <label for="inputDOB">Birth Date</label>
+                    <input type="date" class="form-control" id="inputDOB" placeholder="Enter date of birth" required />
+                </div>
+
+                <div class="form-group col-md-12 form-row">
+                    <label for="inputAddress">Address</label>
+                    <input type="text" class="form-control" id="inputAddress" placeholder="Enter address" required />
+                </div>
+
+                <div class="form-group col-md-12 form-row">
+                    <label for="inputGender">Gender</label>
+                    <select id="inputGender" class="form-control" required>
+                        <option value="" selected disabled>Select gender</option>
+                        <option>Male</option>
+                        <option>Female</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-12 form-row">
+                    <label for="inputBloodGroup">Blood Group</label>
+                    <select id="inputBloodGroup" class="form-control" required>
+                        <option value="" selected disabled>Select blood group</option>
+                        <option>A+</option>
+                        <option>A-</option>
+                        <option>B+</option>
+                        <option>B-</option>
+                        <option>AB+</option>
+                        <option>AB-</option>
+                        <option>O+</option>
+                        <option>O-</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-12 form-row">
+                    <label for="inputMaritalStatus">Marital Status</label>
+                    <select id="inputMaritalStatus" class="form-control" required>
+                        <option value="" selected disabled>Select marital status</option>
+                        <option>Single</option>
+                        <option>Married</option>
+                        <option>Divorced</option>
+                        <option>Widowed</option>
+                    </select>
+                </div>
+
+                <div class="form-group col-md-12 form-row inputAnniversaryDiv hide">
+                    <label for="inputAnniversary">Date of Anniversary</label>
+                    <input type="date" class="form-control" id="inputAnniversary"
+                        placeholder="Enter date of anniversary" />
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-3"></div>
+                    <div class="form-group col-md-6">
+                        <button type="button" class="submit-btn btn btn-block section-one-btn">Next</button>
+                    </div>
+                    <div class="form-group col-md-3"></div>
+                </div>
+            </div>
+
+            <!-- // -->
+            <div class="section-two hide">
+                <div class="form-group text-center">
+                    <h5 class="d-inline-block warning-text col-md-12">
+                        Read the questions carefully and answer each one honestly
+                    </h5>
+                </div>
+
+                <div class="form-group">
+                    <ol class="question-container">
+                        <li>
+                            <span class="question">Has a doctor ever said that you have a heart condition and that
+                                you should only do physical activity recommended by a doctor?</span>
+                            <div class="radio-buttons">
+                                <label class="radio-label">
+                                    <input type="radio" name="section-one-question-1" value="yes">Yes</label>
+                                <label class="radio-label radio-no"><input type="radio" name="section-one-question-1"
+                                        value="no">No</label>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="question">Do you feel pain in your chest while doing any physical
+                                activity?</span>
+                            <div class="radio-buttons">
+                                <label class="radio-label"><input type="radio" name="section-one-question-2"
+                                        value="yes">Yes</label>
+                                <label class="radio-label radio-no"><input type="radio" name="section-one-question-2"
+                                        value="no">No</label>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="question">In the past month, have you had chest pain when you were not
+                                doing physical activity?</span>
+                            <div class="radio-buttons">
+                                <label class="radio-label"><input type="radio" name="section-one-question-3"
+                                        value="yes">Yes</label>
+                                <label class="radio-label radio-no"><input type="radio" name="section-one-question-3"
+                                        value="no">No</label>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="question">Do you lose your balance because of dizziness or do you ever lose
+                                consciousness?</span>
+                            <div class="radio-buttons">
+                                <label class="radio-label"><input type="radio" name="section-one-question-4"
+                                        value="yes">Yes</label>
+                                <label class="radio-label radio-no"><input type="radio" name="section-one-question-4"
+                                        value="no">No</label>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="question">Do you have a bone or joint problem that could be made worse by a
+                                change in your physical activity?</span>
+                            <div class="radio-buttons">
+                                <label class="radio-label"><input type="radio" name="section-one-question-5"
+                                        value="yes">Yes</label>
+                                <label class="radio-label radio-no"><input type="radio" name="section-one-question-5"
+                                        value="no">No</label>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="question">Is your doctor currently prescribing drugs for blood pressure or
+                                heart condition?</span>
+                            <div class="radio-buttons">
+                                <label class="radio-label"><input type="radio" name="section-one-question-6"
+                                        value="yes">Yes</label>
+                                <label class="radio-label radio-no"><input type="radio" name="section-one-question-6"
+                                        value="no">No</label>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="question">Do you know of any other reason why you should not do physical
+                                activity?</span>
+                            <div class="radio-buttons">
+                                <label class="radio-label"><input type="radio" name="section-one-question-7"
+                                        value="yes">Yes</label>
+                                <label class="radio-label radio-no"><input type="radio" name="section-one-question-7"
+                                        value="no">No</label>
+                            </div>
+                        </li>
+                    </ol>
+                </div>
+
+                <div class="col-12 text-center">
+                    <h5 class="d-inline-block form-group warning-text-lite">
+                        If you answered "yes" to one or more questions, talk with your doctor before you start
+                        becoming much more active or before you have a fitness test. Tell your doctor about the
+                        PAR-Q and which questions you answered "yes".
+                    </h5>
+                </div>
+
+                <hr>
+
+                <div class="form-group">
+                    <ol>
+                        <li>
+                            <span class="question">Are you currently doing any physical activity?</span>
+                            <div class="radio-buttons">
+                                <label class="radio-label rounded">
+                                    <input type="radio" name="section-two-question-1" value="yes">Yes
+                                </label>
+                                <label class="radio-label rounded">
+                                    <input type="radio" name="section-two-question-1" value="no">No
+                                </label>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="question">Give details of your current physical activity:</span>
+                            <div class="col-md-12">
+                                <input type="text" name="section-two-question-2" class="form-control">
+                            </div>
+                        </li>
+                        <li>
+                            <span class="question">Have you done any physical activity before? Give details of the
+                                same:</span>
+                            <div class="col-md-12">
+                                <input type="text" name="section-two-question-3" class="form-control">
+                            </div>
+                        </li>
+                        <li>
+                            <span class="question">Are you currently taking any medications? If yes, specify:</span>
+                            <div class="col-md-12">
+                                <input type="text" name="section-two-question-4" class="form-control">
+                            </div>
+                        </li>
+                        <li>
+                            <span class="question">Are you pregnant?</span>
+                            <div class="radio-buttons">
+                                <label class="radio-label rounded">
+                                    <input type="radio" name="section-two-question-5" value="yes">Yes
+                                </label>
+                                <label class="radio-label rounded">
+                                    <input type="radio" name="section-two-question-5" value="no">No
+                                </label>
+                                <label class="radio-label rounded">
+                                    <input type="radio" name="section-two-question-5" value="no" checked>Does not
+                                    apply
+                                </label>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="question">If yes, how many months?</span>
+                            <div class="col-md-12">
+                                <input type="text" name="section-two-question-6" class="form-control">
+                            </div>
+                        </li>
+                        <li>
+                            <span class="question">Give the contact details of your physician:</span>
+                            <div class="col-md-12">
+                                <input type="text" name="section-two-question-7" class="form-control">
+                            </div>
+                        </li>
+                        <li>
+                            <span class="question">Person to contact in case of emergency:</span>
+                            <div class="form-row">
+                                <div class="col-md-5">
+                                    <input type="text" name="emergency_contact_name" placeholder="Name"
+                                        class="form-control">
+                                </div>
+                                <div class="col-md-5">
+                                    <input type="text" name="emergency_contact_number" placeholder="Contact Number"
+                                        class="form-control">
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="question">Have you gone through any surgery in the past 6 months?</span>
+                            <div class="radio-buttons">
+                                <label class="radio-label rounded">
+                                    <input type="radio" name="section-two-question-8" value="yes">Yes
+                                </label>
+                                <label class="radio-label rounded">
+                                    <input type="radio" name="section-two-question-8" value="no">No
+                                </label>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="question">Give details of any injury caused by an accident:</span>
+                            <div class="col-md-12">
+                                <input type="text" name="section-two-question-9" class="form-control">
+                            </div>
+                        </li>
+                        <li>
+                            <span class="question">Give details of your alcohol consumption:</span>
+                            <div class="col-md-12">
+                                <input type="text" name="section-two-question-10" class="form-control">
+                            </div>
+                        </li>
+                        <li>
+                            <span class="question">Do you smoke?</span>
+                            <div class="radio-buttons">
+                                <label class="radio-label rounded">
+                                    <input type="radio" name="section-two-question-11" value="yes">Yes
+                                </label>
+                                <label class="radio-label rounded">
+                                    <input type="radio" name="section-two-question-11" value="no">No
+                                </label>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="question">Does anyone in your family have a history of Diabetes/Heart
+                                problems/Blood pressure/Stroke/High cholesterol/Osteoporosis/Asthma?</span>
+                            <div class="radio-buttons">
+                                <label class="radio-label rounded">
+                                    <input type="radio" name="section-two-question-12" value="yes">Yes
+                                </label>
+                                <label class="radio-label rounded">
+                                    <input type="radio" name="section-two-question-12" value="no">No
+                                </label>
+                            </div>
+                        </li>
+                    </ol>
+                </div>
+
+                <hr>
+
+                <div class="form-group medical-conditions">
+                    <div class="col-12 text-center">
+                        <h5 class="d-inline-block warning-text">
+                            Please indicate any other medical conditions or activity restrictions that you have
+                        </h5>
+                    </div>
+                    <div class="col-12 text-center health-conditions-div">
+                        <button type="button" class="button medical-condition-btn">Chronic/Migraine Headaches</button>
+                        <button type="button" class="button medical-condition-btn">Limited Range of Motion</button>
+                        <button type="button" class="button medical-condition-btn">Heart Disease</button>
+                        <button type="button" class="button medical-condition-btn">Diabetes</button>
+                        <button type="button" class="button medical-condition-btn">Joint Ligament, Tendon</button>
+                        <button type="button" class="button medical-condition-btn">Bursitis</button>
+                        <button type="button" class="button medical-condition-btn">High Blood Pressure</button>
+                        <button type="button" class="button medical-condition-btn">Hernia</button>
+                        <button type="button" class="button medical-condition-btn">Arthritis</button>
+                        <button type="button" class="button medical-condition-btn">High Cholesterol</button>
+                        <button type="button" class="button medical-condition-btn">Epilepsy or Seizures</button>
+                        <button type="button" class="button medical-condition-btn">Stroke</button>
+                        <button type="button" class="button medical-condition-btn">Back Pain or Muscular Pull</button>
+                        <button type="button" class="button medical-condition-btn">Dizziness or Fainting</button>
+                        <button type="button" class="button medical-condition-btn">Swollen or Painful Joints</button>
+                        <button type="button" class="button medical-condition-btn">Emphysema</button>
+                        <button type="button" class="button medical-condition-btn">Respiratory Infections</button>
+                        <button type="button" class="button medical-condition-btn">Hormonal Imbalance</button>
+                        <button type="button" class="button medical-condition-btn">Impaired Fasting glucose</button>
+                        <button type="button" class="button medical-condition-btn">Bronchitis</button>
+                        <button type="button" class="button medical-condition-btn">Allergies</button>
+                        <button type="button" class="button medical-condition-btn">Asthma</button>
+                        <button type="button" class="button medical-condition-btn">Shortness of Breath</button>
+                        <button type="button" class="button medical-condition-btn">Stomach Problem</button>
+                        <button type="button" class="button medical-condition-btn">Foot Problems</button>
+                        <button type="button" class="button medical-condition-btn">Gout</button>
+                        <button type="button" class="button" id="otherBtn">Other</button>
+                        <div id="inputBoxContainer" class="input-box medical-condition-input">
+                            <input type="text" id="otherInput" placeholder="Enter other conditions separated by commas">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-3"></div>
+                    <div class="form-group col-md-6">
+                        <button type="button" class="submit-btn btn btn-block section-two-btn">Next</button>
+                    </div>
+                    <div class="form-group col-md-3"></div>
+                </div>
+            </div>
+
+            <!-- // -->
+            <div class="section-three hide">
+                <div class="col-12">
+                    <div class="col-12 text-center mb-12">
+                        <h5 class="d-inline-block warning-text">
+                            Informed Consent & General Statement of Program Objectives and Procedures
+                        </h5>
+                    </div>
+                    <p class="d-inline-block col-12 text-center mb-12"> I understand that this physical fitness program
+                        includes exercises to build the cardio-respiratory system (heart and lungs), the
+                        muscular-skeletal system (muscular endurance and strength, and flexibility) and to improve body
+                        composition (an individual needs to lose fat, with an increase in weight of muscle and bone).
+                    </p>
+                    <p class="d-inline-block col-12 text-center mb-12"> Exercise may include aerobic activities
+                        (treadmill, walking, running, Jumping and other aerobic activities) and weightlifting to improve
+                        muscular strength and endurance and flexibility exercises to improve joint range of motion.</p>
+                    <div class="col-12 text-center mb-12">
+                        <input type="checkbox" id="consent-checkbox" name="consent-checkbox">
+                        <label for="consent-checkbox" class="consent-text">I agree and i know all the possible Potential
+                            Risks and Description of Potential Benefits</label>
+                    </div>
+                    <hr>
+                    <div class="col-12 text-center mb-12">
+                        <div class="col-12 text-center mb-12">
+                            <h5 class="d-inline-block red-text">
+                                Description of Potential Risks
+                            </h5>
+                        </div>
+                        <p class="d-inline-block col-12 text-center mb-12"> I understand that the reaction of the heart,
+                            lungs and blood vessel system to exercise cannot always be predicted with accuracy I know
+                            there is a risk of certain abnormal changes occurring during or following exercise, which
+                            may include abnormalities of blood pressure or heart attacks. Use of the weight lifting
+                            equipment may lead to muscular-skeletal strains, pain and injury I understand that the gym
+                            management and service providers shall not be liable for any damages arising from personal
+                            injuries sustained by me while and during the physical fitness-training program online as
+                            well as offline.</p>
+                        <p class="d-inline-block col-12 text-center mb-12"> I hereby fully and forever release and
+                            discharge the gym management from all claims, demands, damages, nights of action, present
+                            and future therein. I understand and warrant, release and agree that I am in good physical
+                            condition and that I have no disability, impairment or ailment preventing me from engaging
+                            in active or passive exercise that will be detrimental to heart safety, or comfort, or
+                            physical conditions if I engage or participate (other than those items fully discussed on
+                            Health History form) </p>
+
+                        <div class="col-12 text-center mb-12">
+                            <h5 class="d-inline-block red-text">
+                                Description of Potential Benefits
+                            </h5>
+                        </div>
+                        <p class="d-inline-block col-12 text-center mb-12"> I understand that a program of regular
+                            exercise or the heart, lungs, muscles and joints, has many benefits associated with it.</p>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-3"></div>
+                        <div class="form-group col-md-6">
+                            <button type="button"
+                                class="submit-btn btn btn-block section-three-btn submit-complete-form">Submit</button>
+                        </div>
+                        <div class="form-group col-md-3"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="../media/js/admission_form.js"></script>
+    <!-- <script src="./test.js"></script> -->
+</body>
+
+</html>

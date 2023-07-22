@@ -1,0 +1,77 @@
+:root {
+    --primary-color-light: #ffffffdb;
+    --primary-color-dark: #232323db;
+    --background-color-light: white;
+    --background-color-dark: #232323db;
+    --text-color-light: black;
+    --text-color-dark: #ffffffdb;
+    --accent-color: red;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --primary-color: var(--primary-color-dark);
+        --background-color: var(--background-color-dark);
+        --text-color: var(--text-color-dark);
+    }
+
+    .card.dark-mode:hover {
+        background-color: var(--primary-color-light);
+        color: var(--background-color-dark);
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --primary-color: var(--primary-color-light);
+        --background-color: var(--background-color-light);
+        --text-color: var(--text-color-light);
+    }
+
+    .card.light-mode:hover {
+        background-color: var(--primary-color-dark);
+        color: var(--background-color-light);
+    }
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    background-image: url('./media/img/watermark.png');
+    background-repeat: no-repeat;
+    background-size: auto 90vh;
+    background-position: center;
+    background-attachment: fixed;
+    height: 100vh;
+}
+
+.card {
+    background-color: var(--background-color);
+    border-color: var(--text-color);
+    color: var(--text-color);
+}
+
+.card-title i {
+    margin-right: 8px;
+}
+
+.accent-color {
+    color: var(--accent-color);
+}
+
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar-heading {
+    flex-grow: 1;
+    text-align: center;
+}
+
+@media (max-width: 767px) {
+    body {
+        background-size: 90vw auto;
+    }
+}

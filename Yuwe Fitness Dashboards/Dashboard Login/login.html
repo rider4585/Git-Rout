@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Firebase Phone Auth</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../media/css/dashboard_login.css">
+</head>
+
+<body>
+	<div class="container-fluid d-flex justify-content-center align-items-center" style="height: 100vh;">
+		<div class="card">
+			<div class="card-body">
+				<div class="text-center mb-4">
+					<img src="../media/img/watermark.png" alt="Logo" class="logo" width="150">
+				</div>
+
+				<div id="phone-auth-form">
+					<div class="form-group">
+						<label for="phone" class="phone-label">Phone Number:</label>
+						<div class="input-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text">+91</span>
+							</div>
+							<input type="tel" class="form-control" id="phone" placeholder="Enter your phone number"
+								value="" required>
+						</div>
+					</div>
+					<div id="recaptcha-container"></div>
+					<button class="btn btn-primary btn-block" onclick="submitPhoneNumber()">Send OTP</button>
+				</div>
+
+
+				<div id="code-verification-form" style="display: none;">
+					<div class="form-group">
+						<label for="verification-code" class="otp-label">Verification Code:</label>
+						<input type="number" class="form-control" id="verification-code" placeholder="000000">
+						<p class="otp-sent"></p>
+					</div>
+					<button class="btn btn-primary btn-block" onclick="submitVerificationCode()">Verify Code</button>
+				</div>
+			</div>
+		</div>
+
+		<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-firestore.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-analytics.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-storage.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-functions.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-performance.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-remote-config.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-messaging.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-installations.js"></script>
+		<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase.js"></script>
+		<script src="../media/js/firebase_setup.js"></script>
+		<script src="../media/js/dashboard_login.js"></script>
+</body>
+
+</html>

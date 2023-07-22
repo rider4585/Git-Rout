@@ -1,0 +1,174 @@
+:root {
+    --placeholder-color: #ec0000;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+::placeholder {
+    color: #333333ca !important;
+    opacity: 0.5 !important;
+}
+
+:-ms-input-placeholder {
+    color: #333333ca !important;
+}
+
+::-ms-input-placeholder {
+    color: #333333ca !important;
+}
+
+.logo {
+    height: 80px;
+    width: auto;
+    max-width: 100%;
+}
+
+.heading {
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.address {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    text-align: center;
+}
+
+.container-fluid {
+    padding: 10px;
+    margin: 20px auto 20px;
+    border: 2px solid #dd8888;
+    box-sizing: border-box;
+    border-radius: 4px;
+    max-width: 95vw;
+}
+
+hr {
+    margin: 20px 0;
+}
+
+.label-light-dark {
+    background-color: #f5f5f5;
+    color: #333;
+    padding: 5px 10px;
+    margin-bottom: 5px;
+    white-space: nowrap;
+    width: 120px;
+    /* Set a fixed width for the labels */
+}
+
+.row .col {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+.row .col .form-group {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.row .col .form-control {
+    flex: 1;
+    max-width: 200px;
+}
+
+.light-dark,
+.light-dark input {
+    background-color: #f5f5f5;
+}
+
+.table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+table input {
+    border: none !important;
+}
+
+.section-title {
+    margin-bottom: 10px;
+}
+
+.terms-content {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.terms-content p:last-child {
+    margin-bottom: 0;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+input[type="number"]:focus,
+input[type="date"]:focus,
+table input:focus {
+    outline: none;
+    box-shadow: none;
+    border: 1px solid red !important;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="date"]::-webkit-inner-spin-button,
+input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+input[type="date"] {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.submit-btn {
+    background-color: #ec0000;
+    color: white;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    padding: 5px 0;
+    border-radius: 4px;
+}
+
+.submit-btn:focus {
+    background-color: #8b0000;
+}
+
+@media (max-width: 767px) {
+
+    .second-row,
+    .third-row {
+        flex-direction: column;
+    }
+
+    .second-row .col {
+        display: block;
+    }
+
+    .third-row>* {
+        max-width: 100%;
+    }
+}

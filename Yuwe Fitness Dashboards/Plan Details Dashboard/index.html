@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Exercise Data</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+  <link rel="stylesheet" href="./exercise_data_form.css" />
+</head>
+
+<body>
+  <div id="getData" class="container">
+    <h2>Create Plan Details</h2>
+    <form id="exercise-form">
+      <div class="form-group">
+        <label for="plan-name">Plan Name<span class="imp">*</span></label>
+        <input type="text" class="form-control" id="plan-name" required />
+      </div>
+      <div class="form-group">
+        <label for="mode">Mode<span class="imp">*</span></label>
+        <select class="form-control" id="mode" required>
+          <option value="online">Online</option>
+          <option value="offline">Offline</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="duration">Duration (in weeks)<span class="imp">*</span></label>
+        <input type="number" class="form-control" id="duration" required />
+      </div>
+      <div class="form-group">
+        <label for="diet-update">Diet Updates<span class="imp">*</span></label>
+        <input type="number" class="form-control" id="diet-update" required />
+      </div>
+      <div class="form-group">
+        <label for="counselling">Counselling / Sessions<span class="imp">*</span></label>
+        <input type="number" class="form-control" id="counselling" required />
+      </div>
+      <div class="form-group">
+        <label for="rates">Rates<span class="imp">*</span></label>
+        <input type="number" class="form-control" id="rates" required />
+      </div>
+      <div class="form-group">
+        <label for="offered-price">Offered-price<span class="imp">*</span></label>
+        <input type="number" class="form-control" id="offered-price" required />
+      </div>
+      <div class="form-group">
+        <label for="full-payment">Full Payment<span class="imp">*</span></label>
+        <input type="number" class="form-control" id="full-payment" required />
+      </div>
+      <button type="submit" class="btn btn-primary submit-btn">Submit</button>
+    </form>
+  </div>
+
+  <div id="showData" class="container">
+    <h2>Plan Details</h2>
+    <div class="dataToAppend form-group">Please fill the form</div>
+  </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script type="module" src="./exercise_data_form.js"></script>
+<script src="./edit_options.js"></script>
+
+</html>

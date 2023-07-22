@@ -1,0 +1,280 @@
+:root {
+    --background-color: #fefefe;
+    --primary-color: #ee0000;
+    --secondary-color: #000000;
+    --accent-color: #eaeaea;
+    --font-color: #323232;
+    --input-borders: #777777;
+
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--font-color);
+}
+
+hr {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+label {
+    margin-left: 0.5rem;
+}
+
+.form-container {
+    margin: 15px 0;
+    border: 2px solid var(--primary-color);
+    border-radius: 20px;
+    padding: 20px;
+    min-height: calc(100vh - 30px);
+    height: auto;
+    /* overflow: hidden; */
+}
+
+.form-control {
+    border-radius: 0.5em;
+}
+
+.form-control[readonly] {
+    background-color: var(--background-color);
+}
+
+.medical-condition-btn {
+    border: 1px solid transparent !important;
+}
+
+.form-control:focus,
+.section-two input[type=text]:focus {
+    border-color: var(--primary-color);
+    /* box-shadow: 0px 0px 10px 10px var(--primary-color)63; */
+    box-shadow: none;
+}
+
+.submit-btn {
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    border: none;
+    border-radius: 0.5em;
+    /* padding: 10px 30px; */
+    font-size: 1em;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: var(--primary-color);
+}
+
+.warning-text-lite {
+    color: rgb(169, 169, 169);
+    font-size: 0.8em;
+}
+
+.warning-text {
+    color: var(--background-color);
+    background-color: var(--primary-color);
+    padding: 5px 10px;
+    border-radius: 0.5em;
+    font-size: 1em;
+
+}
+
+input[type="radio"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 2px solid var(--primary-color);
+    outline: none;
+    margin: 0 7px;
+}
+
+input[type="radio"]:checked {
+    background-color: var(--primary-color);
+}
+
+.questions-container {
+    padding: 1% 5%;
+}
+
+.red-radio .custom-control-input:checked~.custom-control-label::before {
+    background-color: var(--primary-color);
+}
+
+.radio-buttons {
+    display: flex;
+    flex-direction: row;
+}
+
+.radio-label {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+}
+
+.radio-no {
+    margin-left: 3%;
+}
+
+input[type=text],
+input[type=date],
+input[type=number],
+input[type=email],
+input[type=tel],
+select {
+    border-radius: 0.5em;
+    /* display: block; */
+    /* width: 100%; */
+    height: calc(1.5em + 0.75rem + 2px);
+    padding: 0.375rem 0.75rem;
+    font-size: 1em !important;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #6c6c6c96 !important;
+    background-color: var(--background-color);
+    background-clip: padding-box;
+    border: 1px solid var(--input-borders);
+    border-radius: 0.5em;
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+input[type=checkbox]{
+    width: 28px;
+    height: 28px;
+}
+
+.form-control {
+    border: 1px solid var(--input-borders);
+}
+
+.section-one,
+.section-two,
+.section-three {
+    /* overflow: scroll; */
+    /* padding-top: 10em; */
+    font-size: 2em;
+}
+
+.section-three p, .consent-text{
+    font-size: 0.7em;
+    text-align: justify !important;
+}
+
+.section-three > div > div{
+    margin-bottom: 10px;
+}
+
+.section-two input[type=text]:focus {}
+
+input:focus {
+    border-color: var(--primary-color);
+    /* box-shadow: 0px 0px 10px 10px var(--primary-color)63; */
+    box-shadow: none;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--accent-color);
+    border: none;
+    border-radius: 0.5em;
+    font-size: 1em;
+    cursor: pointer;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.selected {
+    background-color: var(--background-color) !important;
+    border: 1px solid var(--primary-color) !important;
+}
+
+.selected:focus {
+    border: 1px solid var(--primary-color) !important;
+    outline: none !important;
+}
+
+.health-conditions-div {
+    margin-top: 10px;
+}
+
+.input-box {
+    display: none;
+    margin-top: 10px;
+}
+
+.health-conditions-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.medical-conditions {
+    display: flex;
+    flex-direction: column;
+    justify-content: centerS;
+}
+
+.admission-form-heading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.admission-form {
+    font-weight: bold;
+    font-size: 3em;
+}
+
+.logo-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.yuwe-fitness-logo {
+    width: 50%;
+}
+
+.first-row {
+    margin-bottom: 2em;
+    /* position: fixed; */
+}
+
+.red-text {
+    color: var(--primary-color);
+    font-size: 0.9em;
+}
+
+.consent-text {
+    font-weight: 600;
+}
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+@media (max-width: 576px) {
+    .form-container {
+        margin-top: 20px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+}

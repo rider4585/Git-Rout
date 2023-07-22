@@ -1,0 +1,99 @@
+:root {
+    --background-color-light: #f0f0f0;
+    --background-color-dark: #333;
+    --text-color-light: #333;
+    --text-color-dark: #f0f0f0;
+    --header-background-light: url('path/to/your/light-mode-background-image.jpg');
+    --header-background-dark: url('path/to/your/dark-mode-background-image.jpg');
+    --card-background-light: #fff;
+    --card-background-dark: #444;
+    --shadow-light: rgba(0, 0, 0, 0.1);
+    --shadow-dark: rgba(255, 255, 255, 0.1);
+    --font-family: 'Montserrat', sans-serif;
+    --font-size-heading: 48px;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-family);
+  }
+  
+  body {
+    background-color: var(--background-color-light);
+    color: var(--text-color-light);
+  }
+  
+  .dashboard-header {
+    text-align: center;
+    background-image: var(--header-background-light);
+    background-size: cover;
+    background-position: center;
+    padding: 40px;
+  }
+  
+  .dashboard-header h1 {
+    font-size: var(--font-size-heading);
+    margin: 0;
+    color: var(--text-color-light);
+  }
+  
+  .dashboard {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    max-width: 1200px;
+    margin: 20px auto;
+  }
+  
+  .card {
+    flex: 1 1 calc(33.33% - 20px);
+    background-color: var(--card-background-light);
+    box-shadow: 0 2px 4px var(--shadow-light);
+    margin: 10px;
+    padding: 20px;
+    transition: transform 0.3s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .card a {
+    color: var(--text-color-light);
+    text-decoration: none;
+  }
+  
+  .card h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+  
+  .card p {
+    margin: 0;
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    body {
+      background-color: var(--background-color-dark);
+      color: var(--text-color-dark);
+    }
+  
+    .dashboard-header {
+      background-image: var(--header-background-dark);
+    }
+  
+    .dashboard-header h1 {
+      color: var(--text-color-dark);
+    }
+  
+    .card {
+      background-color: var(--card-background-dark);
+      box-shadow: 0 2px 4px var(--shadow-dark);
+    }
+  
+    .card a {
+      color: var(--text-color-dark);
+    }
+  }
+  

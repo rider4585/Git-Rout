@@ -1,0 +1,158 @@
+::-webkit-scrollbar {
+    display: none;
+}
+
+* {
+    animation: all ease-in-out 0.2s;
+    transition: all ease-in-out 0.2s;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #edf2f7;
+    color: rgb(211, 211, 211);
+}
+
+.container-fluid {
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #e2e2e2;
+    color: black;
+    border-radius: 5px 5px 5px 5px !important;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border: none;
+    border-radius: 5px !important;
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333333;
+}
+
+.card {
+    border-radius: 5px 5px 5px 5px !important;
+    border: none;
+}
+
+.card-body {
+    box-shadow:
+        2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),
+        6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
+        12.5px 12.5px 10px rgba(0, 0, 0, 0.035),
+        22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
+        41.8px 41.8px 33.4px rgba(0, 0, 0, 0.05),
+        100px 100px 80px rgba(0, 0, 0, 0.07);
+    border: 0px;
+    border-radius: 5px !important;
+}
+
+#recaptcha-container {
+    margin-bottom: 1em;
+    /* display: flex; */
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-control {
+    border-radius: 5px;
+    background-color: white;
+    color: black;
+}
+
+.btn-primary {
+    width: 100%;
+    background-color: white !important;
+    color: red !important;
+    border-color: red !important;
+    box-shadow: none !important;
+}
+
+.btn-primary:hover {
+    background-color: rgb(255, 53, 53) !important;
+    border-color: rgb(255, 53, 53) !important;
+    color: white !important;
+}
+
+/* .btn-primary:focus {
+    background-color: rgb(255, 53, 53) !important;
+    border-color: rgb(255, 53, 53) !important;
+} */
+
+
+
+.code-verification-form {
+    display: none;
+}
+
+.otp-input-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.otp-sent {
+    text-align: center;
+    font-size: 0.8em;
+    margin: 0;
+    padding-top: 5px;
+    color: #00000080;
+}
+
+.mobile-number {
+    font-weight: normal;
+    color: #000000cb;
+}
+
+.phone-label,
+.otp-label {
+    color: #0000008f;
+}
+
+#phone {
+    box-shadow: none;
+}
+
+#phone:focus {
+    border: 1px rgb(255, 53, 53) solid;
+}
+
+#verification-code {
+    box-shadow: none;
+    text-align: center;
+    letter-spacing: 0.5em;
+}
+
+#verification-code:focus {
+    border: 1px red solid;
+    outline: none;
+}
+
+/* =================== */
+
+@media (max-width: 767px) {
+
+    body * {
+        font-size: 50px !important;
+    }
+
+    .container-fluid {
+        width: 100vw;
+    }
+
+    .card-body>div {
+        margin-bottom: 2em !important;
+    }
+
+    .card {
+        width: 80%;
+        height: auto;
+    }
+
+    .logo {
+        width: 50%;
+    }
+}

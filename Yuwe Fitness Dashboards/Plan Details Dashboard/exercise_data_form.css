@@ -1,0 +1,66 @@
+*::-webkit-scrollbar {
+    display: none;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body{
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+}
+
+summary{
+    font-weight: bold;
+    /* background-color: rgba(101, 101, 101, 0.625); */
+    margin: 5px;
+    padding-left: 5px;
+}
+
+.imp{
+    color: red;
+}
+
+.form-group{
+    margin-bottom: 10px;
+}
+
+#getData, #showData {
+    width: 50vw;
+    height: 100vh;
+    overflow-y: scroll;
+}
+
+#getData{
+    border-right: 2px solid rgba(0, 0, 0, 0.156);
+}
+
+.summery-data{
+    padding-top: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.386);
+}
+
+.submit-btn{
+    margin: 20px 0;
+}
+
+.submit-btn-right{
+    margin-top: 5px;
+}
+
+.hide{
+    display: none;
+}
+
+.edit-btn{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.edit-btn > button{
+    width: calc(50% - 10%);
+}

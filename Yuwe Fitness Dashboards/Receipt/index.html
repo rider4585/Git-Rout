@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Gym Receipt</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../media/css/receipt.css">
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row first-row">
+            <div class="col-12">
+                <div class="d-flex justify-content-between align-items-center">
+                    <img src="../media/img/yuwe-fitness-light.png" alt="Yuwe Fitness" class="logo">
+                    <h1 class="heading">YuWe Fitness</h1>
+                    <img src="../media/img/yuwe-lifestyle-logo.png" alt="Yuwe Lifestyle" class="logo">
+                </div>
+                <p class="address">123 Gym Street, City, State, ZIP</p>
+            </div>
+        </div>
+        <hr>
+        <div class="row second-row">
+            <div class="col">
+                <div class="form-group">
+                    <label for="memberId" class="label-light-dark">Member ID:</label>
+                    <input type="number" class="form-control" id="memberId" placeholder="Enter Member ID">
+                </div>
+                <div class="form-group">
+                    <label for="name" class="label-light-dark">Name:</label>
+                    <input type="text" class="form-control" id="name" placeholder="Enter Name">
+                </div>
+                <div class="form-group">
+                    <label for="phoneNumber" class="label-light-dark">Contact No.:</label>
+                    <input type="number" class="form-control" id="phoneNumber" placeholder="Enter Contact No.">
+                </div>
+                <div class="form-group">
+                    <label for="email" class="label-light-dark">Email ID:</label>
+                    <input type="email" class="form-control" id="email" placeholder="Enter Email ID">
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label for="date" class="label-light-dark">Date:</label>
+                    <input type="date" class="form-control" id="date" placeholder="Enter Date">
+                </div>
+                <div class="form-group">
+                    <label for="invoiceNo" class="label-light-dark">Invoice No.:</label>
+                    <input type="text" class="form-control" id="invoiceNo" placeholder="Enter Invoice No.">
+                </div>
+                <div class="form-group">
+                    <label for="gstNo" class="label-light-dark">GST No.:</label>
+                    <input type="text" class="form-control" id="gstNo" placeholder="Enter GST No.">
+                </div>
+                <div class="form-group">
+                    <label for="sacNo" class="label-light-dark">SAC No.:</label>
+                    <input type="text" class="form-control" id="sacNo" placeholder="Enter SAC No.">
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label for="place" class="label-light-dark">Place:</label>
+                    <input type="text" class="form-control" id="place" placeholder="Enter Place" value="Pune">
+                </div>
+                <div class="form-group">
+                    <label for="state" class="label-light-dark">State:</label>
+                    <input type="text" class="form-control" id="state" placeholder="Enter State" value="Maharashtra">
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="row third-row">
+            <div class="col-7">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td>Course Name:</td>
+                            <td><input type="text" class="form-control" id="courseName" placeholder="Enter Course Name">
+                            </td>
+                        </tr>
+                        <tr class="light-dark">
+                            <td>Plan:</td>
+                            <td><input type="text" class="form-control" id="plan" placeholder="Enter Plan"></td>
+                        </tr>
+                        <tr>
+                            <td>Instructor:</td>
+                            <td><input type="text" class="form-control" id="instructor" placeholder="Enter Instructor">
+                            </td>
+                        </tr>
+                        <tr class="light-dark">
+                            <td>Start Date:</td>
+                            <td><input type="date" class="form-control" id="startDate" placeholder="Enter Start Date">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>End Date:</td>
+                            <td><input type="date" class="form-control" id="endDate" placeholder="Enter End Date"></td>
+                        </tr>
+                        <tr class="light-dark">
+                            <td>Pay Mode:</td>
+                            <td><input type="text" class="form-control" id="payMode" placeholder="Enter Pay Mode"></td>
+                        </tr>
+                        <tr>
+                            <td>Amount in Words:</td>
+                            <td><input type="text" class="form-control" id="amountInWords"
+                                    placeholder="Enter Amount in Words"></td>
+                        </tr>
+                        <tr class="light-dark">
+                            <td>Member GST:</td>
+                            <td><input type="text" class="form-control" id="memberGST" placeholder="Enter Member GST">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-5">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td>Course Fee:</td>
+                            <td><input type="number" class="form-control" id="courseFee" placeholder="Enter Course Fee">
+                            </td>
+                        </tr>
+                        <tr class="light-dark">
+                            <td>Registration Fee:</td>
+                            <td><input type="text" class="form-control" id="registrationFee"
+                                    placeholder="Enter Registration Fee"></td>
+                        </tr>
+                        <tr>
+                            <td>Discount:</td>
+                            <td><input type="number" class="form-control" id="discount" placeholder="Enter Discount">
+                            </td>
+                        </tr>
+                        <tr class="light-dark">
+                            <td>CGST (9%):</td>
+                            <td><input type="number" class="form-control" id="cgst" placeholder="Enter CGST"></td>
+                        </tr>
+                        <tr>
+                            <td>SGST (9%):</td>
+                            <td><input type="number" class="form-control" id="sgst" placeholder="Enter SGST"></td>
+                        </tr>
+                        <tr class="light-dark">
+                            <td>IGST (0%):</td>
+                            <td><input type="number" class="form-control" id="igst" placeholder="Enter IGST"></td>
+                        </tr>
+                        <tr>
+                            <td>Total:</td>
+                            <td><input type="number" class="form-control" id="total" placeholder="Enter Total"></td>
+                        </tr>
+                        <tr class="light-dark">
+                            <td>Paid Fees:</td>
+                            <td><input type="number" class="form-control" id="paid" placeholder="Enter Paid Fees"></td>
+                        </tr>
+                        <tr>
+                            <td>Balance:</td>
+                            <td><input type="number" class="form-control" id="balance" placeholder="Enter Balance"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <hr>
+        <div class="row fourth-row">
+            <div class="col">
+                <h4 class="section-title">Terms and Conditions</h4>
+                <div class="terms-content">
+                    <p>Once Fees Paid Not Be Refunded, no Transfer,no Frezzing,no Extension.</p>
+                    <p> Dont Carry Your Valuable Gym Will Not Responsible For Any Losses.</p>
+                    <p> Gym Also Will Not Responsible For Any Accident.</p>
+                    <p>In Gym Premises Must Carry Sports Wear Napkin.</p>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col text-center">
+                <button type="button" class="submit-btn" onclick="validateResponse()">Generate Receipt</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="../media/js/receipt.js"></script>
+</body>
+
+</html>
