@@ -20,7 +20,7 @@ function submitPhoneNumber() {
         alert("Please Enter Your Phone Number")
     } else if (phoneNumber.length !== 13) {
         alert("Invalid Mobile Number")
-    } else if (phoneNumber == '+917798476162' || phoneNumber == '+919130313670' ) { //remove this
+    } else if (phoneNumber == '+917798476162' || phoneNumber == '+919130313670') { //remove this
         sessionStorage.setItem("loggedIn", true);
         window.location.href = "../index.html";
     } else {
@@ -55,7 +55,7 @@ function submitVerificationCode() {
         });
 }
 
-document.addEventListener('DOMContentLoaded', function(){
+document.addEventListener('DOMContentLoaded', function () {
     if (sessionStorage.getItem("loggedIn")) {
         // Redirect to the dashboard or home page
         sessionStorage.removeItem("loggedIn");
