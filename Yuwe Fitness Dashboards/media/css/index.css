@@ -6,7 +6,7 @@
     --background-color-dark: #232323db;
     --text-color-light: black;
     --text-color-dark: #ffffffdb;
-    --accent-color: red;
+    --accent-color: #dc3545;
 }
 
 /* Dark mode styles */
@@ -22,11 +22,7 @@
         color: var(--text-color-dark);
     }
 
-    /* Add dark mode specific styles here */
-    .card.dark-mode:hover {
-        background-color: var(--primary-color-light);
-        color: var(--background-color-dark);
-    }
+    
 }
 
 /* Light mode styles */
@@ -42,12 +38,10 @@
         color: var(--text-color-light);
     }
 
-
-    /* Add light mode specific styles here */
-    .card.light-mode:hover {
-        background-color: var(--primary-color-dark);
-        color: var(--background-color-light);
+    #logout-btn {
+        border-color: var(--accent-color);
     }
+
 }
 
 /* Shared styles for both dark and light modes */
@@ -102,11 +96,18 @@ body {
     position: sticky;
     top: 0;
     z-index: 100;
+    background-color: var(--background-color);
+    border-bottom: 2px solid var(--primary-color-dark);
 }
 
 .navbar-heading {
     flex-grow: 1;
-    text-align: center;
+    text-align: left;
+}
+
+#logout-btn:hover {
+    background-color: var(--accent-color);
+    color: var(--primary-color-light);
 }
 
 /* Responsiveness */
