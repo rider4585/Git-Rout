@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resizable Split View</title>
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <style>
+        body,
+        html {
+            height: 100%;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .split-view {
+            position: relative;
+            height: 100%;
+        }
+
+        .left-pane,
+        .right-pane {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            overflow: auto;
+        }
+
+        .left-pane {
+            left: 0;
+            right: 0;
+            background-color: #f0f0f0;
+        }
+
+        .right-pane {
+            right: 0;
+            background-color: #d0d0d0;
+        }
+
+        .split-bar {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            cursor: col-resize;
+            background-color: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="split-view">
+        <div class="left-pane" id="leftPane"></div>
+        <div class="split-bar" id="splitBar"></div>
+        <div class="right-pane" id="rightPane"></div>
+    </div>
+
+    <!-- <script src="script.js"></script> -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const splitBar = document.getElementById('splitBar');
+            const leftPane = document.getElementById('leftPane');
+            const rightPane = document.getElementById('rightPane');
+            let isDragging = false;
+            let lastX = 0;
+
+            splitBar.addEventListener('mousedown', function (e) {
+                e.preventDefault();
+                isDragging = true;
+                lastX = e.clientX;
+            });
+
+            document.addEventListener('mouseup', function () {
+                isDragging = false;
+            });
+
+            document.addEventListener('mousemove', function (e) {
+                if (!isDragging) return;
+
+                const deltaX = e.clientX - lastX;
+                const leftPaneWidth = leftPane.offsetWidth + deltaX;
+                const rightPaneWidth = rightPane.offsetWidth - deltaX;
+
+                leftPane.style.width = `${leftPaneWidth}px`;
+                rightPane.style.width = `${rightPaneWidth}px`;
+
+                lastX = e.clientX;
+            });
+        });
+    </script>
+</body>
+
+</html>
