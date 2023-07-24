@@ -3,7 +3,9 @@
     --primary-color-light: #ffffffdb;
     --primary-color-dark: #232323db;
     --background-color-light: white;
-    --background-color-dark: #232323db;
+    --background-color-dark: #181a20;
+    --card-background-light: #F6F1F1;
+    --card-background-dark: #262a34;
     --text-color-light: black;
     --text-color-dark: #ffffffdb;
     --accent-color: #dc3545;
@@ -15,6 +17,7 @@
         --primary-color: var(--primary-color-dark);
         --background-color: var(--background-color-dark);
         --text-color: var(--text-color-dark);
+        --card-background: var(--card-background-dark);
     }
 
     .card-title,
@@ -22,6 +25,11 @@
         color: var(--text-color-dark);
     }
 
+    #logout-btn {
+        border-color: var(--accent-color);
+        color: var(--accent-color);
+        background-color: var(--background-color);
+    }
     
 }
 
@@ -31,6 +39,7 @@
         --primary-color: var(--primary-color-light);
         --background-color: var(--background-color-light);
         --text-color: var(--text-color-light);
+        --card-background: var(--card-background-light);
     }
 
     .card-title,
@@ -69,7 +78,7 @@ body {
 }
 
 .card {
-    background-color: var(--background-color);
+    background-color: var(--card-background);
     border: none;
     color: var(--text-color);
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
