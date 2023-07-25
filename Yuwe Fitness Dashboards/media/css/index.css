@@ -30,7 +30,7 @@
         color: var(--accent-color);
         background-color: var(--background-color);
     }
-    
+
 }
 
 /* Light mode styles */
@@ -60,12 +60,16 @@ body {
     font-family: 'Montserrat', sans-serif;
     background-color: var(--background-color);
     color: var(--text-color);
-    background-image: url('./media/img/watermark.png');
+    /* background-image: url('./media/img/watermark.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
+    background-attachment: fixed; */
     height: 100vh;
+}
+
+.section-heading {
+    padding-left: 1rem;
 }
 
 .card-container {
