@@ -1,272 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <title>Gym Timetable</title>
-    <link rel="stylesheet" href="../media/lib/bootstrap/bootstrap.min.css">
-    <style>
-        html,
-        body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-        }
+    <!-- Add a viewport meta tag for better responsiveness -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../media/css/timetable.css">
+  </head>
 
-        .table-responsive {
-            margin-bottom: 20px;
-        }
-
-        .table-responsive .table {
-            background-color: white;
-        }
-
-        .table-responsive .table th {
-            background-color: red;
-            color: white;
-        }
-
-        .table-responsive .table tr:nth-child(even) {
-            background-color: rgba(0, 0, 0, 0.1);
-        }
-
-        input[type=time]:nth-child(even) {
-            background-color: rgba(0, 0, 0, 0.1);
-        }
-
-        .table-responsive .table td,
-        .table-responsive .table th {
-            white-space: nowrap;
-        }
-
-        input[type=date] {
-            appearance: none;
-            border: none;
-        }
-
-        input {
-            border: 0;
-            outline: 0;
-        }
-
-        input:focus {
-            outline: none !important;
-        }
-
-        /* input:nth-child(even) {
-            background-color: rgba(0, 0, 0, 0.1);
-        } */
-    </style>
-</head>
-
-<body>
+  <body>
     <div class="container">
-        <div class="table-responsive">
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>Day Split</th>
-                        <th>Time</th>
-                        <th>Monday</th>
-                        <th>Tuesday</th>
-                        <th>Wednesday</th>
-                        <th>Thursday</th>
-                        <th>Friday</th>
-                        <th>Saturday</th>
-                        <th>Sunday</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td rowspan="5">Morning</td>
-                        <td>
-                            <input type="time">
-                        </td>
-                        <td contenteditable="true">Yoga</td>
-                        <td contenteditable="true">Cardio</td>
-                        <td contenteditable="true">Weightlifting</td>
-                        <td contenteditable="true">Zumba</td>
-                        <td contenteditable="true">Pilates</td>
-                        <td contenteditable="true">Spinning</td>
-                        <td contenteditable="true">Rest</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input type="time">
-                        </td>
-                        <td contenteditable="true">CrossFit</td>
-                        <td contenteditable="true">Kickboxing</td>
-                        <td contenteditable="true">Yoga</td>
-                        <td contenteditable="true">Pilates</td>
-                        <td contenteditable="true">Rest</td>
-                        <td contenteditable="true">Spinning</td>
-                        <td contenteditable="true">Cardio</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input type="time">
-                        </td>
-                        <td contenteditable="true">Weightlifting</td>
-                        <td contenteditable="true">Zumba</td>
-                        <td contenteditable="true">Cardio</td>
-                        <td contenteditable="true">Rest</td>
-                        <td contenteditable="true">CrossFit</td>
-                        <td contenteditable="true">Kickboxing</td>
-                        <td contenteditable="true">Pilates</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input type="time">
-                        </td>
-                        <td contenteditable="true">Pilates</td>
-                        <td contenteditable="true">Rest</td>
-                        <td contenteditable="true">Spinning</td>
-                        <td contenteditable="true">Cardio</td>
-                        <td contenteditable="true">Weightlifting</td>
-                        <td contenteditable="true">Zumba</td>
-                        <td contenteditable="true">Rest</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input type="time">
-                        </td>
-                        <td contenteditable="true">Zumba</td>
-                        <td contenteditable="true">CrossFit</td>
-                        <td contenteditable="true">Kickboxing</td>
-                        <td contenteditable="true">Yoga</td>
-                        <td contenteditable="true">Rest</td>
-                        <td contenteditable="true">Pilates</td>
-                        <td contenteditable="true">Rest</td>
-                    </tr>
-                    <tr>
-                        <td colspan="9"></td>
-                    </tr> <!-- Empty gap between data rowData -->
-                    <tr>
-                        <td rowspan="5">Afternoon</td>
-                        <td>
-                            <input type="time">
-                        </td>
-                        <td contenteditable="true">Rest</td>
-                        <td contenteditable="true">Spinning</td>
-                        <td contenteditable="true">Cardio</td>
-                        <td contenteditable="true">Weightlifting</td>
-                        <td contenteditable="true">Zumba</td>
-                        <td contenteditable="true">CrossFit</td>
-                        <td contenteditable="true">Kickboxing</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input type="time">
-                        </td>
-                        <td contenteditable="true">Yoga</td>
-                        <td contenteditable="true">Rest</td>
-                        <td contenteditable="true">Spinning</td>
-                        <td contenteditable="true">Cardio</td>
-                        <td contenteditable="true">Weightlifting</td>
-                        <td contenteditable="true">Zumba</td>
-                        <td contenteditable="true">CrossFit</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input type="time">
-                        </td>
-                        <td contenteditable="true">Kickboxing</td>
-                        <td contenteditable="true">Yoga</td>
-                        <td contenteditable="true">Rest</td>
-                        <td contenteditable="true">Spinning</td>
-                        <td contenteditable="true">Cardio</td>
-                        <td contenteditable="true">Weightlifting</td>
-                        <td contenteditable="true">Zumba</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input type="time">
-                        </td>
-                        <td contenteditable="true">CrossFit</td>
-                        <td contenteditable="true">Kickboxing</td>
-                        <td contenteditable="true">Yoga</td>
-                        <td contenteditable="true">Rest</td>
-                        <td contenteditable="true">Spinning</td>
-                        <td contenteditable="true">Cardio</td>
-                        <td contenteditable="true">Zumba</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input type="time">
-                        </td>
-                        <td contenteditable="true">Weightlifting</td>
-                        <td contenteditable="true">Zumba</td>
-                        <td contenteditable="true">CrossFit</td>
-                        <td contenteditable="true">Yoga</td>
-                        <td contenteditable="true">Rest</td>
-                        <td contenteditable="true">Spinning</td>
-                        <td contenteditable="true">Cardio</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+      <div class="table-container">
+        <table class="table table-bordered">
+          <caption>Gym Timetable</caption>
+          <thead>
+            <tr>
+              <th>Time</th>
+              <th>Monday</th>
+              <th>Tuesday</th>
+              <th>Wednesday</th>
+              <th>Thursday</th>
+              <th>Friday</th>
+              <th>Saturday</th>
+              <th>Sunday</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <input type="time" id="time-1" />
+              </td>
+              <td>
+                <input type="text" id="Mon-1" />
+              </td>
+              <td>
+                <input type="text" id="Tue-1" />
+              </td>
+              <td>
+                <input type="text" id="Wed-1" />
+              </td>
+              <td>
+                <input type="text" id="Thu-1" />
+              </td>
+              <td>
+                <input type="text" id="Fri-1" />
+              </td>
+              <td>
+                <input type="text" id="Sat-1" />
+              </td>
+              <td>
+                <input type="text" id="Sun-1" />
+              </td>
+              <td>
+                <button class="delete-btn" onclick="deleteRow(this)">
+                  Delete
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
 
-        <button class="btn btn-primary" onclick="generateJSON()">Generate JSON</button>
-
-        <script>
-            function generateJSON() {
-                const table = document.querySelector('table');
-                const weekDay = Array.from(table.querySelectorAll('th'));
-                const rowData = Array.from(table.querySelectorAll('tbody tr'));
-
-                const jsonData = {};
-
-                weekDay.forEach((header, index) => {
-                    if (index > 1) {
-                        const day = header.textContent;
-                        jsonData[day] = {};
-                    }
-                });
-
-                console.log(jsonData);
-
-                rowData.forEach((row, rowIndex) => {
-                    // console.log(row);
-                    const cells = Array.from(row.cells);
-                    // console.log(cells);
-                    if (cells.length == 9) {
-                        cells.splice(0, 1);
-                    }
-                    if (cells.length == 1) {
-                        cells.splice(0, 1);
-                    }
-
-                    // console.log(cells);
-
-                    // if (rowIndex === 1) {
-                    //     return; // Skip day split rowData and empty gap row
-                    // }
-
-                    // if (cells.length !== 0) {
-                    //     const time = cells[1].value;
-                    //     // console.log(time);
-                    //     weekDay.forEach((header, index) => {
-                    //         // console.log(index);
-                    //         if (index > 1) {
-                    //             const day = header.textContent;
-                    //             // console.log(day);
-                    //             if (cells[index] !== undefined) {
-                    //                 const data = cells[index].textContent.trim();
-                    //                 // console.log(cells[index]);
-                    //                 if (data !== "") {
-                    //                     jsonData[day][time] = data;
-                    //                 }
-                    //             }
-                    //         }
-                    //     });
-                    // }
-                });
-
-                //   const json = JSON.stringify(jsonData);
-                console.log(jsonData);
-            }
-        </script>
-
+      <button class="btn btn-primary" onclick="addRow()">New Time Slot</button>
+      <button class="btn btn-primary" onclick="generateJSON()">
+        Generate JSON
+      </button>
     </div>
-</body>
-
+    <script src="../media/js/timetable.js"></script>
+  </body>
 </html>

@@ -1,0 +1,130 @@
+/* Root variables */
+:root {
+  --primary-color-light: #ffffffdb;
+  --primary-color-dark: #232323db;
+  --background-color-light: white;
+  --background-color-dark: #181a20;
+  --card-background-light: #f6f1f1;
+  --card-background-dark: #262a34;
+  --text-color-light: black;
+  --text-color-dark: #ffffffdb;
+  --accent-color: #dc3545;
+  /* Default to light mode */
+  --primary-color: var(--primary-color-light);
+  --background-color: var(--background-color-light);
+  --text-color: var(--text-color-light);
+  --card-background: var(--card-background-light);
+}
+
+/* Dark mode styles */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary-color: var(--primary-color-dark);
+    --background-color: var(--background-color-dark);
+    --text-color: var(--text-color-dark);
+    --card-background: var(--card-background-dark);
+  }
+
+  .card-title,
+  .card-text {
+    color: var(--text-color-dark);
+  }
+
+  #logout-btn {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+    background-color: var(--background-color);
+  }
+}
+
+/* Light mode styles */
+@media (prefers-color-scheme: light) {
+  .card-title,
+  .card-text {
+    color: var(--text-color-light);
+  }
+
+  #logout-btn {
+    border-color: var(--accent-color);
+  }
+}
+
+/* General styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+.container {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: var(--card-background);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+table {
+  width: 100%;
+  table-layout: fixed;
+}
+
+th {
+  background-color: var(--accent-color) !important;
+  color: #fff !important;
+}
+
+/* td>input[type="time"]::-webkit-calendar-picker-indicator {
+            visibility: hidden;
+        } */
+
+td > input[type="time"]::-webkit-inner-spin-button,
+td > input[type="time"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+td > input[type="time"] {
+  border: none;
+  outline: none;
+  padding: 5px;
+  width: 100%;
+}
+
+td > input[type="text"] {
+  border: none;
+  outline: none;
+  padding: 5px;
+  width: 100%;
+}
+
+tr:nth-child(even) *:not(button) {
+  background-color: #e4e4e4;
+}
+
+.delete-btn {
+  display: inline-block;
+  padding: 4px 8px;
+  background-color: var(--accent-color);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  background-color: #c82333;
+}
+
+table tr,
+table td {
+  text-align: center;
+}
+
+.btn-primary {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+.btn-primary:hover {
+  background-color: #c82333;
+  border-color: #c82333;
+}
