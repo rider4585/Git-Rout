@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./media/css/index.css">
+    <title>Task Tracker</title>
+    <link rel="manifest" href="./manifest.json">
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function () {
+                navigator.serviceWorker.register('./service-worker.js');
+            });
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <main>
+        <section id="tasks" class="task-section">
+            <div class="empty-task-list">
+                <div class="empty-task-icon">
+                    <i class="fas fa-clipboard-list fa-3x" onclick="addNewTask()"></i>
+                </div>
+                <p class="empty-task-text" onclick="addNewTask()">You currently have no tasks. Click the + button to add
+                    a new task.</p>
+            </div>
+
+            <div class="task-list hide"></div>
+
+            <div class="add-button-container" id="add-task">
+                <button type="button" class="add-button" onclick="addNewTask()">
+                    <i class="fas fa-plus"></i>
+                </button>
+            </div>
+
+            <div class="modal task-modal hide">
+                <div class="task-form">
+                    <div class="close-btn-container">
+                        <button type="button" class="cancel-button" onclick="closePopup('task-modal')">
+                            <i class="fas fa-times cancel"></i>
+                        </button>
+                    </div>
+                    <div class="form-group">
+                        <label for="task-name" class="label">Task Name</label>
+                        <input type="text" id="task-name" name="task-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="task-description" class="label">Description</label>
+                        <textarea name="task-description" id="task-description" rows="5"></textarea>
+                    </div>
+                    <div class="form-group" id="sub-tasks-container">
+                        <label for="subTasks" class="label">To Do List</label>
+                        <input type="text" class="subTask" id="subTasks" name="subTasks">
+                    </div>
+
+                    <div class="form-group" id="add-task-container">
+                        <button type="button" class="add-task-btn" onclick="addSubTask()">Add To Do</button>
+                    </div>
+
+                    <div class="btn-control">
+                        <button class="save-task-btn" onclick="saveNewTask()">Save</button>
+                        <button class="update-task-btn" onclick="updateTask(event)">Update</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal task-delete delete-modal hide">
+                <div class="delete-popup">
+                    <h3>Confirm Deletion</h3>
+                    <p>Are you sure you want to delete this task?</p>
+                    <div class="btn-control">
+                        <button class="cancel-btn" onclick="closeDeletePopup()">Cancel</button>
+                        <button class="delete-task-btn" onclick="confirmDeleteTask(event)">Delete</button>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <section id="ideas" class="idea-section">
+
+            <div class="empty-idea-list">
+                <div class="empty-idea-icon">
+                    <i class="fas fa-lightbulb fa-3x" onclick="addNewIdea()"></i>
+                </div>
+                <p class="empty-idea-text" onclick="addNewIdea()">Got an Idea?</p>
+            </div>
+
+            <div class="idea-list hide"></div>
+
+            <div class="add-button-container" id="add-idea">
+                <button type="button" class="add-button" onclick="addNewIdea()">
+                    <i class="fas fa-plus"></i>
+                </button>
+            </div>
+
+            <div class="modal idea-modal hide">
+                <div class="idea-form">
+                    <div class="close-btn-container">
+                        <button type="button" class="cancel-button" onclick="closePopup('idea-modal')">
+                            <i class="fas fa-times cancel"></i>
+                        </button>
+                    </div>
+                    <div class="form-group">
+                        <label for="idea-name" class="label">Title</label>
+                        <input type="text" id="idea-name" name="idea-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="idea-description" class="label">More about the idea</label>
+                        <textarea name="idea-description" id="idea-description" rows="5"></textarea>
+                    </div>
+                    <div class="btn-control">
+                        <button class="save-idea-btn" onclick="saveNewIdea()">Save</button>
+                        <button class="update-idea-btn" onclick="updateIdea(event)">Update</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal idea-delete delete-modal hide">
+                <div class="delete-popup">
+                    <h3>Confirm Deletion</h3>
+                    <p>Are you sure you want to delete this idea?</p>
+                    <div class="btn-control">
+                        <button class="cancel-btn" onclick="closeDeletePopup('idea-delete')">Cancel</button>
+                        <button class="delete-idea-btn" onclick="confirmDeleteIdea(event)">Delete</button>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <footer class="footer">
+        <nav class="bottom-nav">
+            <a href="#tasks" class="nav-item active">
+                <i class="fas fa-tasks"></i>
+                <span>Tasks</span>
+            </a>
+            <a href="#ideas" class="nav-item">
+                <i class="fas fa-lightbulb"></i>
+                <span>Ideas</span>
+            </a>
+        </nav>
+    </footer>
+
+    <script src="./media/js/index.js"></script>
+</body>
+
+</html>
