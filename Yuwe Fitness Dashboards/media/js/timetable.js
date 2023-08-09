@@ -99,7 +99,7 @@ function generateJSON() {
     jsonData[day] = dayData;
   });
 
-  console.log(jsonData);
+  console.log(JSON.stringify(jsonData));
 //   const jsonString = JSON.stringify(jsonData, null, 2);
   // You can do whatever you want with the jsonString here (e.g., display it on the dashboard)
 }
