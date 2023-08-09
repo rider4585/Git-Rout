@@ -2,6 +2,14 @@
 let taskList = {};
 let ideaList = {};
 
+if (localStorage.getItem('taskList')) {
+  taskList = JSON.parse(localStorage.getItem('taskList'));
+}
+
+if (localStorage.getItem('ideaList')) {
+  ideaList = JSON.parse(localStorage.getItem('ideaList'));
+}
+
 let loadData = {
   'taskList': '{"first-task":{"taskName":"First Task","taskDescription":"nfseofishefoi","toDoList":{"0":"hello","1":"dfbfb","2":"hfdtgngn","3":"fnggf"}},"second-task":{"taskName":"Second Task","taskDescription":"dlkcinvsdoibvs","toDoList":{"0":"drgdreged","1":"ergreger"}},"third-task":{"taskName":"Third Task","taskDescription":"dkuisfgedfi","toDoList":{"0":"kbfiosdrughfe","1":"hrthdytjdtyj"}}}',
   'ideaList': '{"first-idea":{"ideaName":"First Idea","ideaDescription":"lsdkvnsoihvssienlsdrblsir"},"second-idea":{"ideaName":"Second Idea","ideaDescription":"skdiughewi8gwu"}}'
@@ -115,6 +123,7 @@ function addNewTask() {
   if (saveTaskBtn.classList.contains('hide')) {
     saveTaskBtn.classList.remove('hide');
   }
+
   if (!updateTaskBtn.classList.contains('hide')) {
     updateTaskBtn.classList.add('hide');
   }
@@ -185,6 +194,7 @@ function saveNewTask() {
     generateTaskListView(taskList);
   }
   isThereIsNoTask(taskList);
+  localStorage.setItem('taskList', JSON.stringify(taskList));
 
   resetAddTaskPopup();
 
@@ -202,6 +212,7 @@ function saveNewIdea() {
     generateIdeaListView(ideaList);
   }
   isThereIsNoIdea(ideaList);
+  localStorage.setItem('ideaList', JSON.stringify(ideaList));
 
   resetAddIdeaPopup();
 
@@ -311,6 +322,9 @@ function deleteIdea(ideaName) {
 function confirmDeleteTask(e) {
   let taskToDelete = e.target.getAttribute('data-content');
   delete taskList[taskToDelete];
+
+  localStorage.setItem('taskList', JSON.stringify(taskList));
+
   closeDeletePopup('task-delete');
   generateTaskListView(taskList);
   isThereIsNoTask(taskList);
@@ -319,6 +333,9 @@ function confirmDeleteTask(e) {
 function confirmDeleteIdea(e) {
   let ideaToDelete = e.target.getAttribute('data-content');
   delete ideaList[ideaToDelete];
+
+  localStorage.setItem('ideaList', JSON.stringify(ideaList));
+
   closeDeletePopup('idea-delete');
   generateIdeaListView(ideaList);
   isThereIsNoIdea(ideaList);
@@ -399,6 +416,7 @@ function updateTask(e) {
     taskList[taskToUpdate]['taskName'] = taskNameInput.value;
     taskList[taskToUpdate]['taskDescription'] = taskDescriptionInput.value;
     taskList[taskToUpdate]['toDoList'] = getToDoList();
+    localStorage.setItem('taskList', JSON.stringify(taskList));
     generateTaskListView(taskList);
   }
   resetAddTaskPopup();
@@ -411,6 +429,7 @@ function updateIdea(e) {
   if (ideaNameInput.value) {
     ideaList[ideasToUpdate]['ideaName'] = ideaNameInput.value;
     ideaList[ideasToUpdate]['ideaDescription'] = ideaDescriptionInput.value;
+    localStorage.setItem('ideaList', JSON.stringify(ideaList));
     generateIdeaListView(ideaList);
   }
   resetAddIdeaPopup();
