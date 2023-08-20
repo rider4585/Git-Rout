@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../media/css/bodyMeasurment.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Body Measurement Form</title>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <h2 class="center heading">Body Measurement Form</h2>
+        <form id="measurementForm">
+            <fieldset>
+                <legend>Personal Information</legend>
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" class="form-control red-border" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="mid">MID:</label>
+                    <input type="text" class="form-control red-border" id="mid" required>
+                </div>
+                <div class="form-group">
+                    <label for="gender">Gender:</label>
+                    <select class="form-control red-border" id="gender" required>
+                        <option value="" disabled selected>Select</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="age">Age:</label>
+                    <input type="number" class="form-control red-border" id="age" required>
+                </div>
+                <div class="form-group">
+                    <label for="height">Height (cm):</label>
+                    <input type="number" class="form-control red-border" id="height" required>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Body Fat</legend>
+                <div class="form-group">
+                    <label for="bodyFat">Body Fat (%):</label>
+                    <input type="number" class="form-control red-border" id="bodyFat" required>
+                </div>
+                <div class="form-group">
+                    <label for="visceralFat">Visceral Fat (%):</label>
+                    <input type="number" class="form-control red-border" id="visceralFat" required>
+                </div>
+                <div class="form-group">
+                    <label for="bmr">BMR:</label>
+                    <input type="number" class="form-control red-border" id="bmr" required>
+                </div>
+                <div class="form-group">
+                    <label for="bmi">Body Mass Index (BMI):</label>
+                    <input type="number" class="form-control red-border" id="bmi" required>
+                </div>
+                <div class="form-group">
+                    <label for="bodyAge">Body Age:</label>
+                    <input type="number" class="form-control red-border" id="bodyAge" required>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Subcutaneous Fat</legend>
+                <div class="form-group">
+                    <label for="subcutaneousWholeBody">Whole Body:</label>
+                    <input type="number" class="form-control red-border" id="subcutaneousWholeBody" required>
+                </div>
+                <div class="form-group">
+                    <label for="subcutaneousTrunk">Trunk:</label>
+                    <input type="number" class="form-control red-border" id="subcutaneousTrunk" required>
+                </div>
+                <div class="form-group">
+                    <label for="subcutaneousArm">Arm:</label>
+                    <input type="number" class="form-control red-border" id="subcutaneousArm" required>
+                </div>
+                <div class="form-group">
+                    <label for="subcutaneousLeg">Leg:</label>
+                    <input type="number" class="form-control red-border" id="subcutaneousLeg" required>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Muscle</legend>
+                <div class="form-group">
+                    <label for="muscleWholeBody">Whole Body:</label>
+                    <input type="number" class="form-control red-border" id="muscleWholeBody" required>
+                </div>
+                <div class="form-group">
+                    <label for="muscleTrunk">Trunk:</label>
+                    <input type="number" class="form-control red-border" id="muscleTrunk" required>
+                </div>
+                <div class="form-group">
+                    <label for="muscleArm">Arm:</label>
+                    <input type="number" class="form-control red-border" id="muscleArm" required>
+                </div>
+                <div class="form-group">
+                    <label for="muscleLeg">Leg:</label>
+                    <input type="number" class="form-control red-border" id="muscleLeg" required>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Body Measurement</legend>
+                <div class="form-group">
+                    <label for="chest">Chest:</label>
+                    <input type="number" class="form-control red-border" id="chest" required>
+                </div>
+                <div class="form-group">
+                    <label for="waist">Waist:</label>
+                    <input type="number" class="form-control red-border" id="waist" required>
+                </div>
+                <div class="form-group">
+                    <label for="lowerAbs">Lower Abs:</label>
+                    <input type="number" class="form-control red-border" id="lowerAbs" required>
+                </div>
+                <div class="form-group">
+                    <label for="hip">Hip:</label>
+                    <input type="number" class="form-control red-border" id="hip" required>
+                </div>
+                <div class="form-group">
+                    <label for="thigh">Thigh:</label>
+                    <input type="number" class="form-control red-border" id="thigh" required>
+                </div>
+                <div class="form-group">
+                    <label for="calf">Calf:</label>
+                    <input type="number" class="form-control red-border" id="calf" required>
+                </div>
+            </fieldset>
+
+            <div class="form-group form-submit-btn">
+                <button type="button" class="btn btn-primary red-button" id="submitButton">Submit</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- ... (Bootstrap scripts) ... -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="../media/js/bodyMeasurment.js"></script>
+</body>
+
+</html>

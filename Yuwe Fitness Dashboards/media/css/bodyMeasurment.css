@@ -1,0 +1,109 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.center {
+    text-align: center;
+}
+
+.red-border:focus,
+.red-border:active,
+.red-border:hover {
+    outline: none !important;
+    box-shadow: none !important;
+    border: 1px solid red;
+}
+
+.red-button {
+    background-color: red;
+    border-color: red;
+    color: white;
+    margin: 0.5em 0;
+    width: 50%;
+}
+
+.red-button:focus,
+.red-button:active,
+.red-button:hover {
+    background-color: red;
+    border-color: red;
+    color: white;
+    outline: none;
+    box-shadow: none;
+}
+
+.heading {
+    margin-top: 1em;
+    font-weight: bolder;
+}
+
+.container-fluid {
+    border: 1px solid red;
+    margin: 1em auto;
+    border-radius: 0.2em;
+    padding-right: 0.5em;
+    padding-left: 0.5em;
+    max-width: 95vw;
+}
+
+.red-border:focus,
+.red-border:active,
+.red-border:hover {
+    outline: none !important;
+    box-shadow: none !important;
+    border: 1px solid red;
+}
+
+.red-button {
+    background-color: red !important;
+    border-color: red !important;
+    color: white;
+    margin: 0.5em 0;
+    width: 50%;
+}
+
+.red-button:focus,
+.red-button:active,
+.red-button:hover {
+    background-color: red;
+    border-color: red;
+    color: white;
+    outline: none;
+    box-shadow: none;
+}
+
+.heading {
+    margin-top: 1em;
+    font-weight: bolder;
+}
+
+#phone {
+    border-radius: 0 0.3em 0.3em 0;
+}
+
+.services {
+    display: flex;
+    flex-direction: column;
+}
+
+.service-item {
+    margin-left: 0.5em;
+}
+
+.service-item>label {
+    padding: 0.5em;
+}
+
+.whatsappConsent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-submit-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
