@@ -1,0 +1,43 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+}
+
+.header {
+    padding: 20px;
+    text-align: center;
+}
+
+.logo {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 10px;
+}
+
+.app-name {
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.download-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #dc3545;
+    /* Updated background color */
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.download-icon {
+    font-size: 24px;
+    margin-right: 10px;
+}
