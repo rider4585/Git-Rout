@@ -239,7 +239,7 @@ function setData(data) {
     dateInput.value = formattedDate;
 }
 
-setData({
-    'name': 'Raviraj Mahendra Bugge',
-    'phoneNumber': '7798476162'
-})
+// setData({
+//     'name': 'Raviraj Mahendra Bugge',
+//     'phoneNumber': '7798476162'
+// })
