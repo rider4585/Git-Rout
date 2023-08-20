@@ -29,7 +29,7 @@ function fillDummyData() {
     // ... (fill other fields with dummy data)
 }
 
-fillDummyData();
+// fillDummyData();
 
 function setData(jsonData) {
     const data = JSON.parse(jsonData);
@@ -83,7 +83,7 @@ function setData(jsonData) {
     }
 }
 
-function getData() {
+function sendData() {
     const formData = {
         'personal-information': {
             'name': document.getElementById('name').value,
@@ -125,7 +125,9 @@ function getData() {
         }
     };
 
-    return JSON.stringify(formData);
+    SendDataToFlutter.postMessage(JSON.stringify(formData));
+    // console.log(formData);
+    // return JSON.stringify(formData);
     // return formData;
 }
 
