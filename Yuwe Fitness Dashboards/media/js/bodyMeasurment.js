@@ -32,7 +32,7 @@ function fillDummyData() {
 // fillDummyData();
 
 function setData(jsonData) {
-    const data = JSON.parse(jsonData);
+    const data = jsonData;
 
     if (data['personal-information']) {
         const personalInfo = data['personal-information'];
@@ -125,8 +125,8 @@ function sendData() {
         }
     };
 
+    // console.log(JSON.stringify(formData));
     SendDataToFlutter.postMessage(JSON.stringify(formData));
-    // console.log(formData);
     // return JSON.stringify(formData);
     // return formData;
 }
