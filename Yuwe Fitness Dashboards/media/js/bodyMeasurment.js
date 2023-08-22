@@ -41,6 +41,7 @@ function setData(jsonData) {
         document.getElementById('gender').value = personalInfo.gender || '';
         document.getElementById('age').value = personalInfo.age || '';
         document.getElementById('height').value = personalInfo.height || '';
+        document.getElementById('weight').value = personalInfo.weight || '';
     }
 
     if (data['Body-Fat']) {
@@ -79,6 +80,7 @@ function setData(jsonData) {
         document.getElementById('hip').value = bodyMeasurement.Hip || '';
         document.getElementById('thigh').value = bodyMeasurement.Thigh || '';
         document.getElementById('calf').value = bodyMeasurement.Calf || '';
+        document.getElementById('arm').value = bodyMeasurement.Arm || '';
         // ... (set other Body Measurement related fields)
     }
 }
