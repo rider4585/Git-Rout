@@ -1,37 +1,19 @@
 import {
-    initializeApp
-} from "https://www.gstatic.com/firebasejs/9.21.0/firebase-app.js";
-import {
-    getDatabase,
+    app,
+    database,
     ref,
-    set,
     onValue,
     update,
     remove
-} from "https://www.gstatic.com/firebasejs/9.21.0/firebase-database.js";
+} from "./firebase_setup.js";
 
-const firebaseConfig = {
-    apiKey: "AIzaSyAlkqBseMsKLwP4HsSqATHSry17PQqYNTg",
-    authDomain: "yuwe-fitness.firebaseapp.com",
-    databaseURL: "https://yuwe-fitness-default-rtdb.asia-southeast1.firebasedatabase.app",
-    projectId: "yuwe-fitness",
-    storageBucket: "yuwe-fitness.appspot.com",
-    messagingSenderId: "411480626389",
-    appId: "1:411480626389:web:accc7f74bb1568d3007e5c",
-    measurementId: "G-V4G0LYXZX6"
-};
-
-const app = initializeApp(firebaseConfig);
-const database = getDatabase(app);
-const exerciseDataDB = ref(database, 'exercise_name');
-
-var exerciseData = {};
+const exerciseDataDB = ref(database, 'development/exercise_name');
+let exerciseData = {};
 const form = document.querySelector('#exercise-form');
 const dataToAppendDiv = document.querySelector('.dataToAppend');
 
 onValue(exerciseDataDB, function (snapshot) {
     const data = snapshot.val();
-    console.log(data);
     if (data !== null && Object.keys(data).length !== 0) {
         exerciseData = data;
         if (Object.keys(exerciseData).length !== 0) {
@@ -45,54 +27,58 @@ onValue(exerciseDataDB, function (snapshot) {
 form.addEventListener('submit', function (event) {
     event.preventDefault();
 
-    const exerciseName = document.querySelector('#exercise-name').value;
-    const bodyPart = document.querySelector('#body-part').value;
-    const muscleInvolved = document.querySelector('#muscle-involved').value;
-    const jointInvolved = document.querySelector('#joint-involved').value;
-    const exerciseType = document.querySelector('#exercise-type').value;
-    const equipmentUsed = document.querySelector('#equipment-used').value;
-    const workoutSplits = document.querySelector('#workout-splits').value;
-    const location = document.querySelector('#location').value;
-    const formAndTechnique = document.querySelector('#form-and-technique').value;
-    const imagesLink = document.querySelector('#images-link').value;
-    const gifLink = document.querySelector('#gif-link').value;
-    const videoLink = document.querySelector('#video-link').value;
-    const benefits = document.querySelector('#benefits').value;
-    const keywords = document.querySelector('#keywords').value;
+    const formData = {
+        exerciseName: document.querySelector('#exercise-name').value,
+        bodyPart: document.querySelector('#body-part').value,
+        muscleInvolved: document.querySelector('#muscle-involved').value,
+        jointInvolved: document.querySelector('#joint-involved').value,
+        exerciseType: document.querySelector('#exercise-type').value,
+        equipmentUsed: document.querySelector('#equipment-used').value,
+        workoutSplits: document.querySelector('#workout-splits').value,
+        location: document.querySelector('#location').value,
+        formAndTechnique: document.querySelector('#form-and-technique').value,
+        imagesLink: document.querySelector('#images-link').value,
+        gifLink: document.querySelector('#gif-link').value,
+        videoLink: document.querySelector('#video-link').value,
+        benefits: document.querySelector('#benefits').value,
+        keywords: document.querySelector('#keywords').value,
+    };
 
-    exerciseData[exerciseName] = {
-        'Body Part': bodyPart,
-        'Muscle Involved': muscleInvolved,
-        'Joint Involved': jointInvolved,
-        'Type of Exercise': exerciseType,
-        'Equipment Used': equipmentUsed,
-        'Workout Splits': workoutSplits,
-        'Location': location,
-        'Form and Technique': formAndTechnique,
-        'Images Link': imagesLink.split(',').map(link => link.trim()),
-        'GIF Link': gifLink.split(',').map(link => link.trim()),
-        'Video Link': videoLink,
-        'Benefits': benefits,
-        'Keywords': keywords
+    exerciseData[formData.exerciseName] = {
+        'Body Part': formData.bodyPart,
+        'Muscle Involved': formData.muscleInvolved,
+        'Joint Involved': formData.jointInvolved,
+        'Type of Exercise': formData.exerciseType,
+        'Equipment Used': formData.equipmentUsed,
+        'Workout Splits': formData.workoutSplits,
+        'Location': formData.location,
+        'Form and Technique': formData.formAndTechnique,
+        'Images Link': formData.imagesLink.split(',').map(link => link.trim()),
+        'GIF Link': formData.gifLink.split(',').map(link => link.trim()),
+        'Video Link': formData.videoLink,
+        'Benefits': formData.benefits,
+        'Keywords': formData.keywords,
     };
 
     form.reset();
     createDetailsView(exerciseData);
     update(exerciseDataDB, {
-        [exerciseName]: exerciseData[exerciseName]
+        [formData.exerciseName]: exerciseData[formData.exerciseName],
     });
 });
 
 function createDetailsView(exerciseData) {
     let innerHtmlToAppend = "";
-    let tempData = "";
-    let exerciseName = "";
+
     for (const exerciseNameField in exerciseData) {
-        tempData = '';
-        exerciseName = exerciseNameField;
-        for (const exerciseDataField in exerciseData[exerciseNameField]) {
-            tempData = `
-            <details id='${exerciseNameField}'>
+        const exerciseDetails = exerciseData[exerciseNameField];
+        const buttonsHtml = `
+            <button type="submit" class="btn btn-primary btn-right" data-item="${exerciseNameField}_edit">Edit</button>
+            <button type="submit" class="btn btn-danger btn-right" data-item="${exerciseNameField}_delete">Delete</button>
+        `;
+
+        const tempData = `
+            <details id="${exerciseNameField}">
                 <summary class="btn-success">${exerciseNameField}</summary>
                 <div class="container-fluid summery-data">
                     <div class="row">
@@ -148,50 +134,38 @@ function createDetailsView(exerciseData) {
                     <div class="col-md-8">${exerciseData[exerciseNameField]['keywords']}</div>
                     </div>
                     <div class="row">
-                    <button type="submit" class="btn btn-primary btn-right" data-item="${exerciseName}_edit">Edit</button>
-                    </div>
-                    <div class="row">
-                    <button type="submit" class="btn btn-danger btn-right" data-item="${exerciseName}_delete">Delete</button>
+                        ${buttonsHtml}
                     </div>
                 </div>
             </details>`;
 
-        }
-
         innerHtmlToAppend += tempData;
     }
+
     dataToAppendDiv.innerHTML = innerHtmlToAppend;
     eventListenersToButtons();
 }
 
 function eventListenersToButtons() {
-    let allBtn = document.querySelectorAll(".btn-right");
-    for (let i = 0; i < allBtn.length; i++) {
-        allBtn[i].addEventListener('click', function (e) {
-            let btnData = e.target.getAttribute('data-item');
+    const allBtn = document.querySelectorAll(".btn-right");
+    for (const element of allBtn) {
+        element.addEventListener('click', function (e) {
+            const btnData = e.target.getAttribute('data-item');
             if (btnData.includes('_edit')) {
-                console.log("edit");
-                let exerciseName = btnData.replace("_edit", "");
-                console.log(exerciseName);
+                const exerciseName = btnData.replace("_edit", "");
                 editDetails({
                     [exerciseName]: exerciseData[exerciseName]
                 });
-
             } else {
-                console.log("delete");
-                let exerciseName = btnData.replace("_delete", "");
-                console.log(exerciseName);
+                const exerciseName = btnData.replace("_delete", "");
                 deleteRecord(exerciseName);
             }
-        })
+        });
     }
 }
 
 function deleteRecord(exerciseName) {
-    let dataToDeleteFromDB = ref(database, `exercise_name/${exerciseName}`);
-    console.log({
-        [exerciseName]: exerciseData[exerciseName]
-    });
+    const dataToDeleteFromDB = ref(database, `development/exercise_name/${exerciseName}`);
     if (confirm(`Do you really want to delete data of ${exerciseName}`)) {
         remove(dataToDeleteFromDB)
             .then(function () {
@@ -199,6 +173,6 @@ function deleteRecord(exerciseName) {
                 createDetailsView(exerciseData);
                 location.reload();
             })
-            .catch(error => alert(error))
+            .catch(error => alert(error));
     }
 }
