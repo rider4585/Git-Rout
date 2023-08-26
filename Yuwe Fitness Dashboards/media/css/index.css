@@ -68,6 +68,17 @@ body {
     height: 100vh;
 }
 
+body {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+  }
+  
+  /* Hide scrollbar for Webkit browsers (Chrome, Safari) */
+  body::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+
 .section-heading {
     padding-left: 1rem;
 }
@@ -102,7 +113,7 @@ body {
 }
 
 .container {
-    padding: 0;
+    padding: 0 10px;
 }
 
 .navbar {
@@ -113,10 +124,10 @@ body {
     border-bottom: 2px solid var(--primary-color-dark);
 }
 
-.navbar-heading {
+/* .navbar-heading {
     flex-grow: 1;
     text-align: left;
-}
+} */
 
 #logout-btn:hover {
     background-color: var(--accent-color);

@@ -17,6 +17,7 @@ onValue(planDetailsDB, function (snapshot) {
     if (data !== null && Object.keys(data).length !== 0) {
         planDetails = data;
         if (Object.keys(planDetails).length !== 0) {
+            // console.log(planDetails);
             createDetailsView(planDetails);
         }
     }

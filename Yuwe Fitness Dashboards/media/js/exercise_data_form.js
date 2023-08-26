@@ -41,10 +41,10 @@ form.addEventListener('submit', function (event) {
         gifLink: document.querySelector('#gif-link').value,
         videoLink: document.querySelector('#video-link').value,
         benefits: document.querySelector('#benefits').value,
-        keywords: document.querySelector('#keywords').value,
+        // keywords: document.querySelector('#keywords').value,
     };
 
-    exerciseData[formData.exerciseName] = {
+    exerciseData[formData.exerciseName.toUpperCase()] = {
         'Body Part': formData.bodyPart,
         'Muscle Involved': formData.muscleInvolved,
         'Joint Involved': formData.jointInvolved,
@@ -57,7 +57,7 @@ form.addEventListener('submit', function (event) {
         'GIF Link': formData.gifLink.split(',').map(link => link.trim()),
         'Video Link': formData.videoLink,
         'Benefits': formData.benefits,
-        'Keywords': formData.keywords,
+        'Keywords': generateKeywords(formData),
     };
 
     form.reset();
@@ -130,10 +130,6 @@ function createDetailsView(exerciseData) {
                     <div class="col-md-8">${exerciseData[exerciseNameField]['Benefits']}</div>
                     </div>
                     <div class="row">
-                    <div class="col-md-4"><strong>Keywords:</strong></div>
-                    <div class="col-md-8">${exerciseData[exerciseNameField]['keywords']}</div>
-                    </div>
-                    <div class="row">
                         ${buttonsHtml}
                     </div>
                 </div>
@@ -175,4 +171,38 @@ function deleteRecord(exerciseName) {
             })
             .catch(error => alert(error));
     }
+}
+
+function generateKeywords(data) {
+    const {
+        exerciseName,
+        bodyPart,
+        muscleInvolved,
+        jointInvolved,
+        exerciseType,
+        equipmentUsed,
+        workoutSplits,
+        location,
+        formAndTechnique,
+        benefits,
+    } = data;
+
+    const values = [
+        exerciseName,
+        bodyPart,
+        muscleInvolved,
+        jointInvolved,
+        exerciseType,
+        equipmentUsed,
+        workoutSplits,
+        location,
+        formAndTechnique,
+        benefits,
+    ];
+
+    const concatenatedKeywords = values
+        .filter(value => value !== "") // Exclude empty strings
+        .join(', ');
+
+    return concatenatedKeywords;
 }
