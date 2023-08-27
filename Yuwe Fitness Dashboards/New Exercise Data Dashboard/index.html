@@ -11,7 +11,12 @@
 </head>
 
 <body>
-  <div class="container mt-5">
+  <div class="container">
+
+    <!-- Search input field -->
+    <div class="p-3" id="searchArea">
+      <input type="text" id="searchInput" class="form-control" placeholder="Search by exercise title" />
+    </div>
 
     <div class="accordion" id="accordionBodyParts">
       <!-- Accordion items will be added here using JavaScript -->
@@ -37,7 +42,7 @@
           <!-- Input fields for new data -->
           <form id="addDataForm">
             <div class="mb-3">
-              <label for="titleInput" class="form-label">Title</label>
+              <label for="titleInput" class="form-label">Exercise Name</label>
               <input type="text" class="form-control" id="titleInput" required />
             </div>
             <div class="mb-3">

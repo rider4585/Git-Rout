@@ -164,9 +164,17 @@ body::-webkit-scrollbar {
 }
 
 #accordionBodyParts {
-    padding: 20px;
+    padding: 0 20px 20px 20px;
 }
 
 #addExercise {
     z-index: 999 !important;
+}
+
+#searchArea{
+    position: sticky;
+    top: 0rem !important;
+    margin-bottom: 1rem;
+    z-index: 999;
+    background-color: var(--background-color);
 }

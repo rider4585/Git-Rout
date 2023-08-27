@@ -268,6 +268,7 @@ class ExerciseManager {
 
         return values.join(" ");
     }
+
 }
 
 // Create an instance of ExerciseManager
@@ -292,4 +293,19 @@ document.querySelectorAll(".accordion-item .btn-secondary").forEach((button) => 
 document.getElementById('addExercise').addEventListener('click', function () {
     document.getElementById("addDataModalLabel").innerHTML = "Add New Exercise";
     document.getElementById("titleInput").dataset.previousTitle = "";
+});
+
+// Attach event listener to search input field
+document.getElementById("searchInput").addEventListener("input", (event) => {
+    const query = event.target.value.toLowerCase();
+    const accordionItems = document.querySelectorAll(".accordion-item");
+
+    accordionItems.forEach((accordionItem) => {
+        const exerciseTitle = accordionItem.dataset.exerciseName.toLowerCase();
+        if (exerciseTitle.includes(query)) {
+            accordionItem.style.display = "block"; // Show the item
+        } else {
+            accordionItem.style.display = "none"; // Hide the item
+        }
+    });
 });
