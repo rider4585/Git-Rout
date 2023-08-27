@@ -1,0 +1,172 @@
+/* Root variables */
+:root {
+    --primary-color-light: #ffffffdb;
+    --primary-color-dark: #232323db;
+    --background-color-light: white;
+    --background-color-dark: #181a20;
+    --card-background-light: #F6F1F1;
+    --card-background-dark: #262a34;
+    --text-color-light: black;
+    --text-color-dark: #ffffffdb;
+    --accent-color: #dc3545;
+}
+
+/* Dark mode styles */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --primary-color: var(--primary-color-dark);
+        --background-color: var(--background-color-dark);
+        --text-color: var(--text-color-dark);
+        --card-background: var(--card-background-dark);
+        --modal-background: var(--card-background-dark);
+        --modal-border: var(--primary-color-dark);
+    }
+
+    .card-title,
+    .card-text {
+        color: var(--text-color-dark);
+    }
+
+    .btn-circle {
+        background-color: var(--accent-color);
+    }
+
+    .btn-circle:hover {
+        background-color: var(--primary-color-dark);
+    }
+
+    .modal-content {
+        background-color: var(--modal-background);
+        color: var(--text-color-dark);
+        border-color: var(--modal-border);
+    }
+
+    .modal-body {
+        border-color: var(--modal-border);
+    }
+
+    .accordion-button:not(.collapsed) {
+        background-color: var(--card-background-light)
+    }
+}
+
+/* Light mode styles */
+@media (prefers-color-scheme: light) {
+    :root {
+        --primary-color: var(--primary-color-light);
+        --background-color: var(--background-color-light);
+        --text-color: var(--text-color-light);
+        --card-background: var(--card-background-light);
+        --modal-background: var(--card-background-light);
+        --modal-border: var(--primary-color-light);
+    }
+
+    .card-title,
+    .card-text {
+        color: var(--text-color-light);
+    }
+
+    .btn-circle {
+        background-color: var(--accent-color);
+    }
+
+    .btn-circle:hover {
+        background-color: var(--primary-color-light);
+    }
+
+    .modal-content {
+        background-color: var(--modal-background);
+        color: var(--text-color-light);
+        border-color: var(--modal-border);
+    }
+
+    .modal-body {
+        border-color: var(--modal-border);
+    }
+
+    .accordion-button:not(.collapsed) {
+        background-color: var(--card-background-dark)
+    }
+}
+
+/* Shared styles for both dark and light modes */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    /* background-image: url('./media/img/watermark.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; */
+    height: 100vh;
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE and Edge */
+}
+
+/* Hide scrollbar for Webkit browsers (Chrome, Safari) */
+body::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    background-color: transparent;
+}
+
+/* Your existing styles for .btn-circle, .modal-content, and .modal-body */
+.btn-circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 24px;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    cursor: pointer;
+    background-color: var(--accent-color);
+    color: var(--primary-color-light);
+    border: none;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.modal-content {
+    max-height: 90vh;
+    background-color: var(--modal-background);
+    color: var(--text-color-light);
+    border-color: var(--modal-border);
+}
+
+.modal-body {
+    overflow: scroll;
+    border-color: var(--modal-border);
+}
+
+#addDataModalLabel,
+.form-label {
+    color: var(--text-color);
+}
+
+.btn-close {
+    filter: invert(1);
+}
+
+#saveDataButton {
+    background-color: var(--accent-color);
+    border: none;
+}
+
+.accordion-item {
+    margin-bottom: 10px;
+    border-radius: 0.3rem;
+    overflow: hidden;
+}
+
+#accordionBodyParts {
+    padding: 20px;
+}
+
+#addExercise {
+    z-index: 999 !important;
+}
