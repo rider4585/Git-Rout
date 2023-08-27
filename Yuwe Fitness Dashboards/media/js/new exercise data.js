@@ -295,17 +295,36 @@ document.getElementById('addExercise').addEventListener('click', function () {
     document.getElementById("titleInput").dataset.previousTitle = "";
 });
 
-// Attach event listener to search input field
-document.getElementById("searchInput").addEventListener("input", (event) => {
-    const query = event.target.value.toLowerCase();
+// Attach event listener to clear search input button
+document.getElementById("clearSearchInput").addEventListener("click", () => {
+    document.getElementById("searchInput").value = ""; // Clear the search input field
+    filterAccordionItems(""); // Show all accordion items
+});
+
+// Function to filter accordion items based on search query
+function filterAccordionItems(query) {
     const accordionItems = document.querySelectorAll(".accordion-item");
+    const noResultsMessage = document.getElementById("noResultsMessage");
+
+    let anyResults = false; // Flag to track if any matching results are found
 
     accordionItems.forEach((accordionItem) => {
         const exerciseTitle = accordionItem.dataset.exerciseName.toLowerCase();
         if (exerciseTitle.includes(query)) {
             accordionItem.style.display = "block"; // Show the item
+            anyResults = true; // Set the flag to true if any matching result is found
         } else {
             accordionItem.style.display = "none"; // Hide the item
         }
     });
+
+    // Update the display property of the noResultsMessage based on the flag
+    noResultsMessage.style.display = anyResults ? "none" : "block";
+}
+
+
+// Attach event listener to search input field
+document.getElementById("searchInput").addEventListener("input", (event) => {
+    const query = event.target.value.toLowerCase();
+    filterAccordionItems(query);
 });

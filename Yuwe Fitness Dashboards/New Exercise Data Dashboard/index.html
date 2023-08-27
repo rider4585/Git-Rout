@@ -14,8 +14,16 @@
   <div class="container">
 
     <!-- Search input field -->
-    <div class="p-3" id="searchArea">
+    <!-- Search input field with clear button -->
+    <div class="input-group p-3" id="searchArea">
       <input type="text" id="searchInput" class="form-control" placeholder="Search by exercise title" />
+      <button class="btn btn-outline-secondary" type="button" id="clearSearchInput">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+
+    <div id="noResultsMessage" class="alert alert-info mt-3" style="display: none;">
+      No exercise found.
     </div>
 
     <div class="accordion" id="accordionBodyParts">

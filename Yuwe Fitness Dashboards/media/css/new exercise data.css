@@ -171,10 +171,30 @@ body::-webkit-scrollbar {
     z-index: 999 !important;
 }
 
-#searchArea{
+#searchArea {
     position: sticky;
     top: 0rem !important;
     margin-bottom: 1rem;
     z-index: 999;
     background-color: var(--background-color);
+}
+
+#searchInput {
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+#searchInput:focus {
+    border: 1px solid var(--accent-color);
+    box-shadow: none;
+}
+
+#searchInput::placeholder {
+    color: var(--text-color);
+}
+
+#clearSearchInput {
+    background-color: var(--background-color);
+    border: 1px solid var(--text-color);
+    color: var(--text-color);
 }
