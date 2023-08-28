@@ -41,7 +41,10 @@ class ExerciseManager {
     // Initialize the exercise manager
     init() {
         // Attach event listener to modal hidden event
-        document.getElementById("addDataModal").addEventListener("hidden.bs.modal", () => this.clearInputFields());
+        document.getElementById("addDataModal").addEventListener("hidden.bs.modal", () => {
+            this.clearInputFields();
+            this.editingItemId = null; // Clear the editing item ID when the modal is closed
+        });
 
         // Initialize data from Firebase when the page loads
         this.initDataFromFirebase();
@@ -235,18 +238,19 @@ class ExerciseManager {
 
     // Delete an accordion item
     deleteAccordionItem(itemId) {
-        delete this.exampleJSON[itemId];
-        this.createUIFromJSON(this.exampleJSON);
-
         const dataToDeleteFromDB = ref(database, `development/exercise_name/${itemId}`);
         if (confirm(`Do you really want to delete data of ${itemId}`)) {
             remove(dataToDeleteFromDB)
                 .then(() => {
                     alert("Successfully removed exercise."); // Display success toast
+                    delete this.exampleJSON[itemId];
+                    this.createUIFromJSON(this.exampleJSON);
+                    document.querySelector('#searchInput').value = "";
                     // ... (other code)
                 })
                 .catch((error) => {
-                    alert("Error when removing exercise data"); // Display error toast
+                    // alert("Error when removing exercise data"); // Display error toast
+                    console.log(error);
                     console.error(error);
                     // ... (other code)
                 });
@@ -258,7 +262,7 @@ class ExerciseManager {
         const inputFields = [
             "titleInput",
             "muscleInput",
-            "Body Part",
+            "bodyPartInput",
             "jointInput",
             "exerciseTypeInput",
             "equipmentInput",
@@ -272,9 +276,10 @@ class ExerciseManager {
         ];
 
         inputFields.forEach((fieldId) => {
-            document.getElementById(fieldId).value = "";
+            document.getElementById(fieldId).value = ""; // Use .value to clear input fields
         });
     }
+
 
     // Generate keywords from form data
     generateKeywords(formData, exerciseTitle) {
