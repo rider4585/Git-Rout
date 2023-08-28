@@ -64,6 +64,20 @@ class ExerciseManager {
         // Generate a unique ID for the accordion item
         const id = title.trim().replace(/\s+/g, "-");
 
+        // Set default values for undefined or null fields
+        values["Muscle Involved"] = values["Muscle Involved"] || "";
+        values["Joint Involved"] = values["Joint Involved"] || "";
+        values["Type of Exercise"] = values["Type of Exercise"] || "";
+        values["Equipment Used"] = values["Equipment Used"] || "";
+        values["Workout Splits"] = values["Workout Splits"] || "";
+        values["Location"] = values["Location"] || "";
+        values["Form and Technique"] = values["Form and Technique"] || "";
+        values["Images Link"] = values["Images Link"] || [];
+        values["GIF Link"] = values["GIF Link"] || [];
+        values["Video Link"] = values["Video Link"] || "";
+        values["Benefits"] = values["Benefits"] || "";
+        values["Body Part"] = values["Body Part"] || "";
+
         // Create the accordion item element
         const accordionItem = document.createElement("div");
         accordionItem.id = `accordionItem_${id}`;
@@ -81,6 +95,7 @@ class ExerciseManager {
                 <div class="accordion-body">
                     <!-- Display exercise details -->
                     <p><strong>Muscle Involved</strong>: ${values["Muscle Involved"]}</p>
+                    <p><strong>Body Part</strong>: ${values["Body Part"]}</p>
                     <p><strong>Joint Involved</strong>: ${values["Joint Involved"]}</p>
                     <p><strong>Type of Exercise</strong>: ${values["Type of Exercise"]}</p>
                     <p><strong>Equipment Used</strong>: ${values["Equipment Used"]}</p>
@@ -116,23 +131,24 @@ class ExerciseManager {
     saveData() {
         // Collect form data
         const formData = {
-            "Muscle Involved": document.getElementById("muscleInput").value,
-            "Joint Involved": document.getElementById("jointInput").value,
-            "Type of Exercise": document.getElementById("exerciseTypeInput").value,
+            "Benefits": document.getElementById("benefitsInput").value,
+            "Body Part": document.getElementById("bodyPartInput").value,
             "Equipment Used": document.getElementById("equipmentInput").value,
-            "Workout Splits": document.getElementById("splitsInput").value,
-            "Location": document.getElementById("locationInput").value,
             "Form and Technique": document.getElementById("techniqueInput").value,
-            "Images Link": document
-                .getElementById("imagesInput")
-                .value.split(",")
-                .map((link) => link.trim()),
             "GIF Link": document
                 .getElementById("gifInput")
                 .value.split(",")
                 .map((link) => link.trim()),
+            "Images Link": document
+                .getElementById("imagesInput")
+                .value.split(",")
+                .map((link) => link.trim()),
+            "Joint Involved": document.getElementById("jointInput").value,
+            "Location": document.getElementById("locationInput").value,
+            "Muscle Involved": document.getElementById("muscleInput").value,
+            "Type of Exercise": document.getElementById("exerciseTypeInput").value,
             "Video Link": document.getElementById("videoInput").value,
-            "Benefits": document.getElementById("benefitsInput").value,
+            "Workout Splits": document.getElementById("splitsInput").value,
         };
 
         const exerciseTitleInput = document.getElementById('titleInput');
@@ -197,6 +213,7 @@ class ExerciseManager {
         document.getElementById("titleInput").value = itemId;
         document.getElementById("muscleInput").value =
             itemData["Muscle Involved"];
+        document.getElementById("bodyPartInput").value = itemData["Body Part"];
         document.getElementById("jointInput").value =
             itemData["Joint Involved"];
         document.getElementById("exerciseTypeInput").value =
@@ -241,6 +258,7 @@ class ExerciseManager {
         const inputFields = [
             "titleInput",
             "muscleInput",
+            "Body Part",
             "jointInput",
             "exerciseTypeInput",
             "equipmentInput",
