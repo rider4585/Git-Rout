@@ -4,7 +4,8 @@ import {
     ref,
     onValue,
     update,
-    remove
+    remove,
+    get
 } from "./firebase_setup.js";
 // Define a class to manage exercises
 class ExerciseManager {
@@ -239,23 +240,32 @@ class ExerciseManager {
     // Delete an accordion item
     deleteAccordionItem(itemId) {
         const dataToDeleteFromDB = ref(database, `development/exercise_name/${itemId}`);
-        if (confirm(`Do you really want to delete data of ${itemId}`)) {
-            remove(dataToDeleteFromDB)
-                .then(() => {
-                    alert("Successfully removed exercise."); // Display success toast
-                    delete this.exampleJSON[itemId];
-                    this.createUIFromJSON(this.exampleJSON);
-                    document.querySelector('#searchInput').value = "";
-                    // ... (other code)
-                })
-                .catch((error) => {
-                    // alert("Error when removing exercise data"); // Display error toast
-                    console.log(error);
-                    console.error(error);
-                    // ... (other code)
-                });
-        }
+
+        // Check if the reference exists in the database
+        get(dataToDeleteFromDB)
+            .then((snapshot) => {
+                if (snapshot.exists()) {
+                    if (confirm(`Do you really want to delete data of ${itemId}`)) {
+                        remove(dataToDeleteFromDB)
+                            .then(() => {
+                                alert("Successfully removed exercise.");
+                                delete this.exampleJSON[itemId];
+                                this.createUIFromJSON(this.exampleJSON);
+                                document.querySelector('#searchInput').value = "";
+                            })
+                            .catch((error) => {
+                                console.error("Error when removing exercise data:", error);
+                            });
+                    }
+                } else {
+                    alert(`Exercise data with title '${itemId}' does not exist. This has to be deleted manually`);
+                }
+            })
+            .catch((error) => {
+                console.log(`Error checking exercise data: ${error.message}`);
+            });
     }
+
 
     // Clear input fields
     clearInputFields() {
