@@ -17,7 +17,7 @@ body {
   width: auto;
   height: 100%;
   box-sizing: border-box;
-  box-shadow: 2px 0px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 2px 0px 5px 0px rgba(0, 0, 0, 0.75);
 }
 
 .left-column a:-webkit-any-link {
@@ -63,7 +63,7 @@ body {
   margin-top: 10px;
 }
 
-.job-profile{
+.job-profile {
   margin-top: 5px;
 }
 
@@ -195,4 +195,9 @@ body {
   color: #f8f8f0;
   outline: none;
   box-shadow: none;
+}
+
+.note {
+  color: #f8f8f0;
+  font-size: 0.8em;
 }
