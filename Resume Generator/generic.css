@@ -1,0 +1,63 @@
+/* Reset default margin and padding */
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+li {
+    margin: 0;
+    padding: 0;
+}
+
+/* Set font and font sizes */
+body {
+    margin: 20px;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    font-size: 16px !important;
+    font-weight: bold !important;
+}
+
+h2 {
+    font-size: 14px !important;
+    font-weight: bold !important;
+}
+
+h3 {
+    font-size: 12px !important;
+    font-weight: bold !important;
+}
+
+h4 {
+    font-size: 12px !important;
+    font-weight: 600 !important;
+}
+
+p {
+    font-size: 10px !important;
+    font-weight: normal !important;
+}
+
+ul,
+li {
+    font-size: 10px !important;
+    font-weight: normal !important;
+}
+
+li {
+    margin-left: 12px;
+}
+
+@media print {
+    .noprint {
+        visibility: hidden;
+    }
+}
+
+/* Add additional styles as needed */
