@@ -16,9 +16,10 @@ body {
   width: 100vw;
   height: 100%;
   box-sizing: border-box;
+  box-shadow: 7px 0px 5px 0px rgba(0,0,0,0.75);
 }
 
-.resume-page-two{
+.resume-page-two {
   background-color: #f8f8f0;
   height: 100%;
   width: 100vw;
@@ -125,11 +126,13 @@ a:-webkit-any-link {
 }
 
 .semi-bold {
-  font-weight: 600; /* Adjust the font-weight value as desired */
+  font-weight: 600;
+  /* Adjust the font-weight value as desired */
 }
 
 .highlight {
-  color: #FF8000; /* Adjust the color value as desired */
+  color: #FF8000;
+  /* Adjust the color value as desired */
 }
 
 
@@ -155,9 +158,9 @@ a:-webkit-any-link {
 }
 
 .to-hide {
-    /* z-index: -99; */
-    position: absolute;
-    top: 0;
-    color: black;
-    font-size: 1px;
+  /* z-index: -99; */
+  position: absolute;
+  top: 0;
+  color: black;
+  font-size: 1px;
 }
