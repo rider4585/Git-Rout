@@ -20,6 +20,6 @@ class ReadUserInput {
 
 const readUserInput = new ReadUserInput();
 
-window.onbeforeunload = function () {
-    return "Are you sure ";
-};
+// window.onbeforeunload = function () {
+//     return "Are you sure ";
+// };

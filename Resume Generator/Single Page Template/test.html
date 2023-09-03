@@ -6,14 +6,17 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
     integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
+    integrity="sha512-t4GWSVZO1eC8BM339Xd7Uphw5s17a86tIZIj8qRxhnKub6WoyhnrxeCIMeAqBPgdZGlCcG2PrZjMc+Wr78+5Xg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="../generic.css">
   <link rel="stylesheet" href="./style.css" />
 </head>
 
 <body>
   <div class="resume">
-    <div class="left-column">
-      <div class="profile">
+    <div class="left-column" id="left-column">
+      <div class="profile left-section delete">
         <h1 class="name" contenteditable="true">Your Name</h1>
         <h3 class="job-profile" contenteditable="true">Job Profile</h3>
         <ul class="contact">
@@ -28,7 +31,7 @@
 
       <hr class="hrule" />
 
-      <div class="skills">
+      <div class="skills left-section delete">
         <h3 class="section-title" contenteditable="true">Skills</h3>
         <ul class="skills-list" contenteditable="true">
           <li>Skill 1</li>
@@ -40,7 +43,7 @@
         </ul>
       </div>
 
-      <div class="ide">
+      <div class="ide left-section delete">
         <h3 class="subgroup-title" contenteditable="true">IDEs and Tools</h3>
         <ul class="ide-list" contenteditable="true">
           <li>IDE or Tool Name 1</li>
@@ -50,7 +53,7 @@
         </ul>
       </div>
 
-      <div class="others">
+      <div class="others left-section delete">
         <h3 class="subgroup-title" contenteditable="true">Others</h3>
         <ul class="others-list" contenteditable="true">
           <li>Other Stuff 1</li>
@@ -60,7 +63,7 @@
         </ul>
       </div>
 
-      <div class="Certifications">
+      <div class="Certifications left-section delete">
         <h3 class="section-title" contenteditable="true">Certifications</h3>
         <ul class="Certifications-list" contenteditable="true">
           <li>
@@ -79,11 +82,11 @@
       </div>
     </div>
 
-    <div class="right-column">
+    <div class="right-column" id="right-column">
 
-      <div class="objective">
-        <h2 class="section-title" contenteditable="true">Objective</h2>
-        <p contenteditable="true">
+      <div class="objective right-section delete" contenteditable="true">
+        <h2 class="section-title">Objective</h2>
+        <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum magnam quasi rem omnis eos perspiciatis dolore
           reiciendis quia vel explicabo eaque laborum repellendus aspernatur, pariatur dolor eligendi obcaecati aliquam
           accusantium nisi tempora maxime aliquid provident commodi illo? Perspiciatis beatae, dignissimos id, quis et
@@ -91,13 +94,13 @@
         </p>
       </div>
 
-      <div class="experience" contenteditable="true">
+      <div class="experience right-section delete" contenteditable="true">
         <h2 class="section-title">Employment</h2>
         <h3 class="item-title">
           Organization Name (Year - Year)
         </h3>
         <h4 class="item-details">Job Role</h4>
-        <ul class="responsibilities-list" contenteditable="true">
+        <ul class="responsibilities-list">
           <li>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam molestiae explicabo, et odio nam
             deserunt.</li>
           <li>Beatae velit fugit ad a aspernatur, tenetur accusamus ea asperiores. Dolores quasi accusamus itaque ut?
@@ -109,7 +112,7 @@
         </ul>
       </div>
 
-      <div class="education" contenteditable="true">
+      <div class="education right-section delete" contenteditable="true">
         <h2 class="section-title">Education</h2>
         <h3 class="item-title">
           School / Collage Name
@@ -125,7 +128,7 @@
         </p>
       </div>
 
-      <div class="achivements" contenteditable="true">
+      <div class="achivements right-section delete" contenteditable="true">
         <h2 class="section-title">Achievement</h2>
         <ul class="responsibilities-list">
           <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veritatis fugit modi aliquid architecto nobis?
@@ -140,52 +143,45 @@
       </div>
 
       <div id="job-description" class="to-hide">
-        Develop robust and scalable web applications using Node.js, Next.js and three.js
-        Design and implement RESTful APIs and integrate them with front-end interfaces.
-        Create responsive and user-friendly UI components using modern front-end technologies such as HTML, CSS, and
-        JavaScript.
-        Collaborate with designers and product managers to translate requirements into technical specifications and
-        implement innovative solutions.
-        Build efficient and secure database schemas, and utilize database systems such as MySQL, PostgreSQL, or MongoDB.
-        Implement caching mechanisms, authentication, and authorization processes to enhance application performance and
-        security.
-        Optimize applications for maximum speed, scalability, and responsiveness.
-        Conduct thorough testing and debugging to identify and resolve issues across the full stack.
-        Collaborate with team members to conduct code reviews, provide feedback, and ensure code quality and
-        maintainability.
-        Stay up-to-date with the latest industry trends, tools, and best practices related to full stack development,
-        Node.js, and Next.js.
-        Participate in agile development methodologies and contribute to sprint planning, stand-ups, and retrospectives.
-
-        Requirements:
-        Bachelor's degree in Computer Science, Engineering, or a related field (or equivalent experience).
-        Proven work experience as a Full Stack Developer, with a strong focus on Node.js and Next.js.
-        Solid understanding of web technologies, including HTML, CSS, JavaScript, and RESTful APIs.
-        Experience with front-end frameworks/libraries such as React.js, Vue.js, or Angular is a plus.
-        Proficiency in server-side templating languages like EJS or Pug.
-        Strong knowledge of database systems and query optimization techniques (e.g., MySQL, PostgreSQL, MongoDB).
-        Experience working with version control systems, particularly Git.
-        Familiarity with cloud platforms like AWS or Azure is a plus.
-        Strong problem-solving skills and the ability to troubleshoot and debug complex applications.
-        Excellent communication skills and the ability to work effectively within a team.
-        Attention to detail and a commitment to delivering high-quality code.
       </div>
     </div>
   </div>
 
-  <div class="side-bar noprint">
-    <h2>
-      Enter Your Job Describition Here
-    </h2>
-    <form id="input-form">
-      <textarea name="job-description" id="job-description-input" placeholder="a nice job Describition"
-        required></textarea>
-      <button type="submit">Submit</button>
-    </form>
+  <div class="side-bar noprint bg-dark text-white">
+    <!-- Add buttons for adding new sections -->
+    <div class="text-center mt-3 mb-4">
+      <h2 class="text-center py-3">
+        Add New Elements To Resume
+      </h2>
+      <div class="mb-2">
+        <button id="add-left-section" class="btn btn-success">Add Section to Left</button>
+      </div>
+      <div class="mb-2">
+        <button id="add-right-section" class="btn btn-success">Add Section to Right</button>
+      </div>
+    </div>
+    <div class="text-center mt-3 mb-4">
+      <h2 class="text-center py-3">
+        Enter Your Job Description Here
+      </h2>
+      <form id="input-form" class="px-3">
+        <div class="mb-3">
+          <textarea name="job-description" id="job-description-input" class="form-control"
+            placeholder="A nice job description" required></textarea>
+        </div>
+        <div class="text-center">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+    </div>
   </div>
 
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.min.js"
+    integrity="sha512-3dZ9wIrMMij8rOH7X3kLfXAzwtcHpuYpEgQg1OA4QAob1e81H8ntUQmQm3pBudqIoySO5j0tHN4ENzA6+n2r4w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="./readFormData.js"></script>
-  <!-- <script src="./templateEngine.js"></script> -->
+  <script src="./templateEngine.js"></script>
 </body>
 
 </html>

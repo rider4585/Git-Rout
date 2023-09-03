@@ -17,6 +17,7 @@ body {
   width: auto;
   height: 100%;
   box-sizing: border-box;
+  box-shadow: 2px 0px 5px 0px rgba(0,0,0,0.75);
 }
 
 .left-column a:-webkit-any-link {
@@ -88,10 +89,6 @@ body {
   margin: 10px 0;
 }
 
-.skills {
-  margin-bottom: 30px;
-}
-
 .section-title {
   /* font-size: 18px; */
   margin-bottom: 10px;
@@ -113,20 +110,15 @@ body {
   margin-bottom: 5px;
 }
 
-:is(.skills-list, .ide-list, .subgroup-title, .others-list, .Certifications-list)>li {
+:is(.skills-list, .ide-list, .subgroup-title, .others-list, .Certifications-list, .item-list)>li {
   margin-bottom: 10px;
   margin-left: 20px;
   display: flex;
   align-items: center;
 }
 
-
-.objective {
-  margin-bottom: 30px;
-}
-
-.education {
-  margin-bottom: 30px;
+.right-section {
+  margin-bottom: 20px;
 }
 
 .semi-bold {
@@ -137,11 +129,6 @@ body {
 .highlight {
   color: #FF8000;
   /* Adjust the color value as desired */
-}
-
-
-.experience {
-  margin-bottom: 30px;
 }
 
 .job-title {
