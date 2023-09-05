@@ -88,10 +88,10 @@
                             should only do physical activity recommended by a doctor?</span>
                         <div class="radio-buttons">
                             <label class="radio-label">
-                                <input type="radio" name="subsection-one-question-1" value="yes">Yes
+                                <input type="radio" name="subsection-one-question-1" value="yes" required>Yes
                             </label>
                             <label class="radio-label radio-no">
-                                <input type="radio" name="subsection-one-question-1" value="no">No
+                                <input type="radio" name="subsection-one-question-1" value="no" required>No
                             </label>
                         </div>
                     </div>
@@ -100,10 +100,10 @@
                         <span class="question">Do you feel pain in your chest while doing any physical activity?</span>
                         <div class="radio-buttons">
                             <label class="radio-label">
-                                <input type="radio" name="subsection-one-question-2" value="yes">Yes
+                                <input type="radio" name="subsection-one-question-2" value="yes" required>Yes
                             </label>
                             <label class="radio-label radio-no">
-                                <input type="radio" name="subsection-one-question-2" value="no">No
+                                <input type="radio" name="subsection-one-question-2" value="no" required>No
                             </label>
                         </div>
                     </div>
@@ -113,10 +113,10 @@
                             physical activity?</span>
                         <div class="radio-buttons">
                             <label class="radio-label">
-                                <input type="radio" name="subsection-one-question-3" value="yes">Yes
+                                <input type="radio" name="subsection-one-question-3" value="yes" required>Yes
                             </label>
                             <label class="radio-label radio-no">
-                                <input type="radio" name="subsection-one-question-3" value="no">No
+                                <input type="radio" name="subsection-one-question-3" value="no" required>No
                             </label>
                         </div>
                     </div>
@@ -126,10 +126,10 @@
                             consciousness?</span>
                         <div class="radio-buttons">
                             <label class="radio-label">
-                                <input type="radio" name="subsection-one-question-4" value="yes">Yes
+                                <input type="radio" name="subsection-one-question-4" value="yes" required>Yes
                             </label>
                             <label class="radio-label radio-no">
-                                <input type="radio" name="subsection-one-question-4" value="no">No
+                                <input type="radio" name="subsection-one-question-4" value="no" required>No
                             </label>
                         </div>
                     </div>
@@ -139,10 +139,10 @@
                             in your physical activity?</span>
                         <div class="radio-buttons">
                             <label class="radio-label">
-                                <input type="radio" name="subsection-one-question-5" value="yes">Yes
+                                <input type="radio" name="subsection-one-question-5" value="yes" required>Yes
                             </label>
                             <label class="radio-label radio-no">
-                                <input type="radio" name="subsection-one-question-5" value="no">No
+                                <input type="radio" name="subsection-one-question-5" value="no" required>No
                             </label>
                         </div>
                     </div>
@@ -152,10 +152,10 @@
                             condition?</span>
                         <div class="radio-buttons">
                             <label class="radio-label">
-                                <input type="radio" name="subsection-one-question-6" value="yes">Yes
+                                <input type="radio" name="subsection-one-question-6" value="yes" required>Yes
                             </label>
                             <label class="radio-label radio-no">
-                                <input type="radio" name="subsection-one-question-6" value="no">No
+                                <input type="radio" name="subsection-one-question-6" value="no" required>No
                             </label>
                         </div>
                     </div>
@@ -164,14 +164,25 @@
                         <span class="question">Do you know of any other reason why you should not do physical
                             activity?</span>
                         <div class="radio-buttons">
-                            <label class="radio-label">
-                                <input type="radio" name="subsection-one-question-7" value="yes">Yes
+                            <label class="radio-label rounded">
+                                <input type="radio" name="subsection-one-question-7" value="yes"
+                                    onclick="toggleOtherReasonDetails(true)" required>Yes
                             </label>
-                            <label class="radio-label radio-no">
-                                <input type="radio" name="subsection-one-question-7" value="no">No
+                            <label class="radio-label rounded">
+                                <input type="radio" name="subsection-one-question-7" value="no"
+                                    onclick="toggleOtherReasonDetails(false)" required>No
                             </label>
                         </div>
                     </div>
+
+                    <div class="form-group" id="other-reason-details-container" style="display: none;">
+                        <span class="question">please provide details:</span>
+                        <div>
+                            <textarea class="form-control" id="other-reason-details" name="other-reason-details"
+                                rows="4" disabled required></textarea>
+                        </div>
+                    </div>
+
 
                     <div class="col-12 text-center">
                         <h5 class="d-inline-block form-group warning-text-lite">
@@ -188,50 +199,84 @@
                         <span class="question">Are you currently doing any physical activity?</span>
                         <div class="radio-buttons">
                             <label class="radio-label rounded">
-                                <input type="radio" name="subsection-two-question-1" value="yes">Yes
+                                <input type="radio" name="subsection-two-question-1" value="yes"
+                                    onclick="togglePhysicalActivityDetails(true)" required>Yes
                             </label>
                             <label class="radio-label rounded">
-                                <input type="radio" name="subsection-two-question-1" value="no">No
+                                <input type="radio" name="subsection-two-question-1" value="no"
+                                    onclick="togglePhysicalActivityDetails(false)" required>No
                             </label>
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <span class="question">Give details of your current physical activity:</span>
+                    <div class="form-group" id="physical-activity-details-container" style="display: none;">
+                        <span class="question">please provide details of your current physical activity:</span>
                         <div>
-                            <input type="text" name="subsection-two-question-2" class="form-control">
+                            <textarea class="form-control" id="physical-activity-details"
+                                name="physical-activity-details" rows="4" disabled required></textarea>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <span class="question">Have you done any physical activity before?</span>
+                        <div class="radio-buttons">
+                            <label class="radio-label rounded">
+                                <input type="radio" name="subsection-two-question-3" value="yes"
+                                    onclick="togglePreviousActivity(true)" required>Yes
+                            </label>
+                            <label class="radio-label rounded">
+                                <input type="radio" name="subsection-two-question-3" value="no"
+                                    onclick="togglePreviousActivity(false)" required>No
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group" id="previous-activity-details-container" style="display: none;">
+                        <span class="question">Give details of your previous physical activity:</span>
+                        <div>
+                            <textarea class="form-control" id="previous-activity-details"
+                                name="previous-activity-details" rows="4" disabled required></textarea>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <span class="question">Have you done any physical activity before? Give details of the
-                            same:</span>
-                        <div>
-                            <input type="text" name="subsection-two-question-3" class="form-control">
+                        <span class="question">Are you currently taking any medications?</span>
+                        <div class="radio-buttons">
+                            <label class="radio-label rounded">
+                                <input type="radio" name="subsection-two-question-4" value="yes"
+                                    onclick="toggleMedicationDetails(true)" required>Yes
+                            </label>
+                            <label class="radio-label rounded">
+                                <input type="radio" name="subsection-two-question-4" value="no"
+                                    onclick="toggleMedicationDetails(false)" required>No
+                            </label>
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <span class="question">Are you currently taking any medications? If yes, specify:</span>
+                    <div class="form-group" id="medication-details-container" style="display: none;">
+                        <span class="question">Specify the medications you are currently taking:</span>
                         <div>
-                            <input type="text" name="subsection-two-question-4" class="form-control">
+                            <textarea class="form-control" id="medication-details" name="medication-details" rows="4"
+                                disabled required></textarea>
                         </div>
                     </div>
+
 
                     <div class="form-group">
                         <span class="question">Are you pregnant?</span>
                         <div class="radio-buttons">
                             <label class="radio-label rounded">
                                 <input type="radio" name="subsection-two-question-5" value="yes"
-                                    onclick="togglePregnancyMonths(true)">Yes
+                                    onclick="togglePregnancyMonths(true)" required>Yes
                             </label>
                             <label class="radio-label rounded">
                                 <input type="radio" name="subsection-two-question-5" value="no"
-                                    onclick="togglePregnancyMonths(false)">No
+                                    onclick="togglePregnancyMonths(false)" required>No
                             </label>
                             <label class="radio-label rounded">
                                 <input type="radio" name="subsection-two-question-5" value="doesnotapply"
-                                    onclick="togglePregnancyMonths(false)" checked>Does not apply
+                                    onclick="togglePregnancyMonths(false)" checked required>Does not apply
                             </label>
                         </div>
                     </div>
@@ -240,16 +285,32 @@
                         <span class="question">How many months?</span>
                         <div>
                             <input type="number" id="pregnancy-months" name="pregnancy-months" class="form-control"
-                                min="1" max="9" disabled>
+                                min="1" max="9" disabled required>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <span class="question">Give the contact details of your physician:</span>
-                        <div>
-                            <input type="text" name="subsection-two-question-7" class="form-control">
+                        <span class="question">Do you have a physician?*</span>
+                        <div class="radio-buttons">
+                            <label class="radio-label rounded">
+                                <input type="radio" name="subsection-two-question-7" value="yes"
+                                    onclick="togglePhysicianDetails(true)" required>Yes
+                            </label>
+                            <label class="radio-label rounded">
+                                <input type="radio" name="subsection-two-question-7" value="no"
+                                    onclick="togglePhysicianDetails(false)" required>No
+                            </label>
                         </div>
                     </div>
+
+                    <div class="form-group" id="physician-details-container" style="display: none;">
+                        <span class="question">please specify the contact details of your physician:</span>
+                        <div>
+                            <textarea class="form-control" id="physician-details" name="physician-details" rows="4"
+                                disabled required></textarea>
+                        </div>
+                    </div>
+
 
                     <div class="form-group">
                         <span class="question">Person to contact in case of emergency:</span>
@@ -257,11 +318,11 @@
                             <div class="col-md-12" style="display: flex;">
                                 <div class="col-md-6">
                                     <input type="text" name="emergency_contact_name" placeholder="Name"
-                                        class="form-control">
+                                        class="form-control" required>
                                 </div>
                                 <div class="col-md-6">
                                     <input type="text" name="emergency_contact_number" placeholder="Contact Number"
-                                        class="form-control">
+                                        class="form-control" required>
                                 </div>
                             </div>
                         </div>
@@ -271,25 +332,52 @@
                         <span class="question">Have you gone through any surgery in the past 6 months?</span>
                         <div class="radio-buttons">
                             <label class="radio-label rounded">
-                                <input type="radio" name="subsection-two-question-8" value="yes">Yes
+                                <input type="radio" name="subsection-two-question-8" value="yes"
+                                    onclick="toggleSurgeryDetails(true)" required>Yes
                             </label>
                             <label class="radio-label rounded">
-                                <input type="radio" name="subsection-two-question-8" value="no">No
+                                <input type="radio" name="subsection-two-question-8" value="no"
+                                    onclick="toggleSurgeryDetails(false)" required>No
                             </label>
                         </div>
                     </div>
 
-                    <div class="form-group">
-                        <span class="question">Give details of any injury caused by an accident:</span>
+                    <div class="form-group" id="surgery-details-container" style="display: none;">
+                        <span class="question">please provide details of your surgery:</span>
                         <div>
-                            <input type="text" name="subsection-two-question-9" class="form-control">
+                            <textarea class="form-control" id="surgery-details" name="surgery-details" rows="4" disabled
+                                required></textarea>
                         </div>
                     </div>
+
+
+                    <div class="form-group">
+                        <span class="question">Have you experienced any injuries due to accidents?*</span>
+                        <div class="radio-buttons">
+                            <label class="radio-label rounded">
+                                <input type="radio" name="subsection-two-question-9" value="yes"
+                                    onclick="toggleInjuryDetails(true)" required>Yes
+                            </label>
+                            <label class="radio-label rounded">
+                                <input type="radio" name="subsection-two-question-9" value="no"
+                                    onclick="toggleInjuryDetails(false)" required>No
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group" id="injury-details-container" style="display: none;">
+                        <span class="question">please provide details of the injuries caused by accidents:</span>
+                        <div>
+                            <textarea class="form-control" id="injury-details" name="injury-details" rows="4" disabled
+                                required></textarea>
+                        </div>
+                    </div>
+
 
                     <div class="form-group">
                         <span class="question">Give details of your alcohol consumption:</span>
                         <div>
-                            <input type="text" name="subsection-two-question-10" class="form-control">
+                            <input type="text" name="subsection-two-question-10" class="form-control" required>
                         </div>
                     </div>
 
@@ -297,10 +385,10 @@
                         <span class="question">Do you smoke?</span>
                         <div class="radio-buttons">
                             <label class="radio-label rounded">
-                                <input type="radio" name="subsection-two-question-11" value="yes">Yes
+                                <input type="radio" name="subsection-two-question-11" value="yes" required>Yes
                             </label>
                             <label class="radio-label rounded">
-                                <input type="radio" name="subsection-two-question-11" value="no">No
+                                <input type="radio" name="subsection-two-question-11" value="no" required>No
                             </label>
                         </div>
                     </div>
@@ -310,10 +398,10 @@
                             problems/Blood pressure/Stroke/High cholesterol/Osteoporosis/Asthma?</span>
                         <div class="radio-buttons">
                             <label class="radio-label rounded">
-                                <input type="radio" name="subsection-two-question-12" value="yes">Yes
+                                <input type="radio" name="subsection-two-question-12" value="yes" required>Yes
                             </label>
                             <label class="radio-label rounded">
-                                <input type="radio" name="subsection-two-question-12" value="no">No
+                                <input type="radio" name="subsection-two-question-12" value="no" required>No
                             </label>
                         </div>
                     </div>
@@ -326,45 +414,199 @@
                     <h5 class="text-center">Please indicate any other medical conditions or activity restrictions that
                         you have</h5>
                     <div class="col-12 text-center health-conditions-div">
-                        <div class="condition-buttons">
-                            <!-- Group buttons based on length -->
-                            <button type="button" class="btn condition-button">Gout</button>
-                            <button type="button" class="btn condition-button">Asthma</button>
-                            <button type="button" class="btn condition-button">Bronchitis</button>
-                            <button type="button" class="btn condition-button">Allergies</button>
-                            <button type="button" class="btn condition-button">Bursitis</button>
-                            <button type="button" class="btn condition-button">Emphysema</button>
-                            <button type="button" class="btn condition-button">Diabetes</button>
-                            <button type="button" class="btn condition-button">Hernia</button>
-                            <button type="button" class="btn condition-button">Stomach Problem</button>
-                            <button type="button" class="btn condition-button">Stroke</button>
-                            <button type="button" class="btn condition-button">Heart Disease</button>
-                            <button type="button" class="btn condition-button">Limited Range of Motion</button>
-                            <button type="button" class="btn condition-button">Respiratory Infections</button>
-                            <button type="button" class="btn condition-button">Shortness of Breath</button>
-                            <button type="button" class="btn condition-button">Joint Ligament, Tendon</button>
-                            <button type="button" class="btn condition-button">Chronic/Migraine Headaches</button>
-                            <button type="button" class="btn condition-button">High Cholesterol</button>
-                            <button type="button" class="btn condition-button">High Blood Pressure</button>
-                            <button type="button" class="btn condition-button">Impaired Fasting glucose</button>
-                            <button type="button" class="btn condition-button">Back Pain or Muscular Pull</button>
-                            <button type="button" class="btn condition-button">Foot Problems</button>
-                            <button type="button" class="btn condition-button">Hormonal Imbalance</button>
-                            <button type="button" class="btn condition-button">Chronic/Migraine Headaches</button>
-                            <button type="button" class="btn condition-button">Swollen or Painful Joints</button>
-                            <button type="button" class="btn condition-button">Limited Range of Motion</button>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="condition-gout"
+                                name="health-condition[]" value="Gout">
+                            <label class="form-check-label" for="condition-gout">
+                                Gout
+                            </label>
                         </div>
-                        <div class="form-group">
-                            <label class="question">Do you have a medical condition not mentioned above? Please provide
-                                details:</label>
-                            <div>
-                                <textarea class="form-control" id="additional-medical-info"
-                                    name="additional-medical-info" rows="4"></textarea>
-                            </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="condition-asthma"
+                                name="health-condition[]" value="Asthma">
+                            <label class="form-check-label" for="condition-asthma">
+                                Asthma
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="condition-bronchitis"
+                                name="health-condition[]" value="Bronchitis">
+                            <label class="form-check-label" for="condition-bronchitis">
+                                Bronchitis
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="condition-allergies"
+                                name="health-condition[]" value="Allergies">
+                            <label class="form-check-label" for="condition-allergies">
+                                Allergies
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="condition-bursitis"
+                                name="health-condition[]" value="Bursitis">
+                            <label class="form-check-label" for="condition-bursitis">
+                                Bursitis
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="condition-emphysema"
+                                name="health-condition[]" value="Emphysema">
+                            <label class="form-check-label" for="condition-emphysema">
+                                Emphysema
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="condition-diabetes"
+                                name="health-condition[]" value="Diabetes">
+                            <label class="form-check-label" for="condition-diabetes">
+                                Diabetes
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="condition-hernia"
+                                name="health-condition[]" value="Hernia">
+                            <label class="form-check-label" for="condition-hernia">
+                                Hernia
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="condition-stomach-problem"
+                                name="health-condition[]" value="Stomach Problem">
+                            <label class="form-check-label" for="condition-stomach-problem">
+                                Stomach Problem
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="condition-stroke"
+                                name="health-condition[]" value="Stroke">
+                            <label class="form-check-label" for="condition-stroke">
+                                Stroke
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="condition-heart-disease"
+                                name="health-condition[]" value="Heart Disease">
+                            <label class="form-check-label" for="condition-heart-disease">
+                                Heart Disease
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="condition-limited-range-of-motion"
+                                name="health-condition[]" value="Limited Range of Motion">
+                            <label class="form-check-label" for="condition-limited-range-of-motion">
+                                Limited Range of Motion
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="condition-respiratory-infections"
+                                name="health-condition[]" value="Respiratory Infections">
+                            <label class="form-check-label" for="condition-respiratory-infections">
+                                Respiratory Infections
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="condition-shortness-of-breath"
+                                name="health-condition[]" value="Shortness of Breath">
+                            <label class="form-check-label" for="condition-shortness-of-breath">
+                                Shortness of Breath
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="condition-joint-ligament-tendon"
+                                name="health-condition[]" value="Joint Ligament Tendon">
+                            <label class="form-check-label" for="condition-joint-ligament-tendon">
+                                Joint Ligament Tendon
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="condition-chronic-migraine-headaches"
+                                name="health-condition[]" value="Chronic Migraine Headaches">
+                            <label class="form-check-label" for="condition-chronic-migraine-headaches">
+                                Chronic/Migraine Headaches
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="condition-high-cholesterol"
+                                name="health-condition[]" value="High Cholesterol">
+                            <label class="form-check-label" for="condition-high-cholesterol">
+                                High Cholesterol
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="condition-high-blood-pressure"
+                                name="health-condition[]" value="High Blood Pressure">
+                            <label class="form-check-label" for="condition-high-blood-pressure">
+                                High Blood Pressure
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="condition-impaired-fasting-glucose"
+                                name="health-condition[]" value="Impaired Fasting Glucose">
+                            <label class="form-check-label" for="condition-impaired-fasting-glucose">
+                                Impaired Fasting Glucose
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="condition-back-pain-or-muscular-pull"
+                                name="health-condition[]" value="Back Pain or Muscular Pull">
+                            <label class="form-check-label" for="condition-back-pain-or-muscular-pull">
+                                Back Pain or Muscular Pull
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="condition-foot-problems"
+                                name="health-condition[]" value="Foot Problems">
+                            <label class="form-check-label" for="condition-foot-problems">
+                                Foot Problems
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="condition-hormonal-imbalance"
+                                name="health-condition[]" value="Hormonal Imbalance">
+                            <label class="form-check-label" for="condition-hormonal-imbalance">
+                                Hormonal Imbalance
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="condition-swollen-or-painful-joints"
+                                name="health-condition[]" value="Swollen or Painful Joints">
+                            <label class="form-check-label" for="condition-swollen-or-painful-joints">
+                                Swollen or Painful Joints
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="condition-limited-range-of-motion-2"
+                                name="health-condition[]" value="Limited Range of Motion 2">
+                            <label class="form-check-label" for="condition-limited-range-of-motion-2">
+                                Limited Range of Motion 2
+                            </label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="condition-other"
+                                name="health-condition[]" value="Other">
+                            <label class="form-check-label" for="condition-other">Other Medical Condition</label>
+                        </div>
+                    </div>
+                    <!-- Textarea for other medical condition details -->
+                    <div class="form-group" id="other-medical-condition-details" style="display: none;">
+                        <label class="question">Please provide details of the other medical condition:</label>
+                        <div>
+                            <textarea class="form-control" id="additional-medical-info" name="additional-medical-info"
+                                rows="4"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Checkbox for "I don't have any major medical condition" -->
+                    <div class="col-12">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="major-condition-none"
+                                name="major-medical-condition[]" value="None">
+                            <label class="form-check-label" for="major-condition-none">I don't have any major medical
+                                condition</label>
                         </div>
                     </div>
                 </div>
-
             </div>
             <hr>
             <div class="section-three">
@@ -393,6 +635,8 @@
                         I agree and I know all the possible Potential Risks and Description of Potential Benefits
                     </label>
                 </div>
+                
+                <div id="consent-error" class="text-danger"></div>
 
                 <h5 class="text-center">Description of Potential Risks</h5>
 

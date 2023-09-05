@@ -118,5 +118,13 @@ select:focus {
 }
 
 .condition-button.selected {
-    border: 2px solid red;
+    border: 2px solid #e74c3c;
 }
+
+.health-conditions-div{
+    text-align: left !important;
+}
+
+option:hover {
+    background-color: #e74c3c;
+  }
