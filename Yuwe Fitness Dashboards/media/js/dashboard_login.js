@@ -24,18 +24,22 @@ function submitPhoneNumber() {
         sessionStorage.setItem("loggedIn", true);
         window.location.href = "../index.html";
     } else {
-        firebase.auth().signInWithPhoneNumber(phoneNumber, appVerifier)
-            .then(function (confirmationResult) {
-                window.confirmationResult = confirmationResult;
-                document.getElementById('phone-auth-form').style.display = 'none';
-                document.getElementById('code-verification-form').style.display = 'block';
-                document.querySelector(".otp-sent").innerHTML =
-                    `OTP sent to <span class="mobile-number">${phoneNumber}</span>`;
-            })
-            .catch(function (error) {
-                console.error('Error during sign in with phone number', error);
-                alert(error.message)
-            });
+        if (phoneNumber == '+917798476162' || phoneNumber == '+919130313670') {
+            firebase.auth().signInWithPhoneNumber(phoneNumber, appVerifier)
+                .then(function (confirmationResult) {
+                    window.confirmationResult = confirmationResult;
+                    document.getElementById('phone-auth-form').style.display = 'none';
+                    document.getElementById('code-verification-form').style.display = 'block';
+                    document.querySelector(".otp-sent").innerHTML =
+                        `OTP sent to <span class="mobile-number">${phoneNumber}</span>`;
+                })
+                .catch(function (error) {
+                    console.error('Error during sign in with phone number', error);
+                    alert(error.message)
+                });
+        } else {
+            alert("You don't have access!");
+        }
     }
 }
 
