@@ -1,5 +1,10 @@
 /* Add your custom CSS styles here */
 /* Global Styles */
+
+* {
+    scroll-behavior: smooth;
+}
+
 body {
     background-color: #f4f4f4;
 }
@@ -38,6 +43,18 @@ h2 {
 
 .radio-label input[type="radio"] {
     margin-right: 5px;
+}
+
+.form-control, .input-group-text{
+    border: 1px solid #4950575b;
+}
+
+.input-group-text {
+    border-radius: 0.375rem 0 0 0.375rem;
+}
+
+.form-check-input[type=checkbox]{
+    border-color: #4950575b;
 }
 
 /* Dropdown Selects */
@@ -121,10 +138,10 @@ select:focus {
     border: 2px solid #e74c3c;
 }
 
-.health-conditions-div{
+.health-conditions-div {
     text-align: left !important;
 }
 
 option:hover {
     background-color: #e74c3c;
-  }
+}

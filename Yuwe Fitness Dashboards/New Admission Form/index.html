@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gym Admission Form</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.1/css/bootstrap.min.css"
+        integrity="sha512-Z/def5z5u2aR89OuzYcxmDJ0Bnd5V1cKqBEbvLOiUNWdg9PQeXVvXLI90SE4QOHGlfLqUnDNVAYyZi8UwUTmWQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./index.css">
 </head>
 
@@ -17,7 +19,8 @@
                 <!-- <h2>Personal Details</h2> -->
                 <div class="form-group">
                     <label for="full-name">Full Name*</label>
-                    <input type="text" class="form-control" id="full-name" name="full-name" required>
+                    <input type="text" class="form-control" id="full-name" name="full-name" required
+                        pattern="^[a-zA-Z ]{2,30}$" title="Don't use any special characters or number in name">
                 </div>
                 <div class="form-group">
                     <label for="email">Email*</label>
@@ -29,7 +32,8 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text">+91</span>
                         </div>
-                        <input type="tel" class="form-control" id="mobile" name="mobile" required maxlength="10">
+                        <input type="tel" class="form-control" id="mobile" name="mobile" required maxlength="10"
+                            pattern="^\d{10}$" title="Invalid mobile number">
                     </div>
                 </div>
                 <div class="form-group">
@@ -44,9 +48,9 @@
                     <label for="gender">Gender*</label>
                     <select class="form-control" id="gender" name="gender" required>
                         <option value="" disabled selected>Select gender</option>
-                        <option value="male">Male</option>
-                        <option value="female">Female</option>
-                        <option value="others">Others</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Others">Others</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -67,15 +71,25 @@
                     <label for="marital-status">Marital Status*</label>
                     <select class="form-control" id="marital-status" name="marital-status" required>
                         <option value="" disabled selected>Select marital status</option>
-                        <option value="single">Single</option>
-                        <option value="married">Married</option>
-                        <option value="divorced">Divorced</option>
-                        <option value="widow">Widow</option>
+                        <option value="Single">Single</option>
+                        <option value="Married">Married</option>
+                        <option value="Divorced">Divorced</option>
+                        <option value="Widow">Widow</option>
                     </select>
                 </div>
                 <div class="form-group" id="anniversary-date-group" style="display: none;">
                     <label for="anniversary-date">Marriage Anniversary Date</label>
                     <input type="date" class="form-control" id="anniversary-date" name="anniversary-date">
+                </div>
+                <div class="form-group">
+                    <span class="question" id="focus-interests">Services You Are Interested In</span>
+                    <div id="interests">
+                    </div>
+                    <div id="interests-error" class="text-danger"></div>
+                </div>
+                <div class="form-group">
+                    <label for="goals">What is Your Goal</label>
+                    <textarea class="form-control" id="goals" name="goals" required></textarea>
                 </div>
             </div>
             <hr>
@@ -184,8 +198,8 @@
                     </div>
 
 
-                    <div class="col-12 text-center">
-                        <h5 class="d-inline-block form-group warning-text-lite">
+                    <div class="col-12 pt-2 text-justify">
+                        <h5 class="d-inline-block form-group warning-text-lite fs-6">
                             If you answered "yes" to one or more questions, talk with your doctor before you start
                             becoming much more active or before you have a fitness test. Tell your doctor about the
                             PAR-Q and which questions you answered "yes".
@@ -311,18 +325,19 @@
                         </div>
                     </div>
 
-
                     <div class="form-group">
                         <span class="question">Person to contact in case of emergency:</span>
                         <div class="form-row">
-                            <div class="col-md-12" style="display: flex;">
-                                <div class="col-md-6">
+                            <div>
+                                <div class="mb-2">
                                     <input type="text" name="emergency_contact_name" placeholder="Name"
-                                        class="form-control" required>
+                                        class="form-control" required pattern="^[a-zA-Z ]{2,30}$"
+                                        title="Don't use any special characters or numbers in name">
                                 </div>
-                                <div class="col-md-6">
-                                    <input type="text" name="emergency_contact_number" placeholder="Contact Number"
-                                        class="form-control" required>
+                                <div class="mb-2">
+                                    <input type="tel" name="emergency_contact_number" placeholder="Contact Number"
+                                        class="form-control" required maxlength="10" pattern="^\d{10}$"
+                                        title="Invalid mobile number">
                                 </div>
                             </div>
                         </div>
@@ -601,11 +616,13 @@
                     <div class="col-12">
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="major-condition-none"
-                                name="major-medical-condition[]" value="None">
-                            <label class="form-check-label" for="major-condition-none">I don't have any major medical
+                                name="health-condition[]" value="None">
+                            <label class="form-check-label fw-bolder" for="major-condition-none">I don't have any major
+                                medical
                                 condition</label>
                         </div>
                     </div>
+                    <div id="health-condition-error" class="text-danger"></div>
                 </div>
             </div>
             <hr>
@@ -628,15 +645,6 @@
                     joint range
                     of motion.
                 </p>
-
-                <div class="form-group">
-                    <label class="checkbox-label">
-                        <input type="checkbox" name="consent-agree" id="consent-agree" value="agree" required>
-                        I agree and I know all the possible Potential Risks and Description of Potential Benefits
-                    </label>
-                </div>
-                
-                <div id="consent-error" class="text-danger"></div>
 
                 <h5 class="text-center">Description of Potential Risks</h5>
 
@@ -674,6 +682,14 @@
                     associated with it.
                 </p>
 
+                <div class="form-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="consent-agree" id="consent-agree" value="agree" required>
+                        I agree and I know all the possible Potential Risks and Description of Potential Benefits
+                    </label>
+                </div>
+                <div id="consent-error" class="text-danger"></div>
+
             </div>
             <div class="form-row justify-content-center mt-3">
                 <button type="submit" class="btn btn-primary" id="submitBtn">Submit</button>
@@ -681,6 +697,7 @@
         </form>
     </div>
     <script src="./index.js"></script>
+    <script src="./autoFill.js"></script>
 
 </body>
 
