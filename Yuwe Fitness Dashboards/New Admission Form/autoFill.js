@@ -1,16 +1,16 @@
-document.getElementById("full-name").value = 'Raviraj';
-document.getElementById("email").value = 'ravi@gmail.com';
-document.getElementById("mobile").value = '7798476162';
-document.getElementById("birth-date").value = '24-10-1999';
-document.getElementById("address").value = 'iuhe';
-document.getElementById('gender').value = 'Male'
-document.getElementById('blood-group').value = 'AB+'
-document.getElementById('marital-status').value = 'Married';
+// document.getElementById("full-name").value = 'Raviraj';
+// document.getElementById("email").value = 'ravi@gmail.com';
+// document.getElementById("mobile").value = '7798476162';
+// document.getElementById("birth-date").value = '24-10-1999';
+// document.getElementById("address").value = 'iuhe';
+// document.getElementById('gender').value = 'Male'
+// document.getElementById('blood-group').value = 'AB+'
+// document.getElementById('marital-status').value = 'Married';
 
-let interested = ['Zumba', 'Yoga', 'Full Body', 'Habit Building', '12 Week Transformation'];
+// let interested = ['Zumba', 'Yoga', 'Full Body', 'Habit Building', '12 Week Transformation'];
 
-let goalsArray = document.querySelector('#interests');
-let goalsInnerHtml = '';
+// let goalsArray = document.querySelector('#interests');
+// let goalsInnerHtml = '';
 
 function loadInterests(interested) {
 
@@ -27,4 +27,4 @@ function loadInterests(interested) {
     goalsArray.innerHTML = goalsInnerHtml;
 }
 
-loadInterests(interested);
+// loadInterests(interested);
