@@ -145,3 +145,7 @@ select:focus {
 option:hover {
     background-color: #e74c3c;
 }
+
+.form-group {
+    padding-bottom: 1rem;
+}
