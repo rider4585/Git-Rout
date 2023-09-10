@@ -96,11 +96,6 @@ body {
     font-family: 'Montserrat', sans-serif;
     background-color: var(--background-color);
     color: var(--text-color);
-    /* background-image: url('./media/img/watermark.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed; */
     height: 100vh;
     scrollbar-width: none;
     /* Firefox */
