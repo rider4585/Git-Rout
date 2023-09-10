@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gym Services Data Dashboard</title>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Include your custom CSS file for styling -->
+    <link rel="stylesheet" href="../media/css/services_dashboard.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Search input field -->
+        <div class="input-group p-3" id="searchArea">
+            <input type="text" id="searchInput" class="form-control" placeholder="Search by service title" />
+            <button class="btn btn-outline-secondary" type="button" id="clearSearchInput">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <!-- No Results Message -->
+        <div id="noResultsMessage" class="alert alert-info mt-3" style="display: none;">
+            No service found.
+        </div>
+
+        <div class="accordion" id="accordionServices">
+            <div id="serviceEntries">
+                <!-- Service entries will be dynamically added here -->
+            </div>
+        </div>
+
+        <!-- Circular "+" button to open the modal -->
+        <button type="button" id="addService" class="btn btn-primary btn-circle" data-bs-toggle="modal"
+            data-bs-target="#addDataModal">
+            <i class="fas fa-plus"></i>
+        </button>
+    </div>
+
+    <!-- Modal for adding new service -->
+    <div class="modal fade" id="addDataModal" tabindex="-1" aria-labelledby="addDataModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addDataModalLabel">Add New Service</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Input fields for new service -->
+                    <form id="addDataForm">
+                        <div class="mb-3">
+                            <label for="titleInput" class="form-label">Service Title</label>
+                            <input type="text" class="form-control" id="titleInput" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="descriptionInput" class="form-label">Description</label>
+                            <textarea class="form-control" id="descriptionInput" rows="3" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="priceInput" class="form-label">Price</label>
+                            <input type="number" class="form-control" id="priceInput" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="durationDaysInput" class="form-label">Duration (Days)</label>
+                            <input type="number" class="form-control" id="durationDaysInput" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="durationWeeksInput" class="form-label">Duration (Weeks)</label>
+                            <input type="number" class="form-control" id="durationWeeksInput" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="benefitsInput" class="form-label">Benefits</label>
+                            <textarea class="form-control" id="benefitsInput" rows="3" required></textarea>
+                        </div>
+                        <!-- Add more input fields for other data -->
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="saveServiceButton">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include Bootstrap JavaScript (You can use a CDN or local files) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Include your custom JavaScript file for functionality -->
+    <script type="module" src="../media/js/services_dashboard.js"></script>
+</body>
+
+</html>
