@@ -1,7 +1,8 @@
 // firebase.js
 
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-app.js";
-import { getDatabase, ref, onValue, update, remove, get } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-database.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.3.0/firebase-app.js";
+import { getDatabase, ref, push, set, get, onValue, remove, update } from "https://www.gstatic.com/firebasejs/10.3.0/firebase-database.js";
+import { getStorage, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.3.0/firebase-storage.js";
 
 const firebaseConfig = {
     apiKey: "AIzaSyAlkqBseMsKLwP4HsSqATHSry17PQqYNTg",
@@ -16,5 +17,17 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
+const storage = getStorage(app);
 
-export { app, database, ref, onValue, update, remove, get };
+// Function to upload an image to Firebase Storage
+async function uploadImageToFirebase(file) {
+    console.log("hi");
+    const storageReference = ref(storage, 'images/' + file.name);
+    await uploadBytes(storageReference, file);
+  
+    const downloadURL = await getDownloadURL(storageReference);
+    return downloadURL;
+  }
+
+export { app, database, ref, storage, onValue, update, getDownloadURL, uploadBytes, remove, get, push, set, uploadImageToFirebase };
+
