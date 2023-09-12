@@ -211,17 +211,38 @@ function sendData() {
     const emergencyContactJSON = generateEmergencyContactJSON();
     const healthConditionsJSON = generateHealthConditionJSON();
     const healthQuestionJSON = generateHealthQuestionJSON();
+    const hasHealthIssues = checkIfHealthIssues();
 
     const masterJson = {
         personal_details: personalDetailsJSON,
         emergency_contact: emergencyContactJSON,
         health_questions: healthQuestionJSON,
-        health_conditions: healthConditionsJSON
+        health_conditions: healthConditionsJSON,
+        has_health_issues: hasHealthIssues,
     };
     SendDataToFlutter.postMessage(JSON.stringify(masterJson));
     // console.log(masterJson);
     // console.log(JSON.stringify(masterJson));
     // return masterJson;
+}
+
+function checkIfHealthIssues() {
+    let hasHealthCondition = false;
+    let checkedRadioOptions = document.querySelectorAll('.hasHealthCondition input[type="radio"]:checked');
+    if(checkedRadioOptions.length > 0){
+        checkedRadioOptions.forEach(radioOption => {
+            if(radioOption.value == 'yes'){
+                hasHealthCondition = true;
+            }
+        });
+    }
+
+    let checkedHealthCondition = document.querySelectorAll('input[name="health-condition[]"]:checked');
+    if(checkedHealthCondition.length > 0){
+        hasHealthCondition = true;
+    }
+
+    return hasHealthCondition;
 }
 
 function getSelectedInterests() {
@@ -510,8 +531,8 @@ function getSectionIdByQuestion(question) {
 
 const testJson = {
     "services" : ['Yoga', 'Zumba'],
-    "hideElements" : ['section-three', 'submit-button'],
+    // "hideElements" : ['section-three', 'submit-button'],
     "data" : {"personal_details":{"name":"raviraj","email":"raviraj@gmail.com","phoneNumber":"+917798476162","selectedBirthDate":"1999-10-24","address":"ubfiweug","gender":"Male","bloodGroup":"AB+","maritalStatus":"Married","anniversaryDate":"1999-10-24","formFilledDate":"2023-09-12","selectedServices":["Zumba"],"age":"23","goals":["uhediueh"]},"emergency_contact":{"name":"ravi","contact":"7798476162"},"health_questions":{"Has a doctor ever said that you have a heart condition and that you should only do physical activity recommended by a doctor?":"yes","Do you feel pain in your chest while doing any physical activity?":"yes","In the past month, have you had chest pain when you were not doing physical activity?":"yes","Do you lose your balance because of dizziness or do you ever lose consciousness?":"yes","Do you have a bone or joint problem that could be made worse by a change in your physical activity?":"yes","Is your doctor currently prescribing drugs for blood pressure or heart condition?":"yes","Do you know of any other reason why you should not do physical activity?":"yes","Other Reason Details":"Hello","Are you currently doing any physical activity?":"yes","Details of Current Physical Activity":"Hello","Have you done any physical activity before?":"yes","Details of Previous Physical Activity":"Hello","Are you currently taking any medications?":"yes","Specify the medications you are currently taking":"Hello","Are you pregnant?":"yes","Number of Pregnancy Months":"6","Do you have a physician?":"yes","Physician Details":"Hello","Have you gone through any surgery in the past 6 months?":"yes","Surgery Details":"Hello","Have you experienced any injuries due to accidents?":"yes","Injury Details":"Hello","Details of Alcohol Consumption":"yes","Do you smoke?":"yes","Family Health History":"yes"},"health_conditions":["Gout","Emphysema","Swollen or Painful Joints","Other","new","old"]}
 }
 
-// setData(testJson);
+setData(testJson);
