@@ -5,6 +5,7 @@ const interestContainer = document.getElementById('interests');
 const interestError = document.getElementById('interests-error');
 const focusOnInterests = document.getElementById('focus-interests');
 const healthConditionError = document.getElementById('health-condition-error');
+const goalsArray = document.querySelector('#interests');
 
 consentCheckbox.addEventListener("invalid", (event) => {
     event.preventDefault();
@@ -59,7 +60,7 @@ function toggleElementVisibility(id, show) {
     element.style.display = show ? "block" : "none";
 
     // Check if the input element exists before trying to access its properties
-    const input = document.getElementById(id + "-input");
+    const input = document.getElementById(id.replace("-container", ""));
     if (input) {
         if (!show) {
             input.value = "";
@@ -70,66 +71,84 @@ function toggleElementVisibility(id, show) {
     }
 }
 
-
 function togglePregnancyMonths(show) {
-    toggleElementVisibility("pregnancy-months", show);
+    toggleElementVisibility("pregnancy-months-container", show);
 }
 
 function togglePreviousActivity(show) {
-    toggleElementVisibility("previous-activity-details", show);
+    toggleElementVisibility("previous-activity-details-container", show);
 }
 
 function toggleMedicationDetails(show) {
-    toggleElementVisibility("medication-details", show);
+    toggleElementVisibility("medication-details-container", show);
 }
 
 function togglePhysicianDetails(show) {
-    toggleElementVisibility("physician-details", show);
+    toggleElementVisibility("physician-details-container", show);
 }
 
 function toggleInjuryDetails(show) {
-    toggleElementVisibility("injury-details", show);
+    toggleElementVisibility("injury-details-container", show);
 }
 
 function toggleOtherReasonDetails(show) {
-    toggleElementVisibility("other-reason-details", show);
+    toggleElementVisibility("other-reason-details-container", show);
 }
 
 function togglePhysicalActivityDetails(show) {
-    toggleElementVisibility("physical-activity-details", show);
+    toggleElementVisibility("physical-activity-details-container", show);
 }
 
 function toggleSurgeryDetails(show) {
-    toggleElementVisibility("surgery-details", show);
+    toggleElementVisibility("surgery-details-container", show);
 }
 
 // Function to handle checkbox selection for "I don't have any major medical condition"
 function handleMajorMedicalConditionCheckbox() {
     const noneConditionCheckbox = document.getElementById("major-condition-none");
     const conditionCheckboxes = document.querySelectorAll("input[name='health-condition[]']:not(#major-condition-none)");
+    const otherConditionTextarea = document.getElementById('other-medical-condition-details-container');
+    const otherConditionCheckbox = document.getElementById("condition-other");
 
     conditionCheckboxes.forEach((checkbox) => {
-        checkbox.checked = noneConditionCheckbox.checked ? false : checkbox.checked;
-        checkbox.disabled = noneConditionCheckbox.checked;
+        toggleElementVisibility(checkbox.id, !noneConditionCheckbox.checked);
     });
 
-    toggleElementVisibility("other-medical-condition-details", noneConditionCheckbox.checked);
+    // Toggle the "Other Medical Condition" section based on the checkbox state
+    if (noneConditionCheckbox.checked) {
+        toggleElementVisibility("condition-other", false);
+        otherConditionCheckbox.checked = false; // Uncheck the "Other Medical Condition" checkbox
+        toggleElementVisibility("other-medical-condition-details-container", false);
+    }
 }
+
+// Function to handle checkbox selection for "Other Medical Condition"
+function toggleOtherMedicalConditionCheckbox() {
+    const otherConditionCheckbox = document.getElementById("condition-other");
+    const otherConditionDetails = document.getElementById("other-medical-condition-details-container");
+    
+    toggleElementVisibility("other-medical-condition-details-container", otherConditionCheckbox.checked);
+}
+
 
 // Function to handle checkbox selection for "Other Medical Condition"
 function handleOtherMedicalConditionCheckbox() {
     const otherConditionCheckbox = document.getElementById("condition-other");
-    toggleElementVisibility("additional-medical-info", otherConditionCheckbox.checked);
+    toggleElementVisibility("other-medical-condition-details-container", otherConditionCheckbox.checked);
 }
 
-// Add event listeners to handle checkbox interactions
-document.getElementById("major-condition-none").addEventListener("click", handleMajorMedicalConditionCheckbox);
-document.getElementById("condition-other").addEventListener("click", handleOtherMedicalConditionCheckbox);
+// Add event listener to handle checkbox interactions when the DOM is loaded
+document.addEventListener("DOMContentLoaded", function () {
+    // Call handleMajorMedicalConditionCheckbox() to set the initial state
+    handleMajorMedicalConditionCheckbox();
 
-// Initially, check the state of "I don't have any major medical condition" checkbox
-handleMajorMedicalConditionCheckbox();
-// Also, check the state of "Other Medical Condition" checkbox
-handleOtherMedicalConditionCheckbox();
+    // Also, check the state of "Other Medical Condition" checkbox
+    handleOtherMedicalConditionCheckbox();
+
+    // Add event listeners to handle checkbox interactions
+    document.getElementById("major-condition-none").addEventListener("click", handleMajorMedicalConditionCheckbox);
+    document.getElementById("condition-other").addEventListener("click", handleOtherMedicalConditionCheckbox);
+});
 
 function calculateAge(birthDate) {
     const today = new Date();
@@ -199,9 +218,9 @@ function sendData() {
         health_questions: healthQuestionJSON,
         health_conditions: healthConditionsJSON
     };
-    SendDataToFlutter.postMessage(JSON.stringify(formData));
-    // console.log(masterJson);
-    // console.log(JSON.stringify(masterJson));
+    // SendDataToFlutter.postMessage(JSON.stringify(formData));
+    console.log(masterJson);
+    console.log(JSON.stringify(masterJson));
     // return masterJson;
 }
 
@@ -232,7 +251,7 @@ function generateHealthConditionJSON() {
         healthConditions.push(checkbox.value);
     });
 
-    const otherConditionTextarea = document.getElementById('additional-medical-info').value.trim();
+    const otherConditionTextarea = document.getElementById('other-medical-condition-details').value.trim();
     const otherConditionsArray = otherConditionTextarea.split(',').map((condition) => condition.trim()).filter((condition) => condition !== '');
 
     healthConditions.push(...otherConditionsArray);
@@ -283,3 +302,82 @@ function getInputValue(id) {
 function isThisYuWeWebPage() {
     return true;
 }
+
+function setData(data) {
+    let services = "";
+    let elementsToHide = "";
+
+    if (data?.services) {
+        services = data.services;
+        loadInterests(services);
+    } else {
+        alert('Gym Services not Found');
+    }
+
+    if (data?.hideElements) {
+        elementsToHide = data.hideElements;
+        hideElements(elementsToHide);
+    }
+}
+
+function loadInterests(interested) {
+    let goalsInnerHtml = '';
+
+    for (const element of interested) {
+        goalsInnerHtml += `
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="interest-${element}" name="interest[]" value="${element}">
+                            <label class="form-check-label" for="interest-${element}">
+                                ${element}
+                            </label>
+                        </div>`;
+    };
+
+    goalsArray.innerHTML = goalsInnerHtml;
+}
+
+function hideElements(elements) {
+    elements.forEach((elementId) => {
+        const element = document.querySelector("." + elementId);
+        if (element) {
+            element.style.display = "none";
+        }
+    });
+}
+
+// Usage:
+// const jsonData = `{
+//     "personal_details": {
+//         "name": "Raviraj",
+//         "email": "ravi@gmail.com",
+//         "phoneNumber": "+917798476162",
+//         "selectedBirthDate": "1999-10-24",
+//         "address": "iuhe",
+//         "gender": "Male",
+//         "bloodGroup": "AB+",
+//         "maritalStatus": "Married",
+//         "anniversaryDate": "",
+//         "formFilledDate": "2023-09-10",
+//         "selectedServices": ["Zumba", "Full Body"],
+//         "age": "23",
+//         "goals": ["slieghei"]
+//     },
+//     "emergency_contact": {
+//         "name": "ravi",
+//         "contact": "7798476162"
+//     },
+//     "health_questions": {
+//         "Has a doctor ever said that you have a heart condition and that you should only do physical activity recommended by a doctor?": "no",
+//         "Do you feel pain in your chest while doing any physical activity?": "no",
+//         // ... (other health questions)
+//     },
+//     "health_conditions": ["Asthma", "Bronchitis", "Hernia"]
+// }`;
+
+// setData(`{"personal_details":{"name":"Raviraj","email":"ravi@gmail.com","phoneNumber":"+917798476162","selectedBirthDate":"1999-10-24","address":"iuhe","gender":"Male","bloodGroup":"AB+","maritalStatus":"Married","anniversaryDate":"","formFilledDate":"2023-09-10","selectedServices":["Zumba","Full Body"],"age":"23","goals":["slieghei"]},"emergency_contact":{"name":"ravi","contact":"7798476162"},"health_questions":{"Has a doctor ever said that you have a heart condition and that you should only do physical activity recommended by a doctor?":"no","Do you feel pain in your chest while doing any physical activity?":"no","In the past month, have you had chest pain when you were not doing physical activity?":"no","Do you lose your balance because of dizziness or do you ever lose consciousness?":"no","Do you have a bone or joint problem that could be made worse by a change in your physical activity?":"no","Is your doctor currently prescribing drugs for blood pressure or heart condition?":"no","Do you know of any other reason why you should not do physical activity?":"no","Other Reason Details":"","Are you currently doing any physical activity?":"no","Details of Current Physical Activity":"","Have you done any physical activity before?":"no","Details of Previous Physical Activity":"","Are you currently taking any medications?":"no","Specify the medications you are currently taking":"","Are you pregnant?":"no","Number of Pregnancy Months":"","Do you have a physician?":"no","Physician Details":"","Have you gone through any surgery in the past 6 months?":"no","Surgery Details":"","Have you experienced any injuries due to accidents?":"no","Injury Details":"","Details of Alcohol Consumption":"yes","Do you smoke?":"no","Family Health History":"no"},"health_conditions":["Asthma","Bronchitis","Hernia"]}`);
+const testJson = {
+    "services" : ['Yoga', 'Zumba'],
+    // "hideElements" : ['section-three', 'submit-button']
+}
+
+setData(testJson);
