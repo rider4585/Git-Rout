@@ -218,9 +218,9 @@ function sendData() {
         health_questions: healthQuestionJSON,
         health_conditions: healthConditionsJSON
     };
-    // SendDataToFlutter.postMessage(JSON.stringify(formData));
-    console.log(masterJson);
-    console.log(JSON.stringify(masterJson));
+    SendDataToFlutter.postMessage(JSON.stringify(formData));
+    // console.log(masterJson);
+    // console.log(JSON.stringify(masterJson));
     // return masterJson;
 }
 
