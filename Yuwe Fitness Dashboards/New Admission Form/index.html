@@ -92,8 +92,9 @@
                     <textarea class="form-control" id="goals" name="goals" required></textarea>
                 </div>
             </div>
-            <hr>
+            
             <div class="section-two">
+                <hr>
                 <!-- Subsection One -->
                 <div class="subsection">
                     <h5 class="text-center">Read the questions carefully and answer each one honestly</h5>
@@ -604,10 +605,10 @@
                         </div>
                     </div>
                     <!-- Textarea for other medical condition details -->
-                    <div class="form-group" id="other-medical-condition-details" style="display: none;">
+                    <div class="form-group" id="other-medical-condition-details-container" style="display: none;">
                         <label class="question">Please provide details of the other medical condition:</label>
                         <div>
-                            <textarea class="form-control" id="additional-medical-info" name="additional-medical-info"
+                            <textarea class="form-control" id="other-medical-condition-details" name="other-medical-condition-details"
                                 rows="4"></textarea>
                         </div>
                     </div>
@@ -625,8 +626,9 @@
                     <div id="health-condition-error" class="text-danger"></div>
                 </div>
             </div>
-            <hr>
+            
             <div class="section-three">
+                <hr>
                 <h5 class="text-center">Informed Consent & General Statement of Program Objectives and Procedures</h5>
 
                 <p>
@@ -691,13 +693,13 @@
                 <div id="consent-error" class="text-danger"></div>
 
             </div>
-            <div class="form-row justify-content-center mt-3">
+            <div class="form-row justify-content-center mt-3 submit-button">
                 <button type="submit" class="btn btn-primary" id="submitBtn">Submit</button>
             </div>
         </form>
     </div>
     <script src="./index.js"></script>
-    <script src="./autoFill.js"></script>
+    <!-- <script src="./autoFill.js"></script> -->
 
 </body>
 
