@@ -101,7 +101,7 @@
                     <div class="form-group">
                         <span class="question">Has a doctor ever said that you have a heart condition and that you
                             should only do physical activity recommended by a doctor?</span>
-                        <div class="radio-buttons">
+                        <div class="radio-buttons hasHealthCondition">
                             <label class="radio-label">
                                 <input type="radio" name="subsection-one-question-1" value="yes" required>Yes
                             </label>
@@ -113,7 +113,7 @@
 
                     <div class="form-group">
                         <span class="question">Do you feel pain in your chest while doing any physical activity?</span>
-                        <div class="radio-buttons">
+                        <div class="radio-buttons hasHealthCondition">
                             <label class="radio-label">
                                 <input type="radio" name="subsection-one-question-2" value="yes" required>Yes
                             </label>
@@ -126,7 +126,7 @@
                     <div class="form-group">
                         <span class="question">In the past month, have you had chest pain when you were not doing
                             physical activity?</span>
-                        <div class="radio-buttons">
+                        <div class="radio-buttons hasHealthCondition">
                             <label class="radio-label">
                                 <input type="radio" name="subsection-one-question-3" value="yes" required>Yes
                             </label>
@@ -139,7 +139,7 @@
                     <div class="form-group">
                         <span class="question">Do you lose your balance because of dizziness or do you ever lose
                             consciousness?</span>
-                        <div class="radio-buttons">
+                        <div class="radio-buttons hasHealthCondition">
                             <label class="radio-label">
                                 <input type="radio" name="subsection-one-question-4" value="yes" required>Yes
                             </label>
@@ -152,7 +152,7 @@
                     <div class="form-group">
                         <span class="question">Do you have a bone or joint problem that could be made worse by a change
                             in your physical activity?</span>
-                        <div class="radio-buttons">
+                        <div class="radio-buttons hasHealthCondition">
                             <label class="radio-label">
                                 <input type="radio" name="subsection-one-question-5" value="yes" required>Yes
                             </label>
@@ -165,7 +165,7 @@
                     <div class="form-group">
                         <span class="question">Is your doctor currently prescribing drugs for blood pressure or heart
                             condition?</span>
-                        <div class="radio-buttons">
+                        <div class="radio-buttons hasHealthCondition">
                             <label class="radio-label">
                                 <input type="radio" name="subsection-one-question-6" value="yes" required>Yes
                             </label>
@@ -178,7 +178,7 @@
                     <div class="form-group">
                         <span class="question">Do you know of any other reason why you should not do physical
                             activity?</span>
-                        <div class="radio-buttons">
+                        <div class="radio-buttons hasHealthCondition">
                             <label class="radio-label rounded">
                                 <input type="radio" name="subsection-one-question-7" value="yes"
                                     onclick="toggleOtherReasonDetails(true)" required>Yes
@@ -257,7 +257,7 @@
 
                     <div class="form-group">
                         <span class="question">Are you currently taking any medications?</span>
-                        <div class="radio-buttons">
+                        <div class="radio-buttons hasHealthCondition">
                             <label class="radio-label rounded">
                                 <input type="radio" name="subsection-two-question-4" value="yes"
                                     onclick="toggleMedicationDetails(true)" required>Yes
@@ -280,7 +280,7 @@
 
                     <div class="form-group">
                         <span class="question">Are you pregnant?</span>
-                        <div class="radio-buttons">
+                        <div class="radio-buttons hasHealthCondition">
                             <label class="radio-label rounded">
                                 <input type="radio" name="subsection-two-question-5" value="yes"
                                     onclick="togglePregnancyMonths(true)" required>Yes
@@ -290,7 +290,7 @@
                                     onclick="togglePregnancyMonths(false)" required>No
                             </label>
                             <label class="radio-label rounded">
-                                <input type="radio" name="subsection-two-question-5" value="doesnotapply"
+                                <input type="radio" name="subsection-two-question-5" value="no"
                                     onclick="togglePregnancyMonths(false)" checked required>Does not apply
                             </label>
                         </div>
@@ -346,7 +346,7 @@
 
                     <div class="form-group">
                         <span class="question">Have you gone through any surgery in the past 6 months?</span>
-                        <div class="radio-buttons">
+                        <div class="radio-buttons hasHealthCondition">
                             <label class="radio-label rounded">
                                 <input type="radio" name="subsection-two-question-8" value="yes"
                                     onclick="toggleSurgeryDetails(true)" required>Yes
@@ -369,7 +369,7 @@
 
                     <div class="form-group">
                         <span class="question">Have you experienced any injuries due to accidents?*</span>
-                        <div class="radio-buttons">
+                        <div class="radio-buttons hasHealthCondition">
                             <label class="radio-label rounded">
                                 <input type="radio" name="subsection-two-question-9" value="yes"
                                     onclick="toggleInjuryDetails(true)" required>Yes
