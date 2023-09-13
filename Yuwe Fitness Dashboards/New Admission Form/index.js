@@ -224,8 +224,8 @@ function sendData() {
             services : servicesInterested,
         }
     };
-    // SendDataToFlutter.postMessage(JSON.stringify(masterJson));
-    console.log(masterJson);
+    SendDataToFlutter.postMessage(JSON.stringify(masterJson));
+    // console.log(masterJson);
     // console.log(JSON.stringify(masterJson));
     // return masterJson;
 }
