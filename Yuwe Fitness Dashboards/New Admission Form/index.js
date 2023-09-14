@@ -389,29 +389,33 @@ function hideElements(elements) {
 
 function populatePersonalDetails(personalDetails) {
     // Populate form fields with personalDetails object properties
-    document.getElementById("full-name").value = personalDetails.name;
-    document.getElementById("email").value = personalDetails.email;
-    document.getElementById("mobile").value = personalDetails.phoneNumber.substring(3); // Remove '+91'
-    document.getElementById("birth-date").value = personalDetails.selectedBirthDate;
-    document.getElementById("address").value = personalDetails.address;
-    document.getElementById("gender").value = personalDetails.gender;
-    document.getElementById("blood-group").value = personalDetails.bloodGroup;
-    document.getElementById("marital-status").value = personalDetails.maritalStatus;
+    document.getElementById("full-name").value = personalDetails.name || "";
+    document.getElementById("email").value = personalDetails.email || "";
+    document.getElementById("mobile").value = personalDetails.phoneNumber || ""; // Remove '+91'
+    document.getElementById("birth-date").value = personalDetails.selectedBirthDate || "";
+    document.getElementById("address").value = personalDetails.address || "";
+    document.getElementById("gender").value = personalDetails.gender || "";
+    document.getElementById("blood-group").value = personalDetails.bloodGroup || "";
+    document.getElementById("marital-status").value = personalDetails.maritalStatus || "";
     const anniversaryDateGroup = document.getElementById("anniversary-date-group");
-    if (personalDetails.maritalStatus === 'Married') {
+    if (personalDetails?.maritalStatus === 'Married') {
         anniversaryDateGroup.style.display = "block";
-        document.getElementById("anniversary-date").value = personalDetails.anniversaryDate;
+        document.getElementById("anniversary-date").value = personalDetails.anniversaryDate || "";
     } else {
         anniversaryDateGroup.style.display = "none";
     }
 
     const allInterests = document.querySelectorAll("input[name='interest[]']");
     allInterests.forEach((interest) => {
-        if (personalDetails.selectedServices.includes(interest.value)) {
-            interest.checked = true;
+        if (personalDetails.selectedServices) {
+            if(personalDetails.selectedServices.includes(interest.value)){
+                interest.checked = true;
+            }
         }
     });
-    document.getElementById("goals").value = personalDetails.goals.join(', ');
+    if(personalDetails.goals){
+        document.getElementById("goals").value = personalDetails.goals.join(', ');
+    }
 }
 
 function populateEmergencyContact(emergencyContact) {
@@ -539,4 +543,13 @@ const testJson = {
     "data" : {"personal_details":{"name":"raviraj","email":"raviraj@gmail.com","phoneNumber":"+917798476162","selectedBirthDate":"1999-10-24","address":"ubfiweug","gender":"Male","bloodGroup":"AB+","maritalStatus":"Married","anniversaryDate":"1999-10-24","formFilledDate":"2023-09-12","selectedServices":["Zumba"],"age":"23","goals":["uhediueh"]},"emergency_contact":{"name":"ravi","contact":"7798476162"},"health_questions":{"Has a doctor ever said that you have a heart condition and that you should only do physical activity recommended by a doctor?":"yes","Do you feel pain in your chest while doing any physical activity?":"yes","In the past month, have you had chest pain when you were not doing physical activity?":"yes","Do you lose your balance because of dizziness or do you ever lose consciousness?":"yes","Do you have a bone or joint problem that could be made worse by a change in your physical activity?":"yes","Is your doctor currently prescribing drugs for blood pressure or heart condition?":"yes","Do you know of any other reason why you should not do physical activity?":"yes","Other Reason Details":"Hello","Are you currently doing any physical activity?":"yes","Details of Current Physical Activity":"Hello","Have you done any physical activity before?":"yes","Details of Previous Physical Activity":"Hello","Are you currently taking any medications?":"yes","Specify the medications you are currently taking":"Hello","Are you pregnant?":"yes","Number of Pregnancy Months":"6","Do you have a physician?":"yes","Physician Details":"Hello","Have you gone through any surgery in the past 6 months?":"yes","Surgery Details":"Hello","Have you experienced any injuries due to accidents?":"yes","Injury Details":"Hello","Details of Alcohol Consumption":"yes","Do you smoke?":"yes","Family Health History":"yes"},"health_conditions":["Gout","Emphysema","Swollen or Painful Joints","Other","new","old"]}
 }
 
-// setData(testJson);
+const tempVar = {
+    "services": ['Yoga', 'Zumba'],
+    "data": {
+      "personal_details": {
+        "phoneNumber": 7798476162,
+      }
+    }
+  }
+
+setData(tempVar);
