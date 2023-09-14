@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diet Plan Form</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p {
+            margin: 0;
+        }
+
+        th,
+        td {
+            font-size: 0.8em !important;
+            padding: 0.5em !important;
+            text-align: center;
+            vertical-align: middle !important;
+        }
+
+        #table {
+            overflow: scroll;
+        }
+
+        #food-item {
+            text-wrap: nowrap;
+            padding-left: 6em !important;
+            padding-right: 6em !important;
+        }
+
+        #quantity,
+        #fats,
+        #carbs,
+        #protein,
+        #calories {
+            padding-left: 3em !important;
+            padding-right: 3em !important;
+        }
+
+        #additional {
+            padding-left: 4em !important;
+            padding-right: 4em !important;
+        }
+
+        .note {
+            font-size: 0.5em !important;
+            font-style: italic;
+        }
+
+        .signature {
+            font-style: oblique;
+            font-size: 0.8em !important;
+        }
+
+        .image, .text-center{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 900;
+        }
+
+        img {
+            width: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-4">
+        <div class="row mb-4">
+            <div class="col-4 image">
+                <img src="../media/img/yuwe-fitness-light.png" alt="Left Logo">
+            </div>
+            <div class="col-4 text-center">
+                <h1 style="font-size: 1em !important;">Diet Plan</h1>
+            </div>
+            <div class="col-4 image">
+                <img src="../media/img/yuwe-lifestyle-logo.png" alt="Right Logo">
+            </div>
+        </div>
+        <div class="row mt-1">
+            <div class="col-6">
+                <p style="font-size: 0.8em !important;"><strong>Name:</strong> Raviraj Bugge</p>
+            </div>
+            <div class="col-6">
+                <p class="text-right" style="font-size: 0.8em !important;"><strong>Gender:</strong> Male</p>
+            </div>
+        </div>
+        <div class="row mt-1">
+            <div class="col-6">
+                <p style="font-size: 0.8em !important;"><strong>Current Weight:</strong> 72 Kg</p>
+            </div>
+            <div class="col-6">
+                <p class="text-right" style="font-size: 0.8em !important;"><strong>Goal:</strong> Fat Loss</p>
+            </div>
+        </div>
+        <div class="row mt-1">
+            <div class="col-6">
+                <p style="font-size: 0.8em !important;"><strong>Initial BMR:</strong> 1422</p>
+            </div>
+            <div class="col-6">
+                <p class="text-right" style="font-size: 0.8em !important;"><strong>Height:</strong> 182 cm</p>
+            </div>
+        </div>
+        <div class="row mt-1">
+            <div class="col-12">
+                <p style="font-size: 0.8em !important;"><strong>Age:</strong> 24</p>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-12 mb-3" id="table">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th id="food-item">Food Item</th>
+                            <th id="quantity">Quantity</th>
+                            <th id="fats">Fats (gms)</th>
+                            <th id="carbs">Carbs (gms)</th>
+                            <th id="protein">Protein (gms)</th>
+                            <th id="calories">Calories</th>
+                            <th id="additional">Additional Instructions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="6"><strong>Breakfast</strong></td>
+                            <td rowspan="12" id="additional">Drink 4-5 liters water daily, without fail - NO COMPROMISE
+                                ON THIS</td>
+                        </tr>
+                        <tr>
+                            <td>Scrambled Eggs</td>
+                            <td>2 eggs</td>
+                            <td>10g</td>
+                            <td>2g</td>
+                            <td>12g</td>
+                            <td>150</td>
+                        </tr>
+                        <tr>
+                            <td>Greek Yogurt</td>
+                            <td>1 cup</td>
+                            <td>2g</td>
+                            <td>6g</td>
+                            <td>10g</td>
+                            <td>120</td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="6"><strong>Lunch</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Grilled Chicken Breast</td>
+                            <td>4 oz</td>
+                            <td>2g</td>
+                            <td>0g</td>
+                            <td>30g</td>
+                            <td>150</td>
+                        </tr>
+                        <tr>
+                            <td>Quinoa Salad</td>
+                            <td>1 cup</td>
+                            <td>4g</td>
+                            <td>30g</td>
+                            <td>8g</td>
+                            <td>200</td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="6"><strong>Evening Snacks</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Almonds</td>
+                            <td>1 oz</td>
+                            <td>14g</td>
+                            <td>3g</td>
+                            <td>6g</td>
+                            <td>160</td>
+                        </tr>
+                        <tr>
+                            <td>Cucumber Slices</td>
+                            <td>1 cup</td>
+                            <td>0g</td>
+                            <td>2g</td>
+                            <td>1g</td>
+                            <td>15</td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="6"><strong>Dinner</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Baked Salmon</td>
+                            <td>6 oz</td>
+                            <td>12g</td>
+                            <td>0g</td>
+                            <td>36g</td>
+                            <td>300</td>
+                        </tr>
+                        <tr>
+                            <td>Steamed Asparagus</td>
+                            <td>1 cup</td>
+                            <td>0g</td>
+                            <td>3g</td>
+                            <td>2g</td>
+                            <td>20</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <P class="note container mb-1"><sup>*</sup>The above mentioned values are approximate and may differ based
+                on the food quality and brand Herbs and
+                spices you may use: turmeric, cinnamon, ginger, dill, parsley leaves, chili flakes, paprika, cayenne
+                pepper, coriander, cumin, basil, rosemary, oregano, thyme, cardamoms, nettle leaf, phenyl seeds,
+                pallium, bay leaf, fenugreek</P>
+            <P class="note container mb-1">Water needs to be minimum 3-3.5 liters a day</P>
+            <P class="note container mb-2"><sup>*</sup>Green vegetables: basically anything green, broccoli, green
+                beans, asparagus, salads - you can add
+                vegetables to any meal</P>
+            <div class="w-100 mt-2">
+                <p class="signature text-right p-4">Authorized Signature</p>
+                <!-- <span>
+                    <img src="" alt="signature">
+                </span> -->
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
