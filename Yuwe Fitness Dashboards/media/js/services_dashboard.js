@@ -65,7 +65,7 @@ class ServiceManager {
     }
 
     // Create a service entry as an accordion item and append it to the container
-    createServiceEntry(title, description, price, daysDuration, weeksDuration) {
+    createServiceEntry(title, description, price, daysDuration, weeksDuration, benefits) {
         // Generate a unique ID for the service entry
         const id = title.trim().replace(/\s+/g, "-");
 
@@ -88,6 +88,8 @@ class ServiceManager {
                 <p><strong>Price:</strong> ₹${price}</p>
                 <p><strong>Duration (Days):</strong> ${daysDuration} Days</p>
                 <p><strong>Duration (Weeks):</strong> ${weeksDuration} Weeks</p>
+                <p><strong>Benefits:</strong> ${benefits}</p>
+
                 <button class="btn btn-secondary" onclick="serviceManager.editServiceEntry('${title.trim()}')">Edit</button>
                 <button class="btn btn-danger" onclick="serviceManager.deleteServiceEntry('${title.trim()}')">Delete</button>
             </div>
@@ -105,7 +107,8 @@ class ServiceManager {
 
         // Iterate through data entries and create service entries
         Object.entries(data).forEach(([title, values]) => {
-            this.createServiceEntry(title, values.description, values.price, values.durationDays, values.durationWeeks);
+            console.log(values);
+            this.createServiceEntry(title, values.description, values.price, values.durationDays, values.durationWeeks, values.benefits);
         });
     }
 
@@ -117,6 +120,7 @@ class ServiceManager {
         const priceInput = document.getElementById("priceInput");
         const durationDaysInput = document.getElementById("durationDaysInput");
         const durationWeeksInput = document.getElementById("durationWeeksInput");
+        const benefitsInput = document.getElementById("benefitsInput");
 
         // Check if any of the required fields are empty
         if (
@@ -124,7 +128,7 @@ class ServiceManager {
             descriptionInput.value.trim() === "" ||
             priceInput.value.trim() === "" ||
             durationDaysInput.value.trim() === "" ||
-            durationWeeksInput.value.trim() === ""
+            durationWeeksInput.value.trim() === "" || benefitsInput.value.trim() === ""
         ) {
             alert("Please fill in all required fields.");
             return; // Don't proceed if any required field is empty
@@ -134,20 +138,19 @@ class ServiceManager {
             "description": document.getElementById("descriptionInput").value,
             "price": parseFloat(document.getElementById("priceInput").value).toFixed(2),
             "durationDays": parseInt(document.getElementById("durationDaysInput").value),
-            "durationWeeks": parseInt(document.getElementById("durationWeeksInput").value)
+            "durationWeeks": parseInt(document.getElementById("durationWeeksInput").value),
+            "benefits": document.getElementById("benefitsInput").value
         };
 
 
         const serviceTitleInput = document.getElementById('titleInput');
-        const serviceTitle = serviceTitleInput.value.toUpperCase();
+        const serviceTitle = serviceTitleInput.value;
         const previousTitle = serviceTitleInput.dataset.previousTitle;
 
         if (previousTitle && previousTitle !== serviceTitle) {
             // Remove the previous service data with the old title from the database
             remove(ref(database, `development/services/${previousTitle}`))
                 .then(() => {
-                    // Update the exampleJSON object with the new title
-                    this.exampleJSON[serviceTitle] = this.exampleJSON[previousTitle];
                     // Delete the old title from the exampleJSON object
                     delete this.exampleJSON[previousTitle];
                 })
@@ -175,6 +178,7 @@ class ServiceManager {
                 this.modal.hide();
             })
             .catch((error) => {
+                console.log(error);
                 alert(`Error saving service data: ${error.message}`);
             });
 
@@ -183,23 +187,6 @@ class ServiceManager {
 
     // Edit a service entry
     editServiceEntry(itemId) {
-
-        // // Collect form data
-        // const titleInput = document.getElementById("titleInput");
-        // const priceInput = document.getElementById("priceInput");
-        // const durationDaysInput = document.getElementById("durationDaysInput");
-        // const durationWeeksInput = document.getElementById("durationWeeksInput");
-
-        // // Check if any of the required fields are empty
-        // if (
-        //     titleInput.value.trim() === "" ||
-        //     priceInput.value.trim() === "" ||
-        //     durationDaysInput.value.trim() === "" ||
-        //     durationWeeksInput.value.trim() === ""
-        // ) {
-        //     alert("Please fill in all required fields.");
-        //     return; // Don't proceed if any required field is empty
-        // }
 
         this.modalHeader.innerHTML = 'Edit Service Data';
         this.editingItemId = itemId;
@@ -215,6 +202,7 @@ class ServiceManager {
         document.getElementById("priceInput").value = itemData.price;
         document.getElementById("durationDaysInput").value = itemData.durationDays;
         document.getElementById("durationWeeksInput").value = itemData.durationWeeks;
+        document.getElementById("benefitsInput").value = itemData.benefits;
 
     }
 
@@ -251,9 +239,10 @@ class ServiceManager {
         const inputFields = [
             "titleInput",
             "descriptionInput",
+            "priceInput",
             "durationDaysInput",
             "durationWeeksInput",
-            "priceInput"
+            "benefitsInput"
         ];
 
         inputFields.forEach((fieldId) => {
