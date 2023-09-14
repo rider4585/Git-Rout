@@ -126,7 +126,7 @@ function handleMajorMedicalConditionCheckbox() {
 function toggleOtherMedicalConditionCheckbox() {
     const otherConditionCheckbox = document.getElementById("condition-other");
     const otherConditionDetails = document.getElementById("other-medical-condition-details-container");
-    
+
     toggleElementVisibility("other-medical-condition-details-container", otherConditionCheckbox.checked);
 }
 
@@ -219,9 +219,9 @@ function sendData() {
         health_questions: healthQuestionJSON,
         health_conditions: healthConditionsJSON,
         has_health_issues: hasHealthIssues,
-        goals_services : {
-            goals : goals,
-            services : servicesInterested,
+        goals_services: {
+            goals: goals,
+            services: servicesInterested,
         }
     };
     SendDataToFlutter.postMessage(JSON.stringify(masterJson));
@@ -233,16 +233,16 @@ function sendData() {
 function checkIfHealthIssues() {
     let hasHealthCondition = false;
     let checkedRadioOptions = document.querySelectorAll('.hasHealthCondition input[type="radio"]:checked');
-    if(checkedRadioOptions.length > 0){
+    if (checkedRadioOptions.length > 0) {
         checkedRadioOptions.forEach(radioOption => {
-            if(radioOption.value == 'yes'){
+            if (radioOption.value == 'yes') {
                 hasHealthCondition = true;
             }
         });
     }
 
     let checkedHealthCondition = document.querySelectorAll('input[name="health-condition[]"]:checked');
-    if(checkedHealthCondition.length > 0){
+    if (checkedHealthCondition.length > 0) {
         hasHealthCondition = true;
     }
 
@@ -359,7 +359,7 @@ function setData(data) {
     if (data?.data?.health_questions) {
         populateHealthQuestions(data.data.health_questions);
     }
-    
+
 }
 
 function loadInterests(interested) {
@@ -408,12 +408,12 @@ function populatePersonalDetails(personalDetails) {
     const allInterests = document.querySelectorAll("input[name='interest[]']");
     allInterests.forEach((interest) => {
         if (personalDetails.selectedServices) {
-            if(personalDetails.selectedServices.includes(interest.value)){
+            if (personalDetails.selectedServices.includes(interest.value)) {
                 interest.checked = true;
             }
         }
     });
-    if(personalDetails.goals){
+    if (personalDetails.goals) {
         document.getElementById("goals").value = personalDetails.goals.join(', ');
     }
 }
@@ -472,8 +472,8 @@ function populateHealthQuestions(healthQuestions) {
             const radioName = getRadioNameByQuestion(question);
             const radio = document.querySelector(`input[name="${radioName}"][value="${value}"]`);
 
-            if(radio){
-                if(value){
+            if (radio) {
+                if (value) {
                     radio.checked = true;
                 } else {
                     radio.checked = false;
@@ -483,9 +483,9 @@ function populateHealthQuestions(healthQuestions) {
             const inputName = getSectionIdByQuestion(question);
             const input = document.getElementById(inputName);
 
-            if(input){
-                if(value){
-                    if(input.style.display === 'none'){
+            if (input) {
+                if (value) {
+                    if (input.style.display === 'none') {
                         input.style.display = 'block';
                     }
                     document.getElementById(inputName.replace("-container", "")).value = value;
@@ -538,18 +538,110 @@ function getSectionIdByQuestion(question) {
 
 
 const testJson = {
-    "services" : ['Yoga', 'Zumba'],
+    "services": ['Yoga', 'Zumba'],
     // "hideElements" : ['section-three', 'submit-button'],
-    "data" : {"personal_details":{"name":"raviraj","email":"raviraj@gmail.com","phoneNumber":"+917798476162","selectedBirthDate":"1999-10-24","address":"ubfiweug","gender":"Male","bloodGroup":"AB+","maritalStatus":"Married","anniversaryDate":"1999-10-24","formFilledDate":"2023-09-12","selectedServices":["Zumba"],"age":"23","goals":["uhediueh"]},"emergency_contact":{"name":"ravi","contact":"7798476162"},"health_questions":{"Has a doctor ever said that you have a heart condition and that you should only do physical activity recommended by a doctor?":"yes","Do you feel pain in your chest while doing any physical activity?":"yes","In the past month, have you had chest pain when you were not doing physical activity?":"yes","Do you lose your balance because of dizziness or do you ever lose consciousness?":"yes","Do you have a bone or joint problem that could be made worse by a change in your physical activity?":"yes","Is your doctor currently prescribing drugs for blood pressure or heart condition?":"yes","Do you know of any other reason why you should not do physical activity?":"yes","Other Reason Details":"Hello","Are you currently doing any physical activity?":"yes","Details of Current Physical Activity":"Hello","Have you done any physical activity before?":"yes","Details of Previous Physical Activity":"Hello","Are you currently taking any medications?":"yes","Specify the medications you are currently taking":"Hello","Are you pregnant?":"yes","Number of Pregnancy Months":"6","Do you have a physician?":"yes","Physician Details":"Hello","Have you gone through any surgery in the past 6 months?":"yes","Surgery Details":"Hello","Have you experienced any injuries due to accidents?":"yes","Injury Details":"Hello","Details of Alcohol Consumption":"yes","Do you smoke?":"yes","Family Health History":"yes"},"health_conditions":["Gout","Emphysema","Swollen or Painful Joints","Other","new","old"]}
+    "data": {
+        "personal_details": {
+            "name": "raviraj",
+            "email": "raviraj@gmail.com",
+            "phoneNumber": "+917798476162",
+            "selectedBirthDate": "1999-10-24",
+            "address": "ubfiweug",
+            "gender": "Male",
+            "bloodGroup": "AB+",
+            "maritalStatus": "Married",
+            "anniversaryDate": "1999-10-24",
+            "formFilledDate": "2023-09-12",
+            "selectedServices": ["Zumba"],
+            "age": "23",
+            "goals": ["uhediueh"]
+        },
+        "emergency_contact": {
+            "name": "ravi",
+            "contact": "7798476162"
+        },
+        "health_questions": {
+            "Has a doctor ever said that you have a heart condition and that you should only do physical activity recommended by a doctor?": "yes",
+            "Do you feel pain in your chest while doing any physical activity?": "yes",
+            "In the past month, have you had chest pain when you were not doing physical activity?": "yes",
+            "Do you lose your balance because of dizziness or do you ever lose consciousness?": "yes",
+            "Do you have a bone or joint problem that could be made worse by a change in your physical activity?": "yes",
+            "Is your doctor currently prescribing drugs for blood pressure or heart condition?": "yes",
+            "Do you know of any other reason why you should not do physical activity?": "yes",
+            "Other Reason Details": "Hello",
+            "Are you currently doing any physical activity?": "yes",
+            "Details of Current Physical Activity": "Hello",
+            "Have you done any physical activity before?": "yes",
+            "Details of Previous Physical Activity": "Hello",
+            "Are you currently taking any medications?": "yes",
+            "Specify the medications you are currently taking": "Hello",
+            "Are you pregnant?": "yes",
+            "Number of Pregnancy Months": "6",
+            "Do you have a physician?": "yes",
+            "Physician Details": "Hello",
+            "Have you gone through any surgery in the past 6 months?": "yes",
+            "Surgery Details": "Hello",
+            "Have you experienced any injuries due to accidents?": "yes",
+            "Injury Details": "Hello",
+            "Details of Alcohol Consumption": "yes",
+            "Do you smoke?": "yes",
+            "Family Health History": "yes"
+        },
+        "health_conditions": ["Gout", "Emphysema", "Swollen or Painful Joints", "Other", "new", "old"]
+    }
 }
 
 const tempVar = {
-    "services": ['Yoga', 'Zumba'],
-    "data": {
-      "personal_details": {
-        "phoneNumber": 7798476162,
-      }
+    services: ['Yoga', 'Zumba'],
+    hideElements: ['section-three', 'submit-button'],
+    data: {
+        personal_details: {
+            bloodGroup: 'O+',
+            anniversaryDate: '2001-08-24',
+            address: 'Ganesh Nagar',
+            phoneNumber: 7776091923,
+            gender: 'Male',
+            selectedBirthDate: '2000-04-01',
+            name: 'Vaibhav Kshirsagar',
+            age: 23,
+            email: 'vaibhavkshirsagar225@gmail.com',
+            formFilledDate: '2023-09-14',
+            selectedServices: ['Yoga', 'Zumba'],
+            goals: ['6 pack']
+        },
+        emergency_contact: {
+            contact: 1234567890,
+            name: 'Bajirao Kshirsagar'
+        },
+        health_questions: {
+            'Do you lose your balance because of dizziness or do you ever lose consciousness?': 'yes',
+            'Details of Previous Physical Activity': "",
+            'Are you currently taking any medications?': 'no',
+            'Are you pregnant?': 'no',
+            'Surgery Details': "",
+            'Do you smoke?': 'no',
+            'Do you feel pain in your chest while doing any physical activity?': 'no',
+            'Has a doctor ever said that you have a heart condition and that you should only do physical activity recommended by a doctor?': 'no',
+            'Have you experienced any injuries due to accidents?': 'no',
+            'Number of Pregnancy Months': "",
+            'Have you done any physical activity before?': 'no',
+            'Physician Details': "",
+            'Other Reason Details': "",
+            'Specify the medications you are currently taking': "",
+            'Do you know of any other reason why you should not do physical activity?': 'no',
+            'Is your doctor currently prescribing drugs for blood pressure or heart condition?': 'no',
+            'Do you have a bone or joint problem that could be made worse by a change in your physical activity?': 'no',
+            'Have you gone through any surgery in the past 6 months?': 'no',
+            'Family Health History': 'no',
+            'In the past month, have you had chest pain when you were not doing physical activity?': 'no',
+            'Do you have a physician?': 'no',
+            'Details of Alcohol Consumption': 'No',
+            'Details of Current Physical Activity': "",
+            'Injury Details': "",
+            'Are you currently doing any physical activity?': 'no'
+        },
+        health_conditions: ['Bronchitis', 'Diabetes', 'Stomach Problem', 'Shortness of Breath', 'High Cholesterol', 'Impaired Fasting Glucose', 'Hormonal Imbalance', 'Limited Range of Motion 2']
     }
-  }
+}
 
-setData(tempVar);
+// setData(tempVar);
