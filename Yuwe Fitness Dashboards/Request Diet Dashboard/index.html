@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diet Request Dashboard</title>
+    <!-- Add Bootstrap CSS link -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Add your custom CSS styles here */
+    </style>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h1>Request Diet</h1>
+        <form id="dietRequestForm">
+            <div class="form-group">
+                <label for="height">Height (cm):</label>
+                <input type="number" class="form-control" id="height" name="height" required>
+            </div>
+            <div class="form-group">
+                <label for="weight">Weight (kg):</label>
+                <input type="number" class="form-control" id="weight" name="weight" required>
+            </div>
+            <div class="form-group">
+                <label for="bodyFat">Body Fat (%):</label>
+                <input type="number" class="form-control" id="bodyFat" name="bodyFat">
+            </div>
+            <div class="form-group">
+                <label for="visceralFat">Visceral Fat:</label>
+                <input type="text" class="form-control" id="visceralFat" name="visceralFat">
+            </div>
+            <div class="form-group">
+                <label for="goals">Goals:</label>
+                <textarea class="form-control" id="goals" name="goals" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="allergies">Allergies:</label>
+                <input type="text" class="form-control" id="allergies" name="allergies">
+            </div>
+            <div class="form-group">
+                <label for="medicalConditions">Medical Conditions:</label>
+                <input type="text" class="form-control" id="medicalConditions" name="medicalConditions">
+            </div>
+            <div class="form-group">
+                <label for="foodPreferences">Food Preferences:</label>
+                <input type="text" class="form-control" id="foodPreferences" name="foodPreferences">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit Request</button>
+        </form>
+    </div>
+    <!-- Add Bootstrap JS and your custom JS scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const dietRequestForm = document.getElementById("dietRequestForm");
+
+            dietRequestForm.addEventListener("submit", function (event) {
+                event.preventDefault();
+
+                // Get form inputs
+                const height = parseFloat(document.getElementById("height").value);
+                const weight = parseFloat(document.getElementById("weight").value);
+                const bodyFat = parseFloat(document.getElementById("bodyFat").value);
+                const visceralFat = document.getElementById("visceralFat").value;
+                const goals = document.getElementById("goals").value;
+                const allergies = document.getElementById("allergies").value;
+                const medicalConditions = document.getElementById("medicalConditions").value;
+                const foodPreferences = document.getElementById("foodPreferences").value;
+
+                // Basic validation (you can add more)
+                if (isNaN(height) || isNaN(weight)) {
+                    alert("Please enter valid height and weight.");
+                } else {
+                    // Submit the form (you can send data to a server here)
+                    alert("Diet request submitted successfully!");
+                    dietRequestForm.reset(); // Clear the form
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
