@@ -1,0 +1,51 @@
+/* Add your custom CSS styles here */
+:root {
+    font-size: 1.15em;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.container {
+    border: 1px solid #dc3545;
+    margin: 1em auto;
+    border-radius: 0.2em;
+    padding: 1em;
+    max-width: 95vw;
+}
+
+.form-group {
+    margin: 1em 0;
+}
+
+.form-control {
+    box-shadow: none !important;
+    border: 1px solid #4950575b;
+}
+
+label {
+    padding-bottom: 10px;
+}
+
+.red-border:focus,
+.red-border:active,
+.red-border:hover {
+    /* outline: none !important; */
+    border: 1px solid #dc3545;
+}
+
+.btn-primary {
+    background-color: #dc3545;
+    border-color: #dc3545;
+    color: white;
+}
+
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary:hover {
+    background-color: #c41d2e !important;
+    border-color: #c41d2e !important;
+    color: white !important;
+    box-shadow: none !important;
+}

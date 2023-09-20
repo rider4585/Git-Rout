@@ -6,83 +6,59 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Diet Request Dashboard</title>
     <!-- Add Bootstrap CSS link -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-        /* Add your custom CSS styles here */
-    </style>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./index.css">
 </head>
 
 <body>
-    <div class="container mt-5">
-        <h1>Request Diet</h1>
+    <div class="container m2-5">
+        <h1 class="text-center">Diet Request Form</h1>
         <form id="dietRequestForm">
             <div class="form-group">
                 <label for="height">Height (cm):</label>
-                <input type="number" class="form-control" id="height" name="height" required>
+                <input type="number" class="form-control red-border" id="height" name="height">
             </div>
             <div class="form-group">
                 <label for="weight">Weight (kg):</label>
-                <input type="number" class="form-control" id="weight" name="weight" required>
+                <input type="number" class="form-control red-border" id="weight" name="weight">
             </div>
             <div class="form-group">
                 <label for="bodyFat">Body Fat (%):</label>
-                <input type="number" class="form-control" id="bodyFat" name="bodyFat">
+                <input type="number" class="form-control red-border" id="bodyFat" name="bodyFat">
             </div>
             <div class="form-group">
                 <label for="visceralFat">Visceral Fat:</label>
-                <input type="text" class="form-control" id="visceralFat" name="visceralFat">
+                <input type="text" class="form-control red-border" id="visceralFat" name="visceralFat">
             </div>
             <div class="form-group">
                 <label for="goals">Goals:</label>
-                <textarea class="form-control" id="goals" name="goals" rows="3"></textarea>
+                <textarea class="form-control red-border" id="goals" name="goals" rows="3"></textarea>
             </div>
             <div class="form-group">
-                <label for="allergies">Allergies:</label>
-                <input type="text" class="form-control" id="allergies" name="allergies">
+                <label for="allergies">Allergies (Comma separated):</label>
+                <input type="text" class="form-control red-border" id="allergies" name="allergies" required>
             </div>
             <div class="form-group">
-                <label for="medicalConditions">Medical Conditions:</label>
-                <input type="text" class="form-control" id="medicalConditions" name="medicalConditions">
+                <label for="medicalConditions">Medical Conditions (Comma separated):</label>
+                <input type="text" class="form-control red-border" id="medicalConditions" name="medicalConditions">
             </div>
             <div class="form-group">
                 <label for="foodPreferences">Food Preferences:</label>
-                <input type="text" class="form-control" id="foodPreferences" name="foodPreferences">
+                <select class="form-control red-border" id="foodPreferences" name="foodPreferences" required>
+                    <option value="" disabled selected>Select Food Preference</option>
+                    <option value="V">Vegetarian</option>
+                    <option value="E">Eggitarian</option>
+                    <option value="N">Non-Vegetarian</option>
+                </select>
             </div>
-            <button type="submit" class="btn btn-primary">Submit Request</button>
+            <button type="submit" class="btn btn-primary mt-3 m1-3 w-100">Submit Request</button>
         </form>
     </div>
     <!-- Add Bootstrap JS and your custom JS scripts -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const dietRequestForm = document.getElementById("dietRequestForm");
-
-            dietRequestForm.addEventListener("submit", function (event) {
-                event.preventDefault();
-
-                // Get form inputs
-                const height = parseFloat(document.getElementById("height").value);
-                const weight = parseFloat(document.getElementById("weight").value);
-                const bodyFat = parseFloat(document.getElementById("bodyFat").value);
-                const visceralFat = document.getElementById("visceralFat").value;
-                const goals = document.getElementById("goals").value;
-                const allergies = document.getElementById("allergies").value;
-                const medicalConditions = document.getElementById("medicalConditions").value;
-                const foodPreferences = document.getElementById("foodPreferences").value;
-
-                // Basic validation (you can add more)
-                if (isNaN(height) || isNaN(weight)) {
-                    alert("Please enter valid height and weight.");
-                } else {
-                    // Submit the form (you can send data to a server here)
-                    alert("Diet request submitted successfully!");
-                    dietRequestForm.reset(); // Clear the form
-                }
-            });
-        });
-    </script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+    <script src="./index.js" defer></script>
 </body>
 
 </html>
