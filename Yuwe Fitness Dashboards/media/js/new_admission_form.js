@@ -6,6 +6,7 @@ const interestError = document.getElementById('interests-error');
 const focusOnInterests = document.getElementById('focus-interests');
 const healthConditionError = document.getElementById('health-condition-error');
 const goalsArray = document.querySelector('#interests');
+let isSetData = false;
 
 consentCheckbox.addEventListener("invalid", (event) => {
     event.preventDefault();
@@ -69,6 +70,11 @@ function toggleElementVisibility(id, show) {
             input.disabled = false;
         }
     }
+
+    if (isSetData) {
+        disableAllCheckboxesAndRadios();
+        document.getElementById('other-medical-condition-details').setAttribute('disabled', '');
+    }
 }
 
 function togglePregnancyMonths(show) {
@@ -123,11 +129,18 @@ function handleMajorMedicalConditionCheckbox() {
 }
 
 // Function to handle checkbox selection for "Other Medical Condition"
-function toggleOtherMedicalConditionCheckbox() {
+function toggleOtherMedicalConditionCheckbox(conditionsNotInList, isValue) {
     const otherConditionCheckbox = document.getElementById("condition-other");
     const otherConditionDetails = document.getElementById("other-medical-condition-details-container");
 
     toggleElementVisibility("other-medical-condition-details-container", otherConditionCheckbox.checked);
+
+    if (isValue) {
+        setField("other-medical-condition-details", conditionsNotInList.join(", "), true);
+    } else {
+        setField("other-medical-condition-details", "", false);
+    }
+
 }
 
 
@@ -331,6 +344,7 @@ function isThisYuWeWebPage() {
 function setData(data) {
     let services = "";
     let elementsToHide = "";
+    isSetData = true;
 
     if (data?.services) {
         services = data.services;
@@ -389,20 +403,22 @@ function hideElements(elements) {
 
 function populatePersonalDetails(personalDetails) {
     // Populate form fields with personalDetails object properties
-    document.getElementById("full-name").value = personalDetails.name || "";
-    document.getElementById("email").value = personalDetails.email || "";
-    document.getElementById("mobile").value = personalDetails.phoneNumber || ""; // Remove '+91'
-    document.getElementById("birth-date").value = personalDetails.selectedBirthDate || "";
-    document.getElementById("address").value = personalDetails.address || "";
-    document.getElementById("gender").value = personalDetails.gender || "";
-    document.getElementById("blood-group").value = personalDetails.bloodGroup || "";
-    document.getElementById("marital-status").value = personalDetails.maritalStatus || "";
+    setField("full-name", personalDetails.name, true);
+    setField("email", personalDetails.email, true);
+    setField("mobile", personalDetails.phoneNumber.replace('+91', ''), true); // Remove '+91'
+    setField("birth-date", personalDetails.selectedBirthDate, true);
+    setField("address", personalDetails.address, true);
+    setField("gender", personalDetails.gender, true);
+    setField("blood-group", personalDetails.bloodGroup, true);
+    setField("marital-status", personalDetails.maritalStatus, true);
+
     const anniversaryDateGroup = document.getElementById("anniversary-date-group");
     if (personalDetails?.maritalStatus === 'Married') {
         anniversaryDateGroup.style.display = "block";
-        document.getElementById("anniversary-date").value = personalDetails.anniversaryDate || "";
+        setField("anniversary-date", personalDetails.anniversaryDate, true);
     } else {
         anniversaryDateGroup.style.display = "none";
+        setField("anniversary-date", "", true);
     }
 
     const allInterests = document.querySelectorAll("input[name='interest[]']");
@@ -410,17 +426,19 @@ function populatePersonalDetails(personalDetails) {
         if (personalDetails.selectedServices) {
             if (personalDetails.selectedServices.includes(interest.value)) {
                 interest.checked = true;
+                interest.disabled = true; // Make it non-editable
             }
         }
     });
+
     if (personalDetails.goals) {
-        document.getElementById("goals").value = personalDetails.goals.join(', ');
+        setField("goals", personalDetails.goals.join(', '), true);
     }
 }
 
 function populateEmergencyContact(emergencyContact) {
-    document.querySelector('input[name="emergency_contact_name"]').value = emergencyContact.name;
-    document.querySelector('input[name="emergency_contact_number"]').value = emergencyContact.contact;
+    setField("emergency_contact_name", emergencyContact.name, true);
+    setField("emergency_contact_number", emergencyContact.contact, true);
 }
 
 function populateHealthConditions(healthConditions) {
@@ -437,6 +455,7 @@ function populateHealthConditions(healthConditions) {
         conditionCheckboxes.forEach((checkbox) => {
             if (healthConditions.includes(checkbox.value)) {
                 checkbox.checked = true;
+                checkbox.disabled = true; // Make it non-editable
             } else {
                 checkbox.checked = false;
             }
@@ -456,12 +475,10 @@ function populateHealthConditions(healthConditions) {
 
     if (conditionsNotInList.length > 0) {
         otherConditionCheckbox.checked = true;
-        toggleOtherMedicalConditionCheckbox();
-        otherConditionDetails.value = conditionsNotInList.join(", ");
+        toggleOtherMedicalConditionCheckbox(conditionsNotInList, true);
     } else {
         otherConditionCheckbox.checked = false;
-        toggleOtherMedicalConditionCheckbox();
-        otherConditionDetails.value = "";
+        toggleOtherMedicalConditionCheckbox(conditionsNotInList, false);
     }
 }
 
@@ -478,6 +495,7 @@ function populateHealthQuestions(healthQuestions) {
                 } else {
                     radio.checked = false;
                 }
+                radio.disabled = true; // Make it non-editable
             }
 
             const inputName = getSectionIdByQuestion(question);
@@ -488,11 +506,36 @@ function populateHealthQuestions(healthQuestions) {
                     if (input.style.display === 'none') {
                         input.style.display = 'block';
                     }
-                    document.getElementById(inputName.replace("-container", "")).value = value;
+                    setField(inputName.replace("-container", ""), value, true); // Make it non-editable
                 }
             }
         }
     }
+}
+
+function setField(id, value, disable = false) {
+    const element = document.getElementById(id);
+    if (element && value) {
+        element.value = value || "";
+        if (disable) {
+            element.disabled = true;
+        }
+    }
+}
+
+function disableAllCheckboxesAndRadios() {
+    const checkboxesAndRadios = document.querySelectorAll("input[type='checkbox'], input[type='radio']");
+
+    checkboxesAndRadios.forEach((input) => {
+        input.disabled = true;
+    });
+
+    // Additionally, you may want to disable elements specifically in the medical conditions section
+    const medicalConditionCheckboxes = document.querySelectorAll(".form-check-input");
+    medicalConditionCheckboxes.forEach((input) => {
+        input.disabled = true;
+    });
+
 }
 
 function getRadioNameByQuestion(question) {
@@ -534,61 +577,58 @@ function getSectionIdByQuestion(question) {
     return questionSectionMap[question] || "";
 }
 
-
-
-
 const testJson = {
     "services": ['Yoga', 'Zumba'],
     // "hideElements" : ['section-three', 'submit-button'],
-    // "data": {
-    //     "personal_details": {
-    //         "name": "raviraj",
-    //         "email": "raviraj@gmail.com",
-    //         "phoneNumber": "+917798476162",
-    //         "selectedBirthDate": "1999-10-24",
-    //         "address": "ubfiweug",
-    //         "gender": "Male",
-    //         "bloodGroup": "AB+",
-    //         "maritalStatus": "Married",
-    //         "anniversaryDate": "1999-10-24",
-    //         "formFilledDate": "2023-09-12",
-    //         "selectedServices": ["Zumba"],
-    //         "age": "23",
-    //         "goals": ["uhediueh"]
-    //     },
-    //     "emergency_contact": {
-    //         "name": "ravi",
-    //         "contact": "7798476162"
-    //     },
-    //     "health_questions": {
-    //         "Has a doctor ever said that you have a heart condition and that you should only do physical activity recommended by a doctor?": "yes",
-    //         "Do you feel pain in your chest while doing any physical activity?": "yes",
-    //         "In the past month, have you had chest pain when you were not doing physical activity?": "yes",
-    //         "Do you lose your balance because of dizziness or do you ever lose consciousness?": "yes",
-    //         "Do you have a bone or joint problem that could be made worse by a change in your physical activity?": "yes",
-    //         "Is your doctor currently prescribing drugs for blood pressure or heart condition?": "yes",
-    //         "Do you know of any other reason why you should not do physical activity?": "yes",
-    //         "Other Reason Details": "Hello",
-    //         "Are you currently doing any physical activity?": "yes",
-    //         "Details of Current Physical Activity": "Hello",
-    //         "Have you done any physical activity before?": "yes",
-    //         "Details of Previous Physical Activity": "Hello",
-    //         "Are you currently taking any medications?": "yes",
-    //         "Specify the medications you are currently taking": "Hello",
-    //         "Are you pregnant?": "yes",
-    //         "Number of Pregnancy Months": "6",
-    //         "Do you have a physician?": "yes",
-    //         "Physician Details": "Hello",
-    //         "Have you gone through any surgery in the past 6 months?": "yes",
-    //         "Surgery Details": "Hello",
-    //         "Have you experienced any injuries due to accidents?": "yes",
-    //         "Injury Details": "Hello",
-    //         "Details of Alcohol Consumption": "yes",
-    //         "Do you smoke?": "yes",
-    //         "Family Health History": "yes"
-    //     },
-    //     "health_conditions": ["Gout", "Emphysema", "Swollen or Painful Joints", "Other", "new", "old"]
-    // }
+    "data": {
+        "personal_details": {
+            "name": "raviraj Mahendra Bugge",
+            "email": "raviraj@gmail.com",
+            "phoneNumber": "+917798476162",
+            "selectedBirthDate": "1999-10-24",
+            "address": "ubfiweug",
+            "gender": "Male",
+            "bloodGroup": "AB+",
+            "maritalStatus": "Married",
+            "anniversaryDate": "1999-10-24",
+            "formFilledDate": "2023-09-12",
+            "selectedServices": ["Zumba"],
+            "age": "23",
+            "goals": ["uhediueh"]
+        },
+        "emergency_contact": {
+            "name": "Ravi",
+            "contact": "7798476162"
+        },
+        "health_questions": {
+            "Has a doctor ever said that you have a heart condition and that you should only do physical activity recommended by a doctor?": "yes",
+            "Do you feel pain in your chest while doing any physical activity?": "yes",
+            "In the past month, have you had chest pain when you were not doing physical activity?": "yes",
+            "Do you lose your balance because of dizziness or do you ever lose consciousness?": "yes",
+            "Do you have a bone or joint problem that could be made worse by a change in your physical activity?": "yes",
+            "Is your doctor currently prescribing drugs for blood pressure or heart condition?": "yes",
+            "Do you know of any other reason why you should not do physical activity?": "yes",
+            "Other Reason Details": "Hello",
+            "Are you currently doing any physical activity?": "yes",
+            "Details of Current Physical Activity": "Hello",
+            "Have you done any physical activity before?": "yes",
+            "Details of Previous Physical Activity": "Hello",
+            "Are you currently taking any medications?": "yes",
+            "Specify the medications you are currently taking": "Hello",
+            "Are you pregnant?": "yes",
+            "Number of Pregnancy Months": "6",
+            "Do you have a physician?": "yes",
+            "Physician Details": "Hello",
+            "Have you gone through any surgery in the past 6 months?": "yes",
+            "Surgery Details": "Hello",
+            "Have you experienced any injuries due to accidents?": "yes",
+            "Injury Details": "Hello",
+            "Details of Alcohol Consumption": "yes",
+            "Do you smoke?": "yes",
+            "Family Health History": "yes"
+        },
+        "health_conditions": ["Gout", "Emphysema", "Swollen or Painful Joints", "Other", "new", "old"]
+    }
 }
 
-// setData(testJson);
+setData(testJson);
