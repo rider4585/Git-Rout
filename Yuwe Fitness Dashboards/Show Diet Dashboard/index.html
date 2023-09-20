@@ -5,72 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Diet Plan Form</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="styles.css">
-    <style>
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6,
-        p {
-            margin: 0;
-        }
+    <link rel="stylesheet" href="./index.css">
 
-        th,
-        td {
-            font-size: 0.8em !important;
-            padding: 0.5em !important;
-            text-align: center;
-            vertical-align: middle !important;
-        }
-
-        #table {
-            overflow: scroll;
-        }
-
-        #food-item {
-            text-wrap: nowrap;
-            padding-left: 6em !important;
-            padding-right: 6em !important;
-        }
-
-        #quantity,
-        #fats,
-        #carbs,
-        #protein,
-        #calories {
-            padding-left: 3em !important;
-            padding-right: 3em !important;
-        }
-
-        #additional {
-            padding-left: 4em !important;
-            padding-right: 4em !important;
-        }
-
-        .note {
-            font-size: 0.5em !important;
-            font-style: italic;
-        }
-
-        .signature {
-            font-style: oblique;
-            font-size: 0.8em !important;
-        }
-
-        .image, .text-center{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-weight: 900;
-        }
-
-        img {
-            width: 50%;
-        }
-    </style>
 </head>
 
 <body>
@@ -80,7 +18,7 @@
                 <img src="../media/img/yuwe-fitness-light.png" alt="Left Logo">
             </div>
             <div class="col-4 text-center">
-                <h1 style="font-size: 1em !important;">Diet Plan</h1>
+                <h1 id="heading">Diet Plan</h1>
             </div>
             <div class="col-4 image">
                 <img src="../media/img/yuwe-lifestyle-logo.png" alt="Right Logo">
@@ -88,31 +26,35 @@
         </div>
         <div class="row mt-1">
             <div class="col-6">
-                <p style="font-size: 0.8em !important;"><strong>Name:</strong> Raviraj Bugge</p>
+                <p style="font-size: 0.8em !important;"><strong>Name:</strong> <span id="name">Raviraj Bugge</span></p>
             </div>
             <div class="col-6">
-                <p class="text-right" style="font-size: 0.8em !important;"><strong>Gender:</strong> Male</p>
-            </div>
-        </div>
-        <div class="row mt-1">
-            <div class="col-6">
-                <p style="font-size: 0.8em !important;"><strong>Current Weight:</strong> 72 Kg</p>
-            </div>
-            <div class="col-6">
-                <p class="text-right" style="font-size: 0.8em !important;"><strong>Goal:</strong> Fat Loss</p>
+                <p class="text-right" style="font-size: 0.8em !important;"><strong>Gender:</strong> <span
+                        id="gender">Male</span></p>
             </div>
         </div>
         <div class="row mt-1">
             <div class="col-6">
-                <p style="font-size: 0.8em !important;"><strong>Initial BMR:</strong> 1422</p>
+                <p style="font-size: 0.8em !important;"><strong>Current Weight:</strong> <span id="weight">72 Kg</span>
+                </p>
             </div>
             <div class="col-6">
-                <p class="text-right" style="font-size: 0.8em !important;"><strong>Height:</strong> 182 cm</p>
+                <p class="text-right" style="font-size: 0.8em !important;"><strong>Goal:</strong> <span id="goal">Fat
+                        Loss</span></p>
+            </div>
+        </div>
+        <div class="row mt-1">
+            <div class="col-6">
+                <p style="font-size: 0.8em !important;"><strong>Initial BMR:</strong> <span id="bmr">1422</span></p>
+            </div>
+            <div class="col-6">
+                <p class="text-right" style="font-size: 0.8em !important;"><strong>Height:</strong> <span
+                        id="height">182 cm</span></p>
             </div>
         </div>
         <div class="row mt-1">
             <div class="col-12">
-                <p style="font-size: 0.8em !important;"><strong>Age:</strong> 24</p>
+                <p style="font-size: 0.8em !important;"><strong>Age:</strong> <span id="age">24</span></p>
             </div>
         </div>
         <div class="row mt-4">
@@ -120,7 +62,7 @@
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th id="food-item">Food Item</th>
+                            <th id="food-item" style="background-color: #dc3545;">Food Item</th>
                             <th id="quantity">Quantity</th>
                             <th id="fats">Fats (gms)</th>
                             <th id="carbs">Carbs (gms)</th>
@@ -132,9 +74,10 @@
                     <tbody>
                         <tr>
                             <td colspan="6"><strong>Breakfast</strong></td>
-                            <td rowspan="12" id="additional">Drink 4-5 liters water daily, without fail - NO COMPROMISE
+                            <td rowspan="17" id="additional">Drink 4-5 liters water daily, without fail - NO COMPROMISE
                                 ON THIS</td>
                         </tr>
+                        <tr id="breakfast-items">
                         <tr>
                             <td>Scrambled Eggs</td>
                             <td>2 eggs</td>
@@ -151,10 +94,13 @@
                             <td>10g</td>
                             <td>120</td>
                         </tr>
+                        </tr>
+
 
                         <tr>
                             <td colspan="6"><strong>Lunch</strong></td>
                         </tr>
+                        <tr id="lunch-items">
                         <tr>
                             <td>Grilled Chicken Breast</td>
                             <td>4 oz</td>
@@ -171,10 +117,13 @@
                             <td>8g</td>
                             <td>200</td>
                         </tr>
+                        </tr>
+
 
                         <tr>
                             <td colspan="6"><strong>Evening Snacks</strong></td>
                         </tr>
+                        <tr>
                         <tr>
                             <td>Almonds</td>
                             <td>1 oz</td>
@@ -191,10 +140,12 @@
                             <td>1g</td>
                             <td>15</td>
                         </tr>
+                        </tr>
 
                         <tr>
                             <td colspan="6"><strong>Dinner</strong></td>
                         </tr>
+                        <tr>
                         <tr>
                             <td>Baked Salmon</td>
                             <td>6 oz</td>
@@ -210,6 +161,16 @@
                             <td>3g</td>
                             <td>2g</td>
                             <td>20</td>
+                        </tr>
+                        </tr>
+
+                        <tr>
+                            <td colspan="2"><strong>Total Macros</strong></td>
+                            <td><strong id="total-fat">Sum of Fats</strong></td>
+                            <td><strong id="total-carbs">Sum of Carbs</strong></td>
+                            <td><strong id="total-protein">Sum of Protein</strong></td>
+                            <td><strong id="total-calories">Sum of Calories</strong></td>
+                            <!-- <td colspan="0">&nbsp;</td> -->
                         </tr>
                     </tbody>
                 </table>
@@ -236,7 +197,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="script.js"></script>
+    <script type="module" src="./index.js" defer></script>
 </body>
 
 </html>

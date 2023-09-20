@@ -1,0 +1,103 @@
+::-webkit-scrollbar {
+    display: none;
+}
+
+#heading {
+    font-size: 1em !important;
+    font-weight: bolder;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin: 0;
+}
+
+th {
+    background-color: #dc3545 !important;
+    color: white !important;
+}
+
+td:has(strong) {
+    background-color: #dc35465e !important;
+    color: black !important;
+}
+
+th,
+td {
+    font-size: 0.8em !important;
+    padding: 0.5em !important;
+    text-align: center;
+    vertical-align: middle !important;
+    border: 1px solid black !important;
+}
+
+#table {
+    overflow: scroll;
+    border-collapse: collapse;
+    box-sizing: border-box;
+}
+
+#food-item {
+    text-wrap: nowrap;
+    padding-left: 6em !important;
+    padding-right: 6em !important;
+}
+
+#quantity,
+#fats,
+#carbs,
+#protein,
+#calories {
+    padding-left: 3em !important;
+    padding-right: 3em !important;
+}
+
+#additional {
+    padding-left: 4em !important;
+    padding-right: 4em !important;
+}
+
+.note {
+    font-size: 0.8em !important;
+    font-style: italic;
+}
+
+.signature {
+    font-style: oblique;
+    font-size: 0.8em !important;
+}
+
+.image,
+.text-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 900;
+}
+
+img {
+    width: 50%;
+}
+
+td:has(strong) {
+    background-color: #dc35465e;
+    color: black;
+}
+
+/* Add border styles for printing */
+@media print {
+
+    html {
+        -webkit-print-color-adjust: exact;
+    }
+
+    #heading {
+        font-size: 3em !important;
+        font-weight: bolder;
+    }
+}
