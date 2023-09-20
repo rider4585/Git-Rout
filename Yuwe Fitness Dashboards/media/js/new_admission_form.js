@@ -431,7 +431,7 @@ function populatePersonalDetails(personalDetails) {
         if (personalDetails.selectedServices) {
             if (personalDetails.selectedServices.includes(interest.value)) {
                 interest.checked = true;
-                if(isDisableInputs){
+                if (isDisableInputs) {
                     interest.disabled = true; // Make it non-editable
                 }
             }
@@ -462,7 +462,7 @@ function populateHealthConditions(healthConditions) {
         conditionCheckboxes.forEach((checkbox) => {
             if (healthConditions.includes(checkbox.value)) {
                 checkbox.checked = true;
-                if(isDisableInputs){
+                if (isDisableInputs) {
                     checkbox.disabled = true; // Make it non-editable
                 }
             } else {
@@ -504,7 +504,7 @@ function populateHealthQuestions(healthQuestions) {
                 } else {
                     radio.checked = false;
                 }
-                if(isDisableInputs){
+                if (isDisableInputs) {
                     radio.disabled = true; // Make it non-editable
                 }
             }
