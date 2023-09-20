@@ -1,0 +1,93 @@
+:root {
+    --primary-color-light: #ffffffdb;
+    --primary-color-dark: #232323db;
+    --background-color-light: white;
+    --background-color-dark: #181a20;
+    --card-background-light: #F6F1F1;
+    --card-background-dark: #262a34;
+    --text-color-light: black;
+    --text-color-dark: #ffffffdb;
+    --accent-color: #dc3545;
+    --accent-second-color: #c54855;
+    --accent-hover: #c13240;
+    --accent-active: #c01b2c;
+
+}
+
+body {
+    background-color: var(--background-color-light);
+    color: var(--text-color-light);
+}
+
+h1 {
+    font-size: 24px;
+    /* Smaller heading size for mobile and tablet */
+}
+
+.container {
+    padding: 20px;
+}
+
+.btn-primary {
+    background-color: var(--accent-second-color);
+    border: 1px solid var(--accent-second-color);
+    width: 100%;
+    /* Full-width button */
+    color: white;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+.btn-primary:hover {
+    background-color: var(--accent-hover);
+    border: 1px solid var(--accent-hover);
+}
+
+.btn-primary:active,
+.btn-primary:focus {
+    background-color: var(--accent-active) !important;
+    border: 1px solid var(--accent-active) !important;
+}
+
+.section {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin: 10px;
+}
+
+.item-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.item {
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.s-bold {
+    font-weight: 500;
+}
+
+/* Additional Instructions Section */
+#instructions {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+    background-color: var(--card-background-light);
+    /* You can adjust the background color */
+}
+
+#additionalInstructions {
+    width: 100%;
+    resize: vertical;
+    border: 1px solid #ccc;
+}
+
+#submit-diet {
+    background-color: var(--accent-color);
+    border: 1px solid var(--accent-color);
+}

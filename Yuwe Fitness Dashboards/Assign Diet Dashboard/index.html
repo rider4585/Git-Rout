@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Diet Creation Dashboard</title>
+    <!-- Add Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../media/css/assign_diet.css" />
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="text-center mb-2">Create Diet</h1>
+
+        <!-- Breakfast Section -->
+        <div class="mb-4">
+            <h2 class="h5 bg-secondary p-2">Breakfast</h2>
+            <div id="breakfast-list"></div>
+            <button class="btn btn-primary" data-toggle="modal" data-target="#breakfastModal">
+                Add Item
+            </button>
+        </div>
+
+        <hr />
+
+        <!-- Lunch Section -->
+        <div class="mb-4">
+            <h2 class="h5 bg-secondary p-2">Lunch</h2>
+            <div id="lunch-list"></div>
+            <button class="btn btn-primary" data-toggle="modal" data-target="#lunchModal">
+                Add Item
+            </button>
+        </div>
+
+        <hr />
+
+        <!-- Evening Snack Section -->
+        <div class="mb-4">
+            <h2 class="h5 bg-secondary p-2">Evening Snack</h2>
+            <div id="snack-list"></div>
+            <button class="btn btn-primary" data-toggle="modal" data-target="#snackModal">
+                Add Item
+            </button>
+        </div>
+
+        <hr />
+
+        <!-- Dinner Section -->
+        <div class="mb-4">
+            <h2 class="h5 bg-secondary p-2">Dinner</h2>
+            <div id="dinner-list"></div>
+            <button class="btn btn-primary" data-toggle="modal" data-target="#dinnerModal">
+                Add Item
+            </button>
+        </div>
+
+        <!-- Additional Instructions Section -->
+        <div class="mb-4">
+            <h2 class="h5 bg-secondary p-2">Additional Instructions</h2>
+            <div id="instructions">
+                <textarea class="form-control" id="additionalInstructions" rows="4"
+                    placeholder="By default, this message will be shown: Drink 4-5 liters of water daily, without fail - NO COMPROMISE ON THIS"></textarea>
+            </div>
+        </div>
+
+        <button id="submit-diet" class="btn btn-primary">
+            Submit Diet
+        </button>
+    </div>
+
+    <!-- Modals -->
+    <!-- Breakfast Modal -->
+    <div class="modal fade" id="breakfastModal" tabindex="-1" role="dialog" aria-labelledby="breakfastModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="breakfastModalLabel">
+                        Add Breakfast Item
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Add form elements for breakfast item here -->
+                    <form id="breakfast-form">
+                        <div class="form-group">
+                            <label for="breakfastItem">Item Name:</label>
+                            <input type="text" class="form-control" id="breakfastItem" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="breakfastQuantity">Quantity:</label>
+                            <input type="text" class="form-control" id="breakfastQuantity" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="breakfastFats">Fats (g):</label>
+                            <input type="number" class="form-control" id="breakfastFats" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="breakfastCarbs">Carbs (g):</label>
+                            <input type="number" class="form-control" id="breakfastCarbs" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="breakfastProtein">Protein (g):</label>
+                            <input type="number" class="form-control" id="breakfastProtein" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="breakfastCalories">Calories:</label>
+                            <input type="number" class="form-control" id="breakfastCalories" required />
+                        </div>
+                        <button id="save-breakfast" class="btn btn-primary" form="breakfast-form">
+                            Save
+                        </button>
+                        <!-- Add more input fields as needed -->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lunch Modal -->
+    <div class="modal fade" id="lunchModal" tabindex="-1" role="dialog" aria-labelledby="lunchModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="lunchModalLabel">Add Lunch Item</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Add form elements for lunch item here -->
+                    <form id="lunch-form">
+                        <div class="form-group">
+                            <label for="lunchItem">Item Name:</label>
+                            <input type="text" class="form-control" id="lunchItem" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="lunchQuantity">Quantity:</label>
+                            <input type="text" class="form-control" id="lunchQuantity" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="lunchFats">Fats (g):</label>
+                            <input type="number" class="form-control" id="lunchFats" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="lunchCarbs">Carbs (g):</label>
+                            <input type="number" class="form-control" id="lunchCarbs" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="lunchProtein">Protein (g):</label>
+                            <input type="number" class="form-control" id="lunchProtein" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="lunchCalories">Calories:</label>
+                            <input type="number" class="form-control" id="lunchCalories" required />
+                        </div>
+                        <button id="save-lunch" class="btn btn-primary" form="lunch-form">
+                            Save
+                        </button>
+                        <!-- Add more input fields as needed -->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Evening Snack Modal -->
+    <div class="modal fade" id="snackModal" tabindex="-1" role="dialog" aria-labelledby="snackModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="snackModalLabel">
+                        Add Evening Snack Item
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Add form elements for evening snack item here -->
+                    <form id="snack-form">
+                        <div class="form-group">
+                            <label for="snackItem">Item Name:</label>
+                            <input type="text" class="form-control" id="snackItem" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="snackQuantity">Quantity:</label>
+                            <input type="text" class="form-control" id="snackQuantity" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="snackFats">Fats (g):</label>
+                            <input type="number" class="form-control" id="snackFats" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="snackCarbs">Carbs (g):</label>
+                            <input type="number" class="form-control" id="snackCarbs" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="snackProtein">Protein (g):</label>
+                            <input type="number" class="form-control" id="snackProtein" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="snackCalories">Calories:</label>
+                            <input type="number" class="form-control" id="snackCalories" required />
+                        </div>
+                        <button id="save-snack" class="btn btn-primary" form="snack-form">
+                            Save
+                        </button>
+                        <!-- Add more input fields as needed -->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dinner Modal -->
+    <div class="modal fade" id="dinnerModal" tabindex="-1" role="dialog" aria-labelledby="dinnerModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="dinnerModalLabel">Add Dinner Item</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <!-- Add form elements for dinner item here -->
+                    <form id="dinner-form">
+                        <div class="form-group">
+                            <label for="dinnerItem">Item Name:</label>
+                            <input type="text" class="form-control" id="dinnerItem" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="dinnerQuantity">Quantity:</label>
+                            <input type="text" class="form-control" id="dinnerQuantity" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="dinnerFats">Fats (g):</label>
+                            <input type="number" class="form-control" id="dinnerFats" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="dinnerCarbs">Carbs (g):</label>
+                            <input type="number" class="form-control" id="dinnerCarbs" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="dinnerProtein">Protein (g):</label>
+                            <input type="number" class="form-control" id="dinnerProtein" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="dinnerCalories">Calories:</label>
+                            <input type="number" class="form-control" id="dinnerCalories" required />
+                        </div>
+                        <button id="save-dinner" class="btn btn-primary" form="dinner-form">
+                            Save
+                        </button>
+                        <!-- Add more input fields as needed -->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript and jQuery (required for Bootstrap) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="../media/js/assign_diet.js" defer></script>
+</body>
+
+</html>
