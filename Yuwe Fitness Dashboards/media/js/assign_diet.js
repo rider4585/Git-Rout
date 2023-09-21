@@ -32,7 +32,6 @@ function createUi(section, index, itemName, itemQuantity, fat, carbs, protein, c
 
 // Function to handle saving meal item
 function saveMealItem(section) {
-    console.log(section);
     return function () {
         const itemName = document.getElementById(`${section}Item`).value;
         const itemQuantity = document.getElementById(`${section}Quantity`).value;
@@ -70,15 +69,12 @@ function saveMealItem(section) {
 function updateUi(section) {
     // Get the respective container by section ID
     const sectionContainer = document.getElementById(`${section}-list`);
-    console.log(sectionContainer);
-
     // Clear the current UI for the section
     sectionContainer.innerHTML = '';
 
     // Rebuild the UI based on the updated dietJSON data
     if (dietJSON[section]) {
         dietJSON[section].forEach((item) => {
-            console.log('hi');
             createUi(section, item.index, item.itemName, item.itemQuantity, item.fat, item.carbs, item.protein, item.calories);
         });
     }
@@ -147,7 +143,7 @@ function sendData() {
     if (confirmSubmit) {
         // Perform the submission action here
         // For demonstration purposes, you can clear the diet data:
-        dietJSON["additional-instructions"] = document.getElementById('additionalInstructions').textContent;
+        dietJSON["additional-instructions"] = document.getElementById('additionalInstructions').value;
         console.log(dietJSON);
         console.log(JSON.stringify(dietJSON));
         SendDataToFlutter.postMessage(JSON.stringify(dietJSON));
