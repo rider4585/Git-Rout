@@ -92,7 +92,8 @@ function sendData() {
             'MID': document.getElementById('mid').value,
             'gender': document.getElementById('gender').value,
             'age': document.getElementById('age').value,
-            'height': document.getElementById('height').value
+            'height': document.getElementById('height').value,
+            'weight' : document.getElementById('weight').value
         },
         'Body-Fat': {
             'Body-Fat-Percentage': document.getElementById('bodyFat').value,
