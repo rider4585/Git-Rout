@@ -7,7 +7,7 @@ const jsonData = {
     "bmr": 1600,
     "height": "175 cm",
     "age": 30,
-    "foodPreference" : "N",
+    "foodPreference": "N",
     "tableData": {
         "breakfast": [{
                 "index": 0,
