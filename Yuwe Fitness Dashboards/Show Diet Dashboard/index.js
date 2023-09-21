@@ -194,5 +194,8 @@ function setData(data) {
     document.getElementById("total-calories").textContent = totalCalories.toFixed(2);
 }
 
+function isThisYuWeWebPage() {
+    return true;
+}
 // Call the setData function with your JSON data
-setData(jsonData);
+// setData(jsonData);
