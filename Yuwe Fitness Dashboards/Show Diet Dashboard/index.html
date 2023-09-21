@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="./index.css">
-
 </head>
 
 <body>
@@ -26,35 +25,34 @@
         </div>
         <div class="row mt-1">
             <div class="col-6">
-                <p style="font-size: 0.8em !important;"><strong>Name:</strong> <span id="name">Raviraj Bugge</span></p>
+                <p style="font-size: 0.8em !important;"><strong>Name:</strong> <span id="name"></span></p>
             </div>
             <div class="col-6">
                 <p class="text-right" style="font-size: 0.8em !important;"><strong>Gender:</strong> <span
-                        id="gender">Male</span></p>
+                        id="gender"></span></p>
             </div>
         </div>
         <div class="row mt-1">
             <div class="col-6">
-                <p style="font-size: 0.8em !important;"><strong>Current Weight:</strong> <span id="weight">72 Kg</span>
-                </p>
+                <p style="font-size: 0.8em !important;"><strong>Current Weight:</strong> <span id="weight"></span></p>
             </div>
             <div class="col-6">
-                <p class="text-right" style="font-size: 0.8em !important;"><strong>Goal:</strong> <span id="goal">Fat
-                        Loss</span></p>
+                <p class="text-right" style="font-size: 0.8em !important;"><strong>Goal:</strong> <span
+                        id="goal"></span></p>
             </div>
         </div>
         <div class="row mt-1">
             <div class="col-6">
-                <p style="font-size: 0.8em !important;"><strong>Initial BMR:</strong> <span id="bmr">1422</span></p>
+                <p style="font-size: 0.8em !important;"><strong>Initial BMR:</strong> <span id="bmr"></span></p>
             </div>
             <div class="col-6">
                 <p class="text-right" style="font-size: 0.8em !important;"><strong>Height:</strong> <span
-                        id="height">182 cm</span></p>
+                        id="height"></span></p>
             </div>
         </div>
         <div class="row mt-1">
             <div class="col-12">
-                <p style="font-size: 0.8em !important;"><strong>Age:</strong> <span id="age">24</span></p>
+                <p style="font-size: 0.8em !important;"><strong>Age:</strong> <span id="age"></span></p>
             </div>
         </div>
         <div class="row mt-4">
@@ -71,107 +69,7 @@
                             <th id="additional">Additional Instructions</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td colspan="6"><strong>Breakfast</strong></td>
-                            <td rowspan="17" id="additional">Drink 4-5 liters water daily, without fail - NO COMPROMISE
-                                ON THIS</td>
-                        </tr>
-                        <tr id="breakfast-items">
-                        <tr>
-                            <td>Scrambled Eggs</td>
-                            <td>2 eggs</td>
-                            <td>10g</td>
-                            <td>2g</td>
-                            <td>12g</td>
-                            <td>150</td>
-                        </tr>
-                        <tr>
-                            <td>Greek Yogurt</td>
-                            <td>1 cup</td>
-                            <td>2g</td>
-                            <td>6g</td>
-                            <td>10g</td>
-                            <td>120</td>
-                        </tr>
-                        </tr>
-
-
-                        <tr>
-                            <td colspan="6"><strong>Lunch</strong></td>
-                        </tr>
-                        <tr id="lunch-items">
-                        <tr>
-                            <td>Grilled Chicken Breast</td>
-                            <td>4 oz</td>
-                            <td>2g</td>
-                            <td>0g</td>
-                            <td>30g</td>
-                            <td>150</td>
-                        </tr>
-                        <tr>
-                            <td>Quinoa Salad</td>
-                            <td>1 cup</td>
-                            <td>4g</td>
-                            <td>30g</td>
-                            <td>8g</td>
-                            <td>200</td>
-                        </tr>
-                        </tr>
-
-
-                        <tr>
-                            <td colspan="6"><strong>Evening Snacks</strong></td>
-                        </tr>
-                        <tr>
-                        <tr>
-                            <td>Almonds</td>
-                            <td>1 oz</td>
-                            <td>14g</td>
-                            <td>3g</td>
-                            <td>6g</td>
-                            <td>160</td>
-                        </tr>
-                        <tr>
-                            <td>Cucumber Slices</td>
-                            <td>1 cup</td>
-                            <td>0g</td>
-                            <td>2g</td>
-                            <td>1g</td>
-                            <td>15</td>
-                        </tr>
-                        </tr>
-
-                        <tr>
-                            <td colspan="6"><strong>Dinner</strong></td>
-                        </tr>
-                        <tr>
-                        <tr>
-                            <td>Baked Salmon</td>
-                            <td>6 oz</td>
-                            <td>12g</td>
-                            <td>0g</td>
-                            <td>36g</td>
-                            <td>300</td>
-                        </tr>
-                        <tr>
-                            <td>Steamed Asparagus</td>
-                            <td>1 cup</td>
-                            <td>0g</td>
-                            <td>3g</td>
-                            <td>2g</td>
-                            <td>20</td>
-                        </tr>
-                        </tr>
-
-                        <tr>
-                            <td colspan="2"><strong>Total Macros</strong></td>
-                            <td><strong id="total-fat">Sum of Fats</strong></td>
-                            <td><strong id="total-carbs">Sum of Carbs</strong></td>
-                            <td><strong id="total-protein">Sum of Protein</strong></td>
-                            <td><strong id="total-calories">Sum of Calories</strong></td>
-                            <!-- <td colspan="0">&nbsp;</td> -->
-                        </tr>
+                    <tbody id="meal-items">
                     </tbody>
                 </table>
             </div>
@@ -186,12 +84,8 @@
                 vegetables to any meal</P>
             <div class="w-100 mt-2">
                 <p class="signature text-right p-4">Authorized Signature</p>
-                <!-- <span>
-                    <img src="" alt="signature">
-                </span> -->
             </div>
         </div>
-
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
