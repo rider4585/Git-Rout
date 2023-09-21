@@ -1,46 +1,57 @@
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Common styles for red-border and red-button */
+.red-border:focus,
+.red-border:active,
+.red-border:hover,
+.red-button:focus,
+.red-button:active,
+.red-button:hover {
+    outline: none !important;
+    box-shadow: none !important;
+    border-color: #dc3545 !important;
+}
+
+.red-border {
+    border: 1px solid #4950575b !important;
+}
+
+/* Body styles */
 body {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+/* Centered text */
 .center {
     text-align: center;
 }
 
-.red-border:focus,
-.red-border:active,
-.red-border:hover {
-    outline: none !important;
-    box-shadow: none !important;
-    border: 1px solid red;
-}
-
+/* Red button styles */
 .red-button {
-    background-color: red;
-    border-color: red;
-    color: white;
+    background-color: #dc3545 !important;
+    border-color: #dc3545 !important;
+    color: white !important;
     margin: 0.5em 0;
     width: 50%;
 }
 
-.red-button:focus,
-.red-button:active,
-.red-button:hover {
-    background-color: red;
-    border-color: red;
-    color: white;
-    outline: none;
-    box-shadow: none;
-}
-
+/* Heading styles */
 .heading {
     margin-top: 1em;
+    margin-bottom: 1em;
     font-weight: bolder;
 }
 
+/* Container styles */
 .container-fluid {
-    border: 1px solid red;
+    border: 1px solid #dc3545;
     margin: 1em auto;
     border-radius: 0.2em;
     padding-right: 0.5em;
@@ -48,41 +59,12 @@ body {
     max-width: 95vw;
 }
 
-.red-border:focus,
-.red-border:active,
-.red-border:hover {
-    outline: none !important;
-    box-shadow: none !important;
-    border: 1px solid red;
-}
-
-.red-button {
-    background-color: red !important;
-    border-color: red !important;
-    color: white;
-    margin: 0.5em 0;
-    width: 50%;
-}
-
-.red-button:focus,
-.red-button:active,
-.red-button:hover {
-    background-color: red;
-    border-color: red;
-    color: white;
-    outline: none;
-    box-shadow: none;
-}
-
-.heading {
-    margin-top: 1em;
-    font-weight: bolder;
-}
-
+/* ID-specific styles */
 #phone {
     border-radius: 0 0.3em 0.3em 0;
 }
 
+/* Services styles */
 .services {
     display: flex;
     flex-direction: column;
@@ -96,14 +78,14 @@ body {
     padding: 0.5em;
 }
 
-.whatsappConsent {
+/* WhatsApp Consent styles */
+.whatsappConsent,
+.form-submit-btn {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.form-submit-btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+fieldset {
+    margin-bottom: 20px !important;
 }

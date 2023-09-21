@@ -1,5 +1,3 @@
-// script.js
-
 function fillDummyData() {
     document.getElementById('name').value = 'John Doe';
     document.getElementById('mid').value = '123456';
@@ -34,56 +32,190 @@ function fillDummyData() {
 function setData(jsonData) {
     const data = jsonData;
 
+    // Personal Information
     if (data['personal-information']) {
         const personalInfo = data['personal-information'];
-        document.getElementById('name').value = personalInfo.name || '';
-        document.getElementById('mid').value = personalInfo.MID || '';
-        document.getElementById('gender').value = personalInfo.gender || '';
-        document.getElementById('age').value = personalInfo.age || '';
-        document.getElementById('height').value = personalInfo.height || '';
-        document.getElementById('weight').value = personalInfo.weight || '';
+        const nameInput = document.getElementById('name');
+        const midInput = document.getElementById('mid');
+        const genderInput = document.getElementById('gender');
+        const ageInput = document.getElementById('age');
+        const heightInput = document.getElementById('height');
+        const weightInput = document.getElementById('weight');
+
+        if (personalInfo.name && personalInfo.name !== '') {
+            nameInput.value = personalInfo.name;
+            nameInput.disabled = true;
+        }
+
+        if (personalInfo.MID && personalInfo.MID !== '') {
+            midInput.value = personalInfo.MID;
+            midInput.disabled = true;
+        }
+
+        if (personalInfo.gender && personalInfo.gender !== '') {
+            genderInput.value = personalInfo.gender;
+            genderInput.disabled = true;
+        }
+
+        if (personalInfo.age && personalInfo.age !== '') {
+            ageInput.value = personalInfo.age;
+            ageInput.disabled = true;
+        }
+
+        if (personalInfo.height && personalInfo.height !== '') {
+            heightInput.value = personalInfo.height;
+            heightInput.disabled = true;
+        }
+
+        if (personalInfo.weight && personalInfo.weight !== '') {
+            weightInput.value = personalInfo.weight;
+            weightInput.disabled = true;
+        }
     }
 
+    // Body Fat Section
     if (data['Body-Fat']) {
         const bodyFat = data['Body-Fat'];
-        document.getElementById('bodyFat').value = bodyFat['Body-Fat-Percentage'] || '';
-        document.getElementById('visceralFat').value = bodyFat['Visceral-Fat'] || '';
-        document.getElementById('bmr').value = bodyFat.BMR || '';
-        document.getElementById('bmi').value = bodyFat.BMI || '';
-        document.getElementById('bodyAge').value = bodyFat['Body-Age'] || '';
-        // ... (set other Body Fat related fields)
+        const bodyFatInput = document.getElementById('bodyFat');
+        const visceralFatInput = document.getElementById('visceralFat');
+        const bmrInput = document.getElementById('bmr');
+        const bmiInput = document.getElementById('bmi');
+        const bodyAgeInput = document.getElementById('bodyAge');
+
+        if (bodyFat['Body-Fat-Percentage'] && bodyFat['Body-Fat-Percentage'] !== '') {
+            bodyFatInput.value = bodyFat['Body-Fat-Percentage'];
+            bodyFatInput.disabled = true;
+        }
+
+        if (bodyFat['Visceral-Fat'] && bodyFat['Visceral-Fat'] !== '') {
+            visceralFatInput.value = bodyFat['Visceral-Fat'];
+            visceralFatInput.disabled = true;
+        }
+
+        if (bodyFat.BMR && bodyFat.BMR !== '') {
+            bmrInput.value = bodyFat.BMR;
+            bmrInput.disabled = true;
+        }
+
+        if (bodyFat.BMI && bodyFat.BMI !== '') {
+            bmiInput.value = bodyFat.BMI;
+            bmiInput.disabled = true;
+        }
+
+        if (bodyFat['Body-Age'] && bodyFat['Body-Age'] !== '') {
+            bodyAgeInput.value = bodyFat['Body-Age'];
+            bodyAgeInput.disabled = true;
+        }
     }
 
+    // Repeat the same pattern for other sections (Subcutaneous Fat, Muscle, Body Measurement)
+
+    // Subcutaneous Fat Section
     if (data['Subcutaneous-Fat']) {
         const subcutaneousFat = data['Subcutaneous-Fat'];
-        document.getElementById('subcutaneousWholeBody').value = subcutaneousFat['Whole-Body'] || '';
-        document.getElementById('subcutaneousTrunk').value = subcutaneousFat.Trunk || '';
-        document.getElementById('subcutaneousArm').value = subcutaneousFat.Arm || '';
-        document.getElementById('subcutaneousLeg').value = subcutaneousFat.Leg || '';
-        // ... (set other Subcutaneous Fat related fields)
+        const subcutaneousWholeBodyInput = document.getElementById('subcutaneousWholeBody');
+        const subcutaneousTrunkInput = document.getElementById('subcutaneousTrunk');
+        const subcutaneousArmInput = document.getElementById('subcutaneousArm');
+        const subcutaneousLegInput = document.getElementById('subcutaneousLeg');
+
+        if (subcutaneousFat['Whole-Body'] && subcutaneousFat['Whole-Body'] !== '') {
+            subcutaneousWholeBodyInput.value = subcutaneousFat['Whole-Body'];
+            subcutaneousWholeBodyInput.disabled = true;
+        }
+
+        if (subcutaneousFat.Trunk && subcutaneousFat.Trunk !== '') {
+            subcutaneousTrunkInput.value = subcutaneousFat.Trunk;
+            subcutaneousTrunkInput.disabled = true;
+        }
+
+        if (subcutaneousFat.Arm && subcutaneousFat.Arm !== '') {
+            subcutaneousArmInput.value = subcutaneousFat.Arm;
+            subcutaneousArmInput.disabled = true;
+        }
+
+        if (subcutaneousFat.Leg && subcutaneousFat.Leg !== '') {
+            subcutaneousLegInput.value = subcutaneousFat.Leg;
+            subcutaneousLegInput.disabled = true;
+        }
     }
 
+    // Muscle Section
     if (data['Muscle']) {
         const muscle = data['Muscle'];
-        document.getElementById('muscleWholeBody').value = muscle['Whole-Body'] || '';
-        document.getElementById('muscleTrunk').value = muscle.Trunk || '';
-        document.getElementById('muscleArm').value = muscle.Arm || '';
-        document.getElementById('muscleLeg').value = muscle.Leg || '';
-        // ... (set other Muscle related fields)
+        const muscleWholeBodyInput = document.getElementById('muscleWholeBody');
+        const muscleTrunkInput = document.getElementById('muscleTrunk');
+        const muscleArmInput = document.getElementById('muscleArm');
+        const muscleLegInput = document.getElementById('muscleLeg');
+
+        if (muscle['Whole-Body'] && muscle['Whole-Body'] !== '') {
+            muscleWholeBodyInput.value = muscle['Whole-Body'];
+            muscleWholeBodyInput.disabled = true;
+        }
+
+        if (muscle.Trunk && muscle.Trunk !== '') {
+            muscleTrunkInput.value = muscle.Trunk;
+            muscleTrunkInput.disabled = true;
+        }
+
+        if (muscle.Arm && muscle.Arm !== '') {
+            muscleArmInput.value = muscle.Arm;
+            muscleArmInput.disabled = true;
+        }
+
+        if (muscle.Leg && muscle.Leg !== '') {
+            muscleLegInput.value = muscle.Leg;
+            muscleLegInput.disabled = true;
+        }
     }
 
+    // Body Measurement Section
     if (data['Body-Measurement']) {
         const bodyMeasurement = data['Body-Measurement'];
-        document.getElementById('chest').value = bodyMeasurement.Chest || '';
-        document.getElementById('waist').value = bodyMeasurement.Waist || '';
-        document.getElementById('lowerAbs').value = bodyMeasurement['Lower-Abs'] || '';
-        document.getElementById('hip').value = bodyMeasurement.Hip || '';
-        document.getElementById('thigh').value = bodyMeasurement.Thigh || '';
-        document.getElementById('calf').value = bodyMeasurement.Calf || '';
-        document.getElementById('arm').value = bodyMeasurement.Arm || '';
-        // ... (set other Body Measurement related fields)
+        const chestInput = document.getElementById('chest');
+        const waistInput = document.getElementById('waist');
+        const lowerAbsInput = document.getElementById('lowerAbs');
+        const hipInput = document.getElementById('hip');
+        const thighInput = document.getElementById('thigh');
+        const calfInput = document.getElementById('calf');
+        const armInput = document.getElementById('arm');
+
+        if (bodyMeasurement.Chest && bodyMeasurement.Chest !== '') {
+            chestInput.value = bodyMeasurement.Chest;
+            chestInput.disabled = true;
+        }
+
+        if (bodyMeasurement.Waist && bodyMeasurement.Waist !== '') {
+            waistInput.value = bodyMeasurement.Waist;
+            waistInput.disabled = true;
+        }
+
+        if (bodyMeasurement['Lower-Abs'] && bodyMeasurement['Lower-Abs'] !== '') {
+            lowerAbsInput.value = bodyMeasurement['Lower-Abs'];
+            lowerAbsInput.disabled = true;
+        }
+
+        if (bodyMeasurement.Hip && bodyMeasurement.Hip !== '') {
+            hipInput.value = bodyMeasurement.Hip;
+            hipInput.disabled = true;
+        }
+
+        if (bodyMeasurement.Thigh && bodyMeasurement.Thigh !== '') {
+            thighInput.value = bodyMeasurement.Thigh;
+            thighInput.disabled = true;
+        }
+
+        if (bodyMeasurement.Calf && bodyMeasurement.Calf !== '') {
+            calfInput.value = bodyMeasurement.Calf;
+            calfInput.disabled = true;
+        }
+
+        if (bodyMeasurement.Arm && bodyMeasurement.Arm !== '') {
+            armInput.value = bodyMeasurement.Arm;
+            armInput.disabled = true;
+        }
     }
 }
+
 
 function sendData() {
     const formData = {
@@ -93,7 +225,7 @@ function sendData() {
             'gender': document.getElementById('gender').value,
             'age': document.getElementById('age').value,
             'height': document.getElementById('height').value,
-            'weight' : document.getElementById('weight').value
+            'weight': document.getElementById('weight').value
         },
         'Body-Fat': {
             'Body-Fat-Percentage': document.getElementById('bodyFat').value,
@@ -137,3 +269,44 @@ function sendData() {
 function isThisYuWeWebPage() {
     return true;
 }
+
+let dummyData = {
+    "personal-information": {
+        "name": "John Doe",
+        "MID": "123456",
+        "gender": "male",
+        "age": "30",
+        "height": "175",
+        "weight": "70"
+    },
+    "Body-Fat": {
+        "Body-Fat-Percentage": "15",
+        "Visceral-Fat": "10",
+        "BMR": "1800",
+        "BMI": "24",
+        "Body-Age": "28"
+    },
+    "Subcutaneous-Fat": {
+        "Whole-Body": "20",
+        "Trunk": "15",
+        "Arm": "12",
+        "Leg": "18"
+    },
+    "Muscle": {
+        "Whole-Body": "30",
+        "Trunk": "25",
+        "Arm": "20",
+        "Leg": "28"
+    },
+    "Body-Measurement": {
+        "Chest": "95",
+        "Waist": "80",
+        "Lower-Abs": "85",
+        "Hip": "100",
+        "Thigh": "60",
+        "Calf": "40",
+        "Arm": "30"
+    }
+};
+
+setData(dummyData);
