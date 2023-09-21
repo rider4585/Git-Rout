@@ -84,9 +84,38 @@ img {
     width: 50%;
 }
 
+#outer-square {
+    height: 1em;
+    width: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#inner-circle {
+    height: 70%;
+    width: 70%;
+    display: inline-block;
+    background-color: transparent;
+    border: 2px solid white;
+    border-radius: 50%;
+}
+
 td:has(strong) {
     background-color: #dc35465e;
     color: black;
+}
+
+.N {
+    background-color: #dc3545 !important;
+}
+
+.V {
+    background-color: green !important ;
+}
+
+.E {
+    background-color: yellow !important;
 }
 
 /* Add border styles for printing */
@@ -94,10 +123,17 @@ td:has(strong) {
 
     html {
         -webkit-print-color-adjust: exact;
+        margin: 0 !important;
     }
 
     #heading {
-        font-size: 3em !important;
+        font-size: 2em !important;
         font-weight: bolder;
+    }
+
+    .main-container {
+        width: 100%;
+        padding: 0 !important;
+        margin: 0 !important;
     }
 }

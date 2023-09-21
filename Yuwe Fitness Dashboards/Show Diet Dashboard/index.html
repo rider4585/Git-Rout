@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Diet Plan Form</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css" integrity="sha512-SbiR/eusphKoMVVXysTKG/7VseWii+Y3FdHrt0EpKgpToZeemhqHeZeLWLhJutz/2ut2Vw1uQEj2MbRF+TVBUA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./index.css">
 </head>
 
 <body>
-    <div class="container mt-4">
+    <div id="main-container" class="container mt-4">
         <div class="row mb-4">
             <div class="col-4 image">
                 <img src="../media/img/yuwe-fitness-light.png" alt="Left Logo">
@@ -27,9 +27,10 @@
             <div class="col-6">
                 <p style="font-size: 0.8em !important;"><strong>Name:</strong> <span id="name"></span></p>
             </div>
-            <div class="col-6">
-                <p class="text-right" style="font-size: 0.8em !important;"><strong>Gender:</strong> <span
-                        id="gender"></span></p>
+            <div id="food-preferance" class="col-6 d-flex justify-content-end">
+                <span id="outer-square">
+                    <span id="inner-circle"></span>
+                </span>
             </div>
         </div>
         <div class="row mt-1">
@@ -37,7 +38,7 @@
                 <p style="font-size: 0.8em !important;"><strong>Current Weight:</strong> <span id="weight"></span></p>
             </div>
             <div class="col-6">
-                <p class="text-right" style="font-size: 0.8em !important;"><strong>Goal:</strong> <span
+                <p class="text-end" style="font-size: 0.8em !important;"><strong>Goal:</strong> <span
                         id="goal"></span></p>
             </div>
         </div>
@@ -46,13 +47,17 @@
                 <p style="font-size: 0.8em !important;"><strong>Initial BMR:</strong> <span id="bmr"></span></p>
             </div>
             <div class="col-6">
-                <p class="text-right" style="font-size: 0.8em !important;"><strong>Height:</strong> <span
+                <p class="text-end" style="font-size: 0.8em !important;"><strong>Height:</strong> <span
                         id="height"></span></p>
             </div>
         </div>
         <div class="row mt-1">
-            <div class="col-12">
+            <div class="col-6">
                 <p style="font-size: 0.8em !important;"><strong>Age:</strong> <span id="age"></span></p>
+            </div>
+            <div class="col-6">
+                <p class="text-end" style="font-size: 0.8em !important;"><strong>Gender:</strong> <span
+                        id="gender"></span></p>
             </div>
         </div>
         <div class="row mt-4">
@@ -83,14 +88,14 @@
                 beans, asparagus, salads - you can add
                 vegetables to any meal</P>
             <div class="w-100 mt-2">
-                <p class="signature text-right p-4">Authorized Signature</p>
+                <p class="signature text-end p-4">Authorized Signature</p>
             </div>
         </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.min.js" integrity="sha512-1/RvZTcCDEUjY/CypiMz+iqqtaoQfAITmNSJY17Myp4Ms5mdxPS5UV7iOfdZoxcGhzFbOm6sntTKJppjvuhg4g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script type="module" src="./index.js" defer></script>
 </body>
 
