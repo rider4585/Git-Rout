@@ -22,7 +22,7 @@ function sendData() {
         weight: isNaN(weight) ? '' : weight,
         bodyFat: isNaN(bodyFat) ? '' : bodyFat,
         visceralFat: visceralFat || '',
-        goal: goals.length > 0 ? goals : [],
+        goal: goals.length > 0 ? goals.join(', ') : '',
         allergies: allergies.length > 0 ? allergies : [],
         medicalConditions: medicalConditions.length > 0 ? medicalConditions : [],
         foodPreferences: foodPreferences || ''
