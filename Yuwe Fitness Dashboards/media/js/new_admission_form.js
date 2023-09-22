@@ -237,6 +237,7 @@ function sendData() {
             services: servicesInterested,
         }
     };
+
     SendDataToFlutter.postMessage(JSON.stringify(masterJson));
     // console.log(masterJson);
     // console.log(JSON.stringify(masterJson));
@@ -245,7 +246,7 @@ function sendData() {
 
 function checkIfHealthIssues() {
     let hasHealthCondition = false;
-    let checkedRadioOptions = document.querySelectorAll('.hasHealthCondition input[type="radio"]:checked');
+    let checkedRadioOptions = document.querySelectorAll('.hasHealthCondition input[type="radio"]:is([value="yes"]):checked');
     if (checkedRadioOptions.length > 0) {
         checkedRadioOptions.forEach(radioOption => {
             if (radioOption.value == 'yes') {
@@ -254,7 +255,7 @@ function checkIfHealthIssues() {
         });
     }
 
-    let checkedHealthCondition = document.querySelectorAll('input[name="health-condition[]"]:checked');
+    let checkedHealthCondition = document.querySelectorAll('input[name="health-condition[]"]:checked:not(#major-condition-none)');
     if (checkedHealthCondition.length > 0) {
         hasHealthCondition = true;
     }
@@ -613,33 +614,33 @@ const testJson = {
             "contact": "7798476162"
         },
         "health_questions": {
-            "Has a doctor ever said that you have a heart condition and that you should only do physical activity recommended by a doctor?": "yes",
-            "Do you feel pain in your chest while doing any physical activity?": "yes",
-            "In the past month, have you had chest pain when you were not doing physical activity?": "yes",
-            "Do you lose your balance because of dizziness or do you ever lose consciousness?": "yes",
-            "Do you have a bone or joint problem that could be made worse by a change in your physical activity?": "yes",
-            "Is your doctor currently prescribing drugs for blood pressure or heart condition?": "yes",
-            "Do you know of any other reason why you should not do physical activity?": "yes",
+            "Has a doctor ever said that you have a heart condition and that you should only do physical activity recommended by a doctor?": "no",
+            "Do you feel pain in your chest while doing any physical activity?": "no",
+            "In the past month, have you had chest pain when you were not doing physical activity?": "no",
+            "Do you lose your balance because of dizziness or do you ever lose consciousness?": "no",
+            "Do you have a bone or joint problem that could be made worse by a change in your physical activity?": "no",
+            "Is your doctor currently prescribing drugs for blood pressure or heart condition?": "no",
+            "Do you know of any other reason why you should not do physical activity?": "no",
             "Other Reason Details": "Hello",
-            "Are you currently doing any physical activity?": "yes",
+            "Are you currently doing any physical activity?": "no",
             "Details of Current Physical Activity": "Hello",
-            "Have you done any physical activity before?": "yes",
+            "Have you done any physical activity before?": "no",
             "Details of Previous Physical Activity": "Hello",
-            "Are you currently taking any medications?": "yes",
+            "Are you currently taking any medications?": "no",
             "Specify the medications you are currently taking": "Hello",
-            "Are you pregnant?": "yes",
+            "Are you pregnant?": "no",
             "Number of Pregnancy Months": "6",
-            "Do you have a physician?": "yes",
+            "Do you have a physician?": "no",
             "Physician Details": "Hello",
-            "Have you gone through any surgery in the past 6 months?": "yes",
+            "Have you gone through any surgery in the past 6 months?": "no",
             "Surgery Details": "Hello",
-            "Have you experienced any injuries due to accidents?": "yes",
+            "Have you experienced any injuries due to accidents?": "no",
             "Injury Details": "Hello",
-            "Details of Alcohol Consumption": "yes",
-            "Do you smoke?": "yes",
-            "Family Health History": "yes"
+            "Details of Alcohol Consumption": "no",
+            "Do you smoke?": "no",
+            "Family Health History": "no"
         },
-        "health_conditions": ["Gout", "Emphysema", "Swollen or Painful Joints", "Other", "new", "old"]
+        "health_conditions": []
     }
 }
 
