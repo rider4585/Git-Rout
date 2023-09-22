@@ -53,7 +53,7 @@ function setData(jsonData) {
         }
 
         if (personalInfo.gender && personalInfo.gender !== '') {
-            genderInput.value = personalInfo.gender;
+            genderInput.value = personalInfo.gender.toLowerCase();
             genderInput.disabled = true;
         }
 
@@ -270,43 +270,54 @@ function isThisYuWeWebPage() {
     return true;
 }
 
-let dummyData = {
-    "personal-information": {
-        "name": "John Doe",
-        "MID": "123456",
-        "gender": "male",
-        "age": "30",
-        "height": "175",
-        "weight": "70"
-    },
-    "Body-Fat": {
-        "Body-Fat-Percentage": "15",
-        "Visceral-Fat": "10",
-        "BMR": "1800",
-        "BMI": "24",
-        "Body-Age": "28"
-    },
-    "Subcutaneous-Fat": {
-        "Whole-Body": "20",
-        "Trunk": "15",
-        "Arm": "12",
-        "Leg": "18"
-    },
-    "Muscle": {
-        "Whole-Body": "30",
-        "Trunk": "25",
-        "Arm": "20",
-        "Leg": "28"
-    },
-    "Body-Measurement": {
-        "Chest": "95",
-        "Waist": "80",
-        "Lower-Abs": "85",
-        "Hip": "100",
-        "Thigh": "60",
-        "Calf": "40",
-        "Arm": "30"
-    }
-};
+// let dummyData = {
+//     "personal-information": {
+//         "name": "John Doe",
+//         "MID": "123456",
+//         "gender": "male",
+//         "age": "30",
+//         "height": "175",
+//         "weight": "70"
+//     },
+//     "Body-Fat": {
+//         "Body-Fat-Percentage": "15",
+//         "Visceral-Fat": "10",
+//         "BMR": "1800",
+//         "BMI": "24",
+//         "Body-Age": "28"
+//     },
+//     "Subcutaneous-Fat": {
+//         "Whole-Body": "20",
+//         "Trunk": "15",
+//         "Arm": "12",
+//         "Leg": "18"
+//     },
+//     "Muscle": {
+//         "Whole-Body": "30",
+//         "Trunk": "25",
+//         "Arm": "20",
+//         "Leg": "28"
+//     },
+//     "Body-Measurement": {
+//         "Chest": "95",
+//         "Waist": "80",
+//         "Lower-Abs": "85",
+//         "Hip": "100",
+//         "Thigh": "60",
+//         "Calf": "40",
+//         "Arm": "30"
+//     }
+// };
 
-setData(dummyData);
+// let dummyData = {
+//     "personal-information": {
+//         "name": "Omkar Kshirsagar",
+//         "MID": null,
+//         "gender": "Male",
+//         "age": "5",
+//         "height": null
+//     }
+// }
+
+
+// setData(dummyData);
