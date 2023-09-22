@@ -86,6 +86,10 @@ body {
     align-items: center;
 }
 
-fieldset {
-    margin-bottom: 20px !important;
+hr {
+    margin-top: 2em !important;
 }
+
+/* fieldset {
+    margin-bottom: 20px !important;
+} */

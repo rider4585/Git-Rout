@@ -1,3 +1,5 @@
+let hideElements = false;
+
 function fillDummyData() {
     document.getElementById('name').value = 'John Doe';
     document.getElementById('mid').value = '123456';
@@ -45,31 +47,37 @@ function setData(jsonData) {
         if (personalInfo.name && personalInfo.name !== '') {
             nameInput.value = personalInfo.name;
             nameInput.disabled = true;
+            nameInput.classList.add('show');
         }
 
         if (personalInfo.MID && personalInfo.MID !== '') {
             midInput.value = personalInfo.MID;
             midInput.disabled = true;
+            midInput.classList.add('show');
         }
 
         if (personalInfo.gender && personalInfo.gender !== '') {
             genderInput.value = personalInfo.gender.toLowerCase();
             genderInput.disabled = true;
+            genderInput.classList.add('show');
         }
 
         if (personalInfo.age && personalInfo.age !== '') {
             ageInput.value = personalInfo.age;
             ageInput.disabled = true;
+            ageInput.classList.add('show');
         }
 
         if (personalInfo.height && personalInfo.height !== '') {
             heightInput.value = personalInfo.height;
             heightInput.disabled = true;
+            heightInput.classList.add('show');
         }
 
         if (personalInfo.weight && personalInfo.weight !== '') {
             weightInput.value = personalInfo.weight;
             weightInput.disabled = true;
+            weightInput.classList.add('show');
         }
     }
 
@@ -85,30 +93,33 @@ function setData(jsonData) {
         if (bodyFat['Body-Fat-Percentage'] && bodyFat['Body-Fat-Percentage'] !== '') {
             bodyFatInput.value = bodyFat['Body-Fat-Percentage'];
             bodyFatInput.disabled = true;
+            bodyFatInput.classList.add('show');
         }
 
         if (bodyFat['Visceral-Fat'] && bodyFat['Visceral-Fat'] !== '') {
             visceralFatInput.value = bodyFat['Visceral-Fat'];
             visceralFatInput.disabled = true;
+            visceralFatInput.classList.add('show');
         }
 
         if (bodyFat.BMR && bodyFat.BMR !== '') {
             bmrInput.value = bodyFat.BMR;
             bmrInput.disabled = true;
+            bmrInput.classList.add('show');
         }
 
         if (bodyFat.BMI && bodyFat.BMI !== '') {
             bmiInput.value = bodyFat.BMI;
             bmiInput.disabled = true;
+            bmiInput.classList.add('show');
         }
 
         if (bodyFat['Body-Age'] && bodyFat['Body-Age'] !== '') {
             bodyAgeInput.value = bodyFat['Body-Age'];
             bodyAgeInput.disabled = true;
+            bodyAgeInput.classList.add('show');
         }
     }
-
-    // Repeat the same pattern for other sections (Subcutaneous Fat, Muscle, Body Measurement)
 
     // Subcutaneous Fat Section
     if (data['Subcutaneous-Fat']) {
@@ -121,21 +132,25 @@ function setData(jsonData) {
         if (subcutaneousFat['Whole-Body'] && subcutaneousFat['Whole-Body'] !== '') {
             subcutaneousWholeBodyInput.value = subcutaneousFat['Whole-Body'];
             subcutaneousWholeBodyInput.disabled = true;
+            subcutaneousWholeBodyInput.classList.add('show');
         }
 
         if (subcutaneousFat.Trunk && subcutaneousFat.Trunk !== '') {
             subcutaneousTrunkInput.value = subcutaneousFat.Trunk;
             subcutaneousTrunkInput.disabled = true;
+            subcutaneousTrunkInput.classList.add('show');
         }
 
         if (subcutaneousFat.Arm && subcutaneousFat.Arm !== '') {
             subcutaneousArmInput.value = subcutaneousFat.Arm;
             subcutaneousArmInput.disabled = true;
+            subcutaneousArmInput.classList.add('show');
         }
 
         if (subcutaneousFat.Leg && subcutaneousFat.Leg !== '') {
             subcutaneousLegInput.value = subcutaneousFat.Leg;
             subcutaneousLegInput.disabled = true;
+            subcutaneousLegInput.classList.add('show');
         }
     }
 
@@ -150,21 +165,25 @@ function setData(jsonData) {
         if (muscle['Whole-Body'] && muscle['Whole-Body'] !== '') {
             muscleWholeBodyInput.value = muscle['Whole-Body'];
             muscleWholeBodyInput.disabled = true;
+            muscleWholeBodyInput.classList.add('show');
         }
 
         if (muscle.Trunk && muscle.Trunk !== '') {
             muscleTrunkInput.value = muscle.Trunk;
             muscleTrunkInput.disabled = true;
+            muscleTrunkInput.classList.add('show');
         }
 
         if (muscle.Arm && muscle.Arm !== '') {
             muscleArmInput.value = muscle.Arm;
             muscleArmInput.disabled = true;
+            muscleArmInput.classList.add('show');
         }
 
         if (muscle.Leg && muscle.Leg !== '') {
             muscleLegInput.value = muscle.Leg;
             muscleLegInput.disabled = true;
+            muscleLegInput.classList.add('show');
         }
     }
 
@@ -182,37 +201,67 @@ function setData(jsonData) {
         if (bodyMeasurement.Chest && bodyMeasurement.Chest !== '') {
             chestInput.value = bodyMeasurement.Chest;
             chestInput.disabled = true;
+            chestInput.classList.add('show');
         }
 
         if (bodyMeasurement.Waist && bodyMeasurement.Waist !== '') {
             waistInput.value = bodyMeasurement.Waist;
             waistInput.disabled = true;
+            waistInput.classList.add('show');
         }
 
         if (bodyMeasurement['Lower-Abs'] && bodyMeasurement['Lower-Abs'] !== '') {
             lowerAbsInput.value = bodyMeasurement['Lower-Abs'];
             lowerAbsInput.disabled = true;
+            lowerAbsInput.classList.add('show');
         }
 
         if (bodyMeasurement.Hip && bodyMeasurement.Hip !== '') {
             hipInput.value = bodyMeasurement.Hip;
             hipInput.disabled = true;
+            hipInput.classList.add('show');
         }
 
         if (bodyMeasurement.Thigh && bodyMeasurement.Thigh !== '') {
             thighInput.value = bodyMeasurement.Thigh;
             thighInput.disabled = true;
+            thighInput.classList.add('show');
         }
 
         if (bodyMeasurement.Calf && bodyMeasurement.Calf !== '') {
             calfInput.value = bodyMeasurement.Calf;
             calfInput.disabled = true;
+            calfInput.classList.add('show');
         }
 
         if (bodyMeasurement.Arm && bodyMeasurement.Arm !== '') {
             armInput.value = bodyMeasurement.Arm;
             armInput.disabled = true;
+            armInput.classList.add('show');
         }
+    }
+
+    if (data?.hideElements && data['hideElements']) {
+        hideElements = true;
+        const submitBtn = document.querySelector('.form-submit-btn');
+        submitBtn.style.display = 'none';
+
+        let elementsToHide = document.querySelectorAll('input:not(.show)');
+        let genderInputToHide = document.getElementById('gender');
+
+        elementsToHide.forEach(element => {
+            element.closest('.form-group').style.display = 'none';
+        });
+
+        if (!genderInputToHide.classList.contains('show')) {
+            genderInputToHide.closest('.form-group').style.display = 'none';
+        }
+
+        let sectionsToHide = document.querySelectorAll('fieldset:not(:has(.show))');
+        sectionsToHide.forEach(section => {
+            section.style.display = 'none';
+        });
+
     }
 }
 
@@ -270,44 +319,45 @@ function isThisYuWeWebPage() {
     return true;
 }
 
-// let dummyData = {
-//     "personal-information": {
-//         "name": "John Doe",
-//         "MID": "123456",
-//         "gender": "male",
-//         "age": "30",
-//         "height": "175",
-//         "weight": "70"
-//     },
-//     "Body-Fat": {
-//         "Body-Fat-Percentage": "15",
-//         "Visceral-Fat": "10",
-//         "BMR": "1800",
-//         "BMI": "24",
-//         "Body-Age": "28"
-//     },
-//     "Subcutaneous-Fat": {
-//         "Whole-Body": "20",
-//         "Trunk": "15",
-//         "Arm": "12",
-//         "Leg": "18"
-//     },
-//     "Muscle": {
-//         "Whole-Body": "30",
-//         "Trunk": "25",
-//         "Arm": "20",
-//         "Leg": "28"
-//     },
-//     "Body-Measurement": {
-//         "Chest": "95",
-//         "Waist": "80",
-//         "Lower-Abs": "85",
-//         "Hip": "100",
-//         "Thigh": "60",
-//         "Calf": "40",
-//         "Arm": "30"
-//     }
-// };
+let dummyData = {
+    "hideElements": true,
+    "personal-information": {
+        "name": "",
+        "MID": "",
+        "gender": "",
+        "age": "",
+        "height": "",
+        "weight": ""
+    },
+    "Body-Fat": {
+        "Body-Fat-Percentage": "15",
+        "Visceral-Fat": "10",
+        "BMR": "1800",
+        "BMI": "24",
+        "Body-Age": "28"
+    },
+    "Subcutaneous-Fat": {
+        "Whole-Body": "20",
+        "Trunk": "15",
+        "Arm": "12",
+        "Leg": "18"
+    },
+    "Muscle": {
+        "Whole-Body": "30",
+        "Trunk": "25",
+        "Arm": "20",
+        "Leg": "28"
+    },
+    "Body-Measurement": {
+        "Chest": "95",
+        "Waist": "80",
+        "Lower-Abs": "85",
+        "Hip": "100",
+        "Thigh": "60",
+        "Calf": "40",
+        "Arm": "30"
+    }
+};
 
 // let dummyData = {
 //     "personal-information": {
@@ -320,4 +370,4 @@ function isThisYuWeWebPage() {
 // }
 
 
-// setData(dummyData);
+setData(dummyData);
