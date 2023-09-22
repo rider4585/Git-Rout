@@ -93,7 +93,12 @@ const jsonData = {
 function setData(data) {
     // Extract meal data and additional instructions
     let tableRows = ['breakfast', 'lunch', 'snack', 'dinner'].filter(meal => data.tableData[meal].length > 0);
-    let additionalDataColumn = data.tableData["additional-instructions"];
+    let additionalDataColumn = "";
+    if(data.tableData["additional-instructions"] == ""){
+        additionalDataColumn = 'Drink 4-5 liters water daily, without fail - NO COMPROMISE ON THIS';
+    } else {
+        additionalDataColumn = data.tableData["additional-instructions"];
+    }
 
     // Populate personal information
     document.getElementById("name").textContent = data.name;
