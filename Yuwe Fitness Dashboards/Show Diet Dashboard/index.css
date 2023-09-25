@@ -118,6 +118,10 @@ td:has(strong) {
     background-color: yellow !important;
 }
 
+.first-col {
+    text-align: left;
+}
+
 /* Add border styles for printing */
 @media print {
 

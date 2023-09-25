@@ -85,7 +85,7 @@ const jsonData = {
                 "calories": "20"
             }
         ],
-        "additional-instructions": "Drink 4-5 liters water daily, without fail - NO COMPROMISE ON THIS"
+        "additional-instructions": ""
     }
 };
 
@@ -94,7 +94,7 @@ function setData(data) {
     // Extract meal data and additional instructions
     let tableRows = ['breakfast', 'lunch', 'snack', 'dinner'].filter(meal => data.tableData[meal].length > 0);
     let additionalDataColumn = "";
-    if(data.tableData["additional-instructions"] == ""){
+    if (data.tableData["additional-instructions"] == "") {
         additionalDataColumn = 'Drink 4-5 liters water daily, without fail - NO COMPROMISE ON THIS';
     } else {
         additionalDataColumn = data.tableData["additional-instructions"];
@@ -105,7 +105,7 @@ function setData(data) {
     document.getElementById("gender").textContent = data.gender;
     document.getElementById("weight").textContent = data.weight + " Kg";
     document.getElementById("goal").textContent = data.goal;
-    document.getElementById("bmr").textContent = data.bmr;
+    document.getElementById("bmr").textContent = calculateBMR(data);
     document.getElementById("height").textContent = data.height;
     document.getElementById("age").textContent = data.age;
     document.getElementById("outer-square").className = data.foodPreference;
@@ -132,6 +132,7 @@ function setData(data) {
 
             cell = document.createElement("td");
             cell.textContent = item.itemName;
+            cell.classList.add('first-col');
             row.appendChild(cell);
 
             cell = document.createElement("td");
@@ -202,5 +203,20 @@ function setData(data) {
 function isThisYuWeWebPage() {
     return true;
 }
+
+function calculateBMR(data) {
+    let bmr = 0;
+
+    if (data.gender.toLowerCase() === 'male') {
+        // For men: BMR = 10 * weight (kg) + 6.25 * height (cm) - 5 * age (years) + 5
+        bmr = 10 * data.weight + 6.25 * parseFloat(data.height) - 5 * data.age + 5;
+    } else if (data.gender.toLowerCase() === 'female') {
+        // For women: BMR = 10 * weight (kg) + 6.25 * height (cm) - 5 * age (years) - 161
+        bmr = 10 * data.weight + 6.25 * parseFloat(data.height) - 5 * data.age - 161;
+    }
+
+    return bmr;
+}
+
 // Call the setData function with your JSON data
 // setData(jsonData);
