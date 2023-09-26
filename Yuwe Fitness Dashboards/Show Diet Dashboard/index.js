@@ -28,63 +28,63 @@ const jsonData = {
                 "calories": "120"
             }
         ],
-        "lunch": [{
-                "index": 0,
-                "itemName": "Grilled Chicken Breast",
-                "itemQuantity": "4 oz",
-                "fat": "2g",
-                "carbs": "0g",
-                "protein": "30g",
-                "calories": "150"
-            },
-            {
-                "index": 1,
-                "itemName": "Quinoa Salad",
-                "itemQuantity": "1 cup",
-                "fat": "4g",
-                "carbs": "30g",
-                "protein": "8g",
-                "calories": "200"
-            }
-        ],
-        "snack": [{
-                "index": 0,
-                "itemName": "Almonds",
-                "itemQuantity": "1 oz",
-                "fat": "14g",
-                "carbs": "3g",
-                "protein": "6g",
-                "calories": "160"
-            },
-            {
-                "index": 1,
-                "itemName": "Cucumber Slices",
-                "itemQuantity": "1 cup",
-                "fat": "0g",
-                "carbs": "2g",
-                "protein": "1g",
-                "calories": "15"
-            }
-        ],
-        "dinner": [{
-                "index": 0,
-                "itemName": "Baked Salmon",
-                "itemQuantity": "6 oz",
-                "fat": "12g",
-                "carbs": "0g",
-                "protein": "36g",
-                "calories": "300"
-            },
-            {
-                "index": 1,
-                "itemName": "Steamed Asparagus",
-                "itemQuantity": "1 cup",
-                "fat": "0g",
-                "carbs": "3g",
-                "protein": "2g",
-                "calories": "20"
-            }
-        ],
+        // "lunch": [{
+        //         "index": 0,
+        //         "itemName": "Grilled Chicken Breast",
+        //         "itemQuantity": "4 oz",
+        //         "fat": "2g",
+        //         "carbs": "0g",
+        //         "protein": "30g",
+        //         "calories": "150"
+        //     },
+        //     {
+        //         "index": 1,
+        //         "itemName": "Quinoa Salad",
+        //         "itemQuantity": "1 cup",
+        //         "fat": "4g",
+        //         "carbs": "30g",
+        //         "protein": "8g",
+        //         "calories": "200"
+        //     }
+        // ],
+        // "snack": [{
+        //         "index": 0,
+        //         "itemName": "Almonds",
+        //         "itemQuantity": "1 oz",
+        //         "fat": "14g",
+        //         "carbs": "3g",
+        //         "protein": "6g",
+        //         "calories": "160"
+        //     },
+        //     {
+        //         "index": 1,
+        //         "itemName": "Cucumber Slices",
+        //         "itemQuantity": "1 cup",
+        //         "fat": "0g",
+        //         "carbs": "2g",
+        //         "protein": "1g",
+        //         "calories": "15"
+        //     }
+        // ],
+        // "dinner": [{
+        //         "index": 0,
+        //         "itemName": "Baked Salmon",
+        //         "itemQuantity": "6 oz",
+        //         "fat": "12g",
+        //         "carbs": "0g",
+        //         "protein": "36g",
+        //         "calories": "300"
+        //     },
+        //     {
+        //         "index": 1,
+        //         "itemName": "Steamed Asparagus",
+        //         "itemQuantity": "1 cup",
+        //         "fat": "0g",
+        //         "carbs": "3g",
+        //         "protein": "2g",
+        //         "calories": "20"
+        //     }
+        // ],
         "additional-instructions": ""
     }
 };
@@ -92,7 +92,8 @@ const jsonData = {
 // Function to populate the form and calculate total macros
 function setData(data) {
     // Extract meal data and additional instructions
-    let tableRows = ['breakfast', 'lunch', 'snack', 'dinner'].filter(meal => data.tableData[meal].length > 0);
+    let tableRows = ['breakfast', 'lunch', 'snack', 'dinner'].filter(meal => data.tableData[meal] && data.tableData[meal].length > 0);
+    console.log(tableRows);
     let additionalDataColumn = "";
     if (data.tableData["additional-instructions"] == "") {
         additionalDataColumn = 'Drink 4-5 liters water daily, without fail - NO COMPROMISE ON THIS';
