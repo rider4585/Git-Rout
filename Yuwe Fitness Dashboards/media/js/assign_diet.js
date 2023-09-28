@@ -4,7 +4,8 @@ let dietJSON = {
     lunch: [],
     snack: [],
     dinner: [],
-    'additional-instructions': ''
+    'additional-instructions': '',
+    'BMR' : ''
 };
 
 // Function to create a new row for the UI
@@ -143,14 +144,37 @@ function sendData() {
     if (confirmSubmit) {
         // Perform the submission action here
         // For demonstration purposes, you can clear the diet data:
-        dietJSON["additional-instructions"] = document.getElementById('additionalInstructions').value;
-        console.log(dietJSON);
+        dietJSON["additional-instructions"] = document.getElementById('additionalInstructions').value || 'Drink 4-5 liters of water daily, without fail - NO COMPROMISE ON THIS';
+        dietJSON['BMR'] = document.getElementById('initialBMR').value;
         console.log(JSON.stringify(dietJSON));
         SendDataToFlutter.postMessage(JSON.stringify(dietJSON));
 
         // Inform the user that the diet has been submitted (you can replace this with your actual submission logic)
         alert("Your diet has been submitted.");
     }
+}
+
+function setData(data) {
+    data = JSON.parse(data);
+    const bmrInput = document.getElementById('initialBMR');
+    bmrInput.value = data?.gender && data?.weight && data?.height && data?.age
+    ? calculateBMR(data)
+    : '';
+
+}
+
+function calculateBMR(data) {
+    let bmr = 0;
+
+    if (data.gender.toLowerCase() === 'male') {
+        // For men: BMR = 10 * weight (kg) + 6.25 * height (cm) - 5 * age (years) + 5
+        bmr = 10 * data.weight + 6.25 * parseFloat(data.height) - 5 * data.age + 5;
+    } else if (data.gender.toLowerCase() === 'female') {
+        // For women: BMR = 10 * weight (kg) + 6.25 * height (cm) - 5 * age (years) - 161
+        bmr = 10 * data.weight + 6.25 * parseFloat(data.height) - 5 * data.age - 161;
+    }
+
+    return bmr;
 }
 
 // Add an event listener for the "Submit Diet" button
@@ -167,3 +191,12 @@ updateUi('breakfast');
 updateUi('lunch');
 updateUi('snack');
 updateUi('dinner');
+
+const data = {
+    gender: 'female',
+    weight: 60,
+    height: 165,
+    age: 30,
+};
+
+// setData(JSON.stringify(data));

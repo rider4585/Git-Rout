@@ -72,6 +72,10 @@ h1 {
     font-weight: 500;
 }
 
+#initialBMR {
+    border: 1px solid #0000007d;
+}
+
 /* Additional Instructions Section */
 #instructions {
     border: 1px solid #ccc;

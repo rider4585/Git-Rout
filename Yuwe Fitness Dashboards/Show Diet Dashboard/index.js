@@ -28,64 +28,65 @@ const jsonData = {
                 "calories": "120"
             }
         ],
-        // "lunch": [{
-        //         "index": 0,
-        //         "itemName": "Grilled Chicken Breast",
-        //         "itemQuantity": "4 oz",
-        //         "fat": "2g",
-        //         "carbs": "0g",
-        //         "protein": "30g",
-        //         "calories": "150"
-        //     },
-        //     {
-        //         "index": 1,
-        //         "itemName": "Quinoa Salad",
-        //         "itemQuantity": "1 cup",
-        //         "fat": "4g",
-        //         "carbs": "30g",
-        //         "protein": "8g",
-        //         "calories": "200"
-        //     }
-        // ],
-        // "snack": [{
-        //         "index": 0,
-        //         "itemName": "Almonds",
-        //         "itemQuantity": "1 oz",
-        //         "fat": "14g",
-        //         "carbs": "3g",
-        //         "protein": "6g",
-        //         "calories": "160"
-        //     },
-        //     {
-        //         "index": 1,
-        //         "itemName": "Cucumber Slices",
-        //         "itemQuantity": "1 cup",
-        //         "fat": "0g",
-        //         "carbs": "2g",
-        //         "protein": "1g",
-        //         "calories": "15"
-        //     }
-        // ],
-        // "dinner": [{
-        //         "index": 0,
-        //         "itemName": "Baked Salmon",
-        //         "itemQuantity": "6 oz",
-        //         "fat": "12g",
-        //         "carbs": "0g",
-        //         "protein": "36g",
-        //         "calories": "300"
-        //     },
-        //     {
-        //         "index": 1,
-        //         "itemName": "Steamed Asparagus",
-        //         "itemQuantity": "1 cup",
-        //         "fat": "0g",
-        //         "carbs": "3g",
-        //         "protein": "2g",
-        //         "calories": "20"
-        //     }
-        // ],
-        "additional-instructions": ""
+        "lunch": [{
+                "index": 0,
+                "itemName": "Grilled Chicken Breast",
+                "itemQuantity": "4 oz",
+                "fat": "2g",
+                "carbs": "0g",
+                "protein": "30g",
+                "calories": "150"
+            },
+            {
+                "index": 1,
+                "itemName": "Quinoa Salad",
+                "itemQuantity": "1 cup",
+                "fat": "4g",
+                "carbs": "30g",
+                "protein": "8g",
+                "calories": "200"
+            }
+        ],
+        "snack": [{
+                "index": 0,
+                "itemName": "Almonds",
+                "itemQuantity": "1 oz",
+                "fat": "14g",
+                "carbs": "3g",
+                "protein": "6g",
+                "calories": "160"
+            },
+            {
+                "index": 1,
+                "itemName": "Cucumber Slices",
+                "itemQuantity": "1 cup",
+                "fat": "0g",
+                "carbs": "2g",
+                "protein": "1g",
+                "calories": "15"
+            }
+        ],
+        "dinner": [{
+                "index": 0,
+                "itemName": "Baked Salmon",
+                "itemQuantity": "6 oz",
+                "fat": "12g",
+                "carbs": "0g",
+                "protein": "36g",
+                "calories": "300"
+            },
+            {
+                "index": 1,
+                "itemName": "Steamed Asparagus",
+                "itemQuantity": "1 cup",
+                "fat": "0g",
+                "carbs": "3g",
+                "protein": "2g",
+                "calories": "20"
+            }
+        ],
+        "additional-instructions": "",
+        'BMR' : 1332.6
     }
 };
 
@@ -93,21 +94,15 @@ const jsonData = {
 function setData(data) {
     // Extract meal data and additional instructions
     let tableRows = ['breakfast', 'lunch', 'snack', 'dinner'].filter(meal => data.tableData[meal] && data.tableData[meal].length > 0);
-    console.log(tableRows);
-    let additionalDataColumn = "";
-    if (data.tableData["additional-instructions"] == "") {
-        additionalDataColumn = 'Drink 4-5 liters water daily, without fail - NO COMPROMISE ON THIS';
-    } else {
-        additionalDataColumn = data.tableData["additional-instructions"];
-    }
+    let additionalDataColumn = data.tableData["additional-instructions"];
 
     // Populate personal information
     document.getElementById("name").textContent = data.name;
     document.getElementById("gender").textContent = data.gender;
     document.getElementById("weight").textContent = data.weight + " Kg";
     document.getElementById("goal").textContent = data.goal;
-    document.getElementById("bmr").textContent = calculateBMR(data);
-    document.getElementById("height").textContent = data.height;
+    document.getElementById("bmr").textContent = data.tableData['BMR'];
+    document.getElementById("height").textContent = data.height + "Cm";
     document.getElementById("age").textContent = data.age;
     document.getElementById("outer-square").className = data.foodPreference;
 
@@ -203,20 +198,6 @@ function setData(data) {
 
 function isThisYuWeWebPage() {
     return true;
-}
-
-function calculateBMR(data) {
-    let bmr = 0;
-
-    if (data.gender.toLowerCase() === 'male') {
-        // For men: BMR = 10 * weight (kg) + 6.25 * height (cm) - 5 * age (years) + 5
-        bmr = 10 * data.weight + 6.25 * parseFloat(data.height) - 5 * data.age + 5;
-    } else if (data.gender.toLowerCase() === 'female') {
-        // For women: BMR = 10 * weight (kg) + 6.25 * height (cm) - 5 * age (years) - 161
-        bmr = 10 * data.weight + 6.25 * parseFloat(data.height) - 5 * data.age - 161;
-    }
-
-    return bmr;
 }
 
 // Call the setData function with your JSON data
