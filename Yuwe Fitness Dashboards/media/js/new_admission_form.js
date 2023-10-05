@@ -238,6 +238,7 @@ function sendData() {
         }
     };
 
+    // console.log(masterJson);
     SendDataToFlutter.postMessage(JSON.stringify(masterJson));
     // console.log(masterJson);
     // console.log(JSON.stringify(masterJson));
@@ -274,8 +275,7 @@ function getSelectedInterests() {
 
 function getGoals() {
     const goalsInput = document.getElementById("goals").value;
-    const goalsArray = goalsInput.split(',').map((goal) => goal.trim()).filter((goal) => goal !== '');
-    return goalsArray;
+    return goalsInput;
 }
 
 function generateHealthConditionJSON() {

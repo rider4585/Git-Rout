@@ -88,11 +88,22 @@
                     <div id="interests-error" class="text-danger"></div>
                 </div>
                 <div class="form-group">
-                    <label for="goals">What is Your Goal (use comma to separate goals)</label>
-                    <textarea class="form-control" id="goals" name="goals" required></textarea>
+                    <label for="goals">What is Your Goal</label>
+                    <select class="form-control" id="goals" name="goals" required>
+                        <option value selected disabled>Select Goal</option>
+                        <option value="Fat loss">Fat loss</option>
+                        <option value="Weight loss">Weight loss</option>
+                        <option value="Muscle gain">Muscle gain</option>
+                        <option value="Weight gain">Weight gain</option>
+                        <option value="Weight loss and muscle gain">Weight loss and muscle gain</option>
+                        <option value="Increase strength">Increase strength</option>
+                        <option value="Increase flexibility">Increase flexibility</option>
+                        <option value="Improve activity level">Improve activity level</option>
+                        <option value="Improve all over fitness level">Improve all over fitness level</option>
+                    </select>
                 </div>
             </div>
-            
+
             <div class="section-two">
                 <hr>
                 <!-- Subsection One -->
@@ -331,14 +342,14 @@
                         <div class="form-row">
                             <div>
                                 <div class="mb-2">
-                                    <input type="text" name="emergency_contact_name" id="emergency_contact_name" placeholder="Name"
-                                        class="form-control" required pattern="^[a-zA-Z ]{2,30}$"
+                                    <input type="text" name="emergency_contact_name" id="emergency_contact_name"
+                                        placeholder="Name" class="form-control" required pattern="^[a-zA-Z ]{2,30}$"
                                         title="Don't use any special characters or numbers in name">
                                 </div>
                                 <div class="mb-2">
-                                    <input type="tel" name="emergency_contact_number" id="emergency_contact_number" placeholder="Contact Number"
-                                        class="form-control" required maxlength="10" pattern="^\d{10}$"
-                                        title="Invalid mobile number">
+                                    <input type="tel" name="emergency_contact_number" id="emergency_contact_number"
+                                        placeholder="Contact Number" class="form-control" required maxlength="10"
+                                        pattern="^\d{10}$" title="Invalid mobile number">
                                 </div>
                             </div>
                         </div>
@@ -393,7 +404,8 @@
                     <div class="form-group" id="alcohol-consumption-details-container">
                         <span class="question">Give details of your alcohol consumption:</span>
                         <div>
-                            <input type="text" id="alcohol-consumption-details" name="subsection-two-question-10" class="form-control" required>
+                            <input type="text" id="alcohol-consumption-details" name="subsection-two-question-10"
+                                class="form-control" required>
                         </div>
                     </div>
 
@@ -608,8 +620,8 @@
                     <div class="form-group" id="other-medical-condition-details-container" style="display: none;">
                         <label class="question">Please provide details of the other medical condition:</label>
                         <div>
-                            <textarea class="form-control" id="other-medical-condition-details" name="other-medical-condition-details"
-                                rows="4"></textarea>
+                            <textarea class="form-control" id="other-medical-condition-details"
+                                name="other-medical-condition-details" rows="4"></textarea>
                         </div>
                     </div>
 
@@ -626,7 +638,7 @@
                     <div id="health-condition-error" class="text-danger"></div>
                 </div>
             </div>
-            
+
             <div class="section-three">
                 <hr>
                 <h5 class="text-center">Informed Consent & General Statement of Program Objectives and Procedures</h5>
