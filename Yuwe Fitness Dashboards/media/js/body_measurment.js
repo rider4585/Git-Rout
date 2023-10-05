@@ -59,6 +59,7 @@ function setData(jsonData) {
     if (!isKeyExists || data['hideElements'] == true) {
         disableAllInputs = true;
         hideElementsWithData = true;
+        document.querySelector('.form-submit-btn').style.display = 'none';
     } else if (data['hideElements'] == false) {
         disableInput = true;
     }
@@ -119,11 +120,11 @@ function setData(jsonData) {
         handleField('Arm', bodyMeasurementInfo.Arm, disableAllInputs, hideElementsWithData, disableInput);
     }
 
-    if(disableAllInputs){
-       let allInputs = document.querySelectorAll('input');
-       allInputs.forEach(input => {
-        input.disabled = true;
-       });
+    if (disableAllInputs) {
+        let allInputs = document.querySelectorAll('input');
+        allInputs.forEach(input => {
+            input.disabled = true;
+        });
     }
 }
 
@@ -232,4 +233,4 @@ let dummyData = {
 // }
 
 
-// setData(dummyData);
+setData(dummyData);
