@@ -5,7 +5,8 @@ let dietJSON = {
     snack: [],
     dinner: [],
     'additional-instructions': '',
-    'BMR' : ''
+    'BMR': '',
+    'isEditing': false
 };
 
 // Function to create a new row for the UI
@@ -15,10 +16,10 @@ function createUi(section, index, itemName, itemQuantity, fat, carbs, protein, c
     newItem.innerHTML = `
         <div class="d-flex justify-content-between align-items-center w-100">
             <div>
-                <strong>${itemName}</strong><br>
-                <span class="s-bold">Quantity</span>: ${itemQuantity}<br>
-                <span class="s-bold">Fat</span>: ${fat}g, <span class="s-bold">Carbs</span>: ${carbs}g, <span class="s-bold">Protein</span>: ${protein}g<br>
-                <span class="s-bold">Calories</span>: ${calories}
+                <strong class="item-name">${itemName}</strong><br>
+                <span class="s-bold">Quantity</span>: <span class="item-quantity">${itemQuantity}</span><br>
+                <span class="s-bold">Fat</span>: <span class="item-fat">${fat}</span>g, <span class="s-bold">Carbs</span>: <span class="item-carbs">${carbs}</span>g, <span class="s-bold">Protein</span>: <span class="item-protein">${protein}</span>g<br>
+                <span class="s-bold">Calories</span>: <span class="item-calories">${calories}</span>
             </div>
             <button class="btn btn-danger btn-sm remove-item" data-section="${section}" data-index="${index}">Remove</button>
         </div>
@@ -132,35 +133,137 @@ document.querySelector('.container').addEventListener('click', function (event) 
     }
 });
 
-// Add an event listener for the "Submit Diet" button
 // Function to handle the "Submit Diet" button click event
 function sendData() {
-    // Display a confirmation dialog
-    // if(dietJSON.breakfast.length == 0 || dietJSON.lunch.length == 0 || dietJSON.snack.length == 0 || dietJSON.dinner.length == 0){
-    //     alert('Please ');
-    // }
+    // Initialize an empty object to store the diet data
+    let dietData = {
+        breakfast: [],
+        lunch: [],
+        snack: [],
+        dinner: [],
+        'additional-instructions': '',
+        BMR: '',
+        isEditing: false
+    };
 
+    // Read initial BMR input
+    const initialBMR = document.getElementById('initialBMR').value;
+    dietData.BMR = initialBMR;
+
+    // Read additional instructions input
+    const additionalInstructions = document.getElementById('additionalInstructions').value;
+    dietData['additional-instructions'] = additionalInstructions;
+
+    // Read breakfast items
+    const breakfastItems = readMealItems('breakfast');
+    dietData.breakfast = breakfastItems;
+
+    // Read lunch items
+    const lunchItems = readMealItems('lunch');
+    dietData.lunch = lunchItems;
+
+    // Read snack items
+    const snackItems = readMealItems('snack');
+    dietData.snack = snackItems;
+
+    // Read dinner items
+    const dinnerItems = readMealItems('dinner');
+    dietData.dinner = dinnerItems;
+
+    // Display a confirmation dialog
     const confirmSubmit = window.confirm("Are you sure you want to submit this diet?");
     if (confirmSubmit) {
         // Perform the submission action here
-        // For demonstration purposes, you can clear the diet data:
-        dietJSON["additional-instructions"] = document.getElementById('additionalInstructions').value || 'Drink 4-5 liters of water daily, without fail - NO COMPROMISE ON THIS';
-        dietJSON['BMR'] = document.getElementById('initialBMR').value;
-        console.log(JSON.stringify(dietJSON));
-        SendDataToFlutter.postMessage(JSON.stringify(dietJSON));
+        console.log(JSON.stringify(dietData));
+        SendDataToFlutter.postMessage(JSON.stringify(dietData));
 
         // Inform the user that the diet has been submitted (you can replace this with your actual submission logic)
         alert("Your diet has been submitted.");
     }
 }
 
+// Function to read meal items for a given section
+function readMealItems(section) {
+    const mealItems = [];
+
+    // Read meal items from the form
+    const itemElements = document.querySelectorAll(`#${section}-list .item`);
+    itemElements.forEach((itemElement) => {
+        const itemName = itemElement.querySelector('.item-name').textContent;
+        const itemQuantity = itemElement.querySelector('.item-quantity').textContent;
+        const fat = itemElement.querySelector('.item-fat').textContent;
+        const carbs = itemElement.querySelector('.item-carbs').textContent;
+        const protein = itemElement.querySelector('.item-protein').textContent;
+        const calories = itemElement.querySelector('.item-calories').textContent;
+
+        // Create an object for each meal item
+        const mealItem = {
+            itemName,
+            itemQuantity,
+            fat,
+            carbs,
+            protein,
+            calories,
+        };
+
+        mealItems.push(mealItem);
+    });
+
+    return mealItems;
+}
+
+
 function setData(data) {
     data = JSON.parse(data);
-    const bmrInput = document.getElementById('initialBMR');
-    bmrInput.value = data?.gender && data?.weight && data?.height && data?.age
-    ? calculateBMR(data)
-    : '';
 
+    // Set the initial BMR input value
+    const bmrInput = document.getElementById('initialBMR');
+    if (data.isEditing) {
+        bmrInput.value = data?.BMR || '';
+    } else {
+        bmrInput.value = data?.gender && data?.weight && data?.height && data?.age ?
+            calculateBMR(data) :
+            '';
+    }
+
+
+    // Populate breakfast section
+    if (data?.breakfast) {
+        populateSection('breakfast', data.breakfast);
+    }
+
+    // Populate lunch section
+    if (data?.lunch) {
+        populateSection('lunch', data.lunch);
+    }
+
+    // Populate snack section
+    if (data?.snack) {
+        populateSection('snack', data.snack);
+    }
+
+    // Populate dinner section
+    if (data?.dinner) {
+        populateSection('dinner', data.dinner);
+    }
+
+    // Set additional instructions
+    const additionalInstructions = document.getElementById('additionalInstructions');
+    additionalInstructions.value = data['additional-instructions'] || '';
+
+    // Update the isEditing flag
+    dietJSON['isEditing'] = data['isEditing'];
+}
+
+function populateSection(section, items) {
+    const sectionContainer = document.getElementById(`${section}-list`);
+    sectionContainer.innerHTML = ''; // Clear existing items
+
+    if (items && items.length > 0) {
+        items.forEach((item) => {
+            createUi(section, item.index, item.itemName, item.itemQuantity, item.fat, item.carbs, item.protein, item.calories);
+        });
+    }
 }
 
 function calculateBMR(data) {
@@ -197,6 +300,8 @@ const data = {
     weight: 60,
     height: 165,
     age: 30,
+    isEditing: false
 };
+
 
 // setData(JSON.stringify(data));
