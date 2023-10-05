@@ -354,7 +354,7 @@ function setData(data) {
 
     if (data?.services) {
         services = data.services;
-        loadInterests(services);
+        loadServices(services);
     } else {
         alert('Gym Services not Found');
     }
@@ -382,11 +382,11 @@ function setData(data) {
 
 }
 
-function loadInterests(interested) {
-    let goalsInnerHtml = '';
+function loadServices(interested) {
+    let servicesInnerHtml = '';
 
     for (const element of interested) {
-        goalsInnerHtml += `
+        servicesInnerHtml += `
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" id="interest-${element}" name="interest[]" value="${element}">
                             <label class="form-check-label" for="interest-${element}">
@@ -395,7 +395,7 @@ function loadInterests(interested) {
                         </div>`;
     };
 
-    goalsArray.innerHTML = goalsInnerHtml;
+    goalsArray.innerHTML = servicesInnerHtml;
 }
 
 function hideElements(elements) {
@@ -440,7 +440,8 @@ function populatePersonalDetails(personalDetails) {
     });
 
     if (personalDetails.goals) {
-        setField("goals", personalDetails.goals.join(', '), true);
+        // setField("goals", personalDetails.goals.join(', '), true);
+        document.getElementById('goals').value = personalDetails.goals;
     }
 }
 
@@ -590,58 +591,58 @@ function getSectionIdByQuestion(question) {
 }
 
 const testJson = {
-    "isAdmission": true,
-    "services": ['Yoga', 'Zumba'],
-    // "hideElements" : ['section-three', 'submit-button'],
+    "isAdmission" : false,
+    "services": ["YOGA", "ZUMBA"],
+    "hideElements": ["section-three", "submit-button"],
     "data": {
         "personal_details": {
-            "name": "raviraj Mahendra Bugge",
-            "email": "raviraj@gmail.com",
-            "phoneNumber": "+917798476162",
-            "selectedBirthDate": "1999-10-24",
-            "address": "ubfiweug",
+            "bloodGroup": "O+",
+            "anniversaryDate": "2001-08-24",
+            "address": "Ganesh Nagar",
+            "phoneNumber": "+917776091923",
             "gender": "Male",
-            "bloodGroup": "AB+",
-            "maritalStatus": "Married",
-            "anniversaryDate": "1999-10-24",
-            "formFilledDate": "2023-09-12",
-            "selectedServices": ["Zumba"],
-            "age": "23",
-            "goals": ["uhediueh"]
+            "selectedBirthDate": "2000-04-01",
+            "name": "Vaibhav Kshirsagar",
+            "age": 23,
+            "email": "vaibhavkshirsagar225@gmail.com",
+            "formFilledDate": "2023-09-14",
+            "selectedServices": ["YOGA", "ZUMBA"],
+            "goals": "Weight loss"
         },
         "emergency_contact": {
-            "name": "Ravi",
-            "contact": "7798476162"
+            "contact": "1234567890",
+            "name": "Bajirao Kshirsagar"
         },
         "health_questions": {
-            "Has a doctor ever said that you have a heart condition and that you should only do physical activity recommended by a doctor?": "no",
-            "Do you feel pain in your chest while doing any physical activity?": "no",
-            "In the past month, have you had chest pain when you were not doing physical activity?": "no",
-            "Do you lose your balance because of dizziness or do you ever lose consciousness?": "no",
-            "Do you have a bone or joint problem that could be made worse by a change in your physical activity?": "no",
-            "Is your doctor currently prescribing drugs for blood pressure or heart condition?": "no",
-            "Do you know of any other reason why you should not do physical activity?": "no",
-            "Other Reason Details": "Hello",
-            "Are you currently doing any physical activity?": "no",
-            "Details of Current Physical Activity": "Hello",
-            "Have you done any physical activity before?": "no",
-            "Details of Previous Physical Activity": "Hello",
+            "Do you lose your balance because of dizziness or do you ever lose consciousness?": "yes",
+            "Details of Previous Physical Activity": "",
             "Are you currently taking any medications?": "no",
-            "Specify the medications you are currently taking": "Hello",
             "Are you pregnant?": "no",
-            "Number of Pregnancy Months": "6",
-            "Do you have a physician?": "no",
-            "Physician Details": "Hello",
-            "Have you gone through any surgery in the past 6 months?": "no",
-            "Surgery Details": "Hello",
-            "Have you experienced any injuries due to accidents?": "no",
-            "Injury Details": "Hello",
-            "Details of Alcohol Consumption": "no",
+            "Surgery Details": "",
             "Do you smoke?": "no",
-            "Family Health History": "no"
+            "Do you feel pain in your chest while doing any physical activity?": "no",
+            "Has a doctor ever said that you have a heart condition and that you should only do physical activity recommended by a doctor?": "no",
+            "Have you experienced any injuries due to accidents?": "no",
+            "Number of Pregnancy Months": "",
+            "Have you done any physical activity before?": "no",
+            "Physician Details": "",
+            "Other Reason Details": "",
+            "Specify the medications you are currently taking": "",
+            "Do you know of any other reason why you should not do physical activity?": "no",
+            "Is your doctor currently prescribing drugs for blood pressure or heart condition?": "no",
+            "Do you have a bone or joint problem that could be made worse by a change in your physical activity?": "no",
+            "Have you gone through any surgery in the past 6 months?": "no",
+            "Family Health History": "no",
+            "In the past month, have you had chest pain when you were not doing physical activity?": "no",
+            "Do you have a physician?": "no",
+            "Details of Alcohol Consumption": "No",
+            "Details of Current Physical Activity": "",
+            "Injury Details": "",
+            "Are you currently doing any physical activity?": "no"
         },
-        "health_conditions": []
+        "health_conditions": ["Bronchitis", "Diabetes", "Stomach Problem", "Shortness of Breath", "High Cholesterol", "Impaired Fasting Glucose", "Hormonal Imbalance", "Limited Range of Motion 2"]
     }
 }
+
 
 // setData(testJson);
