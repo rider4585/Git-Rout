@@ -29,10 +29,34 @@ function fillDummyData() {
     // ... (fill other fields with dummy data)
 }
 
-// fillDummyData();
-
 function setData(jsonData) {
     const data = jsonData;
+
+    let disableAllInputs = false;
+
+    let hideElementsWithData = false;
+
+    let disableInput = false;
+
+    let isKeyExists = 'hideElements' in data;
+    console.log(isKeyExists);
+
+    if(!isKeyExists || data['hideElements'] == true){
+        console.log('if');
+        disableAllInputs = true;
+        hideElementsWithData = true;
+    } else if(data['hideElements'] == false){
+        console.log('hi');
+        disableInput = true;
+    }
+
+    // if (isKeyExists && data['hideElements'] === false) {
+    //     hideElements = false;
+    // }
+
+    // if (hideElements || isKeyExists) {
+    //     disableAllInputs = true;
+    // }
 
     // Personal Information
     if (data['personal-information']) {
@@ -46,38 +70,64 @@ function setData(jsonData) {
 
         if (personalInfo.name && personalInfo.name !== '') {
             nameInput.value = personalInfo.name;
-            nameInput.disabled = true;
-            nameInput.classList.add('show');
+            if (disableInput) {
+                nameInput.disabled = true;
+            }
+            // console.log('hiii');
+            if(hideElementsWithData){
+                console.log(nameInput);
+            }
         }
 
         if (personalInfo.MID && personalInfo.MID !== '') {
             midInput.value = personalInfo.MID;
-            midInput.disabled = true;
-            midInput.classList.add('show');
+            if (disableAllInputs) {
+                midInput.disabled = true;
+            }
+
+            if(hideElements){
+                midInput.classList.add('show');
+            }
         }
 
         if (personalInfo.gender && personalInfo.gender !== '') {
             genderInput.value = personalInfo.gender.toLowerCase();
-            genderInput.disabled = true;
-            genderInput.classList.add('show');
+            if (disableAllInputs) {
+                genderInput.disabled = true;
+                genderInput.classList.add('show');
+            } else {
+                genderInput.disabled = true;
+            }
         }
 
         if (personalInfo.age && personalInfo.age !== '') {
             ageInput.value = personalInfo.age;
-            ageInput.disabled = true;
-            ageInput.classList.add('show');
+            if (disableAllInputs) {
+                ageInput.disabled = true;
+                ageInput.classList.add('show');
+            } else {
+                ageInput.disabled = true;
+            }
         }
 
         if (personalInfo.height && personalInfo.height !== '') {
             heightInput.value = personalInfo.height;
-            heightInput.disabled = true;
-            heightInput.classList.add('show');
+            if (disableAllInputs) {
+                heightInput.disabled = true;
+                heightInput.classList.add('show');
+            } else {
+                heightInput.disabled = true;
+            }
         }
 
         if (personalInfo.weight && personalInfo.weight !== '') {
             weightInput.value = personalInfo.weight;
-            weightInput.disabled = true;
-            weightInput.classList.add('show');
+            if (disableAllInputs) {
+                weightInput.disabled = true;
+                weightInput.classList.add('show');
+            } else {
+                weightInput.disabled = true;
+            }
         }
     }
 
@@ -92,32 +142,52 @@ function setData(jsonData) {
 
         if (bodyFat['Body-Fat-Percentage'] && bodyFat['Body-Fat-Percentage'] !== '') {
             bodyFatInput.value = bodyFat['Body-Fat-Percentage'];
-            bodyFatInput.disabled = true;
-            bodyFatInput.classList.add('show');
+            if (disableAllInputs) {
+                bodyFatInput.disabled = true;
+                bodyFatInput.classList.add('show');
+            } else {
+                bodyFatInput.disabled = true;
+            }
         }
 
         if (bodyFat['Visceral-Fat'] && bodyFat['Visceral-Fat'] !== '') {
             visceralFatInput.value = bodyFat['Visceral-Fat'];
-            visceralFatInput.disabled = true;
-            visceralFatInput.classList.add('show');
+            if (disableAllInputs) {
+                visceralFatInput.disabled = true;
+                visceralFatInput.classList.add('show');
+            } else {
+                visceralFatInput.disabled = true;
+            }
         }
 
         if (bodyFat.BMR && bodyFat.BMR !== '') {
             bmrInput.value = bodyFat.BMR;
-            bmrInput.disabled = true;
-            bmrInput.classList.add('show');
+            if (disableAllInputs) {
+                bmrInput.disabled = true;
+                bmrInput.classList.add('show');
+            } else {
+                bmrInput.disabled = true;
+            }
         }
 
         if (bodyFat.BMI && bodyFat.BMI !== '') {
             bmiInput.value = bodyFat.BMI;
-            bmiInput.disabled = true;
-            bmiInput.classList.add('show');
+            if (disableAllInputs) {
+                bmiInput.disabled = true;
+                bmiInput.classList.add('show');
+            } else {
+                bmiInput.disabled = true;
+            }
         }
 
         if (bodyFat['Body-Age'] && bodyFat['Body-Age'] !== '') {
             bodyAgeInput.value = bodyFat['Body-Age'];
-            bodyAgeInput.disabled = true;
-            bodyAgeInput.classList.add('show');
+            if (disableAllInputs) {
+                bodyAgeInput.disabled = true;
+                bodyAgeInput.classList.add('show');
+            } else {
+                bodyAgeInput.disabled = true;
+            }
         }
     }
 
@@ -131,26 +201,42 @@ function setData(jsonData) {
 
         if (subcutaneousFat['Whole-Body'] && subcutaneousFat['Whole-Body'] !== '') {
             subcutaneousWholeBodyInput.value = subcutaneousFat['Whole-Body'];
-            subcutaneousWholeBodyInput.disabled = true;
-            subcutaneousWholeBodyInput.classList.add('show');
+            if (disableAllInputs) {
+                subcutaneousWholeBodyInput.disabled = true;
+                subcutaneousWholeBodyInput.classList.add('show');
+            } else {
+                subcutaneousWholeBodyInput.disabled = true;
+            }
         }
 
         if (subcutaneousFat.Trunk && subcutaneousFat.Trunk !== '') {
             subcutaneousTrunkInput.value = subcutaneousFat.Trunk;
-            subcutaneousTrunkInput.disabled = true;
-            subcutaneousTrunkInput.classList.add('show');
+            if (disableAllInputs) {
+                subcutaneousTrunkInput.disabled = true;
+                subcutaneousTrunkInput.classList.add('show');
+            } else {
+                subcutaneousTrunkInput.disabled = true;
+            }
         }
 
         if (subcutaneousFat.Arm && subcutaneousFat.Arm !== '') {
             subcutaneousArmInput.value = subcutaneousFat.Arm;
-            subcutaneousArmInput.disabled = true;
-            subcutaneousArmInput.classList.add('show');
+            if (disableAllInputs) {
+                subcutaneousArmInput.disabled = true;
+                subcutaneousArmInput.classList.add('show');
+            } else {
+                subcutaneousArmInput.disabled = true;
+            }
         }
 
         if (subcutaneousFat.Leg && subcutaneousFat.Leg !== '') {
             subcutaneousLegInput.value = subcutaneousFat.Leg;
-            subcutaneousLegInput.disabled = true;
-            subcutaneousLegInput.classList.add('show');
+            if (disableAllInputs) {
+                subcutaneousLegInput.disabled = true;
+                subcutaneousLegInput.classList.add('show');
+            } else {
+                subcutaneousLegInput.disabled = true;
+            }
         }
     }
 
@@ -164,26 +250,42 @@ function setData(jsonData) {
 
         if (muscle['Whole-Body'] && muscle['Whole-Body'] !== '') {
             muscleWholeBodyInput.value = muscle['Whole-Body'];
-            muscleWholeBodyInput.disabled = true;
-            muscleWholeBodyInput.classList.add('show');
+            if (disableAllInputs) {
+                muscleWholeBodyInput.disabled = true;
+                muscleWholeBodyInput.classList.add('show');
+            } else {
+                muscleWholeBodyInput.disabled = true;
+            }
         }
 
         if (muscle.Trunk && muscle.Trunk !== '') {
             muscleTrunkInput.value = muscle.Trunk;
-            muscleTrunkInput.disabled = true;
-            muscleTrunkInput.classList.add('show');
+            if (disableAllInputs) {
+                muscleTrunkInput.disabled = true;
+                muscleTrunkInput.classList.add('show');
+            } else {
+                muscleTrunkInput.disabled = true;
+            }
         }
 
         if (muscle.Arm && muscle.Arm !== '') {
             muscleArmInput.value = muscle.Arm;
-            muscleArmInput.disabled = true;
-            muscleArmInput.classList.add('show');
+            if (disableAllInputs) {
+                muscleArmInput.disabled = true;
+                muscleArmInput.classList.add('show');
+            } else {
+                muscleArmInput.disabled = true;
+            }
         }
 
         if (muscle.Leg && muscle.Leg !== '') {
             muscleLegInput.value = muscle.Leg;
-            muscleLegInput.disabled = true;
-            muscleLegInput.classList.add('show');
+            if (disableAllInputs) {
+                muscleLegInput.disabled = true;
+                muscleLegInput.classList.add('show');
+            } else {
+                muscleLegInput.disabled = true;
+            }
         }
     }
 
@@ -200,71 +302,91 @@ function setData(jsonData) {
 
         if (bodyMeasurement.Chest && bodyMeasurement.Chest !== '') {
             chestInput.value = bodyMeasurement.Chest;
-            chestInput.disabled = true;
-            chestInput.classList.add('show');
+            if (disableAllInputs) {
+                chestInput.disabled = true;
+                chestInput.classList.add('show');
+            } else {
+                chestInput.disabled = true;
+            }
         }
 
         if (bodyMeasurement.Waist && bodyMeasurement.Waist !== '') {
             waistInput.value = bodyMeasurement.Waist;
-            waistInput.disabled = true;
-            waistInput.classList.add('show');
+            if (disableAllInputs) {
+                waistInput.disabled = true;
+                waistInput.classList.add('show');
+            } else {
+                waistInput.disabled = true;
+            }
         }
 
         if (bodyMeasurement['Lower-Abs'] && bodyMeasurement['Lower-Abs'] !== '') {
             lowerAbsInput.value = bodyMeasurement['Lower-Abs'];
-            lowerAbsInput.disabled = true;
-            lowerAbsInput.classList.add('show');
+            if (disableAllInputs) {
+                lowerAbsInput.disabled = true;
+                lowerAbsInput.classList.add('show');
+            } else {
+                lowerAbsInput.disabled = true;
+            }
         }
 
         if (bodyMeasurement.Hip && bodyMeasurement.Hip !== '') {
             hipInput.value = bodyMeasurement.Hip;
-            hipInput.disabled = true;
-            hipInput.classList.add('show');
+            if (disableAllInputs) {
+                hipInput.disabled = true;
+                hipInput.classList.add('show');
+            } else {
+                hipInput.disabled = true;
+            }
         }
 
         if (bodyMeasurement.Thigh && bodyMeasurement.Thigh !== '') {
             thighInput.value = bodyMeasurement.Thigh;
-            thighInput.disabled = true;
-            thighInput.classList.add('show');
+            if (disableAllInputs) {
+                thighInput.disabled = true;
+                thighInput.classList.add('show');
+            } else {
+                thighInput.disabled = true;
+            }
         }
 
         if (bodyMeasurement.Calf && bodyMeasurement.Calf !== '') {
             calfInput.value = bodyMeasurement.Calf;
-            calfInput.disabled = true;
-            calfInput.classList.add('show');
+            if (disableAllInputs) {
+                calfInput.disabled = true;
+                calfInput.classList.add('show');
+            } else {
+                calfInput.disabled = true;
+            }
         }
 
         if (bodyMeasurement.Arm && bodyMeasurement.Arm !== '') {
             armInput.value = bodyMeasurement.Arm;
-            armInput.disabled = true;
-            armInput.classList.add('show');
+            if (disableAllInputs) {
+                armInput.disabled = true;
+                armInput.classList.add('show');
+            } else {
+                armInput.disabled = true;
+            }
         }
     }
 
-    if (data?.hideElements && data['hideElements']) {
-        hideElements = true;
-        const submitBtn = document.querySelector('.form-submit-btn');
-        submitBtn.style.display = 'none';
+    // let elementsToHide = document.querySelectorAll('input:not(.show)');
+    // let genderInputToHide = document.getElementById('gender');
 
-        let elementsToHide = document.querySelectorAll('input:not(.show)');
-        let genderInputToHide = document.getElementById('gender');
+    // elementsToHide.forEach(element => {
+    //     element.closest('.form-group').style.display = 'none';
+    // });
 
-        elementsToHide.forEach(element => {
-            element.closest('.form-group').style.display = 'none';
-        });
+    // if (!genderInputToHide.classList.contains('show')) {
+    //     genderInputToHide.closest('.form-group').style.display = 'none';
+    // }
 
-        if (!genderInputToHide.classList.contains('show')) {
-            genderInputToHide.closest('.form-group').style.display = 'none';
-        }
-
-        let sectionsToHide = document.querySelectorAll('fieldset:not(:has(.show))');
-        sectionsToHide.forEach(section => {
-            section.style.display = 'none';
-        });
-
-    }
+    // let sectionsToHide = document.querySelectorAll('fieldset:not(:has(.show))');
+    // sectionsToHide.forEach(section => {
+    //     section.style.display = 'none';
+    // });
 }
-
 
 function sendData() {
     const formData = {
@@ -323,11 +445,11 @@ let dummyData = {
     "hideElements": true,
     "personal-information": {
         "name": "",
-        "MID": "",
-        "gender": "",
-        "age": "",
-        "height": "",
-        "weight": ""
+        "MID": "1233",
+        "gender": "Male",
+        "age": "24",
+        "height": "182",
+        "weight": "72"
     },
     "Body-Fat": {
         "Body-Fat-Percentage": "15",
