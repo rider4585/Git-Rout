@@ -151,4 +151,4 @@ let dummyData = {
     "services": ["Yoga", "Zumba"]
 }
 
-formValidator.setData(dummyData);
+// formValidator.setData(dummyData);
