@@ -53,14 +53,12 @@ function setData(jsonData) {
     let disableInput = false;
     let isKeyExists = 'hideElements' in data;
 
-    if (isKeyExists) {
-        if (data['hideElements'] == true) {
-            disableAllInputs = true;
-            hideElementsWithData = true;
-            document.querySelector('.form-submit-btn').style.display = 'none';
-        } else if (data['hideElements'] == false) {
-            disableInput = true;
-        }
+    if (!isKeyExists || data['hideElements'] == true) {
+        disableAllInputs = true;
+        hideElementsWithData = true;
+        document.querySelector('.form-submit-btn').style.display = 'none';
+    } else if (data['hideElements'] == false) {
+        disableInput = true;
     }
 
     // Personal Information
@@ -216,4 +214,4 @@ let dummyData = {
 // }
 
 
-// setData(dummyData);
+setData(dummyData);
