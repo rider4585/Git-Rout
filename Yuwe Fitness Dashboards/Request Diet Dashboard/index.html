@@ -32,15 +32,27 @@
             </div>
             <div class="form-group">
                 <label for="goals">Goals:</label>
-                <textarea class="form-control red-border" id="goals" name="goals" rows="3"></textarea>
+                <select class="form-control red-border" id="goals" name="goals" required>
+                    <option value="" disabled selected>Select Goals</option>
+                    <option value="Fat loss">Fat loss</option>
+                    <option value="Weight loss">Weight loss</option>
+                    <option value="Muscle gain">Muscle gain</option>
+                    <option value="Weight gain">Weight gain</option>
+                    <option value="Weight loss and muscle gain">Weight loss and muscle gain</option>
+                    <option value="Increase strength">Increase strength</option>
+                    <option value="Increase flexibility">Increase flexibility</option>
+                    <option value="Improve activity level">Improve activity level</option>
+                    <option value="Improve all over fitness level">Improve all over fitness level</option>
+                </select>
             </div>
+            
             <div class="form-group">
                 <label for="allergies">Allergies (Comma separated):</label>
-                <input type="text" class="form-control red-border" id="allergies" name="allergies" required>
+                <input type="text" class="form-control red-border" id="allergies" name="allergies" placeholder="Type 'No' if no allergies" required>
             </div>
             <div class="form-group">
                 <label for="medicalConditions">Medical Conditions (Comma separated):</label>
-                <input type="text" class="form-control red-border" id="medicalConditions" name="medicalConditions">
+                <input type="text" class="form-control red-border" id="medicalConditions" name="medicalConditions" placeholder="Type 'No' if no medical Conditions" required>
             </div>
             <div class="form-group">
                 <label for="foodPreferences">Food Preferences:</label>

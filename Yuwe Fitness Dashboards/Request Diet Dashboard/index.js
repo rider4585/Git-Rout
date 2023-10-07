@@ -43,7 +43,29 @@ function setData(data) {
     document.getElementById("weight").value = data.weight || '';
     document.getElementById("bodyFat").value = data.bodyFat || '';
     document.getElementById("visceralFat").value = data.visceralFat || '';
-    document.getElementById("goals").value = Array.isArray(data.goal) ? data.goal.join(', ') : '';
+
+    // Handle "Goals" field
+    const goalsSelect = document.getElementById("goals");
+    if (data.goal) {
+        goal = data.goal;
+        let optionExists = false;
+        for (const element of goalsSelect.options) {
+            if (element.value === goal) {
+                optionExists = true;
+                element.selected = true;
+                break;
+            }
+        }
+        // If the goal is not an option, create a new option and select it
+        if (!optionExists) {
+            const newOption = document.createElement("option");
+            newOption.value = goal;
+            newOption.text = goal;
+            newOption.selected = true;
+            goalsSelect.appendChild(newOption);
+        }
+    }
+
     document.getElementById("allergies").value = Array.isArray(data.allergies) ? data.allergies.join(', ') : '';
     document.getElementById("medicalConditions").value = Array.isArray(data.medicalConditions) ? data.medicalConditions.join(', ') : '';
 
@@ -71,12 +93,13 @@ function setData(data) {
 }
 
 
+
 let DummyData = {
     height: 175, // Example height value
     weight: 70, // Example weight value
     bodyFat: 15.5, // Example body fat value
     visceralFat: 'Moderate', // Example visceral fat value
-    goal: ['Lose weight', 'Shred'], // Example goal value
+    goal: 'We', // Example goal value
     allergies: ['Peanuts', 'Dairy'], // Example allergies array
     medicalConditions: ['Hypertension', 'Diabetes'], // Example medical conditions array
     foodPreferences: 'N' // Example food preference value
