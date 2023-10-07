@@ -174,7 +174,7 @@ function sendData() {
     const confirmSubmit = window.confirm("Are you sure you want to submit this diet?");
     if (confirmSubmit) {
         // Perform the submission action here
-        console.log(JSON.stringify(dietData));
+        // console.log(JSON.stringify(dietData));
         SendDataToFlutter.postMessage(JSON.stringify(dietData));
 
         // Inform the user that the diet has been submitted (you can replace this with your actual submission logic)
