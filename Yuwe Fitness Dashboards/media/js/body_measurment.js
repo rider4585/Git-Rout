@@ -53,12 +53,14 @@ function setData(jsonData) {
     let disableInput = false;
     let isKeyExists = 'hideElements' in data;
 
-    if (!isKeyExists || data['hideElements'] == true) {
-        disableAllInputs = true;
-        hideElementsWithData = true;
-        document.querySelector('.form-submit-btn').style.display = 'none';
-    } else if (data['hideElements'] == false) {
-        disableInput = true;
+    if (isKeyExists) {
+        if (data['hideElements'] == true) {
+            disableAllInputs = true;
+            hideElementsWithData = true;
+            document.querySelector('.form-submit-btn').style.display = 'none';
+        } else if (data['hideElements'] == false) {
+            disableInput = true;
+        }
     }
 
     // Personal Information
@@ -74,59 +76,67 @@ function setData(jsonData) {
     }
 
     // Body Fat Section
-    const bodyFatInfo = data['Body-Fat'];
-    const bodyFatSection = document.getElementById('bodyFatSection');
-    if (bodyFatInfo && Object.values(bodyFatInfo).every(val => val === '' || val === null)) {
-        bodyFatSection.style.display = 'none';
-    } else {
-        bodyFatSection.style.display = 'block';
-        handleField('Body-Fat-Percentage', bodyFatInfo['Body-Fat-Percentage'], disableAllInputs, hideElementsWithData, disableInput);
-        handleField('Visceral-Fat', bodyFatInfo['Visceral-Fat'], disableAllInputs, hideElementsWithData, disableInput);
-        handleField('BMR', bodyFatInfo.BMR, disableAllInputs, hideElementsWithData, disableInput);
-        handleField('BMI', bodyFatInfo.BMI, disableAllInputs, hideElementsWithData, disableInput);
-        handleField('Body-Age', bodyFatInfo['Body-Age'], disableAllInputs, hideElementsWithData, disableInput);
+    if (data['Body-Fat']) {
+        const bodyFatInfo = data['Body-Fat'];
+        const bodyFatSection = document.getElementById('bodyFatSection');
+        if (bodyFatInfo && Object.values(bodyFatInfo).every(val => val === '' || val === null)) {
+            bodyFatSection.style.display = 'none';
+        } else {
+            bodyFatSection.style.display = 'block';
+            handleField('Body-Fat-Percentage', bodyFatInfo['Body-Fat-Percentage'], disableAllInputs, hideElementsWithData, disableInput);
+            handleField('Visceral-Fat', bodyFatInfo['Visceral-Fat'], disableAllInputs, hideElementsWithData, disableInput);
+            handleField('BMR', bodyFatInfo.BMR, disableAllInputs, hideElementsWithData, disableInput);
+            handleField('BMI', bodyFatInfo.BMI, disableAllInputs, hideElementsWithData, disableInput);
+            handleField('Body-Age', bodyFatInfo['Body-Age'], disableAllInputs, hideElementsWithData, disableInput);
+        }
     }
 
     // Subcutaneous Fat Section
-    const subcutaneousFatInfo = data['Subcutaneous-Fat'];
-    const subcutaneousFatSection = document.getElementById('subcutaneousFatSection');
-    if (subcutaneousFatInfo && Object.values(subcutaneousFatInfo).every(val => val === '' || val === null)) {
-        subcutaneousFatSection.style.display = 'none';
-    } else {
-        subcutaneousFatSection.style.display = 'block';
-        handleField('subcutaneous-Whole-Body', subcutaneousFatInfo['Whole-Body'], disableAllInputs, hideElementsWithData, disableInput);
-        handleField('subcutaneous-Trunk', subcutaneousFatInfo['Trunk'], disableAllInputs, hideElementsWithData, disableInput);
-        handleField('subcutaneous-Arm', subcutaneousFatInfo.Arm, disableAllInputs, hideElementsWithData, disableInput);
-        handleField('subcutaneous-Leg', subcutaneousFatInfo.Leg, disableAllInputs, hideElementsWithData, disableInput);
+    if (data['Subcutaneous-Fat']) {
+        const subcutaneousFatInfo = data['Subcutaneous-Fat'];
+        const subcutaneousFatSection = document.getElementById('subcutaneousFatSection');
+        if (subcutaneousFatInfo && Object.values(subcutaneousFatInfo).every(val => val === '' || val === null)) {
+            subcutaneousFatSection.style.display = 'none';
+        } else {
+            subcutaneousFatSection.style.display = 'block';
+            handleField('subcutaneous-Whole-Body', subcutaneousFatInfo['Whole-Body'], disableAllInputs, hideElementsWithData, disableInput);
+            handleField('subcutaneous-Trunk', subcutaneousFatInfo['Trunk'], disableAllInputs, hideElementsWithData, disableInput);
+            handleField('subcutaneous-Arm', subcutaneousFatInfo.Arm, disableAllInputs, hideElementsWithData, disableInput);
+            handleField('subcutaneous-Leg', subcutaneousFatInfo.Leg, disableAllInputs, hideElementsWithData, disableInput);
+        }
     }
 
     // Muscle Section
-    const muscleInfo = data['Muscle'];
-    const muscleSection = document.getElementById('muscleSection');
-    if (muscleInfo && Object.values(muscleInfo).every(val => val === '' || val === null)) {
-        muscleSection.style.display = 'none';
-    } else {
-        muscleSection.style.display = 'block';
-        handleField('muscle-Whole-Body', muscleInfo['Whole-Body'], disableAllInputs, hideElementsWithData, disableInput);
-        handleField('muscle-Trunk', muscleInfo['Trunk'], disableAllInputs, hideElementsWithData, disableInput);
-        handleField('muscle-Arm', muscleInfo.Arm, disableAllInputs, hideElementsWithData, disableInput);
-        handleField('muscle-Leg', muscleInfo.Leg, disableAllInputs, hideElementsWithData, disableInput);
+    if (data['Muscle']) {
+        const muscleInfo = data['Muscle'];
+        const muscleSection = document.getElementById('muscleSection');
+        if (muscleInfo && Object.values(muscleInfo).every(val => val === '' || val === null)) {
+            muscleSection.style.display = 'none';
+        } else {
+            muscleSection.style.display = 'block';
+            handleField('muscle-Whole-Body', muscleInfo['Whole-Body'], disableAllInputs, hideElementsWithData, disableInput);
+            handleField('muscle-Trunk', muscleInfo['Trunk'], disableAllInputs, hideElementsWithData, disableInput);
+            handleField('muscle-Arm', muscleInfo.Arm, disableAllInputs, hideElementsWithData, disableInput);
+            handleField('muscle-Leg', muscleInfo.Leg, disableAllInputs, hideElementsWithData, disableInput);
+        }
     }
 
     // Body Measurement Section
-    const bodyMeasurementInfo = data['Body-Measurement'];
-    const bodyMeasurementSection = document.getElementById('bodyMeasurementSection');
-    if (bodyMeasurementInfo && Object.values(bodyMeasurementInfo).every(val => val === '' || val === null)) {
-        bodyMeasurementSection.style.display = 'none';
-    } else {
-        bodyMeasurementSection.style.display = 'block';
-        handleField('Chest', bodyMeasurementInfo['Chest'], disableAllInputs, hideElementsWithData, disableInput);
-        handleField('Waist', bodyMeasurementInfo['Waist'], disableAllInputs, hideElementsWithData, disableInput);
-        handleField('Lower-Abs', bodyMeasurementInfo['Lower-Abs'], disableAllInputs, hideElementsWithData, disableInput);
-        handleField('Hip', bodyMeasurementInfo.Hip, disableAllInputs, hideElementsWithData, disableInput);
-        handleField('Thigh', bodyMeasurementInfo.Thigh, disableAllInputs, hideElementsWithData, disableInput);
-        handleField('Calf', bodyMeasurementInfo.Calf, disableAllInputs, hideElementsWithData, disableInput);
-        handleField('Arm', bodyMeasurementInfo.Arm, disableAllInputs, hideElementsWithData, disableInput);
+    if (data['Body-Measurement']) {
+        const bodyMeasurementInfo = data['Body-Measurement'];
+        const bodyMeasurementSection = document.getElementById('bodyMeasurementSection');
+        if (bodyMeasurementInfo && Object.values(bodyMeasurementInfo).every(val => val === '' || val === null)) {
+            bodyMeasurementSection.style.display = 'none';
+        } else {
+            bodyMeasurementSection.style.display = 'block';
+            handleField('Chest', bodyMeasurementInfo['Chest'], disableAllInputs, hideElementsWithData, disableInput);
+            handleField('Waist', bodyMeasurementInfo['Waist'], disableAllInputs, hideElementsWithData, disableInput);
+            handleField('Lower-Abs', bodyMeasurementInfo['Lower-Abs'], disableAllInputs, hideElementsWithData, disableInput);
+            handleField('Hip', bodyMeasurementInfo.Hip, disableAllInputs, hideElementsWithData, disableInput);
+            handleField('Thigh', bodyMeasurementInfo.Thigh, disableAllInputs, hideElementsWithData, disableInput);
+            handleField('Calf', bodyMeasurementInfo.Calf, disableAllInputs, hideElementsWithData, disableInput);
+            handleField('Arm', bodyMeasurementInfo.Arm, disableAllInputs, hideElementsWithData, disableInput);
+        }
     }
 }
 
@@ -185,42 +195,13 @@ function isThisYuWeWebPage() {
 }
 
 let dummyData = {
-    "hideElements": true,
-    "personal-information": {
-        "name": "",
-        "MID": "1233",
-        "gender": "Male",
-        "age": "24",
-        "height": "182",
-        "weight": "72"
-    },
-    "Body-Fat": {
-        "Body-Fat-Percentage": "15",
-        "Visceral-Fat": "10",
-        "BMR": "1800",
-        "BMI": "24",
-        "Body-Age": "28"
-    },
-    "Subcutaneous-Fat": {
-        "Whole-Body": "20",
-        "Trunk": "15",
-        "Arm": "12",
-        "Leg": "18"
-    },
-    "Muscle": {
-        "Whole-Body": "30",
-        "Trunk": "25",
-        "Arm": "20",
-        "Leg": "28"
-    },
-    "Body-Measurement": {
-        "Chest": "",
-        "Waist": "",
-        "Lower-Abs": "",
-        "Hip": "",
-        "Thigh": "",
-        "Calf": "",
-        "Arm": ""
+    'personal-information': {
+        'name': null,
+        'MID': null,
+        'gender': null,
+        'age': "20",
+        'height': null,
+        'weight': null
     }
 };
 
