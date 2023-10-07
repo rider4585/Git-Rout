@@ -372,8 +372,15 @@ function setData(data) {
         populateEmergencyContact(data.data.emergency_contact);
     }
 
-    if (data?.data?.health_conditions) {
+    if (data?.data?.health_conditions && health_conditions != null) {
         populateHealthConditions(data.data.health_conditions);
+    } else {
+        const noneConditionCheckbox = document.getElementById("major-condition-none");
+        const conditionCheckboxes = document.querySelectorAll("input[name='health-condition[]']:not(#major-condition-none)");
+        noneConditionCheckbox.checked = true;
+        conditionCheckboxes.forEach((checkbox) => {
+            toggleElementVisibility(checkbox.id, false);
+        });
     }
 
     if (data?.data?.health_questions) {
@@ -439,9 +446,31 @@ function populatePersonalDetails(personalDetails) {
         }
     });
 
+    const goalsSelect = document.getElementById('goals');
+    const goalsOptions = goalsSelect.querySelectorAll('option');
+
     if (personalDetails.goals) {
-        // setField("goals", personalDetails.goals.join(', '), true);
-        document.getElementById('goals').value = personalDetails.goals;
+        const goalValue = personalDetails.goals.toLowerCase();
+
+        let goalExists = false;
+
+        goalsOptions.forEach((option) => {
+            if (option.value.toLowerCase() === goalValue) {
+                option.selected = true;
+                goalsSelect.disabled = true;
+                goalExists = true;
+            }
+        });
+
+        if (!goalExists) {
+            // Create a new option, select it, and disable it
+            const newOption = document.createElement('option');
+            newOption.value = personalDetails.goals;
+            newOption.text = personalDetails.goals;
+            newOption.selected = true;
+            goalsSelect.disabled = true;
+            goalsSelect.appendChild(newOption);
+        }
     }
 }
 
@@ -451,28 +480,21 @@ function populateEmergencyContact(emergencyContact) {
 }
 
 function populateHealthConditions(healthConditions) {
-    const noneConditionCheckbox = document.getElementById("major-condition-none");
     const conditionCheckboxes = document.querySelectorAll("input[name='health-condition[]']:not(#major-condition-none)");
+    const noneConditionCheckbox = document.getElementById("major-condition-none");
 
-    if (healthConditions.length === 0) {
-        noneConditionCheckbox.checked = true;
-        conditionCheckboxes.forEach((checkbox) => {
-            toggleElementVisibility(checkbox.id, false);
-        });
-    } else {
-        noneConditionCheckbox.checked = false;
-        conditionCheckboxes.forEach((checkbox) => {
-            if (healthConditions.includes(checkbox.value)) {
-                checkbox.checked = true;
-                if (isDisableInputs) {
-                    checkbox.disabled = true; // Make it non-editable
-                }
-            } else {
-                checkbox.checked = false;
+    noneConditionCheckbox.checked = false;
+    conditionCheckboxes.forEach((checkbox) => {
+        if (healthConditions.includes(checkbox.value)) {
+            checkbox.checked = true;
+            if (isDisableInputs) {
+                checkbox.disabled = true; // Make it non-editable
             }
-            toggleElementVisibility(checkbox.id, true);
-        });
-    }
+        } else {
+            checkbox.checked = false;
+        }
+        toggleElementVisibility(checkbox.id, true);
+    });
 
     // Handle the "Other Medical Condition" checkbox and details
     const otherConditionCheckbox = document.getElementById("condition-other");
@@ -591,30 +613,30 @@ function getSectionIdByQuestion(question) {
 }
 
 const testJson = {
-    "isAdmission" : false,
-    "services": ["YOGA", "ZUMBA"],
+    "isAdmission": false,
+    "services": ["20 session pt", "Yoga", "Zumba"],
     "hideElements": ["section-three", "submit-button"],
     "data": {
         "personal_details": {
             "bloodGroup": "O+",
-            "anniversaryDate": "2001-08-24",
             "address": "Ganesh Nagar",
-            "phoneNumber": "+917776091923",
+            "phoneNumber": "7776091923",
             "gender": "Male",
             "selectedBirthDate": "2000-04-01",
             "name": "Vaibhav Kshirsagar",
-            "age": 23,
+            "age": "23",
             "email": "vaibhavkshirsagar225@gmail.com",
-            "formFilledDate": "2023-09-14",
-            "selectedServices": ["YOGA", "ZUMBA"],
-            "goals": "Weight loss"
+            "maritalStatus": "Single",
+            "formFilledDate": "2023-09-23",
+            "selectedServices": ["20 session pt", "Yoga", "Zumba"],
+            "goals": "Ffat loss"
         },
         "emergency_contact": {
-            "contact": "1234567890",
-            "name": "Bajirao Kshirsagar"
+            "contact": "7776091923",
+            "name": "Vaibhav Kshirsagar"
         },
         "health_questions": {
-            "Do you lose your balance because of dizziness or do you ever lose consciousness?": "yes",
+            "Do you lose your balance because of dizziness or do you ever lose consciousness?": "no",
             "Details of Previous Physical Activity": "",
             "Are you currently taking any medications?": "no",
             "Are you pregnant?": "no",
@@ -640,9 +662,9 @@ const testJson = {
             "Injury Details": "",
             "Are you currently doing any physical activity?": "no"
         },
-        "health_conditions": ["Bronchitis", "Diabetes", "Stomach Problem", "Shortness of Breath", "High Cholesterol", "Impaired Fasting Glucose", "Hormonal Imbalance", "Limited Range of Motion 2"]
+        "health_conditions": null
     }
-}
+};
 
 
-// setData(testJson);
+setData(testJson);
