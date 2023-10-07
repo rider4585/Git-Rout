@@ -13,7 +13,7 @@
     <div class="container-fluid">
         <h2 class="center heading">Body Measurement Form</h2>
         <form id="measurementForm">
-            <fieldset>
+            <fieldset id="personalInfoSection">
                 <legend>Personal Information</legend>
                 <div class="form-group">
                     <label for="name">Name:</label>
@@ -47,7 +47,7 @@
                 <hr>
             </fieldset>
 
-            <fieldset>
+            <fieldset id="bodyFatSection">
                 <legend>Body Fat</legend>
                 <div class="form-group">
                     <label for="Body-Fat-Percentage">Body Fat (%):</label>
@@ -72,7 +72,7 @@
                 <hr>
             </fieldset>
 
-            <fieldset>
+            <fieldset id="subcutaneousFatSection">
                 <legend>Subcutaneous Fat</legend>
                 <div class="form-group">
                     <label for="subcutaneous-Whole-Body">Whole Body:</label>
@@ -93,7 +93,7 @@
                 <hr>
             </fieldset>
 
-            <fieldset>
+            <fieldset id="muscleSection">
                 <legend>Muscle</legend>
                 <div class="form-group">
                     <label for="muscle-Whole-Body">Whole Body:</label>
@@ -114,7 +114,7 @@
                 <hr>
             </fieldset>
 
-            <fieldset class="mb-3">
+            <fieldset id="bodyMeasurementSection">
                 <legend>Body Measurement</legend>
                 <div class="form-group">
                     <label for="Chest">Chest:</label>
@@ -147,7 +147,8 @@
             </fieldset>
 
             <div class="form-group form-submit-btn">
-                <button type="button" class="btn red-button w-100" onclick="sendData()" id="submitButton">Submit</button>
+                <button type="button" class="btn red-button w-100" onclick="sendData()"
+                    id="submitButton">Submit</button>
             </div>
         </form>
     </div>
