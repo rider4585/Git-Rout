@@ -195,10 +195,10 @@ const jsonData = {
                 "calories": "20"
             }
         ],
-        "additional-instructions": "",
+        "additional-instructions": null,
         'BMR': 1332.6
     }
 };
 
 // Call the setData function with your JSON data
-setData(jsonData);
+// setData(jsonData);
