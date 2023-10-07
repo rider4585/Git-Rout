@@ -214,7 +214,7 @@ function readMealItems(section) {
 
 
 function setData(data) {
-    data = JSON.parse(data);
+    // data = JSON.parse(data);
 
     // Set the initial BMR input value
     const bmrInput = document.getElementById('initialBMR');
@@ -295,13 +295,71 @@ updateUi('lunch');
 updateUi('snack');
 updateUi('dinner');
 
+// const data = {
+//     "gender": "Male",
+//     "weight": "72",
+//     "height": "178",
+//     "age": "23",
+//     "isEditing": false
+// };
+
 const data = {
-    gender: 'female',
-    weight: 60,
-    height: 165,
-    age: 30,
-    isEditing: false
-};
+    "breakfast": [{
+        "index": 0,
+        "itemName": "Oatmeal",
+        "itemQuantity": "1 bowl",
+        "fat": "2",
+        "carbs": "30",
+        "protein": "5",
+        "calories": "150"
+    }, {
+        "index": 1,
+        "itemName": "Banana",
+        "itemQuantity": "1",
+        "fat": "0",
+        "carbs": "27",
+        "protein": "1",
+        "calories": "105"
+    }],
+    "lunch": [{
+        "index": 0,
+        "itemName": "Grilled Turkey Sandwich",
+        "itemQuantity": "1",
+        "fat": "5",
+        "carbs": "40",
+        "protein": "20",
+        "calories": "320"
+    }],
+    "snack": [{
+        "index": 0,
+        "itemName": "Mixed Nuts",
+        "itemQuantity": "1 handful",
+        "fat": "14",
+        "carbs": "6",
+        "protein": "6",
+        "calories": "180"
+    }],
+    "dinner": [{
+        "index": 0,
+        "itemName": "Grilled Salmon",
+        "itemQuantity": "1 fillet",
+        "fat": "15",
+        "carbs": "0",
+        "protein": "30",
+        "calories": "300"
+    }, {
+        "index": 1,
+        "itemName": "Steamed Asparagus",
+        "itemQuantity": "1 cup",
+        "fat": "1",
+        "carbs": "5",
+        "protein": "3",
+        "calories": "35"
+    }],
+    "additional-instructions": "Avoid sugary snacks and drinks.",
+    "BMR": "1600",
+    "isEditing": true
+}
 
 
-// setData(JSON.stringify(data));
+setData(data);
