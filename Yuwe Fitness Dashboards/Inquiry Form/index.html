@@ -12,27 +12,29 @@
 <body>
     <div class="container-fluid">
         <h2 class="center heading">YuWe Fitness</h2>
-        <form id="enquiryForm">
-            <div class="form-group">
+        <form id="enquiryForm" class="p-3">
+            <div class="form-group mb-3">
                 <label for="name">Name:</label>
-                <input type="text" class="form-control red-border" id="name" required>
+                <input type="text" class="form-control red-border" id="name" required pattern="^[a-zA-Z\s]+$"
+                    title="Name should only contain letters and spaces.">
                 <div class="invalid-feedback">Please enter your name.</div>
             </div>
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <label for="email">Email:</label>
                 <input type="email" class="form-control red-border" id="email" required>
             </div>
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <label for="phone">Phone Number:</label>
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <span class="input-group-text">+91</span>
                     </div>
-                    <input type="tel" class="form-control red-border" id="phone" required>
+                    <input type="tel" class="form-control red-border" id="phone" required pattern="^\d{10}$"
+                        title="Mobile number should be 10 digits long.">
                     <div class="invalid-feedback">Please enter your phone number.</div>
                 </div>
             </div>
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <label for="gender">Gender:</label>
                 <select class="form-control red-border" id="gender" required>
                     <option value="" disabled selected>Select</option>
@@ -41,37 +43,29 @@
                     <option value="other">Other</option>
                 </select>
             </div>
-            <hr>
 
-            <!-- later this services has to be fetched from firebase -->
-            <div class="form-group services">
+            <div class="form-group mb-3 services">
                 <label for="services">Services You Are Interested In:</label>
-                <div class="form-check form-check-inline service-item">
-                    <input class="form-check-input" type="checkbox" id="zumba" value="zumba">
-                    <label class="form-check-label" for="zumba">Zumba</label>
-                </div>
-                <div class="form-check form-check-inline service-item">
-                    <input class="form-check-input" type="checkbox" id="yoga" value="yoga">
-                    <label class="form-check-label" for="yoga">Yoga</label>
-                </div>
-                <div class="form-check form-check-inline service-item">
-                    <input class="form-check-input" type="checkbox" id="fullBody" value="fullBody">
-                    <label class="form-check-label" for="fullBody">Full Body</label>
-                </div>
-                <div class="form-check form-check-inline service-item">
-                    <input class="form-check-input" type="checkbox" id="habitBuilding" value="habitBuilding">
-                    <label class="form-check-label" for="habitBuilding">Habit Building</label>
-                </div>
-                <div class="form-check form-check-inline service-item">
-                    <input class="form-check-input" type="checkbox" id="transformation" value="transformation">
-                    <label class="form-check-label" for="transformation">12 Week Transformation</label>
+                <div id="services-checkbox">
                 </div>
             </div>
-            <div class="form-group">
-                <label for="additionalComments">What is Your Goal:</label>
-                <textarea class="form-control red-border" id="goals"></textarea>
+
+            <div class="form-group mb-3">
+                <label for="goals">What is Your Goal:</label>
+                <select class="form-control red-border" id="goals" required>
+                    <option value="" disabled selected>Select</option>
+                    <option value="Fat Loss">Fat Loss</option>
+                    <option value="Weight Loss">Weight Loss</option>
+                    <option value="Muscle Gain">Muscle Gain</option>
+                    <option value="Weight Gain">Weight Gain</option>
+                    <option value="Weight Loss and Muscle Gain">Weight Loss and Muscle Gain</option>
+                    <option value="Increase Strength">Increase Strength</option>
+                    <option value="Increase Flexibility">Increase Flexibility</option>
+                    <option value="Improve Activity Level">Improve Activity Level</option>
+                    <option value="Improve All Over Fitness Level">Improve All Over Fitness Level</option>
+                </select>
             </div>
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <label for="preferredTime">Preferred Time to Contact:</label>
                 <select class="form-control red-border" id="preferredTime" required>
                     <option value="" disabled selected>Select</option>
@@ -80,23 +74,20 @@
                     <option value="evening">Evening (4PM To 8PM)</option>
                 </select>
             </div>
-            <div class="form-group whatsappConsent">
+            <div class="form-group mb-3 whatsappConsent">
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" id="sendUpdate" value="true" checked>
                     <label class="form-check-label" for="sendUpdate">Send Updates on WhatsApp</label>
                 </div>
             </div>
-
-            <div class="form-group form-submit-btn">
+            <div class="form-group mb-3 form-submit-btn">
                 <button type="submit" class="btn btn-primary red-button">Submit</button>
             </div>
         </form>
     </div>
     <div id="alertContainer" class="alert-container"></div>
 
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="../media/js/inquiry.js"></script>
-
 </body>
 
 </html>
