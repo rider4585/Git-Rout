@@ -147,8 +147,14 @@ function isThisYuWeWebPage() {
     return true;
 }
 
-let dummyData = {
-    "services": ["Yoga", "Zumba"]
-}
+// let dummyData = {
+//     "services": ["20 session pt", "Yoga", "Zumba", "12 weeks body transformation challenge"]
+// }
 
 // formValidator.setData(dummyData);
+
+function setData(data){
+    formValidator.setData(JSON.parse(data));
+    // formValidator.setData(data);
+}
+// setData(dummyData);
