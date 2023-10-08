@@ -154,7 +154,7 @@ function isThisYuWeWebPage() {
 // formValidator.setData(dummyData);
 
 function setData(data){
-    formValidator.setData(JSON.parse(data));
+    formValidator.setData(data);
     // formValidator.setData(data);
 }
 // setData(dummyData);
