@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gym Services Data Dashboard</title>
+    <title>Plans Dashboard</title>
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
@@ -16,19 +16,19 @@
 <body>
     <div class="container">
         <!-- Search input field -->
-        <div class="input-group p-3" id="searchArea">
-            <input type="text" id="searchInput" class="form-control" placeholder="Search by service title" />
+        <!-- <div class="input-group p-3" id="searchArea">
+            <input type="text" id="searchInput" class="form-control" placeholder="Search by plan name" />
             <button class="btn btn-outline-secondary" type="button" id="clearSearchInput">
                 <i class="fas fa-times"></i>
             </button>
-        </div>
+        </div> -->
 
         <!-- No Results Message -->
         <div id="noResultsMessage" class="alert alert-info mt-3" style="display: none;">
-            No service found.
+            No plan found.
         </div>
 
-        <div class="accordion" id="accordionServices">
+        <div class="accordion mt-5" id="accordionServices">
             <div id="serviceEntries">
                 <!-- Service entries will be dynamically added here -->
             </div>
@@ -46,37 +46,55 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="addDataModalLabel">Add New Service</h5>
+                    <h5 class="modal-title" id="addDataModalLabel">Add New Plan</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <!-- Input fields for new service -->
                     <form id="addDataForm">
                         <div class="mb-3">
-                            <label for="titleInput" class="form-label">Service Title</label>
+                            <label for="titleInput" class="form-label">Plan Name</label>
                             <input type="text" class="form-control" id="titleInput" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="benefitsInput" class="form-label">Benefits</label>
+                            <textarea class="form-control" id="benefitsInput" rows="3" required></textarea>
                         </div>
                         <div class="mb-3">
                             <label for="descriptionInput" class="form-label">Description</label>
                             <textarea class="form-control" id="descriptionInput" rows="3" required></textarea>
                         </div>
                         <div class="mb-3">
+                            <label for="modeInput" class="form-label">Mode</label>
+                            <select class="form-select" id="modeInput" required>
+                                <option value="" disabled selected>Select Mode</option>
+                                <option value="online">Online</option>
+                                <option value="offline">Offline</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
                             <label for="priceInput" class="form-label">Price</label>
                             <input type="number" class="form-control" id="priceInput" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="maxDiscountPriceInput" class="form-label">Maximum price with discount</label>
+                            <input type="number" class="form-control" id="maxDiscountPriceInput" required>
                         </div>
                         <div class="mb-3">
                             <label for="durationDaysInput" class="form-label">Duration (Days)</label>
                             <input type="number" class="form-control" id="durationDaysInput" required>
                         </div>
-
                         <div class="mb-3">
                             <label for="durationWeeksInput" class="form-label">Duration (Weeks)</label>
                             <input type="number" class="form-control" id="durationWeeksInput" required>
                         </div>
-
                         <div class="mb-3">
-                            <label for="benefitsInput" class="form-label">Benefits</label>
-                            <textarea class="form-control" id="benefitsInput" rows="3" required></textarea>
+                            <label for="counsellingInput" class="form-label">Counselling</label>
+                            <input type="number" class="form-control" id="counsellingInput" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="dietUpdateInput" class="form-label">Diet Update</label>
+                            <input type="number" class="form-control" id="dietUpdateInput" required>
                         </div>
                         <!-- Add more input fields for other data -->
                     </form>

@@ -65,7 +65,7 @@ class ServiceManager {
     }
 
     // Create a service entry as an accordion item and append it to the container
-    createServiceEntry(title, description, price, daysDuration, weeksDuration, benefits) {
+    createServiceEntry(title, benefits, description, mode, price, maxDiscountPrice, daysDuration, weeksDuration, counselling, dietUpdate) {
         // Generate a unique ID for the service entry
         const id = title.trim().replace(/\s+/g, "-");
 
@@ -83,12 +83,15 @@ class ServiceManager {
         </h2>
         <div id="collapse${id}" class="accordion-collapse collapse" aria-labelledby="heading${id}" data-bs-parent="#accordionServices">
             <div class="accordion-body">
-                <!-- Service entry content goes here -->
+                <p><strong>Benefits:</strong> ${benefits}</p>
                 <p><strong>Description:</strong> ${description}</p>
+                <p><strong>Mode:</strong> ${mode}</p>
                 <p><strong>Price:</strong> ₹${price}</p>
+                <p><strong>Maximum price with discount:</strong> ₹${maxDiscountPrice}</p>
                 <p><strong>Duration (Days):</strong> ${daysDuration} Days</p>
                 <p><strong>Duration (Weeks):</strong> ${weeksDuration} Weeks</p>
-                <p><strong>Benefits:</strong> ${benefits}</p>
+                <p><strong>counselings:</strong> ${counselling}</p>
+                <p><strong>Diet update:</strong> ${dietUpdate}</p>
 
                 <button class="btn btn-secondary" onclick="serviceManager.editServiceEntry('${title.trim()}')">Edit</button>
                 <button class="btn btn-danger" onclick="serviceManager.deleteServiceEntry('${title.trim()}')">Delete</button>
@@ -107,8 +110,7 @@ class ServiceManager {
 
         // Iterate through data entries and create service entries
         Object.entries(data).forEach(([title, values]) => {
-            console.log(values);
-            this.createServiceEntry(title, values.description, values.price, values.durationDays, values.durationWeeks, values.benefits);
+            this.createServiceEntry(title, values.benefits, values.description, values.mode, values.price, values.maxDiscountPrice, values.durationDays, values.durationWeeks, values.counselling, values.dietUpdate);
         });
     }
 
@@ -117,29 +119,43 @@ class ServiceManager {
     saveService() {
         // Collect form data
         const titleInput = document.getElementById("titleInput");
+        const benefitsInput = document.getElementById("benefitsInput");
+        const descriptionInput = document.getElementById("descriptionInput");
+        const modeInput = document.getElementById("modeInput");
         const priceInput = document.getElementById("priceInput");
+        const maxDiscountPriceInput = document.getElementById("maxDiscountPriceInput");
         const durationDaysInput = document.getElementById("durationDaysInput");
         const durationWeeksInput = document.getElementById("durationWeeksInput");
-        const benefitsInput = document.getElementById("benefitsInput");
+        const counsellingInput = document.getElementById("counsellingInput");
+        const dietUpdateInput = document.getElementById("dietUpdateInput");
 
         // Check if any of the required fields are empty
         if (
             titleInput.value.trim() === "" ||
+            benefitsInput.value.trim() === "" ||
             descriptionInput.value.trim() === "" ||
+            modeInput.value === "" ||
             priceInput.value.trim() === "" ||
+            maxDiscountPriceInput.value.trim() === "" ||
             durationDaysInput.value.trim() === "" ||
-            durationWeeksInput.value.trim() === "" || benefitsInput.value.trim() === ""
+            durationWeeksInput.value.trim() === "" ||
+            counsellingInput.value.trim() === "" ||
+            dietUpdateInput.value.trim() === ""
         ) {
             alert("Please fill in all required fields.");
             return; // Don't proceed if any required field is empty
         }
         // Collect form data
         const formData = {
+            "benefits": document.getElementById("benefitsInput").value,
             "description": document.getElementById("descriptionInput").value,
+            "mode": document.getElementById("modeInput").value,
             "price": parseFloat(document.getElementById("priceInput").value).toFixed(2),
+            "maxDiscountPrice": parseFloat(document.getElementById("maxDiscountPriceInput").value).toFixed(2),
             "durationDays": parseInt(document.getElementById("durationDaysInput").value),
             "durationWeeks": parseInt(document.getElementById("durationWeeksInput").value),
-            "benefits": document.getElementById("benefitsInput").value
+            "counselling": parseInt(document.getElementById("counsellingInput").value),
+            "dietUpdate": parseInt(document.getElementById("dietUpdateInput").value),
         };
 
 
@@ -188,7 +204,7 @@ class ServiceManager {
     // Edit a service entry
     editServiceEntry(itemId) {
 
-        this.modalHeader.innerHTML = 'Edit Service Data';
+        this.modalHeader.innerHTML = 'Edit Plans Data';
         this.editingItemId = itemId;
         const itemData = this.exampleJSON[itemId];
 
@@ -198,12 +214,15 @@ class ServiceManager {
         document.getElementById("titleInput").dataset.previousTitle = itemId;
 
         document.getElementById("titleInput").value = itemId;
+        document.getElementById("benefitsInput").value = itemData.benefits;
         document.getElementById("descriptionInput").value = itemData.description;
+        document.getElementById("modeInput").value = itemData.mode;
         document.getElementById("priceInput").value = itemData.price;
+        document.getElementById("maxDiscountPriceInput").value = itemData.maxDiscountPrice;
         document.getElementById("durationDaysInput").value = itemData.durationDays;
         document.getElementById("durationWeeksInput").value = itemData.durationWeeks;
-        document.getElementById("benefitsInput").value = itemData.benefits;
-
+        document.getElementById("counsellingInput").value = itemData.counselling;
+        document.getElementById("dietUpdateInput").value = itemData.dietUpdate;
     }
 
     // Delete a service entry
@@ -238,11 +257,15 @@ class ServiceManager {
     clearInputFields() {
         const inputFields = [
             "titleInput",
+            "benefitsInput",
             "descriptionInput",
+            "modeInput",
             "priceInput",
+            "maxDiscountPriceInput",
             "durationDaysInput",
             "durationWeeksInput",
-            "benefitsInput"
+            "counsellingInput",
+            "dietUpdateInput",
         ];
 
         inputFields.forEach((fieldId) => {
