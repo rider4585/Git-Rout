@@ -159,9 +159,7 @@ function createImageAccordion(imageLinks) {
     const accordionContainer = document.getElementById("blogAccordion");
     accordionContainer.innerHTML = '';
     // Iterate through the imageLinks and create accordions
-    console.log(imageLinks);
     for (const fileIndex in imageLinks) {
-        console.log(fileIndex);
         if (imageLinks.hasOwnProperty(fileIndex)) {
             const downloadURL = imageLinks[fileIndex]['downloadUrl'];
             const fileName = imageLinks[fileIndex]['fileName'];
