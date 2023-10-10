@@ -90,7 +90,7 @@ class ExerciseManager {
         accordionItem.innerHTML = `
             <!-- Accordion header -->
             <h2 class="accordion-header" id="heading${id}">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse${id}" aria-expanded="false" aria-controls="collapse${id}">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse${id}" aria-expanded="false" aria-controls="collapse${id}">
                     ${title}
                 </button>
             </h2>
