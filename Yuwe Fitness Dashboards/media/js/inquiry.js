@@ -84,8 +84,11 @@ class FormValidator {
     }
 
     getFormData() {
-        const checkboxes = this.form.querySelectorAll('input[type="checkbox"]:checked');
-        const services = Array.from(checkboxes).map(checkbox => checkbox.value);
+        const checkboxes = this.form.querySelectorAll('#services-checkbox input[type="checkbox"]:checked');
+        const services = [];
+        checkboxes.forEach(checkbox => {
+            services.push(checkbox.value);
+        });
 
         const sendUpdateToWhatsApp = this.form.elements.sendUpdate.checked;
 
@@ -106,34 +109,32 @@ class FormValidator {
 
     setData(data) {
         const servicesContainer = this.form.querySelector('#services-checkbox');
-
+    
         // Clear any existing checkboxes
         servicesContainer.innerHTML = '';
-
+    
         // Create checkboxes for each service in the data
         data.services.forEach(service => {
             const serviceItem = document.createElement('div');
             serviceItem.className = 'form-check form-check-inline service-item';
-
+    
             const checkbox = document.createElement('input');
             checkbox.className = 'form-check-input';
             checkbox.type = 'checkbox';
-            checkbox.id = service.toLowerCase(); // Use a lowercase ID for consistency
-
+            checkbox.id = `service-${service.toLowerCase()}`; // Use a unique identifier for the ID
+            checkbox.value = service; // Set the value attribute to the service name
+    
             const label = document.createElement('label');
             label.className = 'form-check-label';
-            label.htmlFor = service.toLowerCase(); // Match the ID
-
+            label.htmlFor = `service-${service.toLowerCase()}`; // Match the ID
             label.textContent = service;
-
+    
             serviceItem.appendChild(checkbox);
             serviceItem.appendChild(label);
-
+    
             servicesContainer.appendChild(serviceItem);
         });
     }
-
-
 
     sendDataToFlutterFunction(formData) {
         SendDataToFlutter.postMessage(formData);
@@ -153,7 +154,7 @@ function isThisYuWeWebPage() {
 
 // formValidator.setData(dummyData);
 
-function setData(data){
+function setData(data) {
     formValidator.setData(data);
     // formValidator.setData(data);
 }
