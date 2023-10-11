@@ -124,8 +124,8 @@ table input:focus {
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 input[type="date"]::-webkit-inner-spin-button,
@@ -162,13 +162,29 @@ input[type="date"] {
     .second-row,
     .third-row {
         flex-direction: column;
+
     }
 
     .second-row .col {
         display: block;
     }
 
-    .third-row>* {
-        max-width: 100%;
+    .third-row>div {
+        width: 100%;
     }
+}
+
+@media print {
+    .button-container {
+        display: none;
+    }
+
+    body {
+        zoom: 80%;
+    }
+}
+
+@page {
+    size: A4;
+    margin: 0;
 }
