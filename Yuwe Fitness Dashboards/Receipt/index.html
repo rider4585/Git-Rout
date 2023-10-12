@@ -4,6 +4,8 @@
 <head>
     <title>Gym Receipt</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="../media/lib/number-to-word/numberToWords.min.js"></script>
     <link rel="stylesheet" href="../media/lib/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="../media/css/receipt.css">
 </head>
@@ -17,7 +19,7 @@
                     <h1 class="heading">YuWe Fitness</h1>
                     <img src="../media/img/yuwe-lifestyle-logo.png" alt="Yuwe Lifestyle" class="logo">
                 </div>
-                <p class="address">123 Gym Street, City, State, ZIP</p>
+                <p class="address">YuWe Fitness,Ganesh Nagar, Thergaon, Pimpri-Chinchwad, Maharashtra 411033</p>
             </div>
         </div>
         <hr>
@@ -74,41 +76,58 @@
             <div class="col-7">
                 <table class="table">
                     <tbody>
-                        <tr>
-                            <td>Course Name:</td>
-                            <td><input type="text" class="form-control" id="courseName" placeholder="Enter Course Name">
-                            </td>
-                        </tr>
                         <tr class="light-dark">
-                            <td>Plan:</td>
-                            <td><input type="text" class="form-control" id="plan" placeholder="Enter Plan"></td>
+                            <td>Course Name:</td>
+                            <td>
+                                <select class="form-control" id="plan">
+                                </select>
+                            </td>
                         </tr>
                         <tr>
                             <td>Instructor:</td>
-                            <td><input type="text" class="form-control" id="instructor" placeholder="Enter Instructor">
+                            <td><input type="text" class="form-control" id="instructor" placeholder="Enter Instructor"
+                                    disabled>
                             </td>
                         </tr>
                         <tr class="light-dark">
                             <td>Start Date:</td>
-                            <td><input type="date" class="form-control" id="startDate" placeholder="Enter Start Date">
+                            <td><input type="date" class="form-control" id="startDate" placeholder="Enter Start Date"
+                                    disabled>
                             </td>
                         </tr>
                         <tr>
                             <td>End Date:</td>
-                            <td><input type="date" class="form-control" id="endDate" placeholder="Enter End Date"></td>
+                            <td><input type="date" class="form-control" id="endDate" placeholder="Enter End Date"
+                                    disabled></td>
                         </tr>
                         <tr class="light-dark">
-                            <td>Pay Mode:</td>
-                            <td><input type="text" class="form-control" id="payMode" placeholder="Enter Pay Mode"></td>
+                            <td>Course Fee:</td>
+                            <td><input type="number" class="form-control" id="courseFee" placeholder="Enter Course Fee"
+                                    disabled>
+                            </td>
                         </tr>
                         <tr>
                             <td>Amount in Words:</td>
                             <td><input type="text" class="form-control" id="amountInWords"
-                                    placeholder="Enter Amount in Words"></td>
+                                    placeholder="Enter Amount in Words" disabled></td>
+                        </tr>
+                        <tr>
+                            <td>Discount:</td>
+                            <td><input type="number" class="form-control" id="discount" placeholder="Enter Discount"
+                                    disabled>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>Discounted Course fee:</td>
+                            <td><input type="number" class="form-control" id="discountedFee"
+                                    placeholder="Enter Discount" disabled>
+                            </td>
                         </tr>
                         <tr class="light-dark">
                             <td>Member GST:</td>
-                            <td><input type="text" class="form-control" id="memberGST" placeholder="Enter Member GST">
+                            <td><input type="text" class="form-control" id="memberGST" placeholder="Enter Member GST"
+                                    disabled>
                             </td>
                         </tr>
                     </tbody>
@@ -118,43 +137,44 @@
                 <table class="table">
                     <tbody>
                         <tr>
-                            <td>Course Fee:</td>
-                            <td><input type="number" class="form-control" id="courseFee" placeholder="Enter Course Fee">
-                            </td>
+                            <td>Payment Amount:</td>
+                            <td><input type="number" class="form-control" id="paymentAmount" name="paymentAmount"
+                                    placeholder="Enter payment amount" disabled></td>
                         </tr>
                         <tr class="light-dark">
                             <td>Registration Fee:</td>
                             <td><input type="text" class="form-control" id="registrationFee"
-                                    placeholder="Enter Registration Fee"></td>
-                        </tr>
-                        <tr>
-                            <td>Discount:</td>
-                            <td><input type="number" class="form-control" id="discount" placeholder="Enter Discount">
-                            </td>
+                                    placeholder="Enter Registration Fee" value="0" disabled></td>
                         </tr>
                         <tr class="light-dark">
                             <td>CGST (9%):</td>
-                            <td><input type="number" class="form-control" id="cgst" placeholder="Enter CGST"></td>
+                            <td><input type="number" class="form-control" id="cgst" placeholder="Enter CGST" disabled>
+                            </td>
                         </tr>
                         <tr>
                             <td>SGST (9%):</td>
-                            <td><input type="number" class="form-control" id="sgst" placeholder="Enter SGST"></td>
+                            <td><input type="number" class="form-control" id="sgst" placeholder="Enter SGST" disabled>
+                            </td>
                         </tr>
                         <tr class="light-dark">
                             <td>IGST (0%):</td>
-                            <td><input type="number" class="form-control" id="igst" placeholder="Enter IGST"></td>
+                            <td><input type="number" class="form-control" id="igst" placeholder="Enter IGST" disabled>
+                            </td>
                         </tr>
                         <tr>
                             <td>Total:</td>
-                            <td><input type="number" class="form-control" id="total" placeholder="Enter Total"></td>
+                            <td><input type="number" class="form-control" id="total" placeholder="Enter Total" disabled>
+                            </td>
                         </tr>
                         <tr class="light-dark">
                             <td>Paid Fees:</td>
-                            <td><input type="number" class="form-control" id="paid" placeholder="Enter Paid Fees"></td>
+                            <td><input type="number" class="form-control" id="paid" placeholder="Enter Paid Fees"
+                                   value="0" disabled></td>
                         </tr>
                         <tr>
                             <td>Balance:</td>
-                            <td><input type="number" class="form-control" id="balance" placeholder="Enter Balance"></td>
+                            <td><input type="number" class="form-control" id="balance" placeholder="Enter Balance"
+                                    disabled></td>
                         </tr>
                     </tbody>
                 </table>
@@ -172,7 +192,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="row m-2 button-container">
             <hr>
             <div class="col text-center">
