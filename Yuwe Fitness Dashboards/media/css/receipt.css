@@ -94,8 +94,12 @@ hr {
     padding: 8px;
 }
 
-table input {
+table input:not([type="radio"]) {
     border: none !important;
+}
+
+table input[type="radio"]{
+    border: 1px solid rgb(56, 56, 56);
 }
 
 .section-title {
@@ -117,7 +121,7 @@ input[type="email"],
 input[type="tel"],
 input[type="number"],
 input[type="date"],
-table input{
+table input:not([type="radio"]) {
     border: 1px solid transparent !important;
 }
 
@@ -127,7 +131,7 @@ input[type="tel"]:focus,
 input[type="number"]:focus,
 input[type="date"]:focus,
 select:focus,
-table input:focus {
+table input:not([type=radio]):focus {
     outline: none;
     box-shadow: none !important;
     border: 1px solid red !important;
@@ -190,12 +194,13 @@ input[type="date"] {
         display: none;
     }
 
-    body {
-        zoom: 80%;
-    }
-}
+    /* body {
+        zoom: 85%;
+    } */
 
-@page {
-    size: A4;
-    margin: 0;
+    @page {
+        size: A4;
+        size: 1440px auto;
+        margin: 0;
+    }
 }

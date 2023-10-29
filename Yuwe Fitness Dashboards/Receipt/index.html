@@ -102,7 +102,7 @@
                         </tr>
                         <tr class="light-dark">
                             <td>Course Fee:</td>
-                            <td><input type="number" class="form-control" id="courseFee" placeholder="Enter Course Fee"
+                            <td><input type="text" class="form-control" id="courseFee" placeholder="Enter Course Fee"
                                     disabled>
                             </td>
                         </tr>
@@ -111,17 +111,16 @@
                             <td><input type="text" class="form-control" id="amountInWords"
                                     placeholder="Enter Amount in Words" disabled></td>
                         </tr>
-                        <tr>
+                        <tr class="light-dark">
                             <td>Discount:</td>
                             <td><input type="number" class="form-control" id="discount" placeholder="Enter Discount"
                                     disabled>
                             </td>
                         </tr>
-
                         <tr>
                             <td>Discounted Course fee:</td>
-                            <td><input type="number" class="form-control" id="discountedFee"
-                                    placeholder="Enter Discount" disabled>
+                            <td><input type="text" class="form-control" id="discountedFee" placeholder="Enter Discount"
+                                    disabled>
                             </td>
                         </tr>
                         <tr class="light-dark">
@@ -136,44 +135,56 @@
             <div class="col-5">
                 <table class="table">
                     <tbody>
-                        <tr>
+                        <tr class="light-dark">
                             <td>Payment Amount:</td>
                             <td><input type="number" class="form-control" id="paymentAmount" name="paymentAmount"
                                     placeholder="Enter payment amount" disabled></td>
                         </tr>
-                        <tr class="light-dark">
+                        <tr>
                             <td>Registration Fee:</td>
                             <td><input type="text" class="form-control" id="registrationFee"
-                                    placeholder="Enter Registration Fee" value="0" disabled></td>
+                                    placeholder="Enter Registration Fee" value="0 ₹" disabled></td>
                         </tr>
                         <tr class="light-dark">
                             <td>CGST (9%):</td>
-                            <td><input type="number" class="form-control" id="cgst" placeholder="Enter CGST" disabled>
+                            <td><input type="text" class="form-control" id="cgst" placeholder="Enter CGST" disabled>
                             </td>
                         </tr>
                         <tr>
                             <td>SGST (9%):</td>
-                            <td><input type="number" class="form-control" id="sgst" placeholder="Enter SGST" disabled>
+                            <td><input type="text" class="form-control" id="sgst" placeholder="Enter SGST" disabled>
                             </td>
                         </tr>
                         <tr class="light-dark">
                             <td>IGST (0%):</td>
-                            <td><input type="number" class="form-control" id="igst" placeholder="Enter IGST" disabled>
+                            <td><input type="text" class="form-control" id="igst" placeholder="Enter IGST" disabled>
                             </td>
                         </tr>
                         <tr>
-                            <td>Total:</td>
-                            <td><input type="number" class="form-control" id="total" placeholder="Enter Total" disabled>
+                            <td>
+                                <label for="includeGST" class="form-check-label">Include GST</label>
+                                <input type="radio" class="form-check-input" id="includeGST" name="gstOption"
+                                    value="include" disabled>
+                            </td>
+                            <td>
+                                <label for="excludeGST" class="form-check-label">Exclude GST</label>
+                                <input type="radio" class="form-check-input" id="excludeGST" name="gstOption"
+                                    value="exclude" disabled>
                             </td>
                         </tr>
                         <tr class="light-dark">
-                            <td>Paid Fees:</td>
-                            <td><input type="number" class="form-control" id="paid" placeholder="Enter Paid Fees"
-                                   value="0" disabled></td>
+                            <td>Total:</td>
+                            <td><input type="text" class="form-control" id="total" placeholder="Enter Total" disabled>
+                            </td>
                         </tr>
                         <tr>
+                            <td>Paid Fees:</td>
+                            <td><input type="text" class="form-control" id="paid" placeholder="Enter Paid Fees"
+                                    value="0 ₹" disabled></td>
+                        </tr>
+                        <tr class="light-dark">
                             <td>Balance:</td>
-                            <td><input type="number" class="form-control" id="balance" placeholder="Enter Balance"
+                            <td><input type="text" class="form-control" id="balance" placeholder="Enter Balance"
                                     disabled></td>
                         </tr>
                     </tbody>
@@ -196,7 +207,7 @@
         <div class="row m-2 button-container">
             <hr>
             <div class="col text-center">
-                <button type="button" class="submit-btn" onclick="validateResponse()">Generate Receipt</button>
+                <button type="button" class="submit-btn" onclick="requestDesktopSite()">Generate Receipt</button>
             </div>
         </div>
     </div>
