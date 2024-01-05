@@ -1,4 +1,5 @@
 // Get references to the input fields
+const receiptForm = document.getElementById('receiptForm');
 const memberId = document.getElementById('memberId');
 const name = document.getElementById('name');
 const phoneNumber = document.getElementById('phoneNumber');
@@ -35,22 +36,57 @@ let discountedCourseFees = '';
 let courseFeeWithoutGst = '';
 let courseFeeWithGst = '';
 let maxDiscountedAllowed = '';
+let selectedCourse = '';
+let selectedCourseDuration = '';
+let remainingAmount = 0;
+let paidAmount = 0;
+let isNew = true;
 
-function setData(dummyData, date, plans_data) {
+function setData(data) {
+    date.value = getDate();
+    isNew = data.isNew;
+    createCourseDropdown(data.plansData);
+
     // Set the date field to the provided date
-    const dateInput = document.getElementById('date');
-    dateInput.value = date;
+    // if (!data.isPrint) {
+    // }
 
-    for (const section in dummyData) {
-        for (const key in dummyData[section]) {
+    for (const section in data) {
+        for (const key in data[section]) {
             const inputField = document.getElementById(key);
             if (inputField) {
-                inputField.value = dummyData[section][key];
+                // console.log(inputField);
+                inputField.value = data[section][key];
+                if (inputField.classList.contains('personal-info')) {
+                    inputField.setAttribute('readonly', 'true');
+                }
+                if (inputField.classList.contains('rupee')) {
+                    inputField.value = toggleRupeeSign(data[section][key], 'add');
+                }
+            }
+            if (!data.isNew) {
+                if (key == "courseName") {
+                    plan.value = data[section][key];
+                    plan.setAttribute('disabled', 'true');
+                }
+
+                if (key == "gstOption") {
+                    document.getElementById(data[section][key]).checked = true;
+                }
+
+                if (key == "balance") {
+                    remainingAmount = data[section][key];
+                }
+
             }
         }
     }
 
-    createCourseDropdown(plans_data);
+    if (!data.isNew) {
+        paymentAmount.removeAttribute("disabled");
+        paymentAmount.value = '';
+        paid.value = data["enrollmentInfo"]["paymentAmount"];
+    }
 }
 
 function createCourseDropdown(plans_data) {
@@ -92,7 +128,8 @@ function changeSelectedCourse(plans_data) {
 
     if (selectedPlan in plans_data) {
         const courseDataObject = plans_data[selectedPlan];
-        const durationWeeks = courseDataObject.durationWeeks; // Use weeks instead of days
+        selectedCourse = selectedPlan;
+        selectedCourseDuration = courseDataObject.durationWeeks;
 
         instructor.value = '';
         startDate.value = '';
@@ -114,10 +151,10 @@ function changeSelectedCourse(plans_data) {
         balance.value = '';
 
         instructor.value = dummyData['enrollmentInfo']['instructor'];
-        let courseStartDate = calculateCourseStartDate();
-        startDateInput.value = courseStartDate;
+        // let courseStartDate = calculateCourseStartDate();
+        // startDateInput.value = courseStartDate;
 
-        endDateInput.value = calculateCourseEndDate(courseStartDate, durationWeeks);
+        // endDateInput.value = calculateCourseEndDate(courseStartDate, durationWeeks);
 
         planFee.value = `${courseDataObject.price} ₹`;
         const newAmountInWords = `${numberToWords.toWords(courseDataObject.price)} rupee`;
@@ -135,21 +172,24 @@ function calculateCourseStartDate() {
     // Get today's date
     const today = new Date();
 
-    // Calculate days until the next Monday
-    let daysUntilMonday = 1 - today.getDay(); // 1 = Monday, 0 = Sunday, 6 = Saturday
+    if (today.getDay() === 1) {
+        // If today is Monday, use today's date
+        return formatDateToYYYYMMDD(today);
+    } else {
+        // Calculate days until the next Monday
+        let daysUntilMonday = 1 - today.getDay(); // 1 = Monday, 0 = Sunday, 6 = Saturday
 
-    if (daysUntilMonday <= 0) {
-        daysUntilMonday += 7; // If today is Monday or later, add days to get to the next Monday
+        if (daysUntilMonday <= 0) {
+            daysUntilMonday += 7; // If today is Monday or later, add days to get to the next Monday
+        }
+
+        // Calculate the date of the next Monday
+        const nextMonday = new Date(today);
+        nextMonday.setDate(today.getDate() + daysUntilMonday);
+
+        // Format the date as 'YYYY-MM-DD'
+        return formatDateToYYYYMMDD(nextMonday);
     }
-
-    // Calculate the date of the next Monday
-    const nextMonday = new Date(today);
-    nextMonday.setDate(today.getDate() + daysUntilMonday);
-
-    // Format the date as 'YYYY-MM-DD'
-    let nextMondayFormatted = nextMonday.toString();
-    nextMondayFormatted = formatDateToYYYYMMDD(nextMondayFormatted);
-    return nextMondayFormatted;
 }
 
 function calculateCourseEndDate(courseStartDate, durationWeeks) {
@@ -167,7 +207,7 @@ function calculateCourseEndDate(courseStartDate, durationWeeks) {
 }
 
 function enableFields() {
-    let fieldsToEnable = [instructor, discount, memberGST, paymentAmount, includeGST, excludeGST];
+    let fieldsToEnable = [startDate, instructor, discount, memberGST, paymentAmount, includeGST, excludeGST];
     fieldsToEnable.forEach(field => {
         field.removeAttribute('disabled');
     });
@@ -268,6 +308,25 @@ discount.addEventListener("input", function () {
     }
 });
 
+startDate.addEventListener('focusout', () => {
+    if (isNew) {
+        if (startDate.value !== '') {
+            const inputDate = new Date(startDate.value);
+
+            if (!isNaN(inputDate.getTime())) {
+                endDate.value = calculateCourseEndDate(startDate.value, selectedCourseDuration);
+            } else {
+                startDate.value = '';
+                alert('Please enter a valid date in the format YYYY-MM-DD');
+            }
+        } else {
+            startDate.value = '';
+            alert('Please enter a valid date in the format YYYY-MM-DD');
+        }
+    }
+});
+
+
 function formatDateToYYYYMMDD(timeString) {
     const date = new Date(timeString);
     const yyyy = date.getFullYear();
@@ -283,10 +342,14 @@ paymentAmount.addEventListener("input", function () {
     sgst.value = '';
     igst.value = '';
     total.value = '';
-    paid.value = '';
-    gstOption.forEach(option => {
-        option.checked = false;
-    });
+    if (isNew) {
+        paid.value = '';
+    }
+    // if (isNew) {
+    //     gstOption.forEach(option => {
+    //         option.checked = false;
+    //     });
+    // }
     balance.value = '';
     if (Number(paymentAmount.value) > discountedAmount) {
         paymentAmount.value = '';
@@ -304,6 +367,8 @@ paymentAmount.addEventListener("input", function () {
     // Calculate IGST
     const igstAmount = (paymentAmount.value * 0.00).toFixed(2);
     igst.value = igstAmount;
+
+    calculateAmounts();
 });
 
 function calculateAmounts() {
@@ -311,7 +376,9 @@ function calculateAmounts() {
     const selectedGstOption = document.querySelector('input[name="gstOption"]:checked').value;
     let balanceAmount = '';
     total.value = '';
-    paid.value = '';
+    if (isNew) {
+        paid.value = '';
+    }
     balance.value = '';
 
     if (selectedGstOption === 'include') {
@@ -322,25 +389,61 @@ function calculateAmounts() {
         total.value = Number(paymentAmount.value) + Number(cgst.value) + Number(sgst.value);
     }
 
-    balanceAmount = discountedCourseFees - Number(paymentAmount.value);
+    if (isNew) {
+        balanceAmount = discountedCourseFees - Number(paymentAmount.value);
+    } else {
+        balanceAmount = remainingAmount - Number(paymentAmount.value);
+    }
 
     balance.value = `${balanceAmount} ₹`;
 }
 
+function toggleRupeeSign(inputString, operation) {
+    if (operation === 'add') {
+        // Add rupee sign if it doesn't exist
+        return inputString.includes('₹') ? inputString : `${inputString} ₹`;
+    } else if (operation === 'remove') {
+        // Remove rupee sign if it exists
+        return inputString.replace(' ₹', '');
+    } else {
+        // Invalid operation
+        console.error('Invalid operation. Please use "add" or "remove".');
+        return inputString;
+    }
+}
+
 // Example of how to use setData with dummy data and a date
 const dummyData = {
-    personalInfo: {
-        memberId: '12345',
-        name: 'John Doe',
-        phoneNumber: '1234567890',
-        email: 'johndoe@example.com',
-        invoiceNo: 'INV123',
+    "isNew": false,
+    "personalInfo": {
+        "memberId": "12345",
+        "name": "John Doe",
+        "phoneNumber": "1234567890",
+        "email": "johndoe@example.com",
+        "date": "2023-12-06",
+        "invoiceNo": "INV123",
+        "gstNo": "GSTN12345",
+        "sacNo": "SACNO12345",
+        "place": "Pune",
+        "state": "Maharashtra"
     },
-    enrollmentInfo: {
-        instructor: 'Yuvaraj Nigade',
+    "enrollmentInfo": {
+        "courseName": "12 Weeks Body Transformation Challenge (Online) basic",
+        "instructor": "Yuvaraj Nigade",
+        "startDate": "2024-01-02",
+        "endDate": "2024-03-26",
+        "courseFee": "8000.00",
+        "amountInWords": "eight thousand rupee",
+        "discount": "0",
+        "discountedFee": "8000.00",
+        "memberGST": "",
+        "paymentAmount": "1000",
+        "gstOption": "excludeGST",
+        "paid": "",
+        "balance": "7000"
     },
-    plansData: {
-        " 12 Weeks Body Transformation Challenge (Online) basic": {
+    "plansData": {
+        "12 Weeks Body Transformation Challenge (Online) basic": {
             "benefits": "Tailored fitness and nutrition plan\nVirtual support network\nFlexibility to join from anywhere\nProven results-driven approach\nExpert guidance for sustainable change",
             "counselling": 12,
             "description": "Embark on your online fitness journey! Join our 12 Weeks Body Transformation Challenge for personalized workouts, expert nutrition guidance, and a supportive virtual community. Achieve your fitness goals from anywhere.",
@@ -351,7 +454,7 @@ const dummyData = {
             "mode": "online",
             "price": "8000.00"
         },
-        "12 Weeks Body Transformation Challenge (Offline):": {
+        "12 Weeks Body Transformation Challenge (Offline)": {
             "benefits": "Personalized in-person coaching\nAccess to exclusive resources\nPremium fitness environment\nReal-time feedback and support\nVisible, life-changing results",
             "counselling": 12,
             "description": "Experience the ultimate fitness transformation offline! Our premium 12 Weeks Body Transformation Challenge offers personalized, in-person training, exclusive resources, and a premium fitness experience.",
@@ -384,7 +487,7 @@ const dummyData = {
             "mode": "offline",
             "price": "6000.00"
         },
-        "Yoga 20 Sessions Live (Online):": {
+        "Yoga 20 Sessions Live (Online)": {
             "benefits": "Enhanced physical and mental well-being\nExpert-led sessions from home\nIncreased flexibility and strength\nConvenient virtual sessions\nStress reduction and mindfulness",
             "counselling": 3,
             "description": "Discover peace, flexibility, and strength with our 20 Sessions of Live Yoga online. Join from anywhere, access expert instructors, and enjoy the convenience of virtual yoga. Experience holistic wellness at your fingertips.",
@@ -395,7 +498,7 @@ const dummyData = {
             "mode": "online",
             "price": "4000.00"
         },
-        "diet plan": {
+        "Diet Plan": {
             "benefits": "Customized nutrition for your goals\nExpert guidance from certified nutritionists\nEnjoyable and varied meal options\nEnhanced fitness results with aligned diet\nOngoing support and accountability\nImproved overall health and energy",
             "counselling": 1,
             "description": "Achieve your health and fitness goals with our Personalized Diet Plan Service. Our experienced nutritionists will create a tailored meal plan that aligns with your unique needs and objectives.",
@@ -419,9 +522,97 @@ function getDate() {
     return formattedDate;
 }
 
-function requestDesktopSite() {
-    document.getElementsByTagName('meta')['viewport'].content = 'width= 1440px;';
+function printReceipt() {
+    document.getElementsByTagName('meta')['viewport'].content = 'width=1440, initial-scale=1';
+    window.print();
+}
+
+receiptForm.addEventListener('submit', function (event) {
+    // Prevent the default form submission
+    event.preventDefault();
+
+    // Call the sendData function
+    sendData();
+
+    // Optionally, you can add additional logic or AJAX requests here
+});
+
+function sendData() {
+    const selectedGstOption = document.querySelector('input[name="gstOption"]:checked').id;
+
+    // Get data from personalInfo fields
+    const memberIdValue = memberId.value;
+    const nameValue = name.value;
+    const phoneNumberValue = phoneNumber.value;
+    const emailValue = email.value;
+    const dateValue = date.value;
+    const invoiceNoValue = invoiceNo.value;
+    const gstNoValue = gstNo.value;
+    const sacNoValue = sacNo.value;
+    const placeValue = place.value;
+    const stateValue = state.value;
+
+    // Get data from enrollmentInfo fields
+    const courseName = plan.value;
+    const instructorValue = instructor.value;
+    const startDateValue = startDate.value;
+    const endDateValue = endDate.value;
+    const courseFeeValue = toggleRupeeSign(courseFee.value, 'remove'); // Assuming you want to send the discounted amount without GST
+    const amountInWordsValue = amountInWords.value;
+    const discountValue = discount.value;
+    const discountedFeeValue = toggleRupeeSign(discountedFee.value, 'remove');
+    const memberGSTValue = memberGST.value;
+    const paymentAmountValue = paymentAmount.value;
+    const registrationFeeValue = registrationFee.value;
+    const cgstValue = cgst.value;
+    const sgstValue = sgst.value;
+    const igstValue = igst.value;
+    const gstOptionValue = selectedGstOption;
+    const totalValue = total.value;
+    const paidValue = paid.value;
+    const balanceValue = toggleRupeeSign(balance.value, 'remove');
+
+    // Create the JSON object
+    const jsonData = {
+        personalInfo: {
+            memberId: memberIdValue,
+            name: nameValue,
+            phoneNumber: phoneNumberValue,
+            email: emailValue,
+            date: dateValue,
+            invoiceNo: invoiceNoValue,
+            gstNo: gstNoValue,
+            sacNo: sacNoValue,
+            place: placeValue,
+            state: stateValue
+        },
+        enrollmentInfo: {
+            courseName: courseName,
+            instructor: instructorValue,
+            startDate: startDateValue,
+            endDate: endDateValue,
+            courseFee: courseFeeValue,
+            amountInWords: amountInWordsValue,
+            discount: discountValue,
+            discountedFee: discountedFeeValue,
+            memberGST: memberGSTValue,
+            paymentAmount: paymentAmountValue,
+            registrationFee: registrationFeeValue,
+            cgst: cgstValue,
+            sgst: sgstValue,
+            igst: igstValue,
+            gstOption: gstOptionValue,
+            total: totalValue,
+            paid: paidValue,
+            balance: balanceValue
+        }
+    };
+
+    console.log(jsonData);
+    console.log(JSON.stringify(jsonData));
 }
 
 // Call the setData function with the dummy data and date
-setData(dummyData, getDate(), dummyData.plansData);
+document.addEventListener('DOMContentLoaded', () => {
+    // setData(dummyData);
+})
