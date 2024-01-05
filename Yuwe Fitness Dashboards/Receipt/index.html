@@ -12,204 +12,217 @@
 
 <body>
     <div class="container-fluid">
-        <div class="row first-row">
-            <div class="col-12">
-                <div class="d-flex justify-content-between align-items-center">
-                    <img src="../media/img/yuwe-fitness-light.png" alt="Yuwe Fitness" class="logo">
-                    <h1 class="heading">YuWe Fitness</h1>
-                    <img src="../media/img/yuwe-lifestyle-logo.png" alt="Yuwe Lifestyle" class="logo">
-                </div>
-                <p class="address">YuWe Fitness,Ganesh Nagar, Thergaon, Pimpri-Chinchwad, Maharashtra 411033</p>
-            </div>
-        </div>
-        <hr>
-        <div class="row second-row">
-            <div class="col">
-                <div class="form-group">
-                    <label for="memberId" class="label-light-dark">Member ID:</label>
-                    <input type="number" class="form-control" id="memberId" placeholder="Enter Member ID">
-                </div>
-                <div class="form-group">
-                    <label for="name" class="label-light-dark">Name:</label>
-                    <input type="text" class="form-control" id="name" placeholder="Enter Name">
-                </div>
-                <div class="form-group">
-                    <label for="phoneNumber" class="label-light-dark">Contact No.:</label>
-                    <input type="number" class="form-control" id="phoneNumber" placeholder="Enter Contact No.">
-                </div>
-                <div class="form-group">
-                    <label for="email" class="label-light-dark">Email ID:</label>
-                    <input type="email" class="form-control" id="email" placeholder="Enter Email ID">
+        <form id="receiptForm">
+            <div class="row first-row">
+                <div class="col-12">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <img src="../media/img/yuwe-fitness-light.png" alt="Yuwe Fitness" class="logo">
+                        <h1 class="heading">YuWe Fitness</h1>
+                        <img src="../media/img/yuwe-lifestyle-logo.png" alt="Yuwe Lifestyle" class="logo">
+                    </div>
+                    <p class="address">YuWe Fitness,Ganesh Nagar, Thergaon, Pimpri-Chinchwad, Maharashtra 411033</p>
                 </div>
             </div>
-            <div class="col">
-                <div class="form-group">
-                    <label for="date" class="label-light-dark">Date:</label>
-                    <input type="date" class="form-control" id="date" placeholder="Enter Date">
-                </div>
-                <div class="form-group">
-                    <label for="invoiceNo" class="label-light-dark">Invoice No.:</label>
-                    <input type="text" class="form-control" id="invoiceNo" placeholder="Enter Invoice No.">
-                </div>
-                <div class="form-group">
-                    <label for="gstNo" class="label-light-dark">GST No.:</label>
-                    <input type="text" class="form-control" id="gstNo" placeholder="Enter GST No.">
-                </div>
-                <div class="form-group">
-                    <label for="sacNo" class="label-light-dark">SAC No.:</label>
-                    <input type="text" class="form-control" id="sacNo" placeholder="Enter SAC No.">
-                </div>
-            </div>
-            <div class="col">
-                <div class="form-group">
-                    <label for="place" class="label-light-dark">Place:</label>
-                    <input type="text" class="form-control" id="place" placeholder="Enter Place" value="Pune">
-                </div>
-                <div class="form-group">
-                    <label for="state" class="label-light-dark">State:</label>
-                    <input type="text" class="form-control" id="state" placeholder="Enter State" value="Maharashtra">
-                </div>
-            </div>
-        </div>
-        <hr>
-        <div class="row third-row">
-            <div class="col-7">
-                <table class="table">
-                    <tbody>
-                        <tr class="light-dark">
-                            <td>Course Name:</td>
-                            <td>
-                                <select class="form-control" id="plan">
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Instructor:</td>
-                            <td><input type="text" class="form-control" id="instructor" placeholder="Enter Instructor"
-                                    disabled>
-                            </td>
-                        </tr>
-                        <tr class="light-dark">
-                            <td>Start Date:</td>
-                            <td><input type="date" class="form-control" id="startDate" placeholder="Enter Start Date"
-                                    disabled>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>End Date:</td>
-                            <td><input type="date" class="form-control" id="endDate" placeholder="Enter End Date"
-                                    disabled></td>
-                        </tr>
-                        <tr class="light-dark">
-                            <td>Course Fee:</td>
-                            <td><input type="text" class="form-control" id="courseFee" placeholder="Enter Course Fee"
-                                    disabled>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Amount in Words:</td>
-                            <td><input type="text" class="form-control" id="amountInWords"
-                                    placeholder="Enter Amount in Words" disabled></td>
-                        </tr>
-                        <tr class="light-dark">
-                            <td>Discount:</td>
-                            <td><input type="number" class="form-control" id="discount" placeholder="Enter Discount"
-                                    disabled>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Discounted Course fee:</td>
-                            <td><input type="text" class="form-control" id="discountedFee" placeholder="Enter Discount"
-                                    disabled>
-                            </td>
-                        </tr>
-                        <tr class="light-dark">
-                            <td>Member GST:</td>
-                            <td><input type="text" class="form-control" id="memberGST" placeholder="Enter Member GST"
-                                    disabled>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="col-5">
-                <table class="table">
-                    <tbody>
-                        <tr class="light-dark">
-                            <td>Payment Amount:</td>
-                            <td><input type="number" class="form-control" id="paymentAmount" name="paymentAmount"
-                                    placeholder="Enter payment amount" disabled></td>
-                        </tr>
-                        <tr>
-                            <td>Registration Fee:</td>
-                            <td><input type="text" class="form-control" id="registrationFee"
-                                    placeholder="Enter Registration Fee" value="0 ₹" disabled></td>
-                        </tr>
-                        <tr class="light-dark">
-                            <td>CGST (9%):</td>
-                            <td><input type="text" class="form-control" id="cgst" placeholder="Enter CGST" disabled>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>SGST (9%):</td>
-                            <td><input type="text" class="form-control" id="sgst" placeholder="Enter SGST" disabled>
-                            </td>
-                        </tr>
-                        <tr class="light-dark">
-                            <td>IGST (0%):</td>
-                            <td><input type="text" class="form-control" id="igst" placeholder="Enter IGST" disabled>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <label for="includeGST" class="form-check-label">Include GST</label>
-                                <input type="radio" class="form-check-input" id="includeGST" name="gstOption"
-                                    value="include" disabled>
-                            </td>
-                            <td>
-                                <label for="excludeGST" class="form-check-label">Exclude GST</label>
-                                <input type="radio" class="form-check-input" id="excludeGST" name="gstOption"
-                                    value="exclude" disabled>
-                            </td>
-                        </tr>
-                        <tr class="light-dark">
-                            <td>Total:</td>
-                            <td><input type="text" class="form-control" id="total" placeholder="Enter Total" disabled>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Paid Fees:</td>
-                            <td><input type="text" class="form-control" id="paid" placeholder="Enter Paid Fees"
-                                    value="0 ₹" disabled></td>
-                        </tr>
-                        <tr class="light-dark">
-                            <td>Balance:</td>
-                            <td><input type="text" class="form-control" id="balance" placeholder="Enter Balance"
-                                    disabled></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <hr>
-        <div class="row fourth-row">
-            <div class="col">
-                <h4 class="section-title">Terms and Conditions</h4>
-                <div class="terms-content">
-                    <p>Once Fees Paid Not Be Refunded, no Transfer,no Freezing,no Extension.</p>
-                    <p> Don't Carry Your Valuable Gym Will Not Responsible For Any Losses.</p>
-                    <p> Gym Also Will Not Responsible For Any Accident.</p>
-                    <p>In Gym Premises Must Carry Sports Wear Napkin.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="row m-2 button-container">
             <hr>
-            <div class="col text-center">
-                <button type="button" class="submit-btn" onclick="requestDesktopSite()">Generate Receipt</button>
+            <div class="row second-row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="memberId" class="label-light-dark ">Member ID:</label>
+                        <input type="number" class="form-control personal-info" id="memberId"
+                            placeholder="Enter Member ID" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="name" class="label-light-dark ">Name:</label>
+                        <input type="text" class="form-control personal-info" id="name" placeholder="Enter Name"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phoneNumber" class="label-light-dark ">Contact No.:</label>
+                        <input type="tel" minlength="10" class="form-control personal-info" id="phoneNumber"
+                            placeholder="Enter Contact No." required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="label-light-dark ">Email ID:</label>
+                        <input type="email" class="form-control personal-info" id="email" placeholder="Enter Email ID"
+                            required>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="date" class="label-light-dark ">Date:</label>
+                        <input type="date" class="form-control personal-info" id="date" placeholder="Enter Date"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <label for="invoiceNo" class="label-light-dark ">Invoice No.:</label>
+                        <input type="text" class="form-control" id="invoiceNo" placeholder="Enter Invoice No.">
+                    </div>
+                    <div class="form-group">
+                        <label for="gstNo" class="label-light-dark ">GST No.:</label>
+                        <input type="text" class="form-control" id="gstNo" placeholder="Enter GST No.">
+                    </div>
+                    <div class="form-group">
+                        <label for="sacNo" class="label-light-dark ">SAC No.:</label>
+                        <input type="text" class="form-control" id="sacNo" placeholder="Enter SAC No.">
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="place" class="label-light-dark ">Place:</label>
+                        <input type="text" class="form-control personal-info" id="place" placeholder="Enter Place"
+                            value="Pune" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="state" class="label-light-dark ">State:</label>
+                        <input type="text" class="form-control personal-info" id="state" placeholder="Enter State"
+                            value="Maharashtra" required>
+                    </div>
+                </div>
             </div>
-        </div>
+            <hr>
+            <div class="row third-row">
+                <div class="col-7">
+                    <table class="table">
+                        <tbody>
+                            <tr class="light-dark">
+                                <td>Course Name:</td>
+                                <td>
+                                    <select class="form-control" id="plan" required>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Instructor:</td>
+                                <td><input type="text" class="form-control" id="instructor"
+                                        placeholder="Enter Instructor" disabled required>
+                                </td>
+                            </tr>
+                            <tr class="light-dark">
+                                <td>Start Date:</td>
+                                <td><input type="date" class="form-control" id="startDate"
+                                        placeholder="Enter Start Date" disabled required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>End Date:</td>
+                                <td><input type="date" class="form-control" id="endDate" placeholder="Enter End Date"
+                                        disabled required></td>
+                            </tr>
+                            <tr class="light-dark">
+                                <td>Course Fee:</td>
+                                <td><input type="text" class="form-control rupee" id="courseFee"
+                                        placeholder="Enter Course Fee" disabled required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Amount in Words:</td>
+                                <td><input type="text" class="form-control" id="amountInWords"
+                                        placeholder="Enter Amount in Words" disabled required></td>
+                            </tr>
+                            <tr class="light-dark">
+                                <td>Discount:</td>
+                                <td><input type="number" class="form-control" id="discount" placeholder="Enter Discount"
+                                        disabled required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Discounted Course fee:</td>
+                                <td><input type="text" class="form-control rupee" id="discountedFee"
+                                        placeholder="Enter Discount" disabled required>
+                                </td>
+                            </tr>
+                            <tr class="light-dark">
+                                <td>Member GST:</td>
+                                <td><input type="text" class="form-control" id="memberGST"
+                                        placeholder="Enter Member GST" disabled>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-5">
+                    <table class="table">
+                        <tbody>
+                            <tr class="light-dark">
+                                <td>Payment Amount:</td>
+                                <td><input type="number" class="form-control" id="paymentAmount" name="paymentAmount"
+                                        placeholder="Enter payment amount" disabled required></td>
+                            </tr>
+                            <tr>
+                                <td>Registration Fee:</td>
+                                <td><input type="text" class="form-control" id="registrationFee"
+                                        placeholder="Enter Registration Fee" value="0 ₹" disabled required></td>
+                            </tr>
+                            <tr class="light-dark">
+                                <td>CGST (9%):</td>
+                                <td><input type="text" class="form-control" id="cgst" placeholder="Enter CGST" disabled
+                                        required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>SGST (9%):</td>
+                                <td><input type="text" class="form-control" id="sgst" placeholder="Enter SGST" disabled
+                                        required>
+                                </td>
+                            </tr>
+                            <tr class="light-dark">
+                                <td>IGST (0%):</td>
+                                <td><input type="text" class="form-control" id="igst" placeholder="Enter IGST" disabled
+                                        required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="includeGST" class="form-check-label">Include GST</label>
+                                    <input type="radio" class="form-check-input" id="includeGST" name="gstOption"
+                                        value="include" disabled required>
+                                </td>
+                                <td>
+                                    <label for="excludeGST" class="form-check-label">Exclude GST</label>
+                                    <input type="radio" class="form-check-input" id="excludeGST" name="gstOption"
+                                        value="exclude" disabled required>
+                                </td>
+                            </tr>
+                            <tr class="light-dark">
+                                <td>Total:</td>
+                                <td><input type="text" class="form-control" id="total" placeholder="Enter Total"
+                                        disabled required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Paid Fees:</td>
+                                <td><input type="text" class="form-control" id="paid" placeholder="Enter Paid Fees"
+                                        disabled required></td>
+                            </tr>
+                            <tr class="light-dark">
+                                <td>Balance:</td>
+                                <td><input type="text" class="form-control rupee" id="balance"
+                                        placeholder="Enter Balance" disabled required></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <hr>
+            <div class="row fourth-row">
+                <div class="col">
+                    <h4 class="section-title">Terms and Conditions</h4>
+                    <div class="terms-content">
+                        <p>Once Fees Paid Not Be Refunded, no Transfer,no Freezing,no Extension.</p>
+                        <p> Don't Carry Your Valuable Gym Will Not Responsible For Any Losses.</p>
+                        <p> Gym Also Will Not Responsible For Any Accident.</p>
+                        <p>In Gym Premises Must Carry Sports Wear Napkin.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row m-2 button-container">
+                <hr>
+                <div class="col text-center">
+                    <button type="submit" class="submit-btn">SUBMIT</button>
+                </div>
+            </div>
+        </form>
     </div>
 
 
