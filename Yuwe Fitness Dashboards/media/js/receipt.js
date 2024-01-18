@@ -608,8 +608,9 @@ function sendData() {
         }
     };
 
-    console.log(jsonData);
-    console.log(JSON.stringify(jsonData));
+    // console.log(jsonData);
+    // console.log(JSON.stringify(jsonData));
+    SendDataToFlutter.postMessage(JSON.stringify(jsonData));
 }
 
 // Call the setData function with the dummy data and date
